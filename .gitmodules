@@ -7,3 +7,8 @@
 	path = .config/nvim
 	url = https://github.com/peinan/nvim.git
     branch = main
+
+[submodule ".config/vim"]
+	path = .config/vim
+	url = https://github.com/peinan/vim.git
+    branch = main
