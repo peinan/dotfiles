@@ -1,0 +1,13 @@
+config-file = visual
+config-file = keybinding
+
+clipboard-read = allow
+clipboard-write = allow
+copy-on-select = false
+
+macos-option-as-alt = true
+macos-icon = xray
+
+quick-terminal-position = right
+quick-terminal-screen = mouse
+quick-terminal-animation-duration = 0.05

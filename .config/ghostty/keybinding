@@ -1,0 +1,2 @@
+keybind = global:ctrl+enter=toggle_visibility
+keybind = global:super+shift+`=toggle_quick_terminal
