@@ -6,6 +6,7 @@
     "dev": "vitepress dev .",
     "start": "vitepress dev .",
     "build": "vitepress build .",
+    "build:local": "VITEPRESS_BASE=./ vitepress build .",
     "preview": "vitepress preview ."
   },
   "dependencies": {

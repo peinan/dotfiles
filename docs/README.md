@@ -29,12 +29,24 @@ The site is automatically built and deployed when you push to the `main` branch.
 ### Manual Build (for local testing)
 
 ```bash
-# Build (outputs to docs/.vitepress/dist/)
+# Build for GitHub Pages (outputs to docs/.vitepress/dist/)
+# This uses absolute paths (/dotfiles/) and requires a web server
 npm run build
 
-# Preview the build locally
+# Build for local file access (outputs to docs/.vitepress/dist/)
+# This uses relative paths (./) and can be opened directly in a browser
+npm run build:local
+
+# Preview the build locally (recommended)
+# This starts a local server and works with both build types
 npm run preview
 ```
+
+**Note:**
+- `npm run build` creates files with absolute paths (`/dotfiles/`) for GitHub Pages deployment
+- `npm run build:local` creates files with relative paths (`./`) that can be opened directly in a browser
+  - **Important**: When opening `index.html` directly with `file://` protocol, CSS will load correctly, but navigation between pages may show 404 errors due to browser security restrictions with SPA routing. Use `npm run preview` for full functionality.
+- `npm run preview` is the **recommended** way to preview builds locally as it starts a local server and works correctly with all features
 
 ### Testing GitHub Actions Locally with act
 
