@@ -1,0 +1,96 @@
+# taps
+
+tap "danielgatis/imgcat"
+brew "danielgatis/imgcat/imgcat"
+
+tap "delphinus/sfmono-square"
+brew "delphinus/sfmono-square/sfmono-square"
+
+tap "dotenvx/brew"
+brew "dotenvx/brew/dotenvx"
+
+tap "ngrok/ngrok"
+cask "ngrok"
+
+
+#
+# Brew: https://formulae.brew.sh/
+#
+
+brew "act"
+brew "node"
+brew "aicommit2"
+brew "bat"
+brew "boost"
+brew "btop"
+brew "chezmoi"
+brew "cmake"
+brew "coreutils"
+brew "curl"
+brew "d2"
+brew "eza"
+brew "fastfetch"
+brew "ffmpeg"
+brew "fx"
+brew "gh"
+brew "git-delta"
+brew "git-lfs"
+brew "gnu-sed"
+brew "huggingface-cli"
+brew "imagemagick"
+brew "jq"
+brew "neovim"
+brew "nkf"
+brew "pandoc"
+brew "parallel"
+brew "poetry"
+brew "pre-commit"
+brew "prek"
+brew "pueue"
+brew "reattach-to-user-namespace"
+brew "ripgrep"
+brew "sheldon"
+brew "starship"
+brew "tailspin"
+brew "tmux"
+brew "vim"
+brew "walk"
+brew "watch"
+brew "wget"
+brew "xsv"
+brew "yarn"
+brew "zoxide"
+brew "zsh"
+brew "zsh-autosuggestions"
+brew "zsh-completions"
+brew "mas" if OS.mac?
+
+
+#
+# Cask: https://formulae.brew.sh/cask/
+#
+
+cask "1password"
+cask "1password-cli"
+cast "cleanshot"
+cask "docker"
+cask "ghostty"
+cask "google-chrome"
+cask "slack"
+cask "raycast"
+cask "alt-tab"
+cask "bettertouchtool"
+cask "google-drive"
+cask "arc"
+cask "cursor"
+cask "cursor-cli"
+cask "karabiner-elements"
+cask "jordanbaird-ice"
+
+
+#
+# Mac App Store: https://github.com/mas-cli/mas
+#
+
+mas "1Password for Safari", id: 1569813296
+
