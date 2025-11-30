@@ -1,0 +1,4 @@
+[submodule ".config/tmux"]
+	path = .config/tmux
+	url = https://github.com/peinan/tmux.git
+    branch = main
