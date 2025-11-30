@@ -41,7 +41,7 @@ import { Info, AlertCircle } from 'lucide-astro';
           <h3 class="text-xl font-semibold text-foreground mb-3">Repository Information</h3>
           <UICard class="p-4 mb-4">
             <ul class="space-y-2 text-sm text-card-foreground">
-              <li><strong>Path:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">.config/tmux</code></li>
+              <li><strong>Path:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">src/.config/tmux</code></li>
               <li><strong>Repository:</strong>
                 <a href="https://github.com/peinan/tmux.git" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-primary/80">
                   https://github.com/peinan/tmux.git
@@ -55,24 +55,24 @@ import { Info, AlertCircle } from 'lucide-astro';
         <div>
           <h3 class="text-xl font-semibold text-foreground mb-3">Setup Instructions</h3>
           <CodeBlock code={`# Initialize submodule (if not already done)
-git submodule update --init --recursive .config/tmux
+git submodule update --init --recursive src/.config/tmux
 
 # Create symbolic link
-ln -s ~/.dotfiles/.config/tmux ~/.config/tmux
+ln -s ~/.dotfiles/src/.config/tmux ~/.config/tmux
 
 # Or, if existing configuration exists, backup first
 mv ~/.config/tmux ~/.config/tmux.backup
-ln -s ~/.dotfiles/.config/tmux ~/.config/tmux`} language="bash" />
+ln -s ~/.dotfiles/src/.config/tmux ~/.config/tmux`} language="bash" />
         </div>
 
         <div>
           <h3 class="text-xl font-semibold text-foreground mb-3">Update Instructions</h3>
           <CodeBlock code={`# Update submodule to latest state
 cd ~/.dotfiles
-git submodule update --remote .config/tmux
+git submodule update --remote src/.config/tmux
 
 # Commit changes
-git add .config/tmux
+git add src/.config/tmux
 git commit -m "Update tmux submodule"`} language="bash" />
         </div>
       </div>
@@ -92,7 +92,7 @@ git commit -m "Update tmux submodule"`} language="bash" />
           <h3 class="text-xl font-semibold text-foreground mb-3">Repository Information</h3>
           <UICard class="p-4 mb-4">
             <ul class="space-y-2 text-sm text-card-foreground">
-              <li><strong>Path:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">.config/nvim</code></li>
+              <li><strong>Path:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">src/.config/nvim</code></li>
               <li><strong>Repository:</strong>
                 <a href="https://github.com/peinan/nvim.git" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-primary/80">
                   https://github.com/peinan/nvim.git
@@ -114,10 +114,10 @@ git commit -m "Update tmux submodule"`} language="bash" />
         <div>
           <h3 class="text-xl font-semibold text-foreground mb-3">Setup Instructions</h3>
           <CodeBlock code={`# Initialize submodule (if not already done)
-git submodule update --init --recursive .config/nvim
+git submodule update --init --recursive src/.config/nvim
 
 # Create symbolic link
-ln -s ~/.dotfiles/.config/nvim ~/.config/nvim
+ln -s ~/.dotfiles/src/.config/nvim ~/.config/nvim
 
 # Launch Neovim to install plugins
 nvim`} language="bash" />
@@ -130,10 +130,10 @@ nvim`} language="bash" />
           <h3 class="text-xl font-semibold text-foreground mb-3">Update Instructions</h3>
           <CodeBlock code={`# Update submodule to latest state
 cd ~/.dotfiles
-git submodule update --remote .config/nvim
+git submodule update --remote src/.config/nvim
 
 # Commit changes
-git add .config/nvim
+git add src/.config/nvim
 git commit -m "Update nvim submodule"`} language="bash" />
         </div>
       </div>
@@ -153,7 +153,7 @@ git commit -m "Update nvim submodule"`} language="bash" />
           <h3 class="text-xl font-semibold text-foreground mb-3">Repository Information</h3>
           <UICard class="p-4 mb-4">
             <ul class="space-y-2 text-sm text-card-foreground">
-              <li><strong>Path:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">.config/vim</code></li>
+              <li><strong>Path:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">src/.config/vim</code></li>
               <li><strong>Repository:</strong>
                 <a href="https://github.com/peinan/vim.git" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-primary/80">
                   https://github.com/peinan/vim.git
@@ -167,24 +167,24 @@ git commit -m "Update nvim submodule"`} language="bash" />
         <div>
           <h3 class="text-xl font-semibold text-foreground mb-3">Setup Instructions</h3>
           <CodeBlock code={`# Initialize submodule (if not already done)
-git submodule update --init --recursive .config/vim
+git submodule update --init --recursive src/.config/vim
 
 # Link .vimrc with symbolic link
-ln -s ~/.dotfiles/.config/vim/.vimrc ~/.vimrc
+ln -s ~/.dotfiles/src/.config/vim/.vimrc ~/.vimrc
 
 # Copy color scheme (if needed)
 mkdir -p ~/.config/vim/colors
-cp ~/.dotfiles/.config/vim/Tomorrow-Night-Eighties.vim ~/.config/vim/colors/`} language="bash" />
+cp ~/.dotfiles/src/.config/vim/Tomorrow-Night-Eighties.vim ~/.config/vim/colors/`} language="bash" />
         </div>
 
         <div>
           <h3 class="text-xl font-semibold text-foreground mb-3">Update Instructions</h3>
           <CodeBlock code={`# Update submodule to latest state
 cd ~/.dotfiles
-git submodule update --remote .config/vim
+git submodule update --remote src/.config/vim
 
 # Commit changes
-git add .config/vim
+git add src/.config/vim
 git commit -m "Update vim submodule"`} language="bash" />
         </div>
       </div>
@@ -205,7 +205,7 @@ git commit -m "Update vim submodule"`} language="bash" />
 git submodule update --remote
 
 # Commit changes
-git add .config/*
+git add src/.config/*
 git commit -m "Update all submodules"`} language="bash" />
         </div>
 
@@ -221,7 +221,7 @@ git submodule foreach git status`} language="bash" />
         <div>
           <h3 class="text-xl font-semibold text-card-foreground mb-3">Working Inside Submodules</h3>
           <CodeBlock code={`# Navigate to submodule directory
-cd .config/nvim
+cd src/.config/nvim
 
 # Normal Git operations are possible
 git status
@@ -230,7 +230,7 @@ git commit -m "Update config"
 
 # Return to parent repository and commit changes
 cd ../..
-git add .config/nvim
+git add src/.config/nvim
 git commit -m "Update nvim submodule"`} language="bash" />
         </div>
       </UICard>

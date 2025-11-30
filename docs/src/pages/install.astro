@@ -42,9 +42,9 @@ cd ~/.dotfiles`} language="bash" />
         This repository uses the following submodules. All must be initialized:
       </p>
       <ul class="list-disc list-inside space-y-2 text-muted-foreground mb-4">
-        <li><code class="bg-muted px-2 py-1 rounded text-foreground">.config/tmux</code> - tmux configuration</li>
-        <li><code class="bg-muted px-2 py-1 rounded text-foreground">.config/nvim</code> - Neovim configuration</li>
-        <li><code class="bg-muted px-2 py-1 rounded text-foreground">.config/vim</code> - Vim configuration</li>
+        <li><code class="bg-muted px-2 py-1 rounded text-foreground">src/.config/tmux</code> - tmux configuration</li>
+        <li><code class="bg-muted px-2 py-1 rounded text-foreground">src/.config/nvim</code> - Neovim configuration</li>
+        <li><code class="bg-muted px-2 py-1 rounded text-foreground">src/.config/vim</code> - Vim configuration</li>
       </ul>
       <CodeBlock code={`# Initialize all submodules
 git submodule update --init --recursive`} language="bash" />
@@ -60,7 +60,7 @@ git submodule update --init --recursive`} language="bash" />
         Install required packages in bulk using the Brewfile.
       </p>
       <CodeBlock code={`# Install packages from Brewfile
-brew bundle install --file ~/.dotfiles/Brewfile`} language="bash" />
+brew bundle install --file ~/.dotfiles/src/Brewfile`} language="bash" />
       <Card class="p-4 mt-4 bg-primary/10 border-primary/20">
         <div class="flex items-start gap-2">
           <Info class="h-4 w-4 mt-0.5 text-primary flex-shrink-0" />
@@ -79,13 +79,13 @@ brew bundle install --file ~/.dotfiles/Brewfile`} language="bash" />
         Link Zsh configuration files with symbolic links.
       </p>
       <CodeBlock code={`# Link .zshrc
-ln -s ~/.dotfiles/.zshrc ~/.zshrc
+ln -s ~/.dotfiles/src/.zshrc ~/.zshrc
 
 # Link .zshenv
-ln -s ~/.dotfiles/.zshenv ~/.zshenv
+ln -s ~/.dotfiles/src/.zshenv ~/.zshenv
 
 # Link .alias
-ln -s ~/.dotfiles/.alias ~/.alias`} language="bash" />
+ln -s ~/.dotfiles/src/.alias ~/.alias`} language="bash" />
       <Card class="p-4 mt-4 bg-yellow-500/10 border-yellow-500/20">
         <div class="flex items-start gap-2">
           <AlertCircle class="h-4 w-4 mt-0.5 text-yellow-600 dark:text-yellow-400 flex-shrink-0" />
@@ -103,7 +103,7 @@ ln -s ~/.dotfiles/.alias ~/.alias`} language="bash" />
         Link the Git configuration file.
       </p>
       <CodeBlock code={`# Link .gitconfig
-ln -s ~/.dotfiles/.gitconfig ~/.gitconfig`} language="bash" />
+ln -s ~/.dotfiles/src/.gitconfig ~/.gitconfig`} language="bash" />
       <p class="text-muted-foreground text-sm mt-4">
         <strong>Note:</strong> Please edit <code class="bg-muted px-2 py-1 rounded text-foreground">.gitconfig</code> to change the username and email address as needed.
       </p>
@@ -116,10 +116,10 @@ ln -s ~/.dotfiles/.gitconfig ~/.gitconfig`} language="bash" />
         Neovim and Vim configurations are managed as submodules. Link the configuration directories.
       </p>
       <CodeBlock code={`# Link Neovim configuration
-ln -s ~/.dotfiles/.config/nvim ~/.config/nvim
+ln -s ~/.dotfiles/src/.config/nvim ~/.config/nvim
 
 # Link Vim configuration (if using)
-ln -s ~/.dotfiles/.config/vim ~/.config/vim`} language="bash" />
+ln -s ~/.dotfiles/src/.config/vim ~/.config/vim`} language="bash" />
     </section>
 
     <!-- Step 7: Setup Other Configurations -->
@@ -130,14 +130,14 @@ ln -s ~/.dotfiles/.config/vim ~/.config/vim`} language="bash" />
       </p>
       <CodeBlock code={`# Link Starship configuration
 mkdir -p ~/.config/starship
-ln -s ~/.dotfiles/.config/starship/starship.toml ~/.config/starship/starship.toml
+ln -s ~/.dotfiles/src/.config/starship/starship.toml ~/.config/starship/starship.toml
 
 # Link Sheldon configuration
 mkdir -p ~/.config/sheldon
-ln -s ~/.dotfiles/.config/sheldon/plugins.toml ~/.config/sheldon/plugins.toml
+ln -s ~/.dotfiles/src/.config/sheldon/plugins.toml ~/.config/sheldon/plugins.toml
 
 # Link tmux configuration
-ln -s ~/.dotfiles/.config/tmux ~/.config/tmux`} language="bash" />
+ln -s ~/.dotfiles/src/.config/tmux ~/.config/tmux`} language="bash" />
     </section>
 
     <!-- Step 8: Restart Shell -->
@@ -188,7 +188,7 @@ nvim --version`} language="bash" />
             </p>
             <CodeBlock code={`# Example: for .zshrc
 mv ~/.zshrc ~/.zshrc.backup
-ln -s ~/.dotfiles/.zshrc ~/.zshrc`} language="bash" />
+ln -s ~/.dotfiles/src/.zshrc ~/.zshrc`} language="bash" />
           </div>
           <div>
             <h4 class="font-semibold text-card-foreground mb-2">Package installation fails</h4>

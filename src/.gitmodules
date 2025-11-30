@@ -1,14 +1,14 @@
-[submodule ".config/tmux"]
-	path = .config/tmux
+[submodule "src/.config/tmux"]
+	path = src/.config/tmux
 	url = https://github.com/peinan/tmux.git
     branch = main
 
-[submodule ".config/nvim"]
-	path = .config/nvim
+[submodule "src/.config/nvim"]
+	path = src/.config/nvim
 	url = https://github.com/peinan/nvim.git
     branch = main
 
-[submodule ".config/vim"]
-	path = .config/vim
+[submodule "src/.config/vim"]
+	path = src/.config/vim
 	url = https://github.com/peinan/vim.git
     branch = main

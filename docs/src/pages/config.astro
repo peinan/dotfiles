@@ -31,7 +31,7 @@ import Card from '../components/ui/card.astro';
           </ul>
           <Card class="p-4">
             <p class="text-sm text-muted-foreground">
-              <strong>Location:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">~/.dotfiles/.zshrc</code>
+              <strong>Location:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">~/.dotfiles/src/.zshrc</code>
             </p>
           </Card>
         </div>
@@ -43,7 +43,7 @@ import Card from '../components/ui/card.astro';
           </p>
           <Card class="p-4">
             <p class="text-sm text-muted-foreground">
-              <strong>Location:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">~/.dotfiles/.zshenv</code>
+              <strong>Location:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">~/.dotfiles/src/.zshenv</code>
             </p>
           </Card>
         </div>
@@ -62,7 +62,7 @@ import Card from '../components/ui/card.astro';
           </ul>
           <Card class="p-4">
             <p class="text-sm text-muted-foreground">
-              <strong>Location:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">~/.dotfiles/.alias</code>
+              <strong>Location:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">~/.dotfiles/src/.alias</code>
             </p>
           </Card>
         </div>
@@ -92,7 +92,7 @@ import Card from '../components/ui/card.astro';
         </ul>
         <Card class="p-4 mb-4">
           <p class="text-sm text-muted-foreground">
-            <strong>Location:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">~/.dotfiles/.gitconfig</code>
+            <strong>Location:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">~/.dotfiles/src/.gitconfig</code>
           </p>
           <p class="text-sm text-muted-foreground mt-2">
             <strong>Note:</strong> Please change the username and email address before use.
@@ -136,7 +136,7 @@ import Card from '../components/ui/card.astro';
         </ul>
         <Card class="p-4 mb-4">
           <p class="text-sm text-muted-foreground">
-            <strong>Location:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">~/.dotfiles/.config/starship/starship.toml</code>
+            <strong>Location:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">~/.dotfiles/src/.config/starship/starship.toml</code>
           </p>
         </Card>
         <CodeBlock code={`format = '''$os $hostname [󰉋 ](cyan) $directory $git_branch $git_status $python
@@ -168,7 +168,7 @@ format = '[$symbol$branch(:$remote_branch)]($style) '`} language="toml" />
         </ul>
         <Card class="p-4 mb-4">
           <p class="text-sm text-muted-foreground">
-            <strong>Location:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">~/.dotfiles/.config/sheldon/plugins.toml</code>
+            <strong>Location:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">~/.dotfiles/src/.config/sheldon/plugins.toml</code>
           </p>
         </Card>
         <CodeBlock code={`[plugins.fast-syntax-highlighting]
@@ -198,10 +198,10 @@ github = "zsh-users/zsh-completions"`} language="toml" />
         </ul>
         <Card class="p-4 mb-4">
           <p class="text-sm text-muted-foreground">
-            <strong>Location:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">~/.dotfiles/Brewfile</code>
+            <strong>Location:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">~/.dotfiles/src/Brewfile</code>
           </p>
           <p class="text-sm text-muted-foreground mt-2">
-            <strong>Installation:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">brew bundle install --file Brewfile</code>
+            <strong>Installation:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">brew bundle install --file src/Brewfile</code>
           </p>
         </Card>
         <Card class="p-4 bg-primary/10 border-primary/20">
@@ -220,10 +220,10 @@ github = "zsh-users/zsh-completions"`} language="toml" />
           Other configuration files and directories:
         </p>
         <ul class="list-disc list-inside space-y-2 text-card-foreground">
-          <li><code class="bg-muted px-2 py-1 rounded text-foreground">.ideavimrc</code> - Vim configuration for IntelliJ IDEA / PyCharm</li>
-          <li><code class="bg-muted px-2 py-1 rounded text-foreground">.config/tmux/</code> - tmux configuration (submodule)</li>
-          <li><code class="bg-muted px-2 py-1 rounded text-foreground">.config/nvim/</code> - Neovim configuration (submodule)</li>
-          <li><code class="bg-muted px-2 py-1 rounded text-foreground">.config/vim/</code> - Vim configuration (submodule)</li>
+          <li><code class="bg-muted px-2 py-1 rounded text-foreground">src/.ideavimrc</code> - Vim configuration for IntelliJ IDEA / PyCharm</li>
+          <li><code class="bg-muted px-2 py-1 rounded text-foreground">src/.config/tmux/</code> - tmux configuration (submodule)</li>
+          <li><code class="bg-muted px-2 py-1 rounded text-foreground">src/.config/nvim/</code> - Neovim configuration (submodule)</li>
+          <li><code class="bg-muted px-2 py-1 rounded text-foreground">src/.config/vim/</code> - Vim configuration (submodule)</li>
         </ul>
         <p class="text-muted-foreground text-sm mt-4">
           For details about submodules, see the <a href="/dotfiles/submodules" class="text-primary hover:text-primary/80 font-medium">Submodules page</a>.
