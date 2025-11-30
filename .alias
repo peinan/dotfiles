@@ -1,0 +1,181 @@
+# --------------------------------
+# Basical MacOS/Linux/Unix aliases
+# --------------------------------
+
+## ls
+alias ls="ls -GF"
+alias la="ls -ahGF"
+alias ll="ls -lhGF"
+alias lla="ls -alhGF"
+
+## cd
+alias _='cd -'
+alias ....='cd ../../'
+alias ......='cd ../../../'
+
+## always use Neovim
+alias vi="nvim"
+alias vin="vim +NERDTree"
+
+## others
+alias rm='rm -i'
+alias rmt='trash-put'
+alias cp='cp -i'
+alias mv='mv -i'
+alias mkdir='mkdir -p'
+alias lv='less -MN'
+alias pbc='pbcopy'
+alias pbp='pbpaste'
+alias hist='history'
+alias valias='vi ~/.alias*'
+alias salias='source ~/.alias*'
+
+# Python
+alias py='python'
+alias ipy='ipython'
+alias pyc='python -c'
+
+# Screen
+alias scr='screen -r'
+alias scls='screen -ls'
+alias scs='screen -S'
+alias sc='screen'
+
+# Open in browser
+alias chrome="open_with_browser -c"
+alias chr="chrome"
+alias safari="open_with_browser -s"
+alias saf="safari"
+
+# Others
+alias rez='source ~/.zshrc'
+alias res='exec $SHELL -l'
+alias rea='source ~/.alias'
+alias zshrc="vi ~/.zshrc"
+alias zshenv="vi ~/.zshenv"
+alias vstar="vi ~/.config/starship.toml"
+alias vimrc="vi ~/.vimrc"
+alias vimdein="vin ~/.vim/userautoload/dein'"
+alias vimplug="vin ~/.vim/userautoload/plugins'"
+alias viminit="vin ~/.vim/userautoload/init'"
+## restart wifi
+alias rwf='networksetup -setairportpower Wi-Fi off && sleep 1 && networksetup -setairportpower Wi-Fi on'
+
+
+# -------------------
+# Additional Commands
+# -------------------
+
+## grep
+alias grep="grep --color -n -I --exclude='*.git'"
+
+## tmux
+if type tmux > /dev/null 2>&1; then
+  alias tm='tmux'
+  alias tmls='tmux ls'
+  alias tms='tmux new -s'
+  alias tm1='tmux new -s session-1'
+  alias tm2='tmux new -s session-2'
+  alias tma='tmux attach -t'
+  alias tmk='tmux kill-session -t'
+  alias tmc='tmux save-buffer - | pbcopy'
+  alias tmres='tmux respawn-pane -k'
+fi
+alias tmconf='vi ~/.tmux.conf'
+
+## tree
+if type tree > /dev/null 2>&1; then
+  alias tree="tree -NC" # N: 文字化け対策, C:色をつける
+fi
+
+## nkf
+if type nkf > /dev/null 2>&1; then
+  alias nkw='nkf -w'
+fi
+
+## eza
+if type eza > /dev/null 2>&1; then
+  alias e="eza"
+  alias ea="eza -a"
+  alias el="eza -l -hbUm --git"
+  alias ela="eza -al -hbUm --git"
+
+  alias ls="e"
+  alias la="ea"
+  alias ll="el"
+  alias lla="ela"
+  alias lt="el -T -L2"
+  alias lta="el -T"
+fi
+
+## pygmentize (less や cat に syntax highlight をつける)
+if type pygmentize > /dev/null 2>&1; then
+  alias c='pygmentize -O style=monokai -f console256 -g'
+fi
+
+## tw -- a CLI twitter client
+if type tw > /dev/null 2>&1; then
+  alias twd="tw @so1owingpixy/default"
+  alias twt="tw @so1owingpixy --timeline"
+fi
+
+## NeoVim
+if type nvim > /dev/null 2>&1; then
+  alias nv="nvim"
+fi
+
+## Rust Cargo
+if type cargo > /dev/null 2>&1; then
+  alias rsc="rustc"
+  alias ca="cargo"
+  alias cab="cargo build"
+  alias car="cargo run"
+fi
+
+## bat
+if type bat > /dev/null 2>&1; then
+  alias bat="bat --theme TwoDark --color always"
+fi
+
+## kubectl
+if type kubectl > /dev/null 2>&1; then
+  alias kc="kubectl"
+fi
+
+## firebase
+if type firebase > /dev/null 2>&1; then
+  alias fb="firebase"
+fi
+
+## docker
+alias docker="/Applications/Docker.app/Contents/Resources/bin/docker"
+
+## cursor
+alias cs="cursor"
+
+
+# ------------
+# Suffix Alias
+# ------------
+
+alias -s py='python'
+
+
+# --------------
+# Path Expansion
+# --------------
+
+## Local Directories
+hash -d pg="${HOME}/playground"
+hash -d pj="${HOME}/Projects"
+hash -d doc="${HOME}/Documents"
+hash -d down="${HOME}/Downloads"
+hash -d desk="${HOME}/Desktop"
+hash -d lib="${HOME}/Library"
+hash -d pic="${HOME}/Pictures"
+hash -d ss="${HOME}/Pictures/ss"
+
+## Cloud Drives
+hash -d gd="${HOME}/<gmail_address> - Google Drive/マイドライブ"
+hash -d icloud="${HOME}/Library/Mobile Documents/com~apple~CloudDocs"
+
