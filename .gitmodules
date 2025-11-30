@@ -2,3 +2,8 @@
 	path = .config/tmux
 	url = https://github.com/peinan/tmux.git
     branch = main
+
+[submodule ".config/nvim"]
+	path = .config/nvim
+	url = https://github.com/peinan/nvim.git
+    branch = main
