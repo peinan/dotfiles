@@ -1,6 +1,6 @@
 # Dotfiles Documentation
 
-This directory contains the documentation site (Astro) for the dotfiles repository.
+This directory contains the documentation site (VitePress) for the dotfiles repository.
 
 ## Development
 
@@ -29,7 +29,7 @@ The site is automatically built and deployed when you push to the `main` branch.
 ### Manual Build (for local testing)
 
 ```bash
-# Build (outputs to docs/dist/)
+# Build (outputs to docs/.vitepress/dist/)
 npm run build
 
 # Preview the build locally
@@ -75,14 +75,12 @@ act -v push
 
 ```
 docs/
-├── src/
-│   ├── components/     # Reusable components
-│   ├── layouts/        # Layout components
-│   ├── pages/          # Page files
-│   └── styles/         # Global styles
-├── public/             # Static assets
-├── astro.config.mjs    # Astro configuration
-├── package.json        # Dependencies
-└── tailwind.config.mjs # Tailwind configuration
+├── .vitepress/
+│   └── config.ts          # VitePress configuration
+├── index.md               # Home page
+├── install.md             # Installation guide
+├── config.md              # Configuration files
+├── submodules.md          # Submodules documentation
+├── package.json           # Dependencies
+└── README.md              # This file
 ```
-
