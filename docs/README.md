@@ -1,6 +1,6 @@
 # Dotfiles Documentation
 
-This directory contains the documentation site (Astro) for the dotfiles repository.
+This directory contains the documentation site (VitePress) for the dotfiles repository.
 
 ## Development
 
@@ -29,12 +29,24 @@ The site is automatically built and deployed when you push to the `main` branch.
 ### Manual Build (for local testing)
 
 ```bash
-# Build (outputs to docs/dist/)
+# Build for GitHub Pages (outputs to docs/.vitepress/dist/)
+# This uses absolute paths (/dotfiles/) and requires a web server
 npm run build
 
-# Preview the build locally
+# Build for local file access (outputs to docs/.vitepress/dist/)
+# This uses relative paths (./) and can be opened directly in a browser
+npm run build:local
+
+# Preview the build locally (recommended)
+# This starts a local server and works with both build types
 npm run preview
 ```
+
+**Note:**
+- `npm run build` creates files with absolute paths (`/dotfiles/`) for GitHub Pages deployment
+- `npm run build:local` creates files with relative paths (`./`) that can be opened directly in a browser
+  - **Important**: When opening `index.html` directly with `file://` protocol, CSS will load correctly, but navigation between pages may show 404 errors due to browser security restrictions with SPA routing. Use `npm run preview` for full functionality.
+- `npm run preview` is the **recommended** way to preview builds locally as it starts a local server and works correctly with all features
 
 ### Testing GitHub Actions Locally with act
 
@@ -75,14 +87,12 @@ act -v push
 
 ```
 docs/
-├── src/
-│   ├── components/     # Reusable components
-│   ├── layouts/        # Layout components
-│   ├── pages/          # Page files
-│   └── styles/         # Global styles
-├── public/             # Static assets
-├── astro.config.mjs    # Astro configuration
-├── package.json        # Dependencies
-└── tailwind.config.mjs # Tailwind configuration
+├── .vitepress/
+│   └── config.ts          # VitePress configuration
+├── index.md               # Home page
+├── install.md             # Installation guide
+├── config.md              # Configuration files
+├── submodules.md          # Submodules documentation
+├── package.json           # Dependencies
+└── README.md              # This file
 ```
-
