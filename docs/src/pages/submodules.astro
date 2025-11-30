@@ -1,0 +1,239 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Card from '../components/Card.astro';
+import CodeBlock from '../components/CodeBlock.astro';
+import UICard from '../components/ui/card.astro';
+import { Info, AlertCircle } from 'lucide-astro';
+---
+
+<PageLayout title="Submodules - peinan's dotfiles" description="Description and setup methods for submodules">
+  <div class="container py-12">
+    <h1 class="text-4xl font-bold text-foreground mb-8">Submodules</h1>
+    <p class="text-xl text-muted-foreground mb-12">
+      This repository manages editor and terminal configurations as submodules.
+    </p>
+
+    <!-- Overview -->
+    <section class="mb-12">
+      <UICard class="p-6 mb-8 bg-primary/10 border-primary/20">
+        <h2 class="text-xl font-semibold text-foreground mb-3">What are Submodules?</h2>
+        <p class="text-foreground text-sm mb-4">
+          Submodules allow you to include another Git repository within a Git repository.
+          This enables managing each configuration as an independent repository while integrating them into the dotfiles repository.
+        </p>
+        <p class="text-foreground text-sm">
+          <strong>Initialization:</strong> <code class="bg-primary/20 px-2 py-1 rounded text-foreground">git submodule update --init --recursive</code>
+        </p>
+      </UICard>
+    </section>
+
+    <!-- tmux -->
+    <section id="tmux" class="mb-16 scroll-mt-16">
+      <div class="border-b border-border pb-6 mb-6">
+        <h2 class="text-3xl font-bold text-foreground mb-2">tmux Configuration</h2>
+        <p class="text-muted-foreground">
+          Configuration files for the terminal multiplexer tmux
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-xl font-semibold text-foreground mb-3">Repository Information</h3>
+          <UICard class="p-4 mb-4">
+            <ul class="space-y-2 text-sm text-card-foreground">
+              <li><strong>Path:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">.config/tmux</code></li>
+              <li><strong>Repository:</strong>
+                <a href="https://github.com/peinan/tmux.git" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-primary/80">
+                  https://github.com/peinan/tmux.git
+                </a>
+              </li>
+              <li><strong>Branch:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">main</code></li>
+            </ul>
+          </UICard>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold text-foreground mb-3">Setup Instructions</h3>
+          <CodeBlock code={`# Initialize submodule (if not already done)
+git submodule update --init --recursive .config/tmux
+
+# Create symbolic link
+ln -s ~/.dotfiles/.config/tmux ~/.config/tmux
+
+# Or, if existing configuration exists, backup first
+mv ~/.config/tmux ~/.config/tmux.backup
+ln -s ~/.dotfiles/.config/tmux ~/.config/tmux`} language="bash" />
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold text-foreground mb-3">Update Instructions</h3>
+          <CodeBlock code={`# Update submodule to latest state
+cd ~/.dotfiles
+git submodule update --remote .config/tmux
+
+# Commit changes
+git add .config/tmux
+git commit -m "Update tmux submodule"`} language="bash" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Neovim -->
+    <section id="nvim" class="mb-16 scroll-mt-16">
+      <div class="border-b border-border pb-6 mb-6">
+        <h2 class="text-3xl font-bold text-foreground mb-2">Neovim Configuration</h2>
+        <p class="text-muted-foreground">
+          Neovim editor configuration and plugin management
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-xl font-semibold text-foreground mb-3">Repository Information</h3>
+          <UICard class="p-4 mb-4">
+            <ul class="space-y-2 text-sm text-card-foreground">
+              <li><strong>Path:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">.config/nvim</code></li>
+              <li><strong>Repository:</strong>
+                <a href="https://github.com/peinan/nvim.git" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-primary/80">
+                  https://github.com/peinan/nvim.git
+                </a>
+              </li>
+              <li><strong>Branch:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">main</code></li>
+            </ul>
+          </UICard>
+          <UICard class="p-4 bg-yellow-500/10 border-yellow-500/20">
+            <div class="flex items-start gap-2">
+              <AlertCircle class="h-4 w-4 mt-0.5 text-yellow-600 dark:text-yellow-400 flex-shrink-0" />
+              <p class="text-sm text-yellow-800 dark:text-yellow-300">
+                <strong>Note:</strong> This configuration is forked from <a href="https://github.com/AlexvZyl/nvim" target="_blank" rel="noopener noreferrer" class="underline">AlexvZyl/nvim</a>.
+              </p>
+            </div>
+          </UICard>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold text-foreground mb-3">Setup Instructions</h3>
+          <CodeBlock code={`# Initialize submodule (if not already done)
+git submodule update --init --recursive .config/nvim
+
+# Create symbolic link
+ln -s ~/.dotfiles/.config/nvim ~/.config/nvim
+
+# Launch Neovim to install plugins
+nvim`} language="bash" />
+          <p class="text-muted-foreground text-sm mt-4">
+            When you first launch Neovim, the plugin manager (Lazy.nvim, etc.) will automatically install plugins.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold text-foreground mb-3">Update Instructions</h3>
+          <CodeBlock code={`# Update submodule to latest state
+cd ~/.dotfiles
+git submodule update --remote .config/nvim
+
+# Commit changes
+git add .config/nvim
+git commit -m "Update nvim submodule"`} language="bash" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Vim -->
+    <section id="vim" class="mb-16 scroll-mt-16">
+      <div class="border-b border-border pb-6 mb-6">
+        <h2 class="text-3xl font-bold text-foreground mb-2">Vim Configuration</h2>
+        <p class="text-muted-foreground">
+          Configuration files for the traditional Vim editor
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-xl font-semibold text-foreground mb-3">Repository Information</h3>
+          <UICard class="p-4 mb-4">
+            <ul class="space-y-2 text-sm text-card-foreground">
+              <li><strong>Path:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">.config/vim</code></li>
+              <li><strong>Repository:</strong>
+                <a href="https://github.com/peinan/vim.git" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-primary/80">
+                  https://github.com/peinan/vim.git
+                </a>
+              </li>
+              <li><strong>Branch:</strong> <code class="bg-muted px-2 py-1 rounded text-foreground">main</code></li>
+            </ul>
+          </UICard>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold text-foreground mb-3">Setup Instructions</h3>
+          <CodeBlock code={`# Initialize submodule (if not already done)
+git submodule update --init --recursive .config/vim
+
+# Link .vimrc with symbolic link
+ln -s ~/.dotfiles/.config/vim/.vimrc ~/.vimrc
+
+# Copy color scheme (if needed)
+mkdir -p ~/.config/vim/colors
+cp ~/.dotfiles/.config/vim/Tomorrow-Night-Eighties.vim ~/.config/vim/colors/`} language="bash" />
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold text-foreground mb-3">Update Instructions</h3>
+          <CodeBlock code={`# Update submodule to latest state
+cd ~/.dotfiles
+git submodule update --remote .config/vim
+
+# Commit changes
+git add .config/vim
+git commit -m "Update vim submodule"`} language="bash" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Managing Submodules -->
+    <section>
+      <h2 class="text-3xl font-bold text-foreground mb-6">Managing Submodules</h2>
+      <UICard class="p-6 space-y-6">
+        <div>
+          <h3 class="text-xl font-semibold text-card-foreground mb-3">Initialize All Submodules</h3>
+          <CodeBlock code={`git submodule update --init --recursive`} language="bash" />
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold text-card-foreground mb-3">Update All Submodules</h3>
+          <CodeBlock code={`# Update all submodules to latest state
+git submodule update --remote
+
+# Commit changes
+git add .config/*
+git commit -m "Update all submodules"`} language="bash" />
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold text-card-foreground mb-3">Check Submodule Status</h3>
+          <CodeBlock code={`# Check submodule status
+git submodule status
+
+# Display detailed information
+git submodule foreach git status`} language="bash" />
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold text-card-foreground mb-3">Working Inside Submodules</h3>
+          <CodeBlock code={`# Navigate to submodule directory
+cd .config/nvim
+
+# Normal Git operations are possible
+git status
+git checkout -b feature-branch
+git commit -m "Update config"
+
+# Return to parent repository and commit changes
+cd ../..
+git add .config/nvim
+git commit -m "Update nvim submodule"`} language="bash" />
+        </div>
+      </UICard>
+    </section>
+  </div>
+</PageLayout>

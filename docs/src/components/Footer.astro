@@ -1,0 +1,26 @@
+---
+import { Github } from 'lucide-astro';
+import { cn } from '../lib/utils';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-border bg-muted/50 mt-auto">
+  <div class="container flex flex-col sm:flex-row justify-between items-center py-8 space-y-4 sm:space-y-0">
+    <p class="text-sm text-muted-foreground">
+      © {currentYear} <a href="https://github.com/peinan" class="text-primary hover:text-primary/80 font-medium">peinan</a>
+    </p>
+    <div class="flex space-x-6">
+      <a
+        href="https://github.com/peinan/dotfiles"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-muted-foreground hover:text-foreground transition-colors"
+        aria-label="GitHub"
+      >
+        <Github class="h-5 w-5" />
+      </a>
+    </div>
+  </div>
+</footer>
+

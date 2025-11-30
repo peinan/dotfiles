@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Nordic Dim - Light mode (using lighter Nordic colors) */
+    --background: 220 16% 96%; /* #ECEFF4 - Snow Storm 1 */
+    --foreground: 220 13% 18%; /* #2E3440 - Polar Night 0 */
+    --card: 220 16% 100%; /* #FFFFFF */
+    --card-foreground: 220 13% 18%; /* #2E3440 */
+    --popover: 220 16% 100%; /* #FFFFFF */
+    --popover-foreground: 220 13% 18%; /* #2E3440 */
+    --primary: 210 50% 52%; /* #5E81AC - Frost 4 */
+    --primary-foreground: 220 16% 96%; /* #ECEFF4 */
+    --secondary: 199 49% 67%; /* #88C0D0 - Frost 2 */
+    --secondary-foreground: 220 13% 18%; /* #2E3440 */
+    --muted: 220 14% 96%; /* #E5E9F0 - Snow Storm 0 */
+    --muted-foreground: 220 13% 35%; /* #4C566A - Polar Night 3 */
+    --accent: 199 49% 67%; /* #88C0D0 - Frost 2 */
+    --accent-foreground: 220 13% 18%; /* #2E3440 */
+    --destructive: 354 42% 56%; /* #BF616A - Aurora 0 */
+    --destructive-foreground: 220 16% 96%; /* #ECEFF4 */
+    --border: 220 14% 91%; /* #D8DEE9 - Snow Storm 2 */
+    --input: 220 14% 91%; /* #D8DEE9 */
+    --ring: 210 50% 52%; /* #5E81AC - Frost 4 */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Nordic Dim - Dark mode */
+    --background: 220 13% 18%; /* #2E3440 - Polar Night 0 */
+    --foreground: 220 16% 96%; /* #ECEFF4 - Snow Storm 1 */
+    --card: 220 13% 22%; /* #3B4252 - Polar Night 1 */
+    --card-foreground: 220 16% 96%; /* #ECEFF4 */
+    --popover: 220 13% 22%; /* #3B4252 */
+    --popover-foreground: 220 16% 96%; /* #ECEFF4 */
+    --primary: 210 50% 52%; /* #5E81AC - Frost 4 */
+    --primary-foreground: 220 16% 96%; /* #ECEFF4 */
+    --secondary: 220 13% 27%; /* #434C5E - Polar Night 2 */
+    --secondary-foreground: 220 16% 96%; /* #ECEFF4 */
+    --muted: 220 13% 27%; /* #434C5E - Polar Night 2 */
+    --muted-foreground: 220 14% 85%; /* #D8DEE9 - Snow Storm 2 */
+    --accent: 199 49% 67%; /* #88C0D0 - Frost 2 */
+    --accent-foreground: 220 13% 18%; /* #2E3440 */
+    --destructive: 354 42% 56%; /* #BF616A - Aurora 0 */
+    --destructive-foreground: 220 16% 96%; /* #ECEFF4 */
+    --border: 220 13% 27%; /* #434C5E - Polar Night 2 */
+    --input: 220 13% 27%; /* #434C5E */
+    --ring: 210 50% 52%; /* #5E81AC - Frost 4 */
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+
+  a {
+    @apply transition-colors;
+  }
+
+  code {
+    @apply font-mono text-sm;
+  }
+}
+
+@layer components {
+  .prose {
+    @apply text-muted-foreground;
+  }
+
+  .prose h2 {
+    @apply text-2xl font-semibold text-foreground mt-8 mb-4;
+  }
+
+  .prose h3 {
+    @apply text-xl font-semibold text-foreground mt-6 mb-3;
+  }
+
+  .prose p {
+    @apply mb-4;
+  }
+
+  .prose ul {
+    @apply list-disc list-inside mb-4 space-y-2;
+  }
+
+  .prose ol {
+    @apply list-decimal list-inside mb-4 space-y-2;
+  }
+
+  .prose code {
+    @apply bg-muted px-2 py-1 rounded text-sm text-foreground;
+  }
+
+  .prose pre {
+    @apply bg-[#0a0a0a] text-[#e4e4e7] p-4 rounded-lg overflow-x-auto border border-border;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0 text-[#e4e4e7];
+  }
+}
+
