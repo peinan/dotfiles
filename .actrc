@@ -1,0 +1,12 @@
+# act configuration
+# See https://github.com/nektos/act for more information
+
+# Use a specific platform image
+-P ubuntu-latest=catthehacker/ubuntu:act-latest
+
+# Enable secrets file (optional)
+# --secret-file .secrets
+
+# Container architecture for Apple M-series chips
+# Use linux/amd64 for compatibility with most GitHub Actions
+--container-architecture linux/amd64
