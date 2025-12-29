@@ -1,5 +1,0 @@
-require("alex.native.options")
-require("alex.native.terminal")
-require("alex.native.statuscolumn")
-require("alex.native.winbar")
-require("alex.native.lsp")
