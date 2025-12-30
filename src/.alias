@@ -153,6 +153,10 @@ alias docker="/Applications/Docker.app/Contents/Resources/bin/docker"
 ## cursor
 alias cs="cursor"
 
+## aicommit2
+if type aicommit2 > /dev/null 2>&1; then
+    alias aic="aicommit2 -e"
+fi
 
 # ------------
 # Suffix Alias
@@ -166,8 +170,12 @@ alias -s py='python'
 # --------------
 
 ## Local Directories
+if type ghq > /dev/null 2>&1; then
+    hash -d gh="$(ghq root)/github.com"
+fi
 hash -d pg="${HOME}/playground"
 hash -d pj="${HOME}/Projects"
+
 hash -d doc="${HOME}/Documents"
 hash -d down="${HOME}/Downloads"
 hash -d desk="${HOME}/Desktop"
@@ -176,6 +184,6 @@ hash -d pic="${HOME}/Pictures"
 hash -d ss="${HOME}/Pictures/ss"
 
 ## Cloud Drives
-hash -d gd="${HOME}/<gmail_address> - Google Drive/マイドライブ"
+hash -d gd="${HOME}/Google Drive/マイドライブ"
 hash -d icloud="${HOME}/Library/Mobile Documents/com~apple~CloudDocs"
 

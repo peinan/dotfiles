@@ -74,7 +74,7 @@ repo() {
         "list"|"l")
             # List all repositories with fzf selection
             local selected_repo
-            selected_repo=$(ghq list | fzf --height=50% --preview="echo {}" --preview-window=down:3:wrap)
+            selected_repo=$(ghq list | fzf --height=~20% --preview="eza $(ghq root)/{} --color=always" --preview-window=down:3:wrap)
             if [[ -n "$selected_repo" ]]; then
                 echo "Selected: $selected_repo"
                 echo "Path: $(ghq root)/$selected_repo"
@@ -83,7 +83,7 @@ repo() {
         "cd"|"c")
             # Change directory to selected repository
             local selected_repo
-            selected_repo=$(ghq list | fzf --height=50% --preview="echo {}" --preview-window=down:3:wrap)
+            selected_repo=$(ghq list | fzf --height=~20% --preview="eza $(ghq root)/{} --color=always" --preview-window=down:3:wrap)
             if [[ -n "$selected_repo" ]]; then
                 cd "$(ghq root)/$selected_repo" || return 1
             fi
@@ -91,14 +91,16 @@ repo() {
         "remove"|"rm"|"r")
             # Remove selected repository
             local selected_repo
-            selected_repo=$(ghq list | fzf --height=50% --preview="echo {}" --preview-window=down:3:wrap --prompt="Select repository to remove: ")
+            selected_repo=$(ghq list | fzf --height=50% --preview="eza $(ghq root)/{} --color=always" --preview-window=down:3:wrap --prompt="Select repository to remove: ")
             if [[ -n "$selected_repo" ]]; then
-                echo "Are you sure you want to remove $selected_repo? [y/N]"
+                printf "Are you sure you want to remove %s? (y/n [y]) " "$selected_repo"
                 read -r confirm
-                if [[ "$confirm" =~ ^[Yy]$ ]]; then
+                if [[ -z "$confirm" || "$confirm" =~ ^[Yy](es)?$ ]]; then
+                    echo "yes"
                     rm -rf "$(ghq root)/$selected_repo"
                     echo "Removed: $selected_repo"
                 else
+                    echo "no"
                     echo "Cancelled"
                 fi
             fi
@@ -120,6 +122,9 @@ repo() {
                 repo_path="${repo_path#git@}"
                 repo_path="${repo_path/://}"
                 repo_path="${repo_path%.git}"
+                # Remove GitHub-specific paths (/tree/branch, /blob/branch, etc.)
+                repo_path="${repo_path%%/tree/*}"
+                repo_path="${repo_path%%/blob/*}"
 
                 ghq get "$2" && cd "$(ghq root)/$repo_path"
             fi
@@ -141,7 +146,7 @@ repo() {
             # Open repository in editor (default: code)
             local editor="${2:-code}"
             local selected_repo
-            selected_repo=$(ghq list | fzf --height=50% --preview="echo {}" --preview-window=down:3:wrap)
+            selected_repo=$(ghq list | fzf --height=50% --preview="eza $(ghq root)/{} --color=always" --preview-window=down:3:wrap)
             if [[ -n "$selected_repo" ]]; then
                 local repo_path="$(ghq root)/$selected_repo"
                 if command -v "$editor" > /dev/null; then
@@ -175,7 +180,7 @@ Commands:
   help, h         Show this help message
 
 Examples:
-  repo                    # List repositories
+  repo                    # List repositories and change to the selected repository
   repo cd                 # Change to selected repository
   repo get                # Interactive repository selection
   repo get github.com/user/repo
