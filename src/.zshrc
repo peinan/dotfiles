@@ -68,7 +68,7 @@ function ts {
 }
 
 repo() {
-    local action="${1:-list}"
+    local action="${1:-cd}"
     
     case "$action" in
         "list"|"l")
@@ -113,7 +113,15 @@ repo() {
                     ghq get "github.com/$selected_repo" && cd $(ghq root)/github.com/$selected_repo
                 fi
             else
-                ghq get "$2" && cd $(ghq root)/github.com/$2
+                # Normalize URL to path format for ghq
+                local repo_path="$2"
+                repo_path="${repo_path#https://}"
+                repo_path="${repo_path#http://}"
+                repo_path="${repo_path#git@}"
+                repo_path="${repo_path/://}"
+                repo_path="${repo_path%.git}"
+
+                ghq get "$2" && cd "$(ghq root)/$repo_path"
             fi
             ;;
         "create"|"new"|"n")
@@ -205,7 +213,7 @@ autoload -Uz compinit && compinit
 # fzf
 # -------------------------------------
 
-export FZF_DEFAULT_OPTS='--height ~100% --layout reverse --info inline --color="bg+:-1,gutter:#2d2d2d,pointer:#99cc99,prompt:#81A1C1,info:#686868,spinner:#f2777a"'
+export FZF_DEFAULT_OPTS='--height ~100% --layout reverse --info inline --color="bg+:-1,gutter:#2d2d2d,pointer:#99cc99,prompt:#81A1C1,info:#686868,spinner:#f2777a" --gutter " "'
 if type rg > /dev/null 2>&1; then
   export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 fi
