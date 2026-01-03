@@ -1,6 +1,10 @@
-# [peinan](https://github.com/peinan)'s dotfiles
+<div align="center">
+    
+# dotfiles
 
-A collection of configuration files for setting up a development environment.
+[Peinan](https://github.com/peinan)'s collection of configuration files for setting up a development environment.
+
+</div>
 
 ## What's Included
 
