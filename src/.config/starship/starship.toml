@@ -48,27 +48,27 @@ fish_style_pwd_dir_length = 1
 
 [time]
 disabled = false
-format = "[$time](dimmed #60728a)"
+format = " [$time](dimmed #60728a)"
 
 [cmd_duration]
 min_time = 2_000
-format = "[$duration](dimmed #60728a) "
+format = " [$duration](dimmed #60728a)"
 
 [git_branch]
 symbol = " "
-format = '[$symbol$branch(:$remote_branch)](dimmed #60728a)'
+format = ' [$symbol$branch(:$remote_branch)](dimmed #60728a)'
 
 [git_status]
-format = '([$all_status$ahead_behind](dimmed #60728a) )'
+format = '([$all_status$ahead_behind](dimmed #60728a))'
 
 [package]
 
 [python]
 symbol = " "
 style = "dimmed #60728a"
-format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+format = ' [${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
 
 [rust]
 symbol = " "
 style = "dimmed #60728a"
-format = '[$symbol($version )]($style)'
+format = ' [$symbol($version)]($style)'
