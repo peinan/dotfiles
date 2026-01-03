@@ -1,9 +1,4 @@
 # -------------------------------------
-# Initializing
-# -------------------------------------
-
-
-# -------------------------------------
 # Variables
 # -------------------------------------
 
@@ -25,9 +20,11 @@ export WORDCHARS='.-_'
 
 set -o emacs
 
+# Use nvim for the default editor
+export EDITOR=nvim sheldon edit
 
 # -------------------------------------
-# evals
+# Shell Initialization
 # -------------------------------------
 
 # zsh-autosuggestions
@@ -51,19 +48,19 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 ## change iTerm tab title
 #---------------------------
-function chpwd() { ls; }
+chpwd() { ls; }
 
 ## make directory and cd
 #-----------------------
-function mkcd() { mkdir -p "$@" && cd "$@"; }
+mkcd() { mkdir -p "$@" && cd "$@"; }
 
 ## change title
 #--------------
-function title() { echo -ne "\e]1;$1\a"; }
+title() { echo -ne "\e]1;$1\a"; }
 
 ## get timestamp
 #--------------
-function ts {
+ts() {
   date +'%Y%m%dt%H%M%S'
 }
 
@@ -197,7 +194,6 @@ EOF
 }
 
 
-
 # -------------------------------------
 # zsh completions (Homebrew)
 # -------------------------------------
@@ -272,28 +268,65 @@ if [ -f '$HOME/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/Downloa
 # The next line enables shell command completion for gcloud.
 if [ -f '$HOME/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
-# ---
+# -------------------------------------
+# Rust
+# -------------------------------------
+
 . "$HOME/.cargo/env"
 
-# Added by Windsurf
+# -------------------------------------
+# Windsurf
+# -------------------------------------
+
 export PATH="$HOME/.codeium/windsurf/bin:$PATH"
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:$HOME/.cache/lm-studio/bin"
-# End of LM Studio CLI section
+# -------------------------------------
+# LM Studio
+# -------------------------------------
 
+export PATH="$PATH:$HOME/.cache/lm-studio/bin"
+
+# -------------------------------------
+# Kiro
+# -------------------------------------
 
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+
+# -------------------------------------
+# Neovim
+# -------------------------------------
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Added by Antigravity
+# -------------------------------------
+# Antigravity
+# -------------------------------------
+
 export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 
+# -------------------------------------
 # aicommit2
+# -------------------------------------
+
 export AICOMMIT_CONFIG_PATH="$HOME/.config/aicommit2/config.ini"
 
+# -------------------------------------
 # atuin
+# -------------------------------------
+
 eval "$(atuin init zsh --disable-up-arrow)"
+
+# -------------------------------------
+# Starship
+# -------------------------------------
+
+export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
+export STARSHIP_CACHE=$HOME/.cache/starship
+
+# -------------------------------------
+# Coreutils
+# -------------------------------------
+
+PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
