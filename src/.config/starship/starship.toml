@@ -4,15 +4,23 @@
 # Inserts a blank line between shell prompts
 add_newline = true
 
-format = '''$os $hostname [󰉋 ](cyan) $directory $git_branch $git_status $python
-$time$character'''
+format = """
+$hostname\
+$username\
+$character\
+$directory"""
 
-[directory]
-truncate_to_repo = false
+right_format = """
+$git_branch\
+$git_status\
+$python\
+$rust\
+$cmd_duration\
+$time"""
 
 [character]
-error_symbol = '[▶](bold red)'
-success_symbol = '[▶](bold green)'
+error_symbol = '[](red)'
+success_symbol = '[](green)'
 
 [os]
 disabled = false
@@ -28,28 +36,39 @@ NixOS = "[ ](fg:bright-white)"
 openSUSE = "[ ](fg:green)"
 SUSE = "[ ](fg:green)"
 
-# Disable the package module, hiding it from the prompt completely
-[package]
-disabled = true
+[hostname]
+ssh_symbol = " "
+format = "[$ssh_symbol$hostname]: "
+
+[username]
+format = '\([$user]($style)\) '
+
+[directory]
+fish_style_pwd_dir_length = 1
 
 [time]
 disabled = false
-format = "[$time](white) "
+format = "[$time](dimmed #60728a)"
 
-[hostname]
-ssh_only = false
-disabled = false
-ssh_symbol = " "
-format = "[$hostname$ssh_symbol](green bold) "
+[cmd_duration]
+min_time = 2_000
+format = "[$duration](dimmed #60728a) "
 
 [git_branch]
 symbol = " "
-format = '[$symbol$branch(:$remote_branch)]($style) '
+format = '[$symbol$branch(:$remote_branch)](dimmed #60728a)'
 
 [git_status]
-style = 'yellow bold'
-format = '([\[$all_status$ahead_behind\]]($style) )'
+format = '([$all_status$ahead_behind](dimmed #60728a) )'
+
+[package]
 
 [python]
-symbol = " "
+symbol = " "
+style = "dimmed #60728a"
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 
+[rust]
+symbol = " "
+style = "dimmed #60728a"
+format = '[$symbol($version )]($style)'
