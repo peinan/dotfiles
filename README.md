@@ -49,6 +49,10 @@ All configuration files are located in the `src/` directory:
 - `src/.config/` - Application-specific configurations (Neovim, tmux, Starship, etc.)
 - `src/Brewfile` - Homebrew package list
 
+## Activities
+
+![Alt](https://repobeats.axiom.co/api/embed/3f518f6c17b4e2bc5c627bf58b2ec248d09cad08.svg "Repobeats analytics image")
+
 ## License
 
 This repository is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
