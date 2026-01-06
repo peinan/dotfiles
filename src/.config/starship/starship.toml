@@ -27,14 +27,14 @@ disabled = false
 format = "$symbol"
 
 [os.symbols]
-Macos = "[](fg:green)"
-Arch = "[ ](fg:bright-blue)"
-Debian = "[ ](fg:red)"
+Macos       = "[ ](fg:green)"
+Arch        = "[ ](fg:bright-blue)"
+Debian      = "[ ](fg:red)"
 EndeavourOS = "[ ](fg:purple)"
-Fedora = "[ ](fg:blue)"
-NixOS = "[ ](fg:bright-white)"
-openSUSE = "[ ](fg:green)"
-SUSE = "[ ](fg:green)"
+Fedora      = "[ ](fg:blue)"
+NixOS       = "[ ](fg:bright-white)"
+openSUSE    = "[ ](fg:green)"
+SUSE        = "[ ](fg:green)"
 
 [hostname]
 ssh_symbol = " "
@@ -52,7 +52,8 @@ format = " [$time](dimmed #60728a)"
 
 [cmd_duration]
 min_time = 2_000
-format = " [$duration](dimmed #60728a)"
+format = "[  $duration]($style)"
+style = "dimmed #60728a"
 
 [git_branch]
 symbol = " "
