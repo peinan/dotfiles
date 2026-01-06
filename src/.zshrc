@@ -214,7 +214,7 @@ autoload -Uz compinit && compinit
 # fzf
 # -------------------------------------
 
-export FZF_DEFAULT_OPTS='--height ~100% --layout reverse --info inline --color="bg+:-1,gutter:#2d2d2d,pointer:#99cc99,prompt:#81A1C1,info:#686868,spinner:#f2777a" --gutter " "'
+export FZF_DEFAULT_OPTS='--height ~100% --layout reverse --info "inline-right: " --info-command="echo -e \"$FZF_POS/$FZF_INFO\"" --prompt "" --input-border=rounded --pointer " " --multi --marker " ▌" --scrollbar "▌" --color="bg+:-1,gutter:#2d2d2d,pointer:#99cc99,prompt:#81A1C1,info:#686868,spinner:#f2777a" --gutter " "'
 if type rg > /dev/null 2>&1; then
   export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 fi
