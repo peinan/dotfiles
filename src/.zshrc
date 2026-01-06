@@ -194,6 +194,20 @@ EOF
 }
 
 
+nvims() {
+  nvim_dirs=( ~/.config/nvim_*(/N) )
+  items=( ${nvim_dirs#*/nvim_} )
+  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config: " --height=~30% --exit-0)
+  if [[ -z $config ]]; then
+    echo "Nothing selected"
+    return 0
+  elif [[ $config == "default" ]]; then
+    config=""
+  fi
+  NVIM_APPNAME=nvim_$config nvim $@
+}
+
+
 # -------------------------------------
 # zsh completions (Homebrew)
 # -------------------------------------
