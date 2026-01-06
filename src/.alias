@@ -170,6 +170,16 @@ alias -s py='python'
 # --------------
 
 ## Local Directories
+if [ -v XDG_CONFIG_HOME ]; then
+    hash -d config="$XDG_CONFIG_HOME"
+fi
+if [ -v XDG_BIN_HOME ]; then
+    hash -d bin="$XDG_BIN_HOME"
+fi
+if [ -v XDG_DATA_HOME ]; then
+    hash -d share="$XDG_DATA_HOME"
+fi
+
 if type ghq > /dev/null 2>&1; then
     hash -d gh="$(ghq root)/github.com"
 fi
