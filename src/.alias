@@ -153,6 +153,7 @@ fi
 ## aicommit2
 if type aicommit2 > /dev/null 2>&1; then
     alias aic="aicommit2 -e"
+    alias aici="aicommit2 -ei"
 fi
 
 ## claude
