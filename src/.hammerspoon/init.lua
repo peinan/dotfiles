@@ -53,6 +53,9 @@ appWatcher:start()
 
 -- Load the GridTile spoon
 hs.loadSpoon("GridTile")
+spoon.GridTile:setLayout("vim2")
+spoon.GridTile:setGap(1)
+spoon.GridTile:setFont("SF Mono Square", 64)
 
 local lastTrapped = 0
 local doubleTapThreshold = 0.4
