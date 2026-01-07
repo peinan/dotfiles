@@ -146,11 +146,18 @@ fi
 alias docker="/Applications/Docker.app/Contents/Resources/bin/docker"
 
 ## cursor
-alias cs="cursor"
+if type cursor > /dev/null 2>&1; then
+    alias cs="cursor"
+fi
 
 ## aicommit2
 if type aicommit2 > /dev/null 2>&1; then
     alias aic="aicommit2 -e"
+fi
+
+## claude
+if type claude > /dev/null 2>&1; then
+    alias cl="claude"
 fi
 
 ## zoxide
@@ -165,7 +172,6 @@ fi
 # ------------
 
 alias -s py='python'
-
 
 # --------------
 # Path Expansion
