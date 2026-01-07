@@ -153,6 +153,13 @@ if type aicommit2 > /dev/null 2>&1; then
     alias aic="aicommit2 -e"
 fi
 
+## zoxide
+if type zoxide > /dev/null 2>&1; then
+    alias cd="z"
+    alias .2="z ../.."
+    alias .3="z ../../.."
+fi
+
 # ------------
 # Suffix Alias
 # ------------

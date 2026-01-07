@@ -194,6 +194,7 @@ EOF
 }
 
 
+# Neovim selector (Require nvim, fzf)
 nvims() {
   nvim_dirs=( ~/.config/nvim_*(/N) )
   items=( ${nvim_dirs#*/nvim_} )
@@ -288,7 +289,7 @@ export WALK_EDITOR=nvim
 
 eval "$(zoxide init zsh)"
 zle -N __zoxide_zi
-export _ZO_FZF_OPTS="$FZF_DEFAULT_OPTS --height 10% --preview-window=down,50%,wrap --preview 'eza --color=always {2}'"
+export _ZO_FZF_OPTS="$FZF_DEFAULT_OPTS --no-sort --height 10% --preview-window=down,50%,wrap --preview 'eza --color=always {2}'"
 bindkey '^z' __zoxide_zi
 
 # -------------------------------------
