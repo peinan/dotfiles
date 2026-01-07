@@ -132,11 +132,6 @@ if type cargo > /dev/null 2>&1; then
   alias car="cargo run"
 fi
 
-## bat
-if type bat > /dev/null 2>&1; then
-  alias bat="bat --theme TwoDark --color always"
-fi
-
 ## kubectl
 if type kubectl > /dev/null 2>&1; then
   alias kc="kubectl"
