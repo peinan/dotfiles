@@ -34,6 +34,7 @@ brew "ffmpeg"
 brew "fx"
 brew "fzf"
 brew "gh"
+brew "gibo"
 brew "git-delta"
 brew "git-lfs"
 brew "gnu-sed"
@@ -88,6 +89,7 @@ cask "cursor"
 cask "cursor-cli"
 cask "karabiner-elements"
 cask "jordanbaird-ice"
+cask "hammerspoon"
 
 
 #
