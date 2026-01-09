@@ -1,37 +1,37 @@
 [user]
-	email = peinan7@gmail.com
-	name = Peinan Zhang
+    email = peinan7@gmail.com
+    name  = Peinan Zhang
 
 [alias]
-  st = status -u
-  br = branch
-  co = checkout
+    st = status -u
+    br = branch
+    co = checkout
 
 [core]
-  pager = delta
+    pager = delta
 
 [interactive]
-  diffFilter = delta --color-only --features=interactive
+    diffFilter = delta --color-only --features=interactive
 
 [delta]
-  features = decorations
-  line-numbers = true
-  side-by-side = true
+    features = decorations
+    line-numbers = true
+    side-by-side = true
 
 [delta "interactive"]
-  keep-plus-minus-markers = false
+    keep-plus-minus-markers = false
 
 [delta "decorations"]
-  commit-decoration-style = blue ol
-  commit-style = raw
-  file-style = omit
-  hunk-header-decoration-style = blue box
-  hunk-header-file-style = red
-  hunk-header-line-number-style = "#067a00"
-  hunk-header-style = file line-number syntax
+    commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit
+    hunk-header-decoration-style = blue box
+    hunk-header-file-style = red
+    hunk-header-line-number-style = "#067a00"
+    hunk-header-style = file line-number syntax
 
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
