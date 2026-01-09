@@ -1,11 +1,7 @@
 import { defineConfig } from 'vitepress'
 
-// 環境変数でbaseパスを制御
-// VITEPRESS_BASEが設定されている場合（空文字列も含む）はそれを使用
-// それ以外は、NODE_ENVがproductionの場合は'/dotfiles/'、それ以外は'/'を使用
-const base = process.env.VITEPRESS_BASE !== undefined
-  ? process.env.VITEPRESS_BASE
-  : (process.env.NODE_ENV === 'production' ? '/dotfiles/' : '/')
+// カスタムドメイン（dotfiles.peinan.cc）を使用するため、baseは'/'
+const base = '/'
 
 export default defineConfig({
   base,
