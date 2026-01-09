@@ -6,6 +6,7 @@
 
 </div>
 
+
 ## What's Included
 
 - **Shell**: [Zsh](https://www.zsh.org/) (`.zshrc`, `.zshenv`, `.alias`)
@@ -18,36 +19,92 @@
 - **Package Management**: [Homebrew](https://brew.sh/) (`Brewfile`)
 - **Font**: [SF Mono Square](https://github.com/delphinus/homebrew-sfmono-square)
 
+
 ## Quick Start
 
+> [!Caution]
+> This dotfiles is designed for macOS.
+
 ```bash
-# Clone the repository
-git clone https://github.com/peinan/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
+# The easiest way
+curl -fsSL https://dotfiles.peinan.cc/install.sh | bash
+# or
+wget -qO- https://dotfiles.peinan.cc/install.sh | bash
+# or via GitHub
+curl -fsSL https://raw.githubusercontent.com/peinan/dotfiles/HEAD/scripts/install.sh | bash
 
-# Initialize submodules
-git submodule update --init --recursive
-
-# Install packages
-brew bundle install --file src/Brewfile
-
-# Create symbolic links (example)
-ln -s ~/.dotfiles/src/.zshrc ~/.zshrc
+# or you can install stow and setup step-by-step by yourself
+brew install stow
+git clone --recursive https://github.com/peinan/dotfiles && cd dotfiles
+brew bundle install
+stow -v -t ~ src
 ```
 
-For detailed installation instructions, see the [documentation site](https://peinan.github.io/dotfiles/install).
 
-## Documentation
+## Usage
 
-**[Full Documentation](https://peinan.github.io/dotfiles/)** - Complete installation guide and configuration details
+This repository uses [GNU Stow](https://www.gnu.org/software/stow/) to manage symlinks.
+All configuration files are located in the `src/` directory, which mirrors the structure of the home directory.
 
-## Repository Structure
+### Directory Structure
 
-All configuration files are located in the `src/` directory:
-- `src/.zshrc`, `src/.zshenv`, `src/.alias` - Shell configuration
-- `src/.gitconfig` - Git configuration
-- `src/.config/` - Application-specific configurations (Neovim, tmux, Starship, etc.)
-- `src/Brewfile` - Homebrew package list
+We use an "All-in-One" package strategy. The `src/` directory is treated as a single package that maps directly to `$HOME`.
+
+```text
+dotfiles/
+├── src/                <-- Maps to $HOME
+│   ├── .zshrc          <-- Links to ~/.zshrc
+│   ├── .gitconfig      <-- Links to ~/.gitconfig
+│   └── .config/        <-- Links to ~/.config/
+│       ├── nvim/       <-- Links to ~/.config/nvim (Directory link)
+│       └── gh/         <-- Links to ~/.config/gh
+├── scripts/            <-- Setup scripts (Not stowed)
+└── Brewfile            <-- Homebrew bundle (Not stowed)
+```
+
+### Workflow
+
+#### How to add a new config file
+
+1.  **Move** the file from your home directory to the `src` directory (maintaining the structure).
+2.  Run `stow` again to create the link.
+
+```bash
+# Example: Adding .tmux.conf
+mv ~/.tmux.conf src/
+stow -v -t ~ src
+```
+
+#### How to edit configurations
+
+Since they are symlinked, you can edit the files in your home directory directly. The changes will be reflected in the repository.
+
+```bash
+vim ~/.zshrc
+# Changes are automatically applied to src/.zshrc
+```
+
+#### Advanced Usage: Handling Submodules (e.g., Neovim)
+
+Directories that are Git submodules (like `src/.config/nvim`) are linked as a **single directory symlink**.
+For this to work cleanly, ensure the target directory (e.g., `~/.config/nvim`) does not exist before running stow.
+
+#### Advanced Usage: Ignoring Files
+
+Files listed in `src/.stow-local-ignore` are excluded from symlinking.
+(e.g., `Brewfile`, `README.md`, `.DS_Store`)
+
+#### Advanced Usage: Check Link Status
+
+To verify which files are managed by stow:
+
+```bash
+ls -la ~ | grep "dotfiles/src"
+# Output example:
+# .zshrc -> .../dotfiles/src/.zshrc
+```
+
+For detailed installation instructions, see the [documentation site](https://dotfiles.peinan.cc).
 
 ## Activities
 
