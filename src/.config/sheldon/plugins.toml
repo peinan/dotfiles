@@ -29,6 +29,16 @@ github = 'zsh-users/zsh-autosuggestions'
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
 
+[plugins.starship]
+inline = '''
+export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
+export STARSHIP_CACHE=$HOME/.cache/starship
+eval "$(starship init zsh)"
+'''
+
+[plugins.atuin]
+inline = 'eval "$(atuin init zsh --disable-up-arrow)"'
+
 # Add custom functions to fpath
 [plugins.zsh-functions]
 local = "~/.zsh/functions"

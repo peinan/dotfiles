@@ -30,9 +30,6 @@ export EDITOR=nvim sheldon edit
 # zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# starship
-eval "$(starship init zsh)"
-
 # sheldon
 eval "$(sheldon source)"
 
@@ -88,19 +85,6 @@ export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 # -------------------------------------
 
 export AICOMMIT_CONFIG_PATH="$HOME/.config/aicommit2/config.ini"
-
-# -------------------------------------
-# atuin
-# -------------------------------------
-
-eval "$(atuin init zsh --disable-up-arrow)"
-
-# -------------------------------------
-# Starship
-# -------------------------------------
-
-export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
-export STARSHIP_CACHE=$HOME/.cache/starship
 
 # -------------------------------------
 # Coreutils
