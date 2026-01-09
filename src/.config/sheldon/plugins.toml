@@ -13,6 +13,9 @@
 
 shell = "zsh"
 
+[templates]
+defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
+
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
@@ -34,3 +37,13 @@ apply = ["fpath"]
 [plugins.zsh-autoload]
 inline = 'autoload -Uz $fpath[1]/*(N:t)'
 
+# Load external configs
+[plugins.zsh-configs]
+local = "~/.zsh/configs"
+use = ["*.zsh"]
+
+# Lazy load external configs
+[plugins.zsh-configs-defer]
+local = "~/.zsh/configs-defer"
+use = ["*.zsh"]
+apply = ["defer"]
