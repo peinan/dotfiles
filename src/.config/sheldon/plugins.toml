@@ -14,7 +14,8 @@
 shell = "zsh"
 
 [templates]
-defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
+# Add -mpr option to prevent reset and refresh prompts (it removes RPTOMPT in starship)
+defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer -mpr source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
 
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
