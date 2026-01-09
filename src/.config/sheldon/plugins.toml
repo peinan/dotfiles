@@ -10,9 +10,11 @@
 #
 # See the documentation for more https://github.com/rossmacarthur/sheldon#readme
 
+
 shell = "zsh"
 
-[plugins]
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
 
 [plugins.fast-syntax-highlighting]
 github = 'zdharma/fast-syntax-highlighting'
@@ -32,7 +34,3 @@ apply = ["fpath"]
 [plugins.zsh-autoload]
 inline = 'autoload -Uz $fpath[1]/*(N:t)'
 
-# For example:
-#
-# [plugins.base16]
-# github = "chriskempson/base16-shell"
