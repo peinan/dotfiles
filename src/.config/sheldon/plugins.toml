@@ -23,6 +23,15 @@ github = 'zsh-users/zsh-autosuggestions'
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
 
+# Add custom functions to fpath
+[plugins.zsh-functions]
+local = "~/.zsh/functions"
+apply = ["fpath"]
+
+# Autoload fpath
+[plugins.zsh-autoload]
+inline = 'autoload -Uz $fpath[1]/*(N:t)'
+
 # For example:
 #
 # [plugins.base16]

@@ -1,0 +1,7 @@
+#!/bin/zsh
+#
+# Get current timestamp
+#
+
+date +'%Y%m%dt%H%M%S'
+

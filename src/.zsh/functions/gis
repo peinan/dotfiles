@@ -1,0 +1,23 @@
+#!/bin/zsh
+#
+# Append exclude rules to .gitignore file with selector
+# - Require: gibo, fzf, bat
+#
+
+local langs
+langs=(${(f)"$(gibo list | fzf --preview 'gibo dump {} | bat -l gitignore' --header 'Tab: Select, Enter: Confirm')"})
+
+if [[ -z "$langs" ]]; then
+    echo "No language selected."
+    return 1
+fi
+
+local filename
+echo -n "Save to (default: .gitignore): "
+read "filename"
+
+filename=${filename:-.gitignore}
+
+gibo dump $langs >> "$filename"
+echo "Dumped [ $langs ] to $filename"
+

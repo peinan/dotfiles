@@ -1,0 +1,7 @@
+#!/bin/zsh
+#
+# make directory and cd
+#
+
+mkdir -p "$@" && cd "$@"
+

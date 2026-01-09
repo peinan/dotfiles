@@ -1,0 +1,7 @@
+#!/bin/zsh
+#
+# Change terminal tab's title 
+#
+
+echo -ne "\e]1;$1\a"
+
