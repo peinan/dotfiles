@@ -345,12 +345,20 @@ export PATH="$PATH:$HOME/.cache/lm-studio/bin"
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
 
 # -------------------------------------
-# Neovim
+# NVM (Node Version Manager)
 # -------------------------------------
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Use lazy load because nvm.sh is extremely slow
+nvm() {
+  unset -f nvm node npm npx 
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+  nvm "$@"
+}
+
+node() { nvm > /dev/null; node "$@" }
+npm() { nvm > /dev/null; npm "$@" }
+npx() { nvm > /dev/null; npx "$@" }
 
 # -------------------------------------
 # Antigravity
@@ -382,3 +390,4 @@ export STARSHIP_CACHE=$HOME/.cache/starship
 # -------------------------------------
 
 PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+
