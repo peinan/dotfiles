@@ -5,7 +5,7 @@ description: Description and setup methods for submodules
 
 # Submodules
 
-This repository manages editor and terminal configurations as submodules.
+This repository manages editor and terminal configurations as Git submodules.
 
 ## Overview
 
@@ -13,163 +13,108 @@ This repository manages editor and terminal configurations as submodules.
 **What are Submodules?**
 
 Submodules allow you to include another Git repository within a Git repository. This enables managing each configuration as an independent repository while integrating them into the dotfiles repository.
-
-**Initialization:** `git submodule update --init --recursive`
 :::
 
-## tmux {#tmux}
+When you run `stow -v -t ~ src`, submodule directories are linked as **directory symlinks**:
 
-Configuration files for the terminal multiplexer tmux
-
-### Repository Information
-
-- **Path:** `src/.config/tmux`
-- **Repository:** [https://github.com/peinan/tmux.git](https://github.com/peinan/tmux.git)
-- **Branch:** `main`
-
-### Setup Instructions
-
-```bash
-# Initialize submodule (if not already done)
-git submodule update --init --recursive src/.config/tmux
-
-# Create symbolic link
-ln -s ~/.dotfiles/src/.config/tmux ~/.config/tmux
-
-# Or, if existing configuration exists, backup first
-mv ~/.config/tmux ~/.config/tmux.backup
-ln -s ~/.dotfiles/src/.config/tmux ~/.config/tmux
+```text
+~/.config/nvim -> dotfiles/src/.config/nvim
+~/.config/tmux -> dotfiles/src/.config/tmux
+~/.config/vim  -> dotfiles/src/.config/vim
 ```
 
-### Update Instructions
+## Included Submodules
 
-```bash
-# Update submodule to latest state
-cd ~/.dotfiles
-git submodule update --remote src/.config/tmux
+| Submodule | Path | Repository |
+|-----------|------|------------|
+| Neovim | `src/.config/nvim` | [peinan/nvim](https://github.com/peinan/nvim) |
+| tmux | `src/.config/tmux` | [peinan/tmux](https://github.com/peinan/tmux) |
+| Vim | `src/.config/vim` | [peinan/vim](https://github.com/peinan/vim) |
 
-# Commit changes
-git add src/.config/tmux
-git commit -m "Update tmux submodule"
-```
+## Initialize Submodules
 
-## Neovim {#nvim}
-
-Neovim editor configuration and plugin management
-
-### Repository Information
-
-- **Path:** `src/.config/nvim`
-- **Repository:** [https://github.com/peinan/nvim.git](https://github.com/peinan/nvim.git)
-- **Branch:** `main`
-
-
-### Setup Instructions
-
-```bash
-# Initialize submodule (if not already done)
-git submodule update --init --recursive src/.config/nvim
-
-# Create symbolic link
-ln -s ~/.dotfiles/src/.config/nvim ~/.config/nvim
-
-# Launch Neovim to install plugins
-nvim
-```
-
-When you first launch Neovim, the plugin manager (Lazy.nvim, etc.) will automatically install plugins.
-
-### Update Instructions
-
-```bash
-# Update submodule to latest state
-cd ~/.dotfiles
-git submodule update --remote src/.config/nvim
-
-# Commit changes
-git add src/.config/nvim
-git commit -m "Update nvim submodule"
-```
-
-## Vim {#vim}
-
-Configuration files for the traditional Vim editor
-
-### Repository Information
-
-- **Path:** `src/.config/vim`
-- **Repository:** [https://github.com/peinan/vim.git](https://github.com/peinan/vim.git)
-- **Branch:** `main`
-
-### Setup Instructions
-
-```bash
-# Initialize submodule (if not already done)
-git submodule update --init --recursive src/.config/vim
-
-# Link .vimrc with symbolic link
-ln -s ~/.dotfiles/src/.config/vim/.vimrc ~/.vimrc
-
-# Copy color scheme (if needed)
-mkdir -p ~/.config/vim/colors
-cp ~/.dotfiles/src/.config/vim/Tomorrow-Night-Eighties.vim ~/.config/vim/colors/
-```
-
-### Update Instructions
-
-```bash
-# Update submodule to latest state
-cd ~/.dotfiles
-git submodule update --remote src/.config/vim
-
-# Commit changes
-git add src/.config/vim
-git commit -m "Update vim submodule"
-```
-
-## Managing Submodules
-
-### Initialize All Submodules
+If you cloned without `--recursive`, initialize submodules manually:
 
 ```bash
 git submodule update --init --recursive
 ```
 
-### Update All Submodules
+## Update Submodules
+
+### Update all submodules
 
 ```bash
-# Update all submodules to latest state
+# Fetch and update all submodules to latest
 git submodule update --remote
 
-# Commit changes
+# Commit the changes
 git add src/.config/*
-git commit -m "Update all submodules"
+git commit -m "Update submodules"
 ```
 
-### Check Submodule Status
+### Update a specific submodule
 
 ```bash
-# Check submodule status
-git submodule status
+# Example: update nvim only
+git submodule update --remote src/.config/nvim
 
-# Display detailed information
-git submodule foreach git status
-```
-
-### Working Inside Submodules
-
-```bash
-# Navigate to submodule directory
-cd src/.config/nvim
-
-# Normal Git operations are possible
-git status
-git checkout -b feature-branch
-git commit -m "Update config"
-
-# Return to parent repository and commit changes
-cd ../..
 git add src/.config/nvim
 git commit -m "Update nvim submodule"
 ```
 
+## Working Inside Submodules
+
+You can work inside submodules like normal Git repositories:
+
+```bash
+# Navigate to submodule
+cd src/.config/nvim
+
+# Make changes and commit
+git checkout -b feature-branch
+# ... edit files ...
+git commit -m "Add new feature"
+git push origin feature-branch
+
+# Return to parent repository
+cd ../../..
+
+# Update submodule reference
+git add src/.config/nvim
+git commit -m "Update nvim submodule"
+```
+
+## Check Submodule Status
+
+```bash
+# Show submodule status
+git submodule status
+
+# Show detailed status for each submodule
+git submodule foreach git status
+```
+
+## Troubleshooting
+
+### Submodule directory is empty
+
+```bash
+git submodule update --init --recursive
+```
+
+### Stow fails because target directory exists
+
+If `~/.config/nvim` already exists (not as a symlink), remove or backup it first:
+
+```bash
+mv ~/.config/nvim ~/.config/nvim.backup
+stow -v -t ~ src
+```
+
+### Submodule is in detached HEAD state
+
+This is normal. Submodules track specific commits, not branches. To update:
+
+```bash
+git submodule update --remote
+```

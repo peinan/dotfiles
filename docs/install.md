@@ -5,121 +5,86 @@ description: Installation and setup instructions for dotfiles
 
 # Installation Guide
 
-## Prerequisites
-
-::: tip
-The following tools must be installed:
-
-- **Git**: Required for cloning the repository
-- **Homebrew** (macOS): Used for package management
-- **Zsh**: Required if using shell configuration
+::: warning
+This dotfiles is designed for **macOS only**.
 :::
 
-## Step 1: Clone Repository
+## One-liner Install (Recommended)
 
-Clone the repository to `.dotfiles` in your home directory.
+The easiest way to install is using the install script:
 
 ```bash
-# Clone the repository
-git clone https://github.com/peinan/dotfiles.git ~/.dotfiles
+curl -fsSL https://dotfiles.peinan.cc/install.sh | bash
 
-# Navigate to the directory
-cd ~/.dotfiles
+# or via GitHub
+curl -fsSL https://raw.githubusercontent.com/peinan/dotfiles/HEAD/scripts/install.sh | bash
 ```
 
-## Step 2: Initialize Submodules
+The script will:
+1. Install Homebrew (if not installed)
+2. Install essential tools (git, ghq, stow)
+3. Clone the repository using ghq
+4. Initialize submodules
+5. Install all packages from Brewfile
+6. Create symbolic links using stow
 
-This repository uses the following submodules. All must be initialized:
+## Manual Installation
 
-- `src/.config/tmux` - tmux configuration
-- `src/.config/nvim` - Neovim configuration
-- `src/.config/vim` - Vim configuration
+If you prefer to install manually, follow these steps:
+
+### Step 1: Install Homebrew and Stow
 
 ```bash
-# Initialize all submodules
-git submodule update --init --recursive
+# Install Homebrew (if not installed)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install stow
+brew install stow
 ```
 
-You can also initialize each submodule individually by navigating to each submodule directory.
-
-## Step 3: Install Homebrew Packages
-
-Install required packages in bulk using the Brewfile.
+### Step 2: Clone Repository
 
 ```bash
-# Install packages from Brewfile
-brew bundle install --file ~/.dotfiles/src/Brewfile
+# Clone with submodules
+git clone --recursive https://github.com/peinan/dotfiles.git
+cd dotfiles
+```
+
+::: tip
+You can clone to any location. The install script uses `ghq` and clones to `~/ghq/github.com/peinan/dotfiles`.
+:::
+
+### Step 3: Install Packages
+
+```bash
+# Install all packages from Brewfile
+brew bundle install
 ```
 
 ::: info
-**Note:** This command installs many packages and may take some time. To install only specific packages, edit the Brewfile.
+This installs many packages and may take some time. Edit the Brewfile to install only specific packages.
 :::
 
-## Step 4: Setup Shell Configuration
-
-Link Zsh configuration files with symbolic links.
+### Step 4: Create Symbolic Links
 
 ```bash
-# Link .zshrc
-ln -s ~/.dotfiles/src/.zshrc ~/.zshrc
-
-# Link .zshenv
-ln -s ~/.dotfiles/src/.zshenv ~/.zshenv
-
-# Link .alias
-ln -s ~/.dotfiles/src/.alias ~/.alias
+# Create all symlinks using stow
+stow -v -t ~ src
 ```
 
 ::: warning
-**If existing configuration files exist:** Please backup existing files before creating links.
+If existing configuration files exist, stow will fail. Backup and remove them first:
+
+```bash
+# Example: backup existing .zshrc
+mv ~/.zshrc ~/.zshrc.backup
+```
 :::
 
-## Step 5: Setup Git Configuration
-
-Link the Git configuration file.
+### Step 5: Restart Shell
 
 ```bash
-# Link .gitconfig
-ln -s ~/.dotfiles/src/.gitconfig ~/.gitconfig
-```
-
-**Note:** Please edit `.gitconfig` to change the username and email address as needed.
-
-## Step 6: Setup Editor Configurations
-
-Neovim and Vim configurations are managed as submodules. Link the configuration directories.
-
-```bash
-# Link Neovim configuration
-ln -s ~/.dotfiles/src/.config/nvim ~/.config/nvim
-
-# Link Vim configuration (if using)
-ln -s ~/.dotfiles/src/.config/vim ~/.config/vim
-```
-
-## Step 7: Setup Other Configurations
-
-Link other configuration files as needed.
-
-```bash
-# Link Starship configuration
-mkdir -p ~/.config/starship
-ln -s ~/.dotfiles/src/.config/starship/starship.toml ~/.config/starship/starship.toml
-
-# Link Sheldon configuration
-mkdir -p ~/.config/sheldon
-ln -s ~/.dotfiles/src/.config/sheldon/plugins.toml ~/.config/sheldon/plugins.toml
-
-# Link tmux configuration
-ln -s ~/.dotfiles/src/.config/tmux ~/.config/tmux
-```
-
-## Step 8: Restart Shell
-
-Start a new shell session to apply the configuration.
-
-```bash
-# Reload current shell
+# Reload shell configuration
 source ~/.zshrc
 
 # Or open a new terminal window
@@ -127,14 +92,14 @@ source ~/.zshrc
 
 ## Verification
 
-Verify that the configuration is loaded correctly with the following commands:
+Verify that the configuration is loaded correctly:
 
 ```bash
-# Check if Starship prompt is displayed
-starship --version
+# Check symlinks
+ls -la ~ | grep "dotfiles/src"
 
-# Check if Sheldon plugins are loaded
-sheldon lock
+# Check if Starship prompt is working
+starship --version
 
 # Check if Neovim starts
 nvim --version
@@ -142,27 +107,37 @@ nvim --version
 
 ## Troubleshooting
 
-### Common Issues
+### Stow fails with "existing target" error
 
-#### Submodule is empty
+Stow won't overwrite existing files. Backup and remove them:
 
-The submodule may not be initialized correctly. Run the following:
+```bash
+mv ~/.zshrc ~/.zshrc.backup
+mv ~/.gitconfig ~/.gitconfig.backup
+stow -v -t ~ src
+```
+
+### Submodules are empty
+
+Initialize submodules:
 
 ```bash
 git submodule update --init --recursive
 ```
 
-#### Cannot create symbolic link
+### Package installation fails
 
-If an existing file exists, backup and remove it first:
+Update Homebrew and try again:
 
 ```bash
-# Example: for .zshrc
-mv ~/.zshrc ~/.zshrc.backup
-ln -s ~/.dotfiles/src/.zshrc ~/.zshrc
+brew update
+brew bundle install
 ```
 
-#### Package installation fails
+### Neovim plugins not installed
 
-Homebrew may not be up to date. Run `brew update` and try again.
+Launch Neovim and plugins will be installed automatically:
 
+```bash
+nvim
+```

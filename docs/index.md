@@ -5,35 +5,48 @@ description: Configuration files for OS, shell, Neovim, tmux and others
 
 # peinan's dotfiles
 
-A collection of configuration files and scripts for OS, shell, Neovim, tmux, and more
+A collection of configuration files for setting up a development environment on macOS.
 
 ## Quick Start
 
+::: warning
+This dotfiles is designed for **macOS only**.
+:::
+
 ```bash
-# Clone the repository
-git clone https://github.com/peinan/dotfiles.git ~/.dotfiles
+# One-liner install (recommended)
+curl -fsSL https://dotfiles.peinan.cc/install.sh | bash
 
-# Navigate to the directory
-cd ~/.dotfiles
-
-# Initialize submodules
-git submodule update --init --recursive
-
-# Create symbolic links (as needed)
-# Example: .zshrc
-ln -s ~/.dotfiles/src/.zshrc ~/.zshrc
+# or via GitHub
+curl -fsSL https://raw.githubusercontent.com/peinan/dotfiles/HEAD/scripts/install.sh | bash
 ```
 
-For detailed installation instructions, see the [installation page](/install).
+For manual installation, see the [installation page](/install).
+
+## What's Included
+
+- **Shell**: [Zsh](https://www.zsh.org/) (`.zshrc`, `.zshenv`, `.alias`)
+    - **Prompt**: [Starship](https://starship.rs/)
+    - **Plugin Manager**: [Sheldon](https://sheldon.cli.rs/)
+- **Git**: Git configuration (`.gitconfig`) and [delta](https://dandavison.github.io/delta/) for beautiful diffs
+- **Editors**: [Neovim](https://neovim.io/) (submodule)
+- **Terminal**: [Ghostty](https://ghostty.org/)
+- **Multiplexing**: [tmux](https://github.com/tmux/tmux) (submodule)
+- **Package Management**: [Homebrew](https://brew.sh/) (`Brewfile`)
+- **Font**: [SF Mono Square](https://github.com/delphinus/homebrew-sfmono-square)
 
 ## Repository Structure
 
-This repository contains a collection of configuration files for efficiently setting up a development environment. The main configurations include:
+This repository uses [GNU Stow](https://www.gnu.org/software/stow/) to manage symlinks. All configuration files are located in the `src/` directory:
 
-- **Shell Configuration**: .zshrc, .zshenv, .alias, and more
-- **Git Configuration**: .gitconfig with beautiful diff display using delta
-- **Editor Configuration**: Neovim and Vim settings (submodules)
-- **Terminal Configuration**: tmux settings (submodule)
-- **Prompt**: Starship configuration
-- **Package Management**: Homebrew Brewfile
-
+```text
+dotfiles/
+├── src/                <-- Maps to $HOME
+│   ├── .zshrc          <-- Links to ~/.zshrc
+│   ├── .gitconfig      <-- Links to ~/.gitconfig
+│   └── .config/        <-- Links to ~/.config/
+│       ├── nvim/       <-- Links to ~/.config/nvim (submodule)
+│       └── tmux/       <-- Links to ~/.config/tmux (submodule)
+├── scripts/            <-- Setup scripts (Not stowed)
+└── Brewfile            <-- Homebrew bundle (Not stowed)
+```

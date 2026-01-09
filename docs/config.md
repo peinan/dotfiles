@@ -20,13 +20,13 @@ The main Zsh configuration file. It includes the following features:
 - Initialization of various tools (zoxide, fzf, walk, etc.)
 - Completion settings
 
-**Location:** `~/.dotfiles/src/.zshrc`
+**Location:** `src/.zshrc`
 
 ### .zshenv
 
 Environment variable configuration file that is loaded in all Zsh sessions.
 
-**Location:** `~/.dotfiles/src/.zshenv`
+**Location:** `src/.zshenv`
 
 ### .alias
 
@@ -38,7 +38,7 @@ File defining aliases for commonly used commands. Main aliases:
 - Python-related aliases (py, ipy, pyc)
 - Browser launch aliases (chrome, safari)
 
-**Location:** `~/.dotfiles/src/.alias`
+**Location:** `src/.alias`
 
 ## Git {#git}
 
@@ -54,7 +54,7 @@ Git configuration file. It includes the following features:
   - Decorations
 - **Git LFS:** Large file management
 
-**Location:** `~/.dotfiles/src/.gitconfig`
+**Location:** `src/.gitconfig`
 
 **Note:** Please change the username and email address before use.
 
@@ -90,7 +90,7 @@ Starship is a fast and customizable prompt. This configuration enables the follo
 - Python environment display
 - Time display
 
-**Location:** `~/.dotfiles/src/.config/starship/starship.toml`
+**Location:** `src/.config/starship/starship.toml`
 
 ```toml
 format = '''$os $hostname [󰉋 ](cyan) $directory $git_branch $git_status $python
@@ -115,7 +115,7 @@ Sheldon is a Zsh plugin manager. It manages the following plugins:
 - **zsh-autosuggestions:** Command autosuggestion
 - **zsh-completions:** Additional completion features
 
-**Location:** `~/.dotfiles/src/.config/sheldon/plugins.toml`
+**Location:** `src/.config/sheldon/plugins.toml`
 
 ```toml
 [plugins.fast-syntax-highlighting]
@@ -138,9 +138,9 @@ List of packages to install with Homebrew. Categorized as follows:
 - **Cask:** GUI applications (1password, docker, cursor, raycast, etc.)
 - **Mac App Store:** App Store apps (installed with mas command)
 
-**Location:** `~/.dotfiles/src/Brewfile`
+**Location:** `Brewfile` (repository root)
 
-**Installation:** `brew bundle install --file src/Brewfile`
+**Installation:** `brew bundle install`
 
 ::: tip
 **Main packages:** neovim, tmux, starship, git-delta, sheldon, zoxide, ripgrep, bat, eza, gh, node, yarn, and more
