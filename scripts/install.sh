@@ -76,10 +76,43 @@ cd "$DOTFILES_DIR"
 git submodule update --init --recursive
 success "Submodules initialized"
 
-# Step 5: Install all packages from Brewfile
+# Step 5a: Install all packages from Brewfile
 info "Installing packages from Brewfile..."
 brew bundle install --file "$DOTFILES_DIR/Brewfile"
 success "Packages installed"
+
+# Step 5b: Setup node env
+info "Setting up node environment with mise..."
+
+# Install node with mise
+mise install node
+
+# Uninstall homebrew's node
+if brew list node &>/dev/null; then
+    info "Uninstalling brew's node..."
+    brew uninstall node --ignore-dependencies
+fi
+
+# Create symbolic link
+if [[ "$(uname -m)" == "arm64" ]]; then
+    BREW_CELLAR="/opt/homebrew/Cellar"
+else
+    BREW_CELLAR="/usr/local/Cellar"
+fi
+
+MISE_NODE_PATH="$(mise where node)"
+
+info "Creating symbolic link for Homebrew compatibility..."
+mkdir -p "$BREW_CELLAR/node"
+ln -sfn "$MISE_NODE_PATH" "$BREW_CELLAR/node"
+
+# Link to homebrew's node to enable brew packages that require brew's node work
+brew link --overwrite node
+
+# Not let homebrew upgrade node
+brew pin node
+
+success "Node environment setup complete (managed by mise)"
 
 # Step 6: Create symbolic links using stow
 info "Creating symbolic links..."
