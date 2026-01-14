@@ -90,7 +90,7 @@ docs/
 ├── .vitepress/
 │   └── config.ts          # VitePress configuration
 ├── index.md               # Home page
-├── install.md             # Installation guide
+├── installation-guide.md  # Installation guide
 ├── config.md              # Configuration files
 ├── submodules.md          # Submodules documentation
 ├── package.json           # Dependencies
