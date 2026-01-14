@@ -37,12 +37,13 @@ source "${HOME}/.alias"
 
 # Homebrew
 if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+    eval $(/opt/homebrew/bin/brew shellenv)
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 fi
 
 # iTerm
 if [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
-  test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+    test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 fi
 
 # Docker

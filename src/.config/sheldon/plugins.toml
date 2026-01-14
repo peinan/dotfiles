@@ -64,6 +64,7 @@ apply = ["defer"]
 inline = '''
 export WALK_EDITOR=nvim
 export AICOMMIT_CONFIG_PATH="$HOME/.config/aicommit2/config.ini"
+export PATH="/Library/Frameworks/Python.framework/Versions/3.12/bin:$PATH"
 export PATH="$HOME/.codeium/windsurf/bin:$PATH"
 export PATH="$HOME/.cache/lm-studio/bin:$PATH"
 export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
