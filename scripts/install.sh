@@ -106,6 +106,13 @@ info "Creating symbolic link for Homebrew compatibility..."
 mkdir -p "$BREW_CELLAR/node"
 ln -sfn "$MISE_NODE_PATH" "$BREW_CELLAR/node"
 
+# Remove existing opt link/directory before brew link
+if [[ "$(uname -m)" == "arm64" ]]; then
+    rm -rf /opt/homebrew/opt/node
+else
+    rm -rf /usr/local/opt/node
+fi
+
 # Link to homebrew's node to enable brew packages that require brew's node work
 brew link --overwrite node
 
