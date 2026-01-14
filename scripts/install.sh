@@ -84,8 +84,8 @@ success "Packages installed"
 # Step 5b: Setup node env
 info "Setting up node environment with mise..."
 
-# Install node with mise
-mise install node
+# Install mise packages
+mise install
 
 # Uninstall homebrew's node
 if brew list node &>/dev/null; then
