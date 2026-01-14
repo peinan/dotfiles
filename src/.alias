@@ -26,6 +26,7 @@ alias mkdir='mkdir -p'
 alias lv='less -MN'
 alias pbc='pbcopy'
 alias pbp='pbpaste'
+alias vclip='pbpaste | vi -'
 alias hist='history'
 alias valias='vi ~/.alias*'
 alias salias='source ~/.alias*'
@@ -168,11 +169,18 @@ if type zoxide > /dev/null 2>&1; then
     alias .3="z ../../.."
 fi
 
+## fzf
+if type fzf > /dev/null 2>&1; then
+    alias -g F='| fzf'
+fi
+
 # ------------
 # Suffix Alias
 # ------------
 
 alias -s py='python'
+alias -s gz='tar -xzvf'
+alias -s html='open'
 
 # --------------
 # Path Expansion
@@ -206,3 +214,13 @@ hash -d ss="${HOME}/Pictures/ss"
 hash -d gd="${HOME}/Google Drive/マイドライブ"
 hash -d icloud="${HOME}/Library/Mobile Documents/com~apple~CloudDocs"
 
+
+# --------------
+# Path Expansion
+# --------------
+
+alias -g C='| pbcopy'
+alias -g H='| head'
+alias -g T='| tail'
+alias -g L='| less -R'
+alias -g DN='/dev/null'
