@@ -10,7 +10,7 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Install', link: '/install' },
+      { text: 'Install', link: '/installation-guide' },
       { text: 'Config', link: '/config' },
       { text: 'Submodules', link: '/submodules' }
     ],
