@@ -15,7 +15,7 @@ This dotfiles is designed for **macOS only**.
 
 ```bash
 # One-liner install (recommended)
-curl -fsSL https://dotfiles.peinan.cc/install.sh | bash
+curl -fsSL https://dotfiles.peinan.cc/install | bash
 
 # or via GitHub
 curl -fsSL https://raw.githubusercontent.com/peinan/dotfiles/HEAD/scripts/install.sh | bash

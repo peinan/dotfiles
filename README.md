@@ -27,9 +27,9 @@
 
 ```bash
 # The easiest way
-curl -fsSL https://dotfiles.peinan.cc/install.sh | bash
+curl -fsSL https://dotfiles.peinan.cc/install | bash
 # or
-wget -qO- https://dotfiles.peinan.cc/install.sh | bash
+wget -qO- https://dotfiles.peinan.cc/install | bash
 # or via GitHub
 curl -fsSL https://raw.githubusercontent.com/peinan/dotfiles/HEAD/scripts/install.sh | bash
 
