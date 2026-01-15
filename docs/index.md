@@ -21,7 +21,7 @@ curl -fsSL https://dotfiles.peinan.cc/install | bash
 curl -fsSL https://raw.githubusercontent.com/peinan/dotfiles/HEAD/scripts/install.sh | bash
 ```
 
-For manual installation, see the [installation page](/install).
+For manual installation, see the [installation page](/installation-guide).
 
 ## What's Included
 
