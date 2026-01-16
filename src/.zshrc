@@ -16,6 +16,11 @@ export WORDCHARS='.-_'
 autoload -U select-word-style && select-word-style bash
 set -o emacs
 
+# -------------------------------------
+# Homebrew
+# -------------------------------------
+
+eval $(/opt/homebrew/bin/brew shellenv)
 
 # -------------------------------------
 # Sheldon
@@ -37,7 +42,6 @@ source "${HOME}/.alias"
 
 # Homebrew
 if type brew &>/dev/null; then
-    eval $(/opt/homebrew/bin/brew shellenv)
     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 fi
 
