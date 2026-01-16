@@ -9,9 +9,9 @@ alias ll="ls -lhGF"
 alias lla="ls -alhGF"
 
 ## cd
-alias _='cd -'
-alias ....='cd ../../'
-alias ......='cd ../../../'
+alias ..='cd ..'
+alias ..2="cd ../.."
+alias ..3="cd ../../.."
 
 ## always use Neovim
 alias vi="nvim"
@@ -41,12 +41,6 @@ alias scr='screen -r'
 alias scls='screen -ls'
 alias scs='screen -S'
 alias sc='screen'
-
-# Open in browser
-alias chrome="open_with_browser -c"
-alias chr="chrome"
-alias safari="open_with_browser -s"
-alias saf="safari"
 
 # Others
 alias rez='source ~/.zshrc'
@@ -165,14 +159,21 @@ fi
 ## zoxide
 if type zoxide > /dev/null 2>&1; then
     alias cd="z"
-    alias .2="z ../.."
-    alias .3="z ../../.."
 fi
 
 ## fzf
 if type fzf > /dev/null 2>&1; then
     alias -g F='| fzf'
 fi
+
+## open with browser
+if type open_with_browser > /dev/null 2>&1; then
+    alias chrome="open_with_browser -c"
+    alias chr="chrome"
+    alias safari="open_with_browser -s"
+    alias saf="safari"
+fi
+
 
 # ------------
 # Suffix Alias
