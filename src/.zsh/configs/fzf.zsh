@@ -20,6 +20,9 @@ if type fzf &>/dev/null 2>&1; then
 
     source <(fzf --zsh)
 
+    # Use atuin for history search instead of fzf
+    bindkey '^R' atuin-search
+
     # TODO: enhance the UI of fzf-file-widget and fzf-cd-widget
     if type rg > /dev/null 2>&1; then
         export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
