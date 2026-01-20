@@ -6,6 +6,7 @@
     st = status -u
     br = branch
     co = checkout
+    cm = commit
 
 [core]
     pager = delta
@@ -35,3 +36,6 @@
     required = true
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
+
+[ghq]
+    root = ~/ghq
