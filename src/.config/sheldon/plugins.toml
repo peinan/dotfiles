@@ -39,13 +39,13 @@ eval "$(starship init zsh)"
 [plugins.atuin]
 inline = 'eval "$(atuin init zsh --disable-up-arrow)"'
 
-# Add custom functions to fpath
-[plugins.zsh-functions]
-local = "~/.zsh/functions"
+# Add custom lazy load functions to fpath
+[plugins.zsh-functions-lazy]
+local = "~/.zsh/functions-lazy"
 apply = ["fpath"]
 
-# Autoload fpath
-[plugins.zsh-autoload]
+# Autoload (lazy) fpath
+[plugins.zsh-autoload-lazy]
 inline = 'autoload -Uz $fpath[1]/*(N:t)'
 
 # Load external configs
@@ -54,8 +54,8 @@ local = "~/.zsh/configs"
 use = ["*.zsh"]
 
 # Lazy load external configs
-[plugins.zsh-configs-defer]
-local = "~/.zsh/configs-defer"
+[plugins.zsh-configs-lazy]
+local = "~/.zsh/configs-lazy"
 use = ["*.zsh"]
 apply = ["defer"]
 
