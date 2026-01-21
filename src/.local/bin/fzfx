@@ -1,0 +1,52 @@
+#!/usr/bin/env zsh
+#
+# Enable fzf to execute additional command after selection
+# Require: fzf
+# Usage:
+#   case 1: `ls | fzfx`
+#           -> select a file
+#           -> input command (e.g. `bat $f`)
+#           -> show the selected file with `bat`
+#   case 2: `fd 'zsh' . --hidden | fzfx`
+#           -> select files
+#           -> input command (e.g. `echo $f | xargs rm`)
+#           -> remove all the selected files
+#   case 3: set `--bind "ctrl-x:become(fzfx {+})"` to FZF_DEFAULT_OPTS
+#           -> `ls | fzf`
+#           -> Ctrl-X to do the same thing as case 1
+# Note:
+#   You have to place this file to `.local/bin` in case you want to 
+#   use the case 3 due to the function definition
+#
+
+
+res=""
+
+if [[ $# -gt 0 ]]; then
+  res="${(F)@}"
+elif [[ ! -t 0 ]]; then
+  res=$(cat | fzf --multi)
+fi
+
+[[ -z "$res" ]] && exit 0
+
+echo "--- Selected ---"
+echo "$res"
+echo "----------------"
+
+cmd=""
+vared -p 'Command: ' cmd
+[[ -z "$cmd" ]] && exit 0
+
+files=("${(@f)res}")
+count=${#files[@]}
+
+if [[ "$cmd" == *'$res'* ]]; then
+  eval "$cmd"
+elif (( count == 1 )); then
+  eval "$cmd ${(q)files[1]}"
+else
+  for f in "${files[@]}"; do
+    eval "$cmd ${(q)f}"
+  done
+fi
