@@ -16,7 +16,17 @@ if type zoxide &>/dev/null 2>&1; then
     "
 
     # Bind widgets
-    zle -N __zoxide_zi
-    bindkey '^z' __zoxide_zi
+    function __zoxide_zi_widget() {
+        local result
+        result="$(\command zoxide query --interactive)" || {
+            zle reset-prompt
+            return
+        }
+        BUFFER="cd ${(q)result}"
+        zle reset-prompt
+        zle accept-line
+    }
+    zle -N __zoxide_zi_widget
+    bindkey '^z' __zoxide_zi_widget
 fi
 
