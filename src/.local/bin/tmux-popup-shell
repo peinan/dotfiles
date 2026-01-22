@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+width='80%'
+height='80%'
+
+# Get current session name and current directory
+session=$(tmux display-message -p -F "#{session_name}")
+current_dir=$(basename "$(tmux display-message -p -F '#{pane_current_path}')")
+popup_session="popup_${current_dir}"
+
+# Detach (close) if already inside a popup session
+if [[ $session == popup_* ]]; then
+    tmux detach-client
+else
+    # Show popup: attach to existing session or create new one (without status bar)
+    tmux popup -d '#{pane_current_path}' -xC -yC -w"$width" -h"$height" -E \
+        "tmux attach -t $popup_session 2>/dev/null || tmux new -s $popup_session \\; set status off"
+fi
