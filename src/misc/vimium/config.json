@@ -1,0 +1,27 @@
+{
+  "keyMappings": "unmap t\nunmap T\n\nmap t Vomnibar.activateTabSelection\nmap T createTab",
+  "settingsVersion": "2.3.1",
+  "userDefinedLinkHintCss": "/* Hint Marker Style */\ndiv > .vimiumHintMarker {\n  background: rgba(0, 0, 0, 0.7) !important;\n  backdrop-filter: blur(2px) !important;\n  border: 1px solid #55ead4 !important;\n  box-shadow: 0 0 8px #55ead4 !important; /* glow effect */\n  border-radius: 2px !important;\n  padding: 2px 5px !important;\n}\n\n/* Hint Marker Text Style */\ndiv > .vimiumHintMarker span {\n  color: #55ead4 !important;\n  font-family: \"Rajdhani\", sans-serif !important;\n  font-weight: normal !important;\n  font-size: 16px !important;\n  text-shadow: 0 0 3px #55ead4 !important;\n}\n\n/* Hint Marker Inputed Text Style */\ndiv > .vimiumHintMarker > .matchingCharacter {\n  color: #f3e600 !important;\n  text-shadow: 0 0 3px #f3e600 !important; /* glow effect */\n}\n\n/* Vomnibar */\n#vomnibar {\n  top: 15% !important;\n  background-color: rgba(0, 0, 0, 0.8) !important;\n  backdrop-filter: blur(10px) !important;\n  -webkit-backdrop-filter: blur(10px);\n  border: 2px solid #55ead4 !important;\n  border-radius: 2px !important;\n  box-shadow: 0 0 15px rgba(85, 234, 212, 0.5) !important;\n  /*animation: none !important;*/\n}\n#vomnibar-search-area {\n  border-bottom: none;\n}\n\n/* Vomnibar Input Box */\n#vomnibar input {\n  color: #55ead4 !important;\n  font-family: \"Rajdhani\", sans-serif !important;\n  font-weight: medium !important;\n  font-size: 20px !important;\n  text-shadow: 0 0 2px #55ead4 !important;\n  \n  background-color: transparent !important;\n  border: none !important;\n  border-bottom: 1px solid rgba(85, 234, 212, 0.3) !important;\n  box-shadow: none !important;\n  border-radius: 0 !important;\n  padding: 10px !important;\n}\n\n/* Vomnibar Candidate List */\n#vomnibar ul li {\n  color: #55ead4 !important;\n  border-bottom: 1px solid rgba(85, 234, 212, 0.1) !important;\n  padding: 8px 10px !important;\n}\n\n#vomnibar .source {\n  font-family: \"Rajdhani\", sans-serif !important;\n}\n\n#vomnibar .title {\n  color: #55ead4 !important;\n  font-family: \"Rajdhani\", sans-serif !important;\n  font-weight: medium !important;\n  font-size: 16px !important;\n  margin-right: 10px !important;\n}\n\n#vomnibar .url {\n  color: rgba(85, 234, 212, 0.6) !important; /* dim cyan */\n  font-family: \"Rajdhani\", sans-serif !important;\n}\n\n#vomnibar .match {\n  color: #f3e600 !important;\n  font-weight: normal !important;\n  text-shadow: 0 0 2px #f3e600 !important;\n}\n\n#vomnibar ul li.selected {\n  background-color: rgba(85, 234, 212, 0.15) !important; /* dim cyan */\n  border-left: 4px solid #55ead4 !important;  /* Accent Bar on the left */\n}",
+  "exclusionRules": [
+    {
+      "passKeys": "",
+      "pattern": "https?://mail.google.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://docs.google.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://calendar.notion.so/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://remotedesktop.google.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://manus.im/*"
+    }
+  ]
+}
