@@ -5,7 +5,7 @@
 
 if type fzf &>/dev/null 2>&1; then
     export FZF_DEFAULT_OPTS='
-        --height ~100%
+        --height ~50%
         --layout reverse
         --info "inline-right: "
         --info-command="echo -e \"$FZF_POS/$FZF_INFO\""
@@ -18,6 +18,8 @@ if type fzf &>/dev/null 2>&1; then
         --color="bg+:-1,gutter:#2d2d2d,pointer:#99cc99,prompt:#81A1C1,info:#686868,spinner:#f2777a" --gutter " "
         --bind "ctrl-x:become(fzfx {+})"
     '
+
+    export FZF_COMPLETION_OPTS='--height ~10%'
 
     source <(fzf --zsh)
 
