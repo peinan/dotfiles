@@ -1,0 +1,43 @@
+{
+  "model": "opus",
+  "enabledPlugins": {
+    "example-skills@anthropic-agent-skills": true,
+    "document-skills@anthropic-agent-skills": true,
+    "upgrading-expo@expo-plugins": true,
+    "firebase@claude-plugins-official": false,
+    "lua-lsp@claude-plugins-official": true
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "permission_prompt",
+        "hooks": [{
+          "type": "command",
+          "command": "~/.local/bin/claude-notify"
+        }]
+      },
+      {
+        "matcher": "idle_prompt",
+        "hooks": [{
+          "type": "command",
+          "command": "~/.local/bin/claude-notify"
+        }]
+      },
+      {
+        "matcher": "elicitation_dialog",
+        "hooks": [{
+          "type": "command",
+          "command": "~/.local/bin/claude-notify"
+        }]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [{
+          "type": "command",
+          "command": "~/.local/bin/claude-notify"
+        }]
+      }
+    ]
+  }
+}
