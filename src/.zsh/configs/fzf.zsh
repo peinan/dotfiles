@@ -26,13 +26,23 @@ if type fzf &>/dev/null 2>&1; then
     # Use atuin for history search instead of fzf
     bindkey '^R' atuin-search
 
-    # TODO: enhance the UI of fzf-file-widget and fzf-cd-widget
+    # Enhanced fzf-file-widget with timestamps and sort actions
     if type rg > /dev/null 2>&1; then
         export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
     fi
     if type bat > /dev/null 2>&1; then
         export FZF_CTRL_T_OPTS='
-            --preview "bat --style=numbers --color=always --style=header,grid --line-range :100 {}"
+            --preview "
+                echo -e \"\033[1;34mFile:\033[0m {}\"
+                echo -e \"\033[1;34mModified:\033[0m \$(ls -lh {} 2>/dev/null | awk \"{print \\\$6, \\\$7, \\\$8}\")\"
+                echo -e \"\033[1;34mSize:\033[0m \$(ls -lh {} 2>/dev/null | awk \"{print \\\$5}\")\"
+                echo \"\"
+                bat --style=numbers --color=always --style=header,grid --line-range :100 {}
+            "
+            --header "CTRL-S: Sort by size | CTRL-D: Sort by date | CTRL-N: Sort by name"
+            --bind "ctrl-s:reload(rg --files --hidden --follow --glob \"!.git/*\" | xargs ls -lhS 2>/dev/null | awk \"{print \\\$NF}\")"
+            --bind "ctrl-d:reload(rg --files --hidden --follow --glob \"!.git/*\" | xargs ls -lht 2>/dev/null | awk \"{print \\\$NF}\")"
+            --bind "ctrl-n:reload(rg --files --hidden --follow --glob \"!.git/*\" | sort)"
         '
     fi
 
