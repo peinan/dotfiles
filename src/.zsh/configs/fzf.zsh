@@ -33,9 +33,9 @@ if type fzf &>/dev/null 2>&1; then
     fi
     if type bat > /dev/null 2>&1; then
         export FZF_CTRL_T_OPTS='
-            --delimiter "\t"
+            --delimiter "│"
             --with-nth 1,2,3
-            --preview "bat --style=numbers --color=always --line-range :100 {3}"
+            --preview "bat --style=numbers --color=always --line-range :100 \$(echo {3} | sed \"s/^ //\")"
             --preview-window "right,60%"
             --preview-window "<100(down,40%)"
             --header "[Sort: date] Press CTRL-S to cycle sort"
@@ -48,7 +48,7 @@ if type fzf &>/dev/null 2>&1; then
                 esac;
                 echo \$next > /tmp/fzf-sort-mode;
                 echo \"reload(fzf-file-list \$next)+change-header([Sort: \$next] Press CTRL-S to cycle sort)\""
-            --bind "enter:become(printf \"%s\\n\" {+3})"
+            --bind "enter:become(printf \"%s\\n\" {+3} | sed \"s/^ //\")"
         '
     fi
 
