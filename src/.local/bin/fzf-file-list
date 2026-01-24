@@ -1,9 +1,9 @@
 #!/bin/bash
 # List files with metadata for fzf CTRL-T
-# Usage: fzf-file-list [date|size|name]
+# Usage: fzf-file-list [Date|Size|Name]
 # Output format: "YYYY-MM-DD HH:MM │ SIZE │ FILEPATH"
 
-sort_mode="${1:-date}"
+sort_mode="${1:-Date}"
 
 rg --files --hidden --follow --glob "!.git/*" 2>/dev/null | while IFS= read -r f; do
     stat --printf="%.16y\t%s\t%n\n" "$f" 2>/dev/null
@@ -15,8 +15,8 @@ done | awk -F'\t' '{
     else size=sprintf("%dB",s)
     printf "%s\t%6s\t%s\n", $1, size, $3
 }' | case "$sort_mode" in
-    date) sort -t$'\t' -k1 -r ;;
-    size) sort -t$'\t' -k2 -rh ;;
-    name) sort -t$'\t' -k3 ;;
+    Date) sort -t$'\t' -k1 -r ;;
+    Size) sort -t$'\t' -k2 -rh ;;
+    Name) sort -t$'\t' -k3 ;;
     *) cat ;;
 esac | sed 's/\t/ │ /g'

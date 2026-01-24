@@ -38,13 +38,13 @@ if type fzf &>/dev/null 2>&1; then
             --preview "bat --style=numbers --color=always --line-range :100 \$(echo {3} | sed \"s/^ //\")"
             --preview-window "right,60%"
             --preview-window "<100(down,40%)"
-            --header "[Sort: date] Press CTRL-S to cycle sort"
+            --header "[Sort: Date] Press CTRL-S to cycle sort"
             --bind "ctrl-s:transform:
                 mode=\$(cat /tmp/fzf-sort-mode 2>/dev/null || echo date);
                 case \$mode in
-                    date) next=size ;;
-                    size) next=name ;;
-                    *) next=date ;;
+                    date) next=Size ;;
+                    size) next=Name ;;
+                    *) next=Date ;;
                 esac;
                 echo \$next > /tmp/fzf-sort-mode;
                 echo \"reload(fzf-file-list \$next)+change-header([Sort: \$next] Press CTRL-S to cycle sort)\""
