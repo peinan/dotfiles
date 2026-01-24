@@ -1,0 +1,14 @@
+#!/bin/bash
+# List files with metadata for fzf CTRL-T
+# Output format: "YYYY-MM-DD HH:MM<TAB>SIZE<TAB>FILEPATH"
+
+rg --files --hidden --follow --glob "!.git/*" 2>/dev/null | while IFS= read -r f; do
+    stat --printf="%.16y\t%s\t%n\n" "$f" 2>/dev/null
+done | awk -F'\t' -v OFS='\t' '{
+    s=$2
+    if(s>=1073741824) $2=sprintf("%5.1fG",s/1073741824)
+    else if(s>=1048576) $2=sprintf("%5.1fM",s/1048576)
+    else if(s>=1024) $2=sprintf("%5.1fK",s/1024)
+    else $2=sprintf("%5dB",s)
+    print
+}'
