@@ -29,7 +29,7 @@ if type fzf &>/dev/null 2>&1; then
     # Enhanced fzf-file-widget with timestamps and sort actions
     # Sort mode cycle: date -> size -> name -> date
     if type rg > /dev/null 2>&1; then
-        export FZF_CTRL_T_COMMAND='echo date > /tmp/fzf-sort-mode; fzf-file-list date'
+        export FZF_CTRL_T_COMMAND='echo Date > /tmp/fzf-sort-mode; fzf-file-list Date'
     fi
     if type bat > /dev/null 2>&1; then
         export FZF_CTRL_T_OPTS='
@@ -40,10 +40,10 @@ if type fzf &>/dev/null 2>&1; then
             --preview-window "<100(down,40%)"
             --header "[Sort: Date] Press CTRL-S to cycle sort"
             --bind "ctrl-s:transform:
-                mode=\$(cat /tmp/fzf-sort-mode 2>/dev/null || echo date);
+                mode=\$(cat /tmp/fzf-sort-mode 2>/dev/null || echo Date);
                 case \$mode in
-                    date) next=Size ;;
-                    size) next=Name ;;
+                    Date) next=Size ;;
+                    Size) next=Name ;;
                     *) next=Date ;;
                 esac;
                 echo \$next > /tmp/fzf-sort-mode;

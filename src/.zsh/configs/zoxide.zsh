@@ -11,8 +11,7 @@ if type zoxide &>/dev/null 2>&1; then
     export _ZO_FZF_OPTS="$FZF_DEFAULT_OPTS
         --no-sort
         --height 40%
-        --preview-window 'right,50%,wrap'
-        --preview-window '<100(down,40%,wrap,border-top)'
+        --preview-window 'right,50%,wrap,<100(down,40%,wrap,border-top)'
         --preview 'eza --color=always {2}'
     "
 
