@@ -27,18 +27,25 @@ if type fzf &>/dev/null 2>&1; then
     bindkey '^R' atuin-search
 
     # Enhanced fzf-file-widget with timestamps and sort actions
+    # Sort mode cycle: date -> size -> name -> date
     if type rg > /dev/null 2>&1; then
-        export FZF_CTRL_T_COMMAND='fzf-file-list'
+        export FZF_CTRL_T_COMMAND='echo date > /tmp/fzf-sort-mode; fzf-file-list date'
     fi
     if type bat > /dev/null 2>&1; then
         export FZF_CTRL_T_OPTS='
             --delimiter "\t"
             --with-nth 1,2,3
             --preview "bat --style=numbers --color=always --line-range :100 {3}"
-            --header "CTRL-D: Sort by date | CTRL-S: Sort by size | CTRL-I: Sort by name"
-            --bind "ctrl-s:reload(fzf-file-list | sort -t\"\t\" -k2 -rh)"
-            --bind "ctrl-d:reload(fzf-file-list | sort -t\"\t\" -k1 -r)"
-            --bind "ctrl-i:reload(fzf-file-list | sort -t\"\t\" -k3)"
+            --header "[Sort: date] Press CTRL-S to cycle sort"
+            --bind "ctrl-s:transform:
+                mode=\$(cat /tmp/fzf-sort-mode 2>/dev/null || echo date);
+                case \$mode in
+                    date) next=size ;;
+                    size) next=name ;;
+                    *) next=date ;;
+                esac;
+                echo \$next > /tmp/fzf-sort-mode;
+                echo \"reload(fzf-file-list \$next)+change-header([Sort: \$next] Press CTRL-S to cycle sort)\""
             --bind "enter:become(printf \"%s\\n\" {+3})"
         '
     fi
