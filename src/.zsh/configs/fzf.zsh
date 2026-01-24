@@ -36,6 +36,8 @@ if type fzf &>/dev/null 2>&1; then
             --delimiter "\t"
             --with-nth 1,2,3
             --preview "bat --style=numbers --color=always --line-range :100 {3}"
+            --preview-window "right,60%"
+            --preview-window "<100(down,40%)"
             --header "[Sort: date] Press CTRL-S to cycle sort"
             --bind "ctrl-s:transform:
                 mode=\$(cat /tmp/fzf-sort-mode 2>/dev/null || echo date);
