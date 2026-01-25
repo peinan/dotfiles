@@ -1,13 +1,15 @@
 #!/bin/bash
 # List files with metadata for fzf CTRL-T
-# Usage: fzf-file-list [Date|Size|Name]
-# Output format: "YYYY-MM-DD HH:MM │ SIZE │ FILEPATH"
+#   Require: fd, gstat
+#   Usage: fzf-file-list [Date|Size|Name]
+#   Output format: "YYYY-MM-DD HH:MM │ SIZE │ FILEPATH"
 
 sort_mode="${1:-Date}"
 
-rg --files --hidden --follow --glob "!.git/*" 2>/dev/null | while IFS= read -r f; do
-    stat --printf="%.16y\t%s\t%n\n" "$f" 2>/dev/null
-done | awk -F'\t' '{
+# fd --exec-batch: execute gstat once with all files as arguments
+# gstat --printf: GNU stat format (timestamp, size, filename)
+fd --type f --hidden --exclude .git --exec-batch gstat --printf="%.16y\t%s\t%n\n" 2>/dev/null | \
+awk -F'\t' '{
     s=$2
     if(s>=1073741824) size=sprintf("%.1fG",s/1073741824)
     else if(s>=1048576) size=sprintf("%.1fM",s/1048576)

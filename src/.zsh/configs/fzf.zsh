@@ -1,6 +1,7 @@
 #!/bin/zsh
 #
 # FZF settings
+#   Requrie: fd, bat
 #
 
 if type fzf &>/dev/null 2>&1; then
@@ -28,7 +29,7 @@ if type fzf &>/dev/null 2>&1; then
 
     # Enhanced fzf-file-widget with timestamps and sort actions
     # Sort mode cycle: date -> size -> name -> date
-    if type rg > /dev/null 2>&1; then
+    if type fd > /dev/null 2>&1; then
         export FZF_CTRL_T_COMMAND='echo Date > /tmp/fzf-sort-mode; fzf-file-list Date'
     fi
     if type bat > /dev/null 2>&1; then
