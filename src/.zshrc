@@ -57,3 +57,10 @@ zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
 autoload -Uz compinit && compinit
 
+# fzf-tab
+source ~/ghq/github.com/Aloxaf/fzf-tab/fzf-tab.plugin.zsh
+zstyle ':fzf-tab:*' fzf-flags --pointer="" --color="bg+:-1,gutter:#2d2d2d,pointer:#99cc99,prompt:#81A1C1,info:#686868,spinner:#f2777a" --gutter=" " --marker="▌" --scrollbar="▌" --prompt="" --info="hidden"
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:cd:*' popup-pad 30 0
+
