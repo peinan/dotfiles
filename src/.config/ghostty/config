@@ -75,6 +75,7 @@ palette = 14=#66cccc
 palette = 15=#ffffff
 
 # custom shaders
+custom-shader-animation = always
 custom-shader = shaders/cursor_tail.glsl
 
 ###
