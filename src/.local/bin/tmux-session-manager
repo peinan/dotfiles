@@ -1,0 +1,83 @@
+#!/bin/zsh
+
+# Sort sessions
+sessions=$(tmux list-sessions -F '#{session_name}' 2>/dev/null | while read -r s; do
+  if [ "$(echo "$s" | cut -c2)" = " " ]; then
+    echo "$(echo "$s" | cut -c3-)|$s"
+  else
+    echo "$s|$s"
+  fi
+done | sort | cut -d'|' -f2)
+
+# Show tmux sessions with fzf
+result=$(echo "$sessions" | \
+  fzf --prompt="Session: " \
+      --preview='tmux list-windows -t {} -F "#{window_index}: #{window_name}"' \
+      --preview-window=right:20% \
+      --expect=ctrl-q,ctrl-t,ctrl-r \
+      --no-select-1 \
+      --header='Enter: switch | ^Q: kill | ^T: new | ^R: rename')
+
+if [ -z "$result" ]; then
+  exit 0
+fi
+
+# Action with the selection
+key=$(echo "$result" | sed -n '1p')
+session=$(echo "$result" | sed -n '2p')
+
+case "$key" in
+  ctrl-q)
+    # kill session
+    if [ -n "$session" ]; then
+      echo -n "Kill session '$session'? (y/N): "
+      read -r answer
+      if [ "$answer" = "y" ] || [ "$answer" = "Y" ]; then
+        current_session=$(tmux display-message -p '#S')
+        if [ "$session" = "$current_session" ]; then
+          tmux switch-client -n
+        fi
+        tmux kill-session -t "$session"
+        echo "Session '$session' killed."
+      else
+        echo "Cancelled."
+      fi
+    fi
+    ;;
+
+  ctrl-t)
+    # new session
+    echo -n "New session name: "
+    read -r new_session
+    if [ -n "$new_session" ]; then
+      full_session_name="$new_session"
+      tmux new-session -d -s "$full_session_name"
+      tmux switch-client -t "$full_session_name"
+      echo "Session '$full_session_name' created."
+    else
+      echo "Cancelled."
+    fi
+    ;;
+
+  ctrl-r)
+    # rename session
+    if [ -n "$session" ]; then
+      echo -n "New name for '$session': "
+      read -r new_name
+      if [ -n "$new_name" ]; then
+        full_session_name="$new_name"
+        tmux rename-session -t "$session" "$full_session_name"
+        echo "Session renamed to '$full_session_name'."
+      else
+        echo "Cancelled."
+      fi
+    fi
+    ;;
+
+  *)
+    # switch session
+    if [ -n "$session" ]; then
+      tmux switch-client -t "$session"
+    fi
+    ;;
+esac
