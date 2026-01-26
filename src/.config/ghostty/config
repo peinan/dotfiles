@@ -74,6 +74,9 @@ palette = 13=#cc99cc
 palette = 14=#66cccc
 palette = 15=#ffffff
 
+# custom shaders
+custom-shader = shaders/cursor_tail.glsl
+
 ###
 # Keybinding
 ###
