@@ -17,7 +17,7 @@ branch=$(git branch -a --color=always --format='%(refname:short)	%(if)%(HEAD)%(t
     cut -f1)
 
 if [[ -z "$branch" ]]; then
-    return 0
+    exit 0
 fi
 
 # Extract branch name (remove remote prefix if present)
