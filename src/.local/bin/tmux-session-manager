@@ -24,9 +24,9 @@ result=$(echo "$sessions" | \
       --ansi \
       --preview='s=$(echo {} | sed "s/^..//"); tmux list-windows -t "$s" -F "#{window_index}: #{window_name}"' \
       --preview-window=right:20% \
-      --expect=ctrl-q,ctrl-n,ctrl-r \
+      --expect=ctrl-q,ctrl-t,ctrl-r \
       --no-select-1 \
-      --header='Enter: switch | ^Q: kill | ^N: new | ^R: rename')
+      --header='Enter: switch | ^Q: kill | ^T: new | ^R: rename')
 
 if [ -z "$result" ]; then
   exit 0
