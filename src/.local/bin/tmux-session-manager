@@ -1,18 +1,28 @@
 #!/bin/zsh
 
-# Sort sessions
+# Get current session name
+current_session=$(tmux display-message -p '#S' 2>/dev/null)
+
+# Sort sessions and highlight current session
 sessions=$(tmux list-sessions -F '#{session_name}' 2>/dev/null | while read -r s; do
   if [ "$(echo "$s" | cut -c2)" = " " ]; then
     echo "$(echo "$s" | cut -c3-)|$s"
   else
     echo "$s|$s"
   fi
-done | sort | cut -d'|' -f2)
+done | sort | cut -d'|' -f2 | while read -r s; do
+  if [ "$s" = "$current_session" ]; then
+    echo "\033[32m* $s\033[0m"
+  else
+    echo "  $s"
+  fi
+done)
 
 # Show tmux sessions with fzf
 result=$(echo "$sessions" | \
   fzf --prompt="Session: " \
-      --preview='tmux list-windows -t {} -F "#{window_index}: #{window_name}"' \
+      --ansi \
+      --preview='s=$(echo {} | sed "s/^..//"); tmux list-windows -t "$s" -F "#{window_index}: #{window_name}"' \
       --preview-window=right:20% \
       --expect=ctrl-q,ctrl-t,ctrl-r \
       --no-select-1 \
@@ -24,7 +34,7 @@ fi
 
 # Action with the selection
 key=$(echo "$result" | sed -n '1p')
-session=$(echo "$result" | sed -n '2p')
+session=$(echo "$result" | sed -n '2p' | sed 's/^..//')
 
 case "$key" in
   ctrl-q)
@@ -33,7 +43,6 @@ case "$key" in
       echo -n "Kill session '$session'? (y/N): "
       read -r answer
       if [ "$answer" = "y" ] || [ "$answer" = "Y" ]; then
-        current_session=$(tmux display-message -p '#S')
         if [ "$session" = "$current_session" ]; then
           tmux switch-client -n
         fi
