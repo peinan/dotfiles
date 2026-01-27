@@ -22,7 +22,7 @@ set -e
 select_branch() {
     local header="${1:-Branch selector}"
     local exclude_current="$2"
-    local format_str='%(refname:short)	%(if)%(HEAD)%(then)%(color:yellow bold)%(else)%(if:equals=refs/remotes)%(refname:rstrip=-2)%(then)%(color:red)%(else)%(color:cyan)%(end)%(end)%(align:40)%(refname:short)%(end) %(color:reset)%(color:dim)%(objectname:short)%(color:reset) %(contents:subject)'
+    local format_str='%(refname:short)	%(HEAD)	%(if:equals=refs/remotes)%(refname:rstrip=-2)%(then)remote%(else)local%(end)	%(objectname:short)	%(contents:subject)'
 
     # Responsive layout based on terminal width
     local height="~50%"
@@ -33,7 +33,27 @@ select_branch() {
     fi
 
     local branch_list
-    branch_list=$(git branch -a --color=always --format="$format_str" 2>/dev/null)
+    branch_list=$(git branch -a --format="$format_str" 2>/dev/null | awk -F'\t' '{
+        branch = $1
+        is_head = ($2 == "*")
+        is_remote = ($3 == "remote")
+        hash = $4
+        subject = $5
+
+        # Truncate to 40 characters with ellipsis
+        if (length(branch) > 40) {
+            display = substr(branch, 1, 39) "…"
+        } else {
+            display = branch
+        }
+
+        # Color selection
+        if (is_head) color = "\033[1;33m"
+        else if (is_remote) color = "\033[31m"
+        else color = "\033[36m"
+
+        printf "%s\t%s%-40s\033[0m \033[2m%s\033[0m %s\n", branch, color, display, hash, subject
+    }')
 
     # Exclude current branch if requested
     if [[ "$exclude_current" == "true" ]]; then
@@ -58,7 +78,7 @@ select_branch() {
 # Select a branch with action shortcuts
 # Returns: "branch|action" format
 select_branch_with_action() {
-    local format_str='%(refname:short)	%(if)%(HEAD)%(then)%(color:yellow bold)%(else)%(if:equals=refs/remotes)%(refname:rstrip=-2)%(then)%(color:red)%(else)%(color:cyan)%(end)%(end)%(align:40)%(refname:short)%(end) %(color:reset)%(color:dim)%(objectname:short)%(color:reset) %(contents:subject)'
+    local format_str='%(refname:short)	%(HEAD)	%(if:equals=refs/remotes)%(refname:rstrip=-2)%(then)remote%(else)local%(end)	%(objectname:short)	%(contents:subject)'
     local header='<CR>: checkout | ^D: delete | ^W: worktree add | ^T: worktree add -b'
 
     # Responsive layout based on terminal width
@@ -69,7 +89,27 @@ select_branch_with_action() {
         preview_window="down,70%,wrap"
     fi
 
-    git branch -a --color=always --format="$format_str" 2>/dev/null | \
+    git branch -a --format="$format_str" 2>/dev/null | awk -F'\t' '{
+        branch = $1
+        is_head = ($2 == "*")
+        is_remote = ($3 == "remote")
+        hash = $4
+        subject = $5
+
+        # Truncate to 40 characters with ellipsis
+        if (length(branch) > 40) {
+            display = substr(branch, 1, 39) "…"
+        } else {
+            display = branch
+        }
+
+        # Color selection
+        if (is_head) color = "\033[1;33m"
+        else if (is_remote) color = "\033[31m"
+        else color = "\033[36m"
+
+        printf "%s\t%s%-40s\033[0m \033[2m%s\033[0m %s\n", branch, color, display, hash, subject
+    }' | \
         fzf --ansi \
             --with-nth=2.. \
             --delimiter='\t' \
