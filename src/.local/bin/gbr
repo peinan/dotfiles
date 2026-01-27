@@ -1,0 +1,247 @@
+#!/bin/zsh
+#
+# Git branch action tool with fzf
+# - Require: git, fzf
+#
+# Usage:
+#   gbr              # Branch select -> Action select
+#   gbr -c           # Checkout mode (gco compatible)
+#   gbr -d           # Delete mode
+#   gbr -w           # Worktree add mode
+#   gbr -W           # Worktree add -b mode (new branch)
+#
+
+set -e
+
+# -----------------------------------------------------------------------------
+# Helper functions
+# -----------------------------------------------------------------------------
+
+# Select a branch using fzf
+# Args: $1 - header text (optional), $2 - exclude current branch (optional, "true" to exclude)
+select_branch() {
+    local header="${1:-Branch selector}"
+    local exclude_current="$2"
+    local format_str='%(refname:short)	%(if)%(HEAD)%(then)%(color:yellow bold)%(else)%(if:equals=refs/remotes)%(refname:rstrip=-2)%(then)%(color:red)%(else)%(color:cyan)%(end)%(end)%(align:40)%(refname:short)%(end) %(color:reset)%(color:dim)%(objectname:short)%(color:reset) %(contents:subject)'
+
+    local branch_list
+    branch_list=$(git branch -a --color=always --format="$format_str" 2>/dev/null)
+
+    # Exclude current branch if requested
+    if [[ "$exclude_current" == "true" ]]; then
+        local current_branch
+        current_branch=$(git branch --show-current 2>/dev/null)
+        if [[ -n "$current_branch" ]]; then
+            branch_list=$(echo "$branch_list" | grep -v "^${current_branch}	")
+        fi
+    fi
+
+    echo "$branch_list" | \
+        fzf --ansi \
+            --with-nth=2.. \
+            --delimiter='\t' \
+            --height=~50% \
+            --header="$header" \
+            --preview='echo -e "\033[1;36mBranch:\033[0m {1}" && git log -1 --color=always --format="%C(bold cyan)Updated:%C(reset) %cr by %an" {1} 2>/dev/null && echo && git log --oneline --graph --color=always -20 {1}' \
+            --preview-window=right:50%:wrap | \
+        cut -f1
+}
+
+# Select a branch with action shortcuts
+# Returns: "branch|action" format
+select_branch_with_action() {
+    local format_str='%(refname:short)	%(if)%(HEAD)%(then)%(color:yellow bold)%(else)%(if:equals=refs/remotes)%(refname:rstrip=-2)%(then)%(color:red)%(else)%(color:cyan)%(end)%(end)%(align:40)%(refname:short)%(end) %(color:reset)%(color:dim)%(objectname:short)%(color:reset) %(contents:subject)'
+    local header='<CR>: checkout | ^D: delete | ^W: worktree add | ^T: worktree add -b'
+
+    git branch -a --color=always --format="$format_str" 2>/dev/null | \
+        fzf --ansi \
+            --with-nth=2.. \
+            --delimiter='\t' \
+            --height=~50% \
+            --header="$header" \
+            --preview='echo -e "\033[1;36mBranch:\033[0m {1}" && git log -1 --color=always --format="%C(bold cyan)Updated:%C(reset) %cr by %an" {1} 2>/dev/null && echo && git log --oneline --graph --color=always -20 {1}' \
+            --preview-window=right:50%:wrap \
+            --expect=ctrl-d,ctrl-w,ctrl-t | \
+        {
+            local key branch
+            read -r key
+            read -r branch
+            branch=$(echo "$branch" | cut -f1)
+            echo "${branch}|${key}"
+        }
+}
+
+# Extract clean branch name (remove remote prefix)
+# remotes/origin/xxx -> xxx, origin/xxx -> xxx, xxx -> xxx
+extract_branch_name() {
+    local branch="$1"
+    branch="${branch#remotes/}"
+    branch="${branch#origin/}"
+    echo "$branch"
+}
+
+# -----------------------------------------------------------------------------
+# Action functions
+# -----------------------------------------------------------------------------
+
+action_checkout() {
+    local branch="$1"
+    if [[ -z "$branch" ]]; then
+        exit 0
+    fi
+
+    local checkout_name
+    checkout_name=$(extract_branch_name "$branch")
+    git checkout "$checkout_name"
+}
+
+action_delete() {
+    local branch="$1"
+    if [[ -z "$branch" ]]; then
+        exit 0
+    fi
+
+    local branch_name
+    branch_name=$(extract_branch_name "$branch")
+
+    # Check if it's current branch
+    local current_branch
+    current_branch=$(git branch --show-current 2>/dev/null)
+    if [[ "$branch_name" == "$current_branch" ]]; then
+        echo "Error: Cannot delete current branch '$branch_name'" >&2
+        exit 1
+    fi
+
+    # Confirmation
+    echo -n "Delete branch '$branch_name'? [y/N]: "
+    read -r confirm
+    if [[ "$confirm" != "y" && "$confirm" != "Y" ]]; then
+        echo "Cancelled."
+        exit 0
+    fi
+
+    # Check if it's a remote branch
+    if [[ "$branch" == remotes/* || "$branch" == origin/* ]]; then
+        echo "Error: Cannot delete remote branch directly. Use 'git push origin --delete $branch_name'" >&2
+        exit 1
+    fi
+
+    git branch -d "$branch_name" || git branch -D "$branch_name"
+}
+
+action_worktree_add() {
+    local branch="$1"
+    if [[ -z "$branch" ]]; then
+        exit 0
+    fi
+
+    local branch_name
+    branch_name=$(extract_branch_name "$branch")
+
+    # Prompt for worktree path
+    local default_path="../${branch_name}"
+    echo -n "Worktree path [$default_path]: "
+    read -r worktree_path
+    worktree_path="${worktree_path:-$default_path}"
+
+    git worktree add "$worktree_path" "$branch_name"
+    echo "Worktree created at: $worktree_path"
+}
+
+action_worktree_add_b() {
+    local base_branch="$1"
+
+    # Prompt for new branch name
+    echo -n "New branch name: "
+    read -r new_branch
+    if [[ -z "$new_branch" ]]; then
+        echo "Cancelled."
+        exit 0
+    fi
+
+    # Prompt for worktree path
+    local default_path="../${new_branch}"
+    echo -n "Worktree path [$default_path]: "
+    read -r worktree_path
+    worktree_path="${worktree_path:-$default_path}"
+
+    if [[ -n "$base_branch" ]]; then
+        local base_name
+        base_name=$(extract_branch_name "$base_branch")
+        git worktree add -b "$new_branch" "$worktree_path" "$base_name"
+    else
+        git worktree add -b "$new_branch" "$worktree_path"
+    fi
+    echo "Worktree created at: $worktree_path (branch: $new_branch)"
+}
+
+# -----------------------------------------------------------------------------
+# Main
+# -----------------------------------------------------------------------------
+
+main() {
+    local mode=""
+
+    # Parse arguments
+    while getopts "cdwW" opt; do
+        case $opt in
+            c) mode="checkout" ;;
+            d) mode="delete" ;;
+            w) mode="worktree" ;;
+            W) mode="worktree-b" ;;
+            *) echo "Usage: gbr [-c|-d|-w|-W]" >&2; exit 1 ;;
+        esac
+    done
+
+    case "$mode" in
+        checkout)
+            local branch
+            branch=$(select_branch "Checkout branch")
+            action_checkout "$branch"
+            ;;
+        delete)
+            local branch
+            branch=$(select_branch "Delete branch (select branch to delete)" "true")
+            action_delete "$branch"
+            ;;
+        worktree)
+            local branch
+            branch=$(select_branch "Worktree add (select branch)")
+            action_worktree_add "$branch"
+            ;;
+        worktree-b)
+            local branch
+            branch=$(select_branch "Worktree add -b (select base branch, or ESC for current)")
+            action_worktree_add_b "$branch"
+            ;;
+        *)
+            # Default: select branch with action shortcuts
+            local result branch action
+            result=$(select_branch_with_action)
+            branch="${result%|*}"
+            action="${result#*|}"
+
+            if [[ -z "$branch" ]]; then
+                exit 0
+            fi
+
+            case "$action" in
+                ctrl-d)
+                    action_delete "$branch"
+                    ;;
+                ctrl-w)
+                    action_worktree_add "$branch"
+                    ;;
+                ctrl-t)
+                    action_worktree_add_b "$branch"
+                    ;;
+                *)
+                    # Default: checkout (Enter key)
+                    action_checkout "$branch"
+                    ;;
+            esac
+            ;;
+    esac
+}
+
+main "$@"
