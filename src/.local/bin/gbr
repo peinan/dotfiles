@@ -25,11 +25,11 @@ select_branch() {
     local format_str='%(refname:short)	%(HEAD)	%(if:equals=refs/remotes)%(refname:rstrip=-2)%(then)remote%(else)local%(end)	%(objectname:short)	%(contents:subject)'
 
     # Responsive layout based on terminal width
-    local height="~50%"
+    local height="~60%"
     local preview_window="right,50%,wrap"
     if [[ $(tput cols) -lt 100 ]]; then
-        height="~80%"
-        preview_window="down,70%,wrap"
+        height="~60%"
+        preview_window="down,60%,wrap"
     fi
 
     local branch_list
@@ -82,11 +82,11 @@ select_branch_with_action() {
     local header='<CR>: checkout | ^D: delete | ^W: worktree add | ^T: worktree add -b'
 
     # Responsive layout based on terminal width
-    local height="~50%"
+    local height="~60%"
     local preview_window="right,50%,wrap"
     if [[ $(tput cols) -lt 100 ]]; then
-        height="~80%"
-        preview_window="down,70%,wrap"
+        height="~60%"
+        preview_window="down,60%,wrap"
     fi
 
     git branch -a --format="$format_str" 2>/dev/null | awk -F'\t' '{
