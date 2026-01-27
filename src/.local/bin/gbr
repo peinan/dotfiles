@@ -24,6 +24,14 @@ select_branch() {
     local exclude_current="$2"
     local format_str='%(refname:short)	%(if)%(HEAD)%(then)%(color:yellow bold)%(else)%(if:equals=refs/remotes)%(refname:rstrip=-2)%(then)%(color:red)%(else)%(color:cyan)%(end)%(end)%(align:40)%(refname:short)%(end) %(color:reset)%(color:dim)%(objectname:short)%(color:reset) %(contents:subject)'
 
+    # Responsive layout based on terminal width
+    local height="~50%"
+    local preview_window="right,50%,wrap"
+    if [[ $(tput cols) -lt 100 ]]; then
+        height="~80%"
+        preview_window="down,70%,wrap"
+    fi
+
     local branch_list
     branch_list=$(git branch -a --color=always --format="$format_str" 2>/dev/null)
 
@@ -40,10 +48,10 @@ select_branch() {
         fzf --ansi \
             --with-nth=2.. \
             --delimiter='\t' \
-            --height=~50% \
+            --height="$height" \
             --header="$header" \
             --preview='echo -e "\033[1;36mBranch:\033[0m {1}" && git log -1 --color=always --format="%C(bold cyan)Updated:%C(reset) %cr by %an" {1} 2>/dev/null && echo && git log --oneline --graph --color=always -20 {1}' \
-            --preview-window=right:50%:wrap | \
+            --preview-window="$preview_window" | \
         cut -f1
 }
 
@@ -53,14 +61,22 @@ select_branch_with_action() {
     local format_str='%(refname:short)	%(if)%(HEAD)%(then)%(color:yellow bold)%(else)%(if:equals=refs/remotes)%(refname:rstrip=-2)%(then)%(color:red)%(else)%(color:cyan)%(end)%(end)%(align:40)%(refname:short)%(end) %(color:reset)%(color:dim)%(objectname:short)%(color:reset) %(contents:subject)'
     local header='<CR>: checkout | ^D: delete | ^W: worktree add | ^T: worktree add -b'
 
+    # Responsive layout based on terminal width
+    local height="~50%"
+    local preview_window="right,50%,wrap"
+    if [[ $(tput cols) -lt 100 ]]; then
+        height="~80%"
+        preview_window="down,70%,wrap"
+    fi
+
     git branch -a --color=always --format="$format_str" 2>/dev/null | \
         fzf --ansi \
             --with-nth=2.. \
             --delimiter='\t' \
-            --height=~50% \
+            --height="$height" \
             --header="$header" \
             --preview='echo -e "\033[1;36mBranch:\033[0m {1}" && git log -1 --color=always --format="%C(bold cyan)Updated:%C(reset) %cr by %an" {1} 2>/dev/null && echo && git log --oneline --graph --color=always -20 {1}' \
-            --preview-window=right:50%:wrap \
+            --preview-window="$preview_window" \
             --expect=ctrl-d,ctrl-w,ctrl-t | \
         {
             local key branch
