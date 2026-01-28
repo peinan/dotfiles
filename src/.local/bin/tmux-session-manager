@@ -1,92 +1,138 @@
 #!/bin/zsh
 
-# Get current session name
-current_session=$(tmux display-message -p '#S' 2>/dev/null)
+width=90
+height=25
 
-# Sort sessions and highlight current session
-sessions=$(tmux list-sessions -F '#{session_name}' 2>/dev/null | while read -r s; do
-  if [ "$(echo "$s" | cut -c2)" = " " ]; then
-    echo "$(echo "$s" | cut -c3-)|$s"
-  else
-    echo "$s|$s"
+BLACK='\033[0;30m'
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+WHITE='\033[0;37m'
+
+GRAY='\033[38;5;242m'
+
+NC='\033[0m'
+
+# Check if already in popup (via environment variable)
+if [ "$TMUX_SESSION_MANAGER_POPUP" = "1" ]; then
+  # Main logic: session selection with fzf
+
+  # Get current session name
+  current_session=$(tmux display-message -p '#S' 2>/dev/null)
+
+  # Fixed width calculation for popup
+  # Account for fzf preview window (right:20%) and border
+  term_width=$((width * 80 / 100 - 4))
+  # Right side: date(11) + space(2) + windows(3) = 16, plus marker(2) = 18
+  name_width=$((term_width - 29))
+  [ "$name_width" -lt 10 ] && name_width=10
+
+  # Build session list sorted by last activity (most recent first)
+  # Format: activity_timestamp|session_name|window_count
+  sessions=$(tmux list-sessions -F '#{session_activity}|#{session_name}|#{session_windows}' 2>/dev/null | \
+    sort -rn -t'|' -k1 | \
+    while IFS='|' read -r activity name windows; do
+      # Format the date (support both GNU date and BSD/macOS date)
+      formatted_date=$(date -d @"$activity" "+%Y/%m/%e %H:%M" 2>/dev/null || \
+                       date -j -f "%s" "$activity" "+%Y/%m/%e %H:%M" 2>/dev/null || \
+                       echo "N/A")
+
+      # Format window count
+      window_info="󱂬  ${windows}"
+
+      # Right-aligned date and windows
+      if [ "$name" = "$current_session" ]; then
+        # Green marker for current session
+        printf "$GREEN*$NC %-${name_width}s  $GRAY%11s   %3s$NC\n" "$name" "$formatted_date" "$window_info"
+      else
+        printf "  %-${name_width}s  $GRAY%11s   %3s$NC\n" "$name" "$formatted_date" "$window_info"
+      fi
+    done)
+
+  # Extract session name from formatted line
+  # Format: "* session_name  date  Nw" or "  session_name  date  Nw"
+  extract_session_name() {
+    echo "$1" | sed 's/^..//' | awk '{print $1}'
+  }
+
+  # Show tmux sessions with fzf
+  result=$(echo "$sessions" | \
+    fzf --prompt="Session: " \
+        --ansi \
+        --preview='s=$(echo {} | sed "s/^..//" | awk "{print \$1}"); tmux list-windows -t "$s" -F "#{window_index}: #{window_name}"' \
+        --preview-window=right:20% \
+        --expect=ctrl-q,ctrl-t,ctrl-r \
+        --no-select-1 \
+        --header='Enter: switch | ^Q: kill | ^T: new | ^R: rename')
+
+  if [ -z "$result" ]; then
+    exit 0
   fi
-done | sort | cut -d'|' -f2 | while read -r s; do
-  if [ "$s" = "$current_session" ]; then
-    echo "\033[32m* $s\033[0m"
-  else
-    echo "  $s"
-  fi
-done)
 
-# Show tmux sessions with fzf
-result=$(echo "$sessions" | \
-  fzf --prompt="Session: " \
-      --ansi \
-      --preview='s=$(echo {} | sed "s/^..//"); tmux list-windows -t "$s" -F "#{window_index}: #{window_name}"' \
-      --preview-window=right:20% \
-      --expect=ctrl-q,ctrl-t,ctrl-r \
-      --no-select-1 \
-      --header='Enter: switch | ^Q: kill | ^T: new | ^R: rename')
+  # Action with the selection
+  key=$(echo "$result" | sed -n '1p')
+  selected_line=$(echo "$result" | sed -n '2p')
+  session=$(extract_session_name "$selected_line")
 
-if [ -z "$result" ]; then
-  exit 0
-fi
-
-# Action with the selection
-key=$(echo "$result" | sed -n '1p')
-session=$(echo "$result" | sed -n '2p' | sed 's/^..//')
-
-case "$key" in
-  ctrl-q)
-    # kill session
-    if [ -n "$session" ]; then
-      echo -n "Kill session '$session'? (y/N): "
-      read -r answer
-      if [ "$answer" = "y" ] || [ "$answer" = "Y" ]; then
-        if [ "$session" = "$current_session" ]; then
-          tmux switch-client -n
+  case "$key" in
+    ctrl-q)
+      # kill session
+      if [ -n "$session" ]; then
+        echo -n "Kill session '$session'? (y/N): "
+        read -r answer
+        if [ "$answer" = "y" ] || [ "$answer" = "Y" ]; then
+          if [ "$session" = "$current_session" ]; then
+            tmux switch-client -n
+          fi
+          tmux kill-session -t "$session"
+          echo "Session '$session' killed."
+        else
+          echo "Cancelled."
         fi
-        tmux kill-session -t "$session"
-        echo "Session '$session' killed."
+      fi
+      ;;
+
+    ctrl-t)
+      # new session
+      echo -n "New session name: "
+      read -r new_session
+      if [ -n "$new_session" ]; then
+        full_session_name="$new_session"
+        tmux new-session -d -s "$full_session_name"
+        tmux switch-client -t "$full_session_name"
+        echo "Session '$full_session_name' created."
       else
         echo "Cancelled."
       fi
-    fi
-    ;;
+      ;;
 
-  ctrl-t)
-    # new session
-    echo -n "New session name: "
-    read -r new_session
-    if [ -n "$new_session" ]; then
-      full_session_name="$new_session"
-      tmux new-session -d -s "$full_session_name"
-      tmux switch-client -t "$full_session_name"
-      echo "Session '$full_session_name' created."
-    else
-      echo "Cancelled."
-    fi
-    ;;
-
-  ctrl-r)
-    # rename session
-    if [ -n "$session" ]; then
-      echo -n "New name for '$session': "
-      read -r new_name
-      if [ -n "$new_name" ]; then
-        full_session_name="$new_name"
-        tmux rename-session -t "$session" "$full_session_name"
-        echo "Session renamed to '$full_session_name'."
-      else
-        echo "Cancelled."
+    ctrl-r)
+      # rename session
+      if [ -n "$session" ]; then
+        echo -n "New name for '$session': "
+        read -r new_name
+        if [ -n "$new_name" ]; then
+          full_session_name="$new_name"
+          tmux rename-session -t "$session" "$full_session_name"
+          echo "Session renamed to '$full_session_name'."
+        else
+          echo "Cancelled."
+        fi
       fi
-    fi
-    ;;
+      ;;
 
-  *)
-    # switch session
-    if [ -n "$session" ]; then
-      tmux switch-client -t "$session"
-    fi
-    ;;
-esac
+    *)
+      # switch session
+      if [ -n "$session" ]; then
+        tmux switch-client -t "$session"
+      fi
+      ;;
+  esac
+else
+  # Launch self in tmux popup
+  tmux popup -xC -yC -w"$width" -h"$height" -E \
+    "TMUX_SESSION_MANAGER_POPUP=1 $0"
+fi
