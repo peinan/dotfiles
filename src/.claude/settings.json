@@ -81,15 +81,6 @@
         ]
       },
       {
-        "matcher": "idle_prompt",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.local/bin/claude-notify"
-          }
-        ]
-      },
-      {
         "matcher": "elicitation_dialog",
         "hooks": [
           {
