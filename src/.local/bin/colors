@@ -1,0 +1,148 @@
+#!/bin/zsh
+
+# Display basic colors
+show_basic_colors() {
+    echo "=== Basic 16 Colors ==="
+    local colors=("Black" "Red" "Green" "Yellow" "Blue" "Magenta" "Cyan" "White")
+
+    for i in {0..7}; do
+        printf "\033[3${i}m■ %s (%d) \033[0m" "${colors[$i]}" $i
+        printf "\033[1;3${i}m■ Bright %s (1;3%d)\033[0m\n" "${colors[$i]}" $i
+    done
+}
+
+# Display 256 colors in compact format
+show_256_colors_compact() {
+    if [ "$(tput colors)" -lt 256 ]; then
+        echo "This terminal does not support 256 colors"
+        return
+    fi
+
+    echo "=== 256 Color Palette ==="
+
+    # Basic 16 colors
+    for i in {0..15}; do
+        printf "\033[48;5;${i}m %3d \033[0m" $i
+        [ $((i % 8)) -eq 7 ] && echo
+    done
+    echo
+
+    # 216 color RGB cube
+    echo "216 Color RGB Cube:"
+    for r in {0..5}; do
+        for g in {0..5}; do
+            for b in {0..5}; do
+                local color=$((16 + r*36 + g*6 + b))
+                printf "\033[48;5;${color}m%3d\033[0m" $color
+            done
+            echo
+        done
+        echo
+    done
+
+    # Grayscale
+    echo "Grayscale:"
+    for i in {232..255}; do
+        printf "\033[48;5;${i}m%3d\033[0m " $i
+        [ $(((i-232) % 12)) -eq 11 ] && echo
+    done
+    echo
+}
+
+# Display gray colors in detail
+show_gray_colors_detailed() {
+    echo "=== Gray Colors Detail ==="
+
+    # ANSI gray
+    echo "ANSI Gray:"
+    printf "\033[0;30m■ \033[40m 30 \033[0m Black\n"
+    printf "\033[1;30m■ \033[100m1;30\033[0m Bright Black\n"
+    printf "\033[0;90m■ \033[100m 90 \033[0m Dark Gray\n"
+    printf "\033[0;37m■ \033[47m 37 \033[0m Light Gray\n"
+    printf "\033[1;37m■ \033[107m1;37\033[0m Bright White\n"
+
+    if [ "$(tput colors)" -ge 256 ]; then
+        echo
+        echo "256 Color Gray (Recommended):"
+        local grays=(232 233 234 235 236 237 238 239 240 241 242 243 244 245 246 247 248 249 250 251 252 253 254 255)
+
+        for gray in "${grays[@]}"; do
+            printf "\033[38;5;${gray}m■ %3d \033[48;5;${gray}m   \033[0m " $gray
+            [ $(((gray-232) % 6)) -eq 5 ] && echo
+        done
+        echo
+    fi
+}
+
+# Color test
+test_colors() {
+    echo "=== Color Display Test ==="
+    echo "Terminal: $TERM"
+    echo "Supported colors: $(tput colors)"
+
+    # Sample text
+    local sample="Hello World! 123"
+
+    echo
+    echo "ANSI Test:"
+    for i in {30..37}; do
+        printf "\033[${i}m%s\033[0m " "$sample"
+    done
+    echo
+
+    if [ "$(tput colors)" -ge 256 ]; then
+        echo
+        echo "256 Color Test:"
+        for i in {196,46,21,226,201,51}; do
+            printf "\033[38;5;${i}m%s\033[0m " "$sample"
+        done
+        echo
+    fi
+}
+
+# Display all colors
+show_all_colors() {
+    show_basic_colors
+    echo
+    show_gray_colors_detailed
+    echo
+    test_colors
+}
+
+# Display help
+show_help() {
+    echo "colors - Terminal color display utility"
+    echo
+    echo "Usage: colors [option]"
+    echo
+    echo "Options:"
+    echo "  basic, b    Display basic 16 colors"
+    echo "  256, f      Display 256 color palette"
+    echo "  gray, g     Display gray colors"
+    echo "  test, t     Run color display test"
+    echo "  help, h     Display this help"
+    echo "  (none)      Display all colors"
+}
+
+mode=${1:-all}
+
+case $mode in
+    "basic"|"b")
+        show_basic_colors
+        ;;
+    "256"|"full"|"f")
+        show_256_colors_compact
+        ;;
+    "gray"|"grey"|"g")
+        show_gray_colors_detailed
+        ;;
+    "test"|"t")
+        test_colors
+        ;;
+    "help"|"h")
+        show_help
+        ;;
+    *)
+        show_all_colors
+        ;;
+esac
