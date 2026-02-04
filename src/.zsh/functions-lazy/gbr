@@ -14,8 +14,10 @@
 # Helper functions
 # -----------------------------------------------------------------------------
 
-# Select a branch using fzf
+# Select a branch using fzf (multi-select enabled)
 # Args: $1 - header text (optional), $2 - exclude current branch (optional, "true" to exclude)
+# Returns: newline-separated list of selected branches
+
 select_branch() {
     local header="${1:-Branch selector}"
     local exclude_current="$2"
@@ -63,6 +65,7 @@ select_branch() {
 
     echo "$branch_list" | \
         fzf --ansi \
+            --multi \
             --with-nth=2.. \
             --delimiter='\t' \
             --height="$height" \
@@ -72,11 +75,11 @@ select_branch() {
         cut -f1
 }
 
-# Select a branch with action shortcuts
-# Returns: "branch|action" format
+# Select a branch with action shortcuts (multi-select enabled)
+# Returns: "branch1\nbranch2\n...|action" format
 select_branch_with_action() {
     local format_str='%(refname:short)	%(HEAD)	%(if:equals=refs/remotes)%(refname:rstrip=-2)%(then)remote%(else)local%(end)	%(objectname:short)	%(contents:subject)'
-    local header='<CR>: checkout | ^D: delete | ^W: worktree add | ^T: worktree add -b'
+    local header='<CR>: checkout | ^D: delete (TAB multi) | ^W: worktree add | ^T: worktree add -b'
 
     # Responsive layout based on terminal width
     local height="~60%"
@@ -108,6 +111,7 @@ select_branch_with_action() {
         printf "%s\t%s%-40s\033[0m \033[2m%s\033[0m %s\n", branch, color, display, hash, subject
     }' | \
         fzf --ansi \
+            --multi \
             --with-nth=2.. \
             --delimiter='\t' \
             --height="$height" \
@@ -116,11 +120,15 @@ select_branch_with_action() {
             --preview-window="$preview_window" \
             --expect=ctrl-d,ctrl-w,ctrl-t | \
         {
-            local key branch
+            local key
             read -r key
-            read -r branch
-            branch=$(echo "$branch" | cut -f1)
-            echo "${branch}|${key}"
+            local branches=()
+            while IFS= read -r line; do
+                [[ -n "$line" ]] && branches+=("$(echo "$line" | cut -f1)")
+            done
+            # Join branches with newline, append |action
+            local IFS=$'\n'
+            echo "${branches[*]}|${key}"
         }
 }
 
@@ -148,38 +156,81 @@ action_checkout() {
     git checkout "$checkout_name"
 }
 
+# Delete branches (supports multiple branches)
+# Args: $1 - newline-separated list of branches
 action_delete() {
-    local branch="$1"
-    if [[ -z "$branch" ]]; then
+    local input="$1"
+    if [[ -z "$input" ]]; then
         return 0
     fi
 
-    local branch_name
-    branch_name=$(extract_branch_name "$branch")
+    # Parse newline-separated input into array
+    local branches=("${(@f)input}")
 
-    # Check if it's current branch
+    # Filter out empty entries
+    branches=("${(@)branches:#}")
+    if [[ ${#branches[@]} -eq 0 ]]; then
+        return 0
+    fi
+
     local current_branch
     current_branch=$(git branch --show-current 2>/dev/null)
-    if [[ "$branch_name" == "$current_branch" ]]; then
-        echo "Error: Cannot delete current branch '$branch_name'" >&2
+
+    # Pre-validation: collect valid branches, report errors
+    local valid_branches=()
+    for branch in "${branches[@]}"; do
+        local branch_name
+        branch_name=$(extract_branch_name "$branch")
+
+        # Check if it's current branch
+        if [[ "$branch_name" == "$current_branch" ]]; then
+            echo "Error: Cannot delete current branch '$branch_name'" >&2
+            continue
+        fi
+
+        # Check if it's a remote branch
+        if [[ "$branch" == remotes/* || "$branch" == origin/* ]]; then
+            echo "Error: Cannot delete remote branch '$branch_name' directly. Use 'git push origin --delete $branch_name'" >&2
+            continue
+        fi
+
+        valid_branches+=("$branch_name")
+    done
+
+    if [[ ${#valid_branches[@]} -eq 0 ]]; then
+        echo "No valid branches to delete."
         return 1
     fi
 
     # Confirmation
-    echo -n "Delete branch '$branch_name'? [y/N]: "
+    if [[ ${#valid_branches[@]} -eq 1 ]]; then
+        echo -n "Delete branch '${valid_branches[1]}'? [y/N]: "
+    else
+        echo "Delete ${#valid_branches[@]} branch(es):"
+        for b in "${valid_branches[@]}"; do
+            echo "  - $b"
+        done
+        echo -n "Confirm? [y/N]: "
+    fi
+
     read -r confirm
     if [[ "$confirm" != "y" && "$confirm" != "Y" ]]; then
         echo "Cancelled."
         return 0
     fi
 
-    # Check if it's a remote branch
-    if [[ "$branch" == remotes/* || "$branch" == origin/* ]]; then
-        echo "Error: Cannot delete remote branch directly. Use 'git push origin --delete $branch_name'" >&2
-        return 1
-    fi
+    # Delete each branch
+    local failed=0
+    for branch_name in "${valid_branches[@]}"; do
+        if git branch -d "$branch_name" 2>/dev/null || git branch -D "$branch_name" 2>/dev/null; then
+            echo "Deleted branch '$branch_name'"
+        else
+            echo "Error: Failed to delete branch '$branch_name'" >&2
+            ((failed++))
+        fi
+    done
 
-    git branch -d "$branch_name" || git branch -D "$branch_name"
+    [[ $failed -eq 0 ]]
 }
 
 action_worktree_add() {
@@ -258,9 +309,9 @@ case "$mode" in
         action_checkout "$branch"
         ;;
     delete)
-        local branch
-        branch=$(select_branch "Delete branch (select branch to delete)" "true")
-        action_delete "$branch"
+        local branches
+        branches=$(select_branch "Delete branch(es) - TAB to multi-select" "true")
+        action_delete "$branches"
         ;;
     worktree)
         local branch
@@ -274,28 +325,32 @@ case "$mode" in
         ;;
     *)
         # Default: select branch with action shortcuts
-        local result branch action
+        local result branches action
         result=$(select_branch_with_action)
-        branch="${result%|*}"
+        branches="${result%|*}"
         action="${result#*|}"
 
-        if [[ -z "$branch" ]]; then
+        if [[ -z "$branches" ]]; then
             return 0
         fi
 
+        # For checkout/worktree, use only the first selected branch
+        local first_branch
+        first_branch="${branches%%$'\n'*}"
+
         case "$action" in
             ctrl-d)
-                action_delete "$branch"
+                action_delete "$branches"
                 ;;
             ctrl-w)
-                action_worktree_add "$branch"
+                action_worktree_add "$first_branch"
                 ;;
             ctrl-t)
-                action_worktree_add_b "$branch"
+                action_worktree_add_b "$first_branch"
                 ;;
             *)
                 # Default: checkout (Enter key)
-                action_checkout "$branch"
+                action_checkout "$first_branch"
                 ;;
         esac
         ;;
