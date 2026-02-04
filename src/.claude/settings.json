@@ -21,6 +21,7 @@
       "Write(*)",
       "Bash(gh:*)",
       "Bash(sed:*)",
+      "Bash(xargs:*)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:npmjs.org)",
       "WebFetch(domain:note.com)"
@@ -106,6 +107,7 @@
     "document-skills@anthropic-agent-skills": true,
     "upgrading-expo@expo-plugins": true,
     "lua-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true
+    "typescript-lsp@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true
   }
 }
