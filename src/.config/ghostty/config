@@ -11,9 +11,10 @@ copy-on-select = false
 macos-option-as-alt = true
 macos-icon = xray
 
-quick-terminal-position = right
+quick-terminal-position = center
 quick-terminal-screen = mouse
 quick-terminal-animation-duration = 0.05
+quick-terminal-size = 50%,500px
 
 
 ###
