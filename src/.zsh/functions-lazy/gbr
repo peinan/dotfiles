@@ -176,8 +176,9 @@ action_delete() {
     local current_branch
     current_branch=$(git branch --show-current 2>/dev/null)
 
-    # Pre-validation: collect valid branches, report errors
-    local valid_branches=()
+    # Pre-validation: collect valid branches, separate local and remote
+    local local_branches=()
+    local remote_branches=()
     for branch in "${branches[@]}"; do
         local branch_name
         branch_name=$(extract_branch_name "$branch")
@@ -188,27 +189,34 @@ action_delete() {
             continue
         fi
 
-        # Check if it's a remote branch
+        # Separate local and remote branches
         if [[ "$branch" == remotes/* || "$branch" == origin/* ]]; then
-            echo "Error: Cannot delete remote branch '$branch_name' directly. Use 'git push origin --delete $branch_name'" >&2
-            continue
+            remote_branches+=("$branch_name")
+        else
+            local_branches+=("$branch_name")
         fi
-
-        valid_branches+=("$branch_name")
     done
 
-    if [[ ${#valid_branches[@]} -eq 0 ]]; then
+    if [[ ${#local_branches[@]} -eq 0 && ${#remote_branches[@]} -eq 0 ]]; then
         echo "No valid branches to delete."
         return 1
     fi
 
     # Confirmation
-    if [[ ${#valid_branches[@]} -eq 1 ]]; then
-        echo -n "Delete branch '${valid_branches[1]}'? [y/N]: "
+    local total=$((${#local_branches[@]} + ${#remote_branches[@]}))
+    if [[ $total -eq 1 ]]; then
+        if [[ ${#local_branches[@]} -eq 1 ]]; then
+            echo -n "Delete local branch '${local_branches[1]}'? [y/N]: "
+        else
+            echo -n "Delete remote branch '${remote_branches[1]}'? [y/N]: "
+        fi
     else
-        echo "Delete ${#valid_branches[@]} branch(es):"
-        for b in "${valid_branches[@]}"; do
-            echo "  - $b"
+        echo "Delete $total branch(es):"
+        for b in "${local_branches[@]}"; do
+            echo "  - $b (local)"
+        done
+        for b in "${remote_branches[@]}"; do
+            echo "  - $b (remote)"
         done
         echo -n "Confirm? [y/N]: "
     fi
@@ -219,13 +227,23 @@ action_delete() {
         return 0
     fi
 
-    # Delete each branch
+    # Delete local branches
     local failed=0
-    for branch_name in "${valid_branches[@]}"; do
+    for branch_name in "${local_branches[@]}"; do
         if git branch -d "$branch_name" 2>/dev/null || git branch -D "$branch_name" 2>/dev/null; then
-            echo "Deleted branch '$branch_name'"
+            echo "Deleted local branch '$branch_name'"
         else
-            echo "Error: Failed to delete branch '$branch_name'" >&2
+            echo "Error: Failed to delete local branch '$branch_name'" >&2
+            ((failed++))
+        fi
+    done
+
+    # Delete remote branches
+    for branch_name in "${remote_branches[@]}"; do
+        if git push origin --delete "$branch_name" 2>/dev/null; then
+            echo "Deleted remote branch '$branch_name'"
+        else
+            echo "Error: Failed to delete remote branch '$branch_name'" >&2
             ((failed++))
         fi
     done
