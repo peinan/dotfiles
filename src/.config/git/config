@@ -26,6 +26,7 @@
     keep-plus-minus-markers = false
 
 [delta "decorations"]
+    syntax-theme = Coldark-Dark
     commit-decoration-style = blue ol
     commit-style = raw
     file-style = omit
