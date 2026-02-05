@@ -1,0 +1,35 @@
+snippets:
+  - name: g
+    keyword: g
+    snippet: git
+
+  - name: gh issue
+    keyword: i
+    snippet: issue
+    context:
+      lbuffer: '^gh\s+'
+
+  - name: gh issue/pr create
+    keyword: n
+    snippet: create -t '{{title}}' -b ''
+    context:
+      lbuffer: '^gh\s+(issue|pr)\s+'
+
+  - name: gh issue/pr comment
+    keyword: cm
+    snippet: comment {{number}} -b ''
+    context:
+      lbuffer: '^gh\s+(issue|pr)\s+'
+
+  - name: gh issue/pr edit
+    keyword: e
+    snippet: edit {{number}} -b ''
+    context:
+      lbuffer: '^gh\s+(issue|pr)\s+'
+
+  - name: gh issue/pr view
+    keyword: v
+    snippet: view {{number}}
+    context:
+      lbuffer: '^gh\s+(issue|pr)\s+'
+

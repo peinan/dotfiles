@@ -64,3 +64,13 @@ zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 zstyle ':fzf-tab:complete:cd:*' popup-pad 30 0
 
+# zeno.zsh
+export ZENO_HOME=$XDG_CONFIG_HOME/zeno
+source ~/ghq/github.com/yuki-yano/zeno.zsh/zeno.zsh
+if [[ -n $ZENO_LOADED ]]; then
+    bindkey " " zeno-auto-snippet
+    bindkey '^m' zeno-auto-snippet-and-accept-line
+    bindkey '^x ' zeno-insert-space
+    bindkey '^x^m' accept-line
+fi
+
