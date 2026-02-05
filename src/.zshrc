@@ -26,6 +26,20 @@ eval $(/opt/homebrew/bin/brew shellenv)
 # Sheldon
 # -------------------------------------
 
+# Prevent zsh-autosuggestions from wrapping zeno widgets (Issue #21)
+# Must be set before sheldon loads zsh-autosuggestions
+ZSH_AUTOSUGGEST_IGNORE_WIDGETS=(
+    orig-\*
+    beep
+    run-help
+    set-local-history
+    which-command
+    yank
+    yank-pop
+    zle-\*
+    zeno-\*
+)
+
 eval "$(sheldon source)"
 
 
