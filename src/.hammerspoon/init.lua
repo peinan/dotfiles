@@ -33,14 +33,58 @@ local ghosttyBlurHotkey = hs.hotkey.new({"cmd"}, "o", function()
     local out, status = hs.execute("/bin/zsh " .. script_path)
 end)
 
+--------------------------------------------
+-- Toggle Ghostty visibility with ctrl+enter
+--------------------------------------------
+
+local function focusGhosttyWithRetries(attempts)
+    local function attempt(remaining)
+        local app = hs.application.get("Ghostty")
+        if not app then
+            return
+        end
+
+        app:unhide()
+        app:activate(true)
+
+        local win = app:mainWindow()
+        if win then
+            win:focus()
+        end
+
+        if remaining > 1 then
+            hs.timer.doAfter(0.2, function()
+                attempt(remaining - 1)
+            end)
+        end
+    end
+
+    attempt(attempts or 3)
+end
+
+local function toggleGhostty()
+    local app = hs.application.get("Ghostty")
+
+    if app and app:isFrontmost() then
+        app:hide()
+        return
+    end
+
+    hs.application.launchOrFocus("Ghostty")
+    focusGhosttyWithRetries(3)
+end
+
+hs.hotkey.bind({"ctrl"}, "return", toggleGhostty)
+hs.hotkey.bind({"ctrl"}, "padenter", toggleGhostty)
+
 local appWatcher = hs.application.watcher.new(function(appName, eventType, app)
     if (appName == "Ghostty") then
         if (eventType == hs.application.watcher.activated) then
             ghosttyBlurHotkey:enable()
-            hs.alert.show("Ghostty Enabled")
+            print("Ghostty focused")
         elseif (eventType == hs.application.watcher.deactivated) then
             ghosttyBlurHotkey:disable()
-            hs.alert.show("Ghostty Disabled")
+            print("Ghostty unfocused")
         end
     end
 end)
@@ -104,5 +148,4 @@ end
 --     ))
 --     return false
 -- end):start()
-
 
