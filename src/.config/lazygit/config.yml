@@ -1,0 +1,5 @@
+git:
+  pagers:
+    - colorArg: never
+      pager: delta --paging=never --dark --no-gitconfig --syntax-theme=Coldark-Dark
+      useConfig: false
