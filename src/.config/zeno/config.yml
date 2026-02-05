@@ -3,6 +3,22 @@ snippets:
     keyword: g
     snippet: git
 
+  - name: gw
+    keyword: gw
+    snippet: gwq
+
+  - name: gwq list
+    keyword: l
+    snippet: list
+    context:
+      lbuffer: '^gwq\s+'
+
+  - name: gwq remove
+    keyword: rm
+    snippet: remove
+    context:
+      lbuffer: '^gwq\s+'
+
   - name: gh issue
     keyword: i
     snippet: issue
