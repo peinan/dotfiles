@@ -47,6 +47,24 @@ Avoid experimental or unstable features unless explicitly requested.
 Follow DRY, but do not introduce abstraction without clear reuse.
 Avoid cleverness. Prefer obvious code.
 
+Write code that is easy to understand first, optimized second.
+
+Prefer:
+- Simple control flow
+- Clear and descriptive variable names
+- Explicit data flow
+- Small functions with a single responsibility
+
+Apply abstraction only when it reduces duplication or clarifies intent.
+Do not introduce indirection for its own sake.
+
+Encapsulation must be intentional:
+- Hide internal details
+- Expose minimal, stable interfaces
+
+If a design trade-off exists, prioritize readability and maintainability
+unless performance or correctness clearly requires otherwise.
+
 ## Failure Handling
 
 If delegation fails or results are inconsistent, stop and report.
@@ -55,6 +73,8 @@ Surface the uncertainty and ask for direction.
 
 ## Tooling and Execution Policy
 
+### Use `uv`/`uvx` instead of `python`, `pip`, or `pipx`
+
 Do not use `python`, `pip`, or `pipx` commands directly.
 All Python-related execution must use `uv` or `uvx`.
 
@@ -62,8 +82,17 @@ When suggesting commands:
 - Use `uv run`, `uv pip`, or `uvx` as appropriate.
 - Do not output bare `python` or `pip` commands.
 
-If an example requires showing Python invocation, wrap it in `uv run`.
-If uv/uvx is unavailable or unsupported, stop and ask before proceeding.
+### Use `fd` and `rg` (ripgrep) instead of default `find` and `grep`
 
-Refer to the skills documentation for correct usage of uv and uvx.
-Do not guess uv/uvx commands.
+Use `fd` instead of `find`.
+Use `rg` (ripgrep) instead of `grep`.
+
+When suggesting file search or text search commands:
+- Prefer `fd` and `rg` by default.
+- Do not output `find` or `grep` unless explicitly required.
+
+If required tools (uv, uvx, fd, rg) are unavailable, stop and ask before proceeding.
+Do not silently fall back to default tools.
+
+Refer to the skills documentation for correct usage.
+Do not guess command syntax.
