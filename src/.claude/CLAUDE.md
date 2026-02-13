@@ -83,6 +83,11 @@ When suggesting search commands:
 - Prefer `fd` and `rg` by default.
 - Do not output `find` or `grep` unless explicitly required.
 
+Be careful to the user defined aliases:
+- `rm='rm -i'`
+- `cp='cp -i'`
+- `mv='mv -i'`
+
 ### Tool Availability
 
 If required tools (`uv`, `uvx`, `fd`, `rg`) are unavailable, stop and ask before proceeding.
