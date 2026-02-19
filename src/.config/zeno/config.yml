@@ -49,3 +49,9 @@ snippets:
     context:
       lbuffer: '^gh\s+(issue|pr)\s+'
 
+  - name: gh issue/pr close
+    keyword: cl
+    snippet: close {{number}} --comment ''
+    context:
+      lbuffer: '^gh\s+(issue|pr)\s+'
+
