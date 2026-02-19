@@ -33,6 +33,7 @@ if [ "$TMUX_SESSION_MANAGER_POPUP" = "1" ]; then
   # Build session list sorted by last activity (most recent first)
   # Format: activity_timestamp|session_name|window_count
   sessions=$(tmux list-sessions -F '#{session_activity}|#{session_name}|#{session_windows}' 2>/dev/null | \
+    grep -v '|.*\-tmux_popup|' | \
     sort -rn -t'|' -k1 | \
     while IFS='|' read -r activity name windows; do
       # Format the date (support both GNU date and BSD/macOS date)
@@ -41,7 +42,7 @@ if [ "$TMUX_SESSION_MANAGER_POPUP" = "1" ]; then
                        echo "N/A")
 
       # Format window count
-      window_info="󱂬  ${windows}"
+      window_info="󰭶  ${windows}"
 
       # Right-aligned date and windows
       if [ "$name" = "$current_session" ]; then
