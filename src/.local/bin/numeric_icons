@@ -2,31 +2,69 @@
 
 if [[ $1 == -h || $1 == --help ]]; then
   cat <<'EOF'
-Usage: numeric_icons <string>
+Usage: numeric_icons [-s <style>] <string>
 
 Replace each digit (0-9) in the input with the corresponding Nerd Font icon.
 Non-digit characters are passed through unchanged.
+When input is exactly "10", a dedicated 10-icon is returned.
 
-  0→󰎡  1→󰎤  2→󰎧  3→󰎪  4→󰎭  5→󰎱  6→󰎳  7→󰎶  8→󰎹  9→󰎼  10→󰽽
+Styles:
+  none           (1-10)  󰬺󰬻󰬼󰬽󰬾󰬿󰭀󰭁󰭂󰿩
+  box-filled     (0-10)  󰎡󰎤󰎧󰎪󰎭󰎱󰎳󰎶󰎹󰎼󰽽  [default]
+  box-outline    (0-10)  󰎣󰎦󰎩󰎬󰎮󰎰󰎵󰎸󰎻󰎾󰽾
+  circle-filled  (1-10)  󰲠󰲢󰲤󰲦󰲨󰲪󰲬󰲮󰲰󰿬
+  circle-outline (1-10)  󰲡󰲣󰲥󰲧󰲩󰲫󰲭󰲯󰲱󰿭
 
 Examples:
-  numeric_icons 3     # => 󰎪
-  numeric_icons 10    # => 󰽽
-  numeric_icons 11    # => 󰎤󰎤
-  numeric_icons a1b2  # => a󰎤b󰎧
+  numeric_icons 3              # => 󰎪
+  numeric_icons 10             # => 󰽽
+  numeric_icons -s none 5      # => 󰬾
+  numeric_icons -s circle-filled 10  # => 󰿬
+  numeric_icons a1b2           # => a󰎤b󰎧
 EOF
   exit 0
 fi
 
-typeset -A icons=(
-  [0]=󰎡 [1]=󰎤 [2]=󰎧 [3]=󰎪 [4]=󰎭
-  [5]=󰎱 [6]=󰎳 [7]=󰎶 [8]=󰎹 [9]=󰎼
-)
+# Parse options
+zparseopts -D -E -F - s:=opt_style -style:=opt_style 2>/dev/null
+style=${opt_style[2]:-box-filled}
+
+# Set icon mappings per style
+typeset -A icons
+icon10=""
+
+case $style in
+  none)
+    icons=([1]=󰬺 [2]=󰬻 [3]=󰬼 [4]=󰬽 [5]=󰬾 [6]=󰬿 [7]=󰭀 [8]=󰭁 [9]=󰭂)
+    icon10=󰿩
+    ;;
+  box-filled)
+    icons=([0]=󰎡 [1]=󰎤 [2]=󰎧 [3]=󰎪 [4]=󰎭 [5]=󰎱 [6]=󰎳 [7]=󰎶 [8]=󰎹 [9]=󰎼)
+    icon10=󰽽
+    ;;
+  box-outline)
+    icons=([0]=󰎣 [1]=󰎦 [2]=󰎩 [3]=󰎬 [4]=󰎮 [5]=󰎰 [6]=󰎵 [7]=󰎸 [8]=󰎻 [9]=󰎾)
+    icon10=󰽾
+    ;;
+  circle-filled)
+    icons=([1]=󰲠 [2]=󰲢 [3]=󰲤 [4]=󰲦 [5]=󰲨 [6]=󰲪 [7]=󰲬 [8]=󰲮 [9]=󰲰)
+    icon10=󰿬
+    ;;
+  circle-outline)
+    icons=([1]=󰲡 [2]=󰲣 [3]=󰲥 [4]=󰲧 [5]=󰲩 [6]=󰲫 [7]=󰲭 [8]=󰲯 [9]=󰲱)
+    icon10=󰿭
+    ;;
+  *)
+    print "error: unknown style '$style'" >&2
+    exit 1
+    ;;
+esac
 
 input=$1
 
+# Special case for "10"
 if [[ $input == 10 ]]; then
-  print "󰽽"
+  print "$icon10"
   exit 0
 fi
 
