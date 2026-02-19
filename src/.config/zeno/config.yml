@@ -1,7 +1,13 @@
 snippets:
-  - name: g
+  - name: git
     keyword: g
     snippet: git
+
+  - name: git push
+    keyword: p
+    snippet: push
+    context:
+      lbuffer: '^git\s+'
 
   - name: gw
     keyword: gw
