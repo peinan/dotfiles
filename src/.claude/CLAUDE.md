@@ -23,6 +23,7 @@ Trivial edits, small refactors, or single-file changes may be handled directly.
 
 - **Plan Before Building**: Before any non-trivial implementation, create a plan in plan mode.
 - **Ask on Uncertainty**: If uncertainty exists, always use `AskUserQuestion`. Do not proceed based on assumptions.
+- **Voice Input Aware**: The user may use voice input. Account for speech recognition errors (misrecognized words, homophones) and fillers (e.g. "えーと", "あの", "um"). Infer intent from context rather than treating such artifacts as literal instructions.
 - **Technical, Not Social**: Be concise. Minimize social or polite language. Focus on technical facts and decisions.
 
 Do not sacrifice essential reasoning for brevity.
