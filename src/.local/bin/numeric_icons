@@ -1,0 +1,44 @@
+#!/bin/zsh
+
+if [[ $1 == -h || $1 == --help ]]; then
+  cat <<'EOF'
+Usage: numeric_icons <string>
+
+Replace each digit (0-9) in the input with the corresponding Nerd Font icon.
+Non-digit characters are passed through unchanged.
+
+  0→󰎡  1→󰎤  2→󰎧  3→󰎪  4→󰎭  5→󰎱  6→󰎳  7→󰎶  8→󰎹  9→󰎼  10→󰽽
+
+Examples:
+  numeric_icons 3     # => 󰎪
+  numeric_icons 10    # => 󰽽
+  numeric_icons 11    # => 󰎤󰎤
+  numeric_icons a1b2  # => a󰎤b󰎧
+EOF
+  exit 0
+fi
+
+typeset -A icons=(
+  [0]=󰎡 [1]=󰎤 [2]=󰎧 [3]=󰎪 [4]=󰎭
+  [5]=󰎱 [6]=󰎳 [7]=󰎶 [8]=󰎹 [9]=󰎼
+)
+
+input=$1
+
+if [[ $input == 10 ]]; then
+  print "󰽽"
+  exit 0
+fi
+
+output=""
+
+for (( i=1; i<=${#input}; i++ )); do
+  c=${input[$i]}
+  if (( ${+icons[$c]} )); then
+    output+=${icons[$c]}
+  else
+    output+=$c
+  fi
+done
+
+print "$output"
