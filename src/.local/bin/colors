@@ -6,8 +6,8 @@ show_basic_colors() {
     local colors=("Black" "Red" "Green" "Yellow" "Blue" "Magenta" "Cyan" "White")
 
     for i in {0..7}; do
-        printf "\033[3${i}m■ %s (%d) \033[0m" "${colors[$i]}" $i
-        printf "\033[1;3${i}m■ Bright %s (1;3%d)\033[0m\n" "${colors[$i]}" $i
+        printf "\\\\033[3${i}m \033[3${i}m■ %-8s\033[0m  " "${colors[$i]}"
+        printf "\\\\033[1;3${i}m \033[1;3${i}m■ Bright %-8s\033[0m\n" "${colors[$i]}"
     done
 }
 
@@ -19,6 +19,11 @@ show_256_colors_compact() {
     fi
 
     echo "=== 256 Color Palette ==="
+    printf '%s\n' 'Usage: \033[38;5;{N}m ... \033[0m  (N = color number below)'
+    printf '%s\n' '  38;5;N = text color (foreground)'
+    printf '%s\n' '  48;5;N = background color'
+    printf '%s\n' '  e.g. printf "\\033[38;5;196m Red text \\033[0m"'
+    echo
 
     # Basic 16 colors
     for i in {0..15}; do
@@ -55,15 +60,16 @@ show_gray_colors_detailed() {
 
     # ANSI gray
     echo "ANSI Gray:"
-    printf "\033[0;30m■ \033[40m 30 \033[0m Black\n"
-    printf "\033[1;30m■ \033[100m1;30\033[0m Bright Black\n"
-    printf "\033[0;90m■ \033[100m 90 \033[0m Dark Gray\n"
-    printf "\033[0;37m■ \033[47m 37 \033[0m Light Gray\n"
-    printf "\033[1;37m■ \033[107m1;37\033[0m Bright White\n"
+    printf "\\\\033[0;30m  \033[0;30m■ \033[40m    \033[0m Black\n"
+    printf "\\\\033[1;30m  \033[1;30m■ \033[100m    \033[0m Bright Black\n"
+    printf "\\\\033[0;90m  \033[0;90m■ \033[100m    \033[0m Dark Gray\n"
+    printf "\\\\033[0;37m  \033[0;37m■ \033[47m    \033[0m Light Gray\n"
+    printf "\\\\033[1;37m  \033[1;37m■ \033[107m    \033[0m Bright White\n"
 
     if [ "$(tput colors)" -ge 256 ]; then
         echo
         echo "256 Color Gray (Recommended):"
+        printf '%s\n' 'Usage: \033[38;5;{N}m (text color) / \033[48;5;{N}m (background)'
         local grays=(232 233 234 235 236 237 238 239 240 241 242 243 244 245 246 247 248 249 250 251 252 253 254 255)
 
         for gray in "${grays[@]}"; do
@@ -86,17 +92,15 @@ test_colors() {
     echo
     echo "ANSI Test:"
     for i in {30..37}; do
-        printf "\033[${i}m%s\033[0m " "$sample"
+        printf "\\\\033[${i}m \033[${i}m%s\033[0m\n" "$sample"
     done
-    echo
 
     if [ "$(tput colors)" -ge 256 ]; then
         echo
         echo "256 Color Test:"
         for i in {196,46,21,226,201,51}; do
-            printf "\033[38;5;${i}m%s\033[0m " "$sample"
+            printf "\\\\033[38;5;${i}m \033[38;5;${i}m%s\033[0m\n" "$sample"
         done
-        echo
     fi
 }
 
