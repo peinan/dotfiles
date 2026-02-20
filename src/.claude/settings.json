@@ -100,7 +100,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.local/bin/claude-notify"
+            "command": "bash ~/.claude/scripts/notify.sh"
           }
         ]
       },
@@ -109,7 +109,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.local/bin/claude-notify"
+            "command": "bash ~/.claude/scripts/notify.sh"
           }
         ]
       }
@@ -119,11 +119,15 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.local/bin/claude-notify"
+            "command": "bash ~/.claude/scripts/notify.sh"
           }
         ]
       }
     ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/scripts/statusline.sh"
   },
   "enabledPlugins": {
     "example-skills@anthropic-agent-skills": true,

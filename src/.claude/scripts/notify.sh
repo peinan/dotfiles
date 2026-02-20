@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 # Claude Code notification script
 # Reads hook event from stdin and displays a rich notification
 
@@ -6,8 +6,10 @@ set -euo pipefail
 # set -x  # for debug
 
 
-# Read JSON from stdin
-input=$(cat)
+# Read JSON from stdin and sanitize control characters that break jq parsing.
+# Claude Code may embed raw control chars (U+0000-U+001F) in message fields.
+# Strip all except \t (0x09) and \n (0x0a) which jq tolerates as whitespace.
+input=$(cat | LC_ALL=C tr -d '\000-\010\013-\037')
 
 # Parse JSON fields using jq
 hook_event=$(echo "$input" | jq -r '.hook_event_name // "Unknown"')
