@@ -27,6 +27,7 @@
       "Bash(sed *)",
       "Bash(xargs *)",
       "WebFetch(domain:github.com)",
+      "WebFetch(domain:docs.github.com)",
       "WebFetch(domain:npmjs.org)",
       "WebFetch(domain:note.com)",
       "Bash(git *)",
@@ -136,5 +137,6 @@
     "lua-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "swift-lsp@claude-plugins-official": true
-  }
+  },
+  "plansDirectory": "./.claude/plans/"
 }
