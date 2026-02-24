@@ -101,7 +101,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ~/.claude/scripts/notify.sh"
+            "command": "zsh ~/.claude/scripts/notify.sh"
           }
         ]
       },
@@ -110,7 +110,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ~/.claude/scripts/notify.sh"
+            "command": "zsh ~/.claude/scripts/notify.sh"
           }
         ]
       }
@@ -120,7 +120,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ~/.claude/scripts/notify.sh"
+            "command": "zsh ~/.claude/scripts/notify.sh"
           }
         ]
       }
