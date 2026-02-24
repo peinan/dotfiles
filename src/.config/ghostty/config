@@ -46,6 +46,7 @@ background = #2d2d2d
 # background-opacity = 0.8  # use file to control
 # background-blur-radius = 35
 # background-opacity = 0.6
+unfocused-split-opacity = 0.85
 
 # cursor
 shell-integration-features = no-cursor
