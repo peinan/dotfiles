@@ -37,8 +37,8 @@ if [ "$TMUX_SESSION_MANAGER_POPUP" = "1" ]; then
     sort -rn -t'|' -k1 | \
     while IFS='|' read -r activity name windows; do
       # Format the date (support both GNU date and BSD/macOS date)
-      formatted_date=$(date -d @"$activity" "+%Y/%m/%e %H:%M" 2>/dev/null || \
-                       date -j -f "%s" "$activity" "+%Y/%m/%e %H:%M" 2>/dev/null || \
+      formatted_date=$(date -d @"$activity" "+%Y/%_m/%e %H:%M" 2>/dev/null || \
+                       date -j -f "%s" "$activity" "+%Y/%_m/%e %H:%M" 2>/dev/null || \
                        echo "N/A")
 
       # Format window count
