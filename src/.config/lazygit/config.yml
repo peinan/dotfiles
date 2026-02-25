@@ -3,3 +3,11 @@ git:
     - colorArg: never
       pager: delta --paging=never --dark --no-gitconfig --line-numbers --syntax-theme=Coldark-Dark
       useConfig: false
+
+customCommands:
+  # Interactive: pick AI message with fzf preview (subject + multiline body)
+  - key: "C"
+    context: "files"
+    description: "AI commit (fzf preview)"
+    output: "terminal"
+    command: "/Users/s02836/ghq/github.com/peinan/dotfiles/src/.config/lazygit/scripts/aicommit_fzf.sh"
