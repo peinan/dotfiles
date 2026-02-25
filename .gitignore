@@ -21,3 +21,6 @@ pnpm-debug.log*
 # VitePress
 .vitepress/cache/
 **/.vitepress/cache/
+
+# Claude Code
+.claude/plans
