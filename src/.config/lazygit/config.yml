@@ -16,7 +16,8 @@ customCommands:
         filter: '"subject":"(?P<subject>[^"]+)","body":"(?P<body>[^"]*)"'
         valueFormat: '{{ .subject }}<SEP>{{ .body }}'
         labelFormat: '{{ .subject }}'
-    command: bash -c 'MSG="{{ .Form.Commit }}" && SUBJ="${MSG%%<SEP>*}" && BODY="${MSG#*<SEP>}" && git commit -m "$SUBJ" ${BODY:+-m "$BODY"}'
+    output: "terminal"
+    command: bash -c 'MSG="{{ .Form.Commit }}" && SUBJ="${MSG%%<SEP>*}" && BODY="${MSG#*<SEP>}" && git commit -e -m "$SUBJ" ${BODY:+-m "$BODY"}'
 
   - key: "C"
     context: "files"
