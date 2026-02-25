@@ -5,9 +5,21 @@ git:
       useConfig: false
 
 customCommands:
-  # Interactive: pick AI message with fzf preview (subject + multiline body)
+  - key: "c"
+    context: "files"
+    description: "Generate commit message (short) with aicommit2"
+    prompts:
+      - type: "menuFromCommand"
+        title: "Select commit message"
+        key: "Commit"
+        command: "aicommit2 --output json"
+        filter: '"subject":"(?P<subject>[^"]+)","body":"(?P<body>[^"]*)"'
+        valueFormat: '{{ .subject }}<SEP>{{ .body }}'
+        labelFormat: '{{ .subject }}'
+    command: bash -c 'MSG="{{ .Form.Commit }}" && SUBJ="${MSG%%<SEP>*}" && BODY="${MSG#*<SEP>}" && git commit -m "$SUBJ" ${BODY:+-m "$BODY"}'
+
   - key: "C"
     context: "files"
-    description: "AI commit (fzf preview)"
+    description: "Generate commit message (long) with aicommit2"
     output: "terminal"
     command: "/Users/s02836/ghq/github.com/peinan/dotfiles/src/.config/lazygit/scripts/aicommit_fzf.sh"
