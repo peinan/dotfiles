@@ -16,6 +16,11 @@ export WORDCHARS='.-_'
 autoload -U select-word-style && select-word-style bash
 set -o emacs
 
+# Clear SSH related variables in specific condition
+if [[ -n "$TMUX" && -n "$SSH_CONNECTION" && -z "$SSH_TTY" ]]; then
+    unset SSH_CONNECTION SSH_CLIENT SSH_TTY
+fi
+
 # -------------------------------------
 # Homebrew
 # -------------------------------------
