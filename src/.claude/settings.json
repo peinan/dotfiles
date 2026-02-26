@@ -54,7 +54,8 @@
       "Bash(diff *)",
       "Bash(basename *)",
       "Bash(dirname *)",
-      "Bash(df *)"
+      "Bash(df *)",
+      "Bash(codex *)"
     ],
     "deny": [
       "Bash(sudo *)",
