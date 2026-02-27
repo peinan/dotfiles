@@ -55,7 +55,8 @@
       "Bash(basename *)",
       "Bash(dirname *)",
       "Bash(df *)",
-      "Bash(codex *)"
+      "Bash(codex exec *)",
+      "Bash(fzf *)"
     ],
     "deny": [
       "Bash(sudo *)",
