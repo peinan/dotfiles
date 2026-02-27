@@ -7,18 +7,18 @@ add_newline = true
 format = """
 $hostname\
 $username\
-$character\
-$directory"""
+$character
+"""
 
 right_format = """
+$directory\
 $python\
 $rust\
-$cmd_duration\
-$time"""
+$cmd_duration"""
 
 [character]
-error_symbol = '[](red)'
-success_symbol = '[](green)'
+error_symbol = '[](red) '
+success_symbol = '[](green) '
 
 [os]
 disabled = false
@@ -43,6 +43,8 @@ format = '\([$user]($style)\) '
 
 [directory]
 fish_style_pwd_dir_length = 1
+format = " [$path]($style)[$read_only]($read_only_style)"
+style = "dimmed #60728a"
 
 [time]
 disabled = false
