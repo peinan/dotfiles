@@ -11,14 +11,15 @@ $character
 """
 
 right_format = """
-$directory\
 $python\
 $rust\
-$cmd_duration"""
+$cmd_duration\
+$directory
+"""
 
 [character]
-error_symbol = '[](red) '
-success_symbol = '[](green) '
+error_symbol = ' [](red) '
+success_symbol = ' [](green) '
 
 [os]
 disabled = false
