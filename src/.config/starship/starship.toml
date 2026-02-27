@@ -11,8 +11,6 @@ $character\
 $directory"""
 
 right_format = """
-$git_branch\
-$git_status\
 $python\
 $rust\
 $cmd_duration\
