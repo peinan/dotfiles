@@ -58,7 +58,7 @@
       "WebFetch(domain:npmjs.org)",
       "WebFetch(domain:note.com)",
       "WebFetch(domain:qiita.com)",
-      "WebFetch(domain:zenn.dev)",
+      "WebFetch(domain:zenn.dev)"
     ],
     "deny": [
       "Read(.env)",
@@ -85,7 +85,7 @@
       "Bash(sudo *)",
       "Bash(git reset *)",
       "Bash(git rebase *)",
-      "Bash(rm -rf *)",
+      "Bash(rm -rf *)"
     ],
     "ask": [
       "Read(**/*key.*)",
