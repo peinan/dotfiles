@@ -61,3 +61,14 @@ snippets:
     context:
       lbuffer: '^gh\s+(issue|pr)\s+'
 
+  - name: ..
+    keyword: ..
+    snippet: cd ..
+
+  - name: ../..
+    keyword: ../..
+    snippet: cd ../..
+
+  - name: ../../..
+    keyword: ../../..
+    snippet: cd ../../..

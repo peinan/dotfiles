@@ -8,11 +8,6 @@ alias la="ls -ahGF"
 alias ll="ls -lhGF"
 alias lla="ls -alhGF"
 
-## cd
-alias ..='cd ..'
-alias ..2="cd ../.."
-alias ..3="cd ../../.."
-
 ## always use Neovim
 alias vi="nvim"
 alias vin="vim +NERDTree"
