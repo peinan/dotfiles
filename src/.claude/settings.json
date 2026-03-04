@@ -4,6 +4,7 @@
   },
   "permissions": {
     "allow": [
+      "mcp__serena",
       "Read(**/bin/**)",
       "Read(~/ghq/**)",
       "Read(~/.config/**)",
@@ -27,9 +28,12 @@
       "Bash(sort *)",
       "Bash(zsh -n *)",
       "Bash(gh *)",
+      "Bash(gh issues *)",
       "Bash(sed *)",
       "Bash(xargs *)",
       "Bash(git *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
       "Bash(wc *)",
       "Bash(which *)",
       "Bash(file *)",
@@ -69,7 +73,6 @@
       "Read(**/.env.local)",
       "Read(**/.env.development)",
       "Read(**/.env.production)",
-      "Read(**/*secret*)",
       "Read(id_rsa)",
       "Read(id_ed25519)",
       "Read(**/*token*)",
@@ -144,7 +147,8 @@
     "lua-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "swift-lsp@claude-plugins-official": true,
-    "skill-codex@skill-codex": true
+    "skill-codex@skill-codex": true,
+    "chrome-devtools-mcp@chrome-devtools-plugins": true
   },
   "plansDirectory": "./.claude/plans/"
 }
