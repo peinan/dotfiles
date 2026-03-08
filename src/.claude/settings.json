@@ -150,5 +150,6 @@
     "skill-codex@skill-codex": true,
     "chrome-devtools-mcp@chrome-devtools-plugins": true
   },
-  "plansDirectory": "./.claude/plans/"
+  "plansDirectory": "./.claude/plans/",
+  "skipDangerousModePermissionPrompt": true
 }
