@@ -42,6 +42,31 @@ color_for_pct() {
   fi
 }
 
+format_time_until() {
+  local reset_at=$1
+  [ -z "$reset_at" ] && return
+
+  local reset_epoch now_epoch delta
+  reset_epoch=$(date -d "$reset_at" +%s 2>/dev/null || \
+    date -j -f "%Y-%m-%dT%H:%M:%S" "${reset_at%%.*}" +%s 2>/dev/null) || return
+  now_epoch=$(date +%s)
+  delta=$(( reset_epoch - now_epoch ))
+  [ "$delta" -le 0 ] && { printf "now"; return; }
+
+  local days hours minutes
+  days=$(( delta / 86400 ))
+  hours=$(( (delta % 86400) / 3600 ))
+  minutes=$(( (delta % 3600) / 60 ))
+
+  if [ "$days" -gt 0 ]; then
+    printf "%dd %dh" "$days" "$hours"
+  elif [ "$hours" -gt 0 ]; then
+    printf "%dh %dm" "$hours" "$minutes"
+  else
+    printf "%dm" "$minutes"
+  fi
+}
+
 fetch_usage() {
   # Check cache freshness
   if [ -f "$USAGE_CACHE" ]; then
@@ -103,12 +128,20 @@ usage_data=$(fetch_usage 2>/dev/null)
 if [ -n "$usage_data" ]; then
   five_h=$(echo "$usage_data" | jq -r '.five_hour.utilization // empty | floor' 2>/dev/null)
   seven_d=$(echo "$usage_data" | jq -r '.seven_day.utilization // empty | floor' 2>/dev/null)
+  five_h_reset=$(echo "$usage_data" | jq -r '.five_hour.resets_at // empty' 2>/dev/null)
+  seven_d_reset=$(echo "$usage_data" | jq -r '.seven_day.resets_at // empty' 2>/dev/null)
 
   if [ -n "$five_h" ] && [ -n "$seven_d" ]; then
     five_h_color=$(color_for_pct "$five_h")
     seven_d_color=$(color_for_pct "$seven_d")
-    usage_section=$(printf " ${DIVIDER} ${DIM}Usage${NC} ${five_h_color}%d%%${NC} ${DIM}/${NC} ${seven_d_color}%d%%${NC}" \
-      "$five_h" "$seven_d")
+    five_h_time=$(format_time_until "$five_h_reset")
+    seven_d_time=$(format_time_until "$seven_d_reset")
+    five_h_reset_str=""
+    seven_d_reset_str=""
+    [ -n "$five_h_time" ] && five_h_reset_str=$(printf " ${DIM}(%s)${NC}" "$five_h_time")
+    [ -n "$seven_d_time" ] && seven_d_reset_str=$(printf " ${DIM}(%s)${NC}" "$seven_d_time")
+    usage_section=$(printf " ${DIVIDER} ${DIM}Usage${NC} ${five_h_color}%d%%${NC}%s ${DIM}/${NC} ${seven_d_color}%d%%${NC}%s" \
+      "$five_h" "$five_h_reset_str" "$seven_d" "$seven_d_reset_str")
   fi
 fi
 
