@@ -48,7 +48,7 @@ format_time_until() {
 
   local reset_epoch now_epoch delta
   reset_epoch=$(date -d "$reset_at" +%s 2>/dev/null || \
-    date -j -f "%Y-%m-%dT%H:%M:%S" "${reset_at%%.*}" +%s 2>/dev/null) || return
+    /usr/bin/python3 -c "from datetime import datetime; print(int(datetime.fromisoformat('$reset_at').timestamp()))" 2>/dev/null) || return
   now_epoch=$(date +%s)
   delta=$(( reset_epoch - now_epoch ))
   [ "$delta" -le 0 ] && { printf "now"; return; }
@@ -98,8 +98,9 @@ fetch_usage() {
     echo "$response" > "$USAGE_CACHE"
     echo "$response"
   elif [ -f "$USAGE_CACHE" ]; then
-    # API failed, use stale cache
+    # API failed, use stale cache with distinct exit code
     cat "$USAGE_CACHE"
+    return 2
   else
     return 1
   fi
@@ -125,15 +126,21 @@ for ((i=0; i<empty; i++));  do bar_empty="${bar_empty}░"; done
 # --- Usage limits ---
 usage_section=""
 usage_data=$(fetch_usage 2>/dev/null)
-if [ -n "$usage_data" ]; then
+usage_stale=$?
+if [ -n "$usage_data" ] && [ "$usage_stale" -ne 1 ]; then
   five_h=$(echo "$usage_data" | jq -r '.five_hour.utilization // empty | floor' 2>/dev/null)
   seven_d=$(echo "$usage_data" | jq -r '.seven_day.utilization // empty | floor' 2>/dev/null)
   five_h_reset=$(echo "$usage_data" | jq -r '.five_hour.resets_at // empty' 2>/dev/null)
   seven_d_reset=$(echo "$usage_data" | jq -r '.seven_day.resets_at // empty' 2>/dev/null)
 
   if [ -n "$five_h" ] && [ -n "$seven_d" ]; then
-    five_h_color=$(color_for_pct "$five_h")
-    seven_d_color=$(color_for_pct "$seven_d")
+    if [ "$usage_stale" -eq 2 ]; then
+      five_h_color="$GRAY"
+      seven_d_color="$GRAY"
+    else
+      five_h_color=$(color_for_pct "$five_h")
+      seven_d_color=$(color_for_pct "$seven_d")
+    fi
     five_h_time=$(format_time_until "$five_h_reset")
     seven_d_time=$(format_time_until "$seven_d_reset")
     five_h_reset_str=""
