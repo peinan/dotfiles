@@ -31,6 +31,10 @@ snippets:
     context:
       lbuffer: '^gh\s+'
 
+  - name: ghi
+    keyword: ghi
+    snippet: gh issue
+
   - name: gh issue/pr create
     keyword: n
     snippet: create -t '{{title}}' -b ''
