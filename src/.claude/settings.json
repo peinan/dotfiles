@@ -101,7 +101,7 @@
       "Bash(git push *)",
       "Bash(sed -i *)"
     ],
-    "defaultMode": "acceptEdits"
+    "defaultMode": "auto"
   },
   "model": "opus",
   "hooks": {
@@ -151,5 +151,6 @@
     "chrome-devtools-mcp@chrome-devtools-plugins": true
   },
   "plansDirectory": "./.claude/plans/",
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "skipAutoPermissionPrompt": true
 }
