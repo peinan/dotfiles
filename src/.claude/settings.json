@@ -103,7 +103,9 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "opus",
+  "model": "opus[1m]",
+  "effortLevel": "high",
+  "fastMode": true,
   "hooks": {
     "Notification": [
       {
