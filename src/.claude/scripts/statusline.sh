@@ -11,9 +11,6 @@ GRAY="\033[38;5;240m"
 
 DIVIDER="${GRAY}∣${NC}"
 
-USAGE_CACHE="/tmp/claude-usage-cache.json"
-USAGE_TTL=60
-
 input=$(cat)
 
 model=$(echo "$input" | jq -r '.model.display_name // "unknown"')
@@ -43,12 +40,10 @@ color_for_pct() {
 }
 
 format_time_until() {
-  local reset_at=$1
-  [ -z "$reset_at" ] && return
+  local reset_epoch=$1
+  [ -z "$reset_epoch" ] && return
 
-  local reset_epoch now_epoch delta
-  reset_epoch=$(date -d "$reset_at" +%s 2>/dev/null || \
-    /usr/bin/python3 -c "from datetime import datetime; print(int(datetime.fromisoformat('$reset_at').timestamp()))" 2>/dev/null) || return
+  local now_epoch delta
   now_epoch=$(date +%s)
   delta=$(( reset_epoch - now_epoch ))
   [ "$delta" -le 0 ] && { printf "now"; return; }
@@ -64,45 +59,6 @@ format_time_until() {
     printf "%dh %dm" "$hours" "$minutes"
   else
     printf "%dm" "$minutes"
-  fi
-}
-
-fetch_usage() {
-  # Check cache freshness
-  if [ -f "$USAGE_CACHE" ]; then
-    local now mtime age
-    now=$(date +%s)
-    mtime=$(stat -c %Y "$USAGE_CACHE" 2>/dev/null || stat -f %m "$USAGE_CACHE" 2>/dev/null || echo 0)
-    age=$(( now - mtime ))
-    if [ "$age" -lt "$USAGE_TTL" ]; then
-      cat "$USAGE_CACHE"
-      return
-    fi
-  fi
-
-  # Get OAuth token
-  local token_json access_token
-  token_json=$(security find-generic-password -s "Claude Code-credentials" -w 2>/dev/null) || return 1
-  access_token=$(echo "$token_json" | jq -r '.claudeAiOauth.accessToken // empty' 2>/dev/null)
-  [ -z "$access_token" ] && return 1
-
-  # Fetch usage data
-  local response
-  response=$(curl -s --max-time 5 https://api.anthropic.com/api/oauth/usage \
-    -H "Authorization: Bearer $access_token" \
-    -H "anthropic-beta: oauth-2025-04-20" \
-    -H "Content-Type: application/json" 2>/dev/null)
-
-  # Validate response
-  if echo "$response" | jq -e '.five_hour.utilization' >/dev/null 2>&1; then
-    echo "$response" > "$USAGE_CACHE"
-    echo "$response"
-  elif [ -f "$USAGE_CACHE" ]; then
-    # API failed, use stale cache with distinct exit code
-    cat "$USAGE_CACHE"
-    return 2
-  else
-    return 1
   fi
 }
 
@@ -123,33 +79,24 @@ empty=$(( bar_width - filled ))
 for ((i=0; i<filled; i++)); do bar_filled="${bar_filled}█"; done
 for ((i=0; i<empty; i++));  do bar_empty="${bar_empty}░"; done
 
-# --- Usage limits ---
+# --- Usage limits (from rate_limits field in stdin) ---
 usage_section=""
-usage_data=$(fetch_usage 2>/dev/null)
-usage_stale=$?
-if [ -n "$usage_data" ] && [ "$usage_stale" -ne 1 ]; then
-  five_h=$(echo "$usage_data" | jq -r '.five_hour.utilization // empty | floor' 2>/dev/null)
-  seven_d=$(echo "$usage_data" | jq -r '.seven_day.utilization // empty | floor' 2>/dev/null)
-  five_h_reset=$(echo "$usage_data" | jq -r '.five_hour.resets_at // empty' 2>/dev/null)
-  seven_d_reset=$(echo "$usage_data" | jq -r '.seven_day.resets_at // empty' 2>/dev/null)
+five_h=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty | floor' 2>/dev/null)
+seven_d=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty | floor' 2>/dev/null)
+five_h_reset=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty' 2>/dev/null)
+seven_d_reset=$(echo "$input" | jq -r '.rate_limits.seven_day.resets_at // empty' 2>/dev/null)
 
-  if [ -n "$five_h" ] && [ -n "$seven_d" ]; then
-    if [ "$usage_stale" -eq 2 ]; then
-      five_h_color="$GRAY"
-      seven_d_color="$GRAY"
-    else
-      five_h_color=$(color_for_pct "$five_h")
-      seven_d_color=$(color_for_pct "$seven_d")
-    fi
-    five_h_time=$(format_time_until "$five_h_reset")
-    seven_d_time=$(format_time_until "$seven_d_reset")
-    five_h_reset_str=""
-    seven_d_reset_str=""
-    [ -n "$five_h_time" ] && five_h_reset_str=$(printf " ${DIM}(%s)${NC}" "$five_h_time")
-    [ -n "$seven_d_time" ] && seven_d_reset_str=$(printf " ${DIM}(%s)${NC}" "$seven_d_time")
-    usage_section=$(printf " ${DIVIDER} ${DIM}Usage${NC} ${five_h_color}%d%%${NC}%s ${DIM}/${NC} ${seven_d_color}%d%%${NC}%s" \
-      "$five_h" "$five_h_reset_str" "$seven_d" "$seven_d_reset_str")
-  fi
+if [ -n "$five_h" ] && [ -n "$seven_d" ]; then
+  five_h_color=$(color_for_pct "$five_h")
+  seven_d_color=$(color_for_pct "$seven_d")
+  five_h_time=$(format_time_until "$five_h_reset")
+  seven_d_time=$(format_time_until "$seven_d_reset")
+  five_h_reset_str=""
+  seven_d_reset_str=""
+  [ -n "$five_h_time" ] && five_h_reset_str=$(printf " ${DIM}(%s)${NC}" "$five_h_time")
+  [ -n "$seven_d_time" ] && seven_d_reset_str=$(printf " ${DIM}(%s)${NC}" "$seven_d_time")
+  usage_section=$(printf " ${DIVIDER} ${DIM}Usage${NC} ${five_h_color}%d%%${NC}%s ${DIM}/${NC} ${seven_d_color}%d%%${NC}%s" \
+    "$five_h" "$five_h_reset_str" "$seven_d" "$seven_d_reset_str")
 fi
 
 printf "${DIM}%s${NC} ${DIVIDER} ${DIM}Context${NC} ${color}%s${GRAY}%s${NC} ${DIM}%s/%s${NC} ${DIM}(%d%%)${NC}%s" \
