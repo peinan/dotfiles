@@ -9,6 +9,12 @@ snippets:
     context:
       lbuffer: '^git\s+'
 
+  - name: git pull
+    keyword: pl
+    snippet: pull
+    context:
+      lbuffer: '^git\s+'
+
   - name: gw
     keyword: gw
     snippet: gwq
