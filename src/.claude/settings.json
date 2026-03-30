@@ -104,8 +104,6 @@
     "defaultMode": "auto"
   },
   "model": "opus[1m]",
-  "effortLevel": "high",
-  "fastMode": true,
   "hooks": {
     "Notification": [
       {
@@ -152,7 +150,9 @@
     "skill-codex@skill-codex": true,
     "chrome-devtools-mcp@chrome-devtools-plugins": true
   },
+  "effortLevel": "high",
   "plansDirectory": "./.claude/plans/",
   "skipDangerousModePermissionPrompt": true,
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "fastMode": true
 }
