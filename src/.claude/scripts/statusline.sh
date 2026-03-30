@@ -7,13 +7,13 @@ GREEN="\033[32m"
 YELLOW="\033[33m"
 RED="\033[31m"
 PURPLE="\033[38;5;105m"
-GRAY="\033[38;5;239m"
+GRAY="\033[38;5;241m"
 
 DIVIDER="${GRAY}∣${NC}"
 
 input=$(cat)
 
-model=$(echo "$input" | jq -r '.model.display_name // "unknown"')
+model=$(echo "$input" | jq -r '.model.display_name // "unknown"' | sed -E 's/ \([^)]+\)$//')
 used_pct=$(echo "$input" | jq -r '.context_window.used_percentage // 0')
 ctx_size=$(echo "$input" | jq -r '.context_window.context_window_size // 1')
 
