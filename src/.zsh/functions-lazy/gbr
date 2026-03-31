@@ -79,7 +79,7 @@ select_branch() {
 # Returns: "branch1\nbranch2\n...|action" format
 select_branch_with_action() {
     local format_str='%(refname:short)	%(HEAD)	%(if:equals=refs/remotes)%(refname:rstrip=-2)%(then)remote%(else)local%(end)	%(objectname:short)	%(contents:subject)'
-    local header='<CR>: checkout | ^D: delete (TAB multi) | ^W: worktree add | ^T: worktree add -b'
+    local header='<CR>: checkout | ^D: delete (TAB multi) | ^G: new branch | ^W: worktree add | ^T: worktree add -b'
 
     # Responsive layout based on terminal width
     local height="~60%"
@@ -118,7 +118,7 @@ select_branch_with_action() {
             --header="$header" \
             --preview='echo -e "\033[1;36mBranch:\033[0m {1}" && git log -1 --color=always --format="%C(bold cyan)Updated:%C(reset) %cr by %an" {1} 2>/dev/null && echo && git log --oneline --graph --color=always -20 {1}' \
             --preview-window="$preview_window" \
-            --expect=ctrl-d,ctrl-w,ctrl-t | \
+            --expect=ctrl-d,ctrl-g,ctrl-w,ctrl-t | \
         {
             local key
             read -r key
@@ -303,6 +303,51 @@ action_worktree_add_b() {
     cd "$worktree_path"
 }
 
+action_new_branch() {
+    local base_branch="$1"
+
+    echo -n "New branch name: "
+    read -r new_branch
+    if [[ -z "$new_branch" ]]; then
+        echo "Cancelled."
+        return 0
+    fi
+
+    if [[ -n "$base_branch" ]]; then
+        local base_name
+        base_name=$(extract_branch_name "$base_branch")
+        git checkout -b "$new_branch" "$base_name"
+    else
+        git checkout -b "$new_branch"
+    fi
+}
+
+# -----------------------------------------------------------------------------
+# Help
+# -----------------------------------------------------------------------------
+
+show_help() {
+    cat <<'EOF'
+Git branch action tool with fzf
+
+Usage:
+  gbr              Branch select -> Action select
+  gbr -c           Checkout mode (gco compatible)
+  gbr -d           Delete mode
+  gbr -n           New branch mode (checkout -b)
+  gbr -w           Worktree add mode
+  gbr -W           Worktree add -b mode (new branch)
+  gbr -h           Show this help
+
+Keybindings (default mode):
+  <CR>             Checkout
+  ^D               Delete (TAB for multi-select)
+  ^G               New branch (checkout -b)
+  ^W               Worktree add
+  ^T               Worktree add -b
+EOF
+}
+
 # -----------------------------------------------------------------------------
 # Main
 # -----------------------------------------------------------------------------
@@ -310,13 +355,15 @@ action_worktree_add_b() {
 local mode=""
 
 # Parse arguments
-while getopts "cdwW" opt; do
+while getopts "cdnwWh" opt; do
     case $opt in
         c) mode="checkout" ;;
         d) mode="delete" ;;
+        n) mode="new-branch" ;;
         w) mode="worktree" ;;
         W) mode="worktree-b" ;;
-        *) echo "Usage: gbr [-c|-d|-w|-W]" >&2; return 1 ;;
+        h) show_help; return 0 ;;
+        *) show_help >&2; return 1 ;;
     esac
 done
 
@@ -341,6 +388,11 @@ case "$mode" in
         branch=$(select_branch "Worktree add -b (select base branch, or ESC for current)")
         action_worktree_add_b "$branch"
         ;;
+    new-branch)
+        local branch
+        branch=$(select_branch "New branch (select base branch, or ESC for current)")
+        action_new_branch "$branch"
+        ;;
     *)
         # Default: select branch with action shortcuts
         local result branches action
@@ -359,6 +411,9 @@ case "$mode" in
         case "$action" in
             ctrl-d)
                 action_delete "$branches"
+                ;;
+            ctrl-g)
+                action_new_branch "$first_branch"
                 ;;
             ctrl-w)
                 action_worktree_add "$first_branch"
