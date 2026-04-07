@@ -20,7 +20,9 @@ case "$action" in
         local selected
         selected=$(brew outdated --verbose \
             | awk '{printf "\033[36m%s\033[0m", $1; sub($1, ""); print}' \
-            | fzf --multi --ansi --prompt="Select packages to upgrade: ")
+            | fzf --multi --ansi --prompt="Select packages to upgrade: " \
+                  --preview 'script -q /dev/null brew info {1} | tr -d "\r" | sed "1s/^.//"' --preview-window=right:60%:wrap \
+                  --bind 'ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down')
         if [[ -n "$selected" ]]; then
             echo "$selected" | awk '{print $1}' | xargs brew upgrade
         fi
