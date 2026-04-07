@@ -1,0 +1,45 @@
+#!/bin/zsh
+#
+# Homebrew convenience tool
+# - Require: brew, fzf
+#
+
+local BOLD=$'\033[1m'
+local GREEN=$'\033[0;32m'
+local YELLOW=$'\033[0;33m'
+local CYAN=$'\033[0;36m'
+local GRAY=$'\033[38;5;242m'
+local NC=$'\033[0m'
+
+local action="${1:-upgrade}"
+shift 2>/dev/null
+
+case "$action" in
+    upgrade|up|u)
+        # Interactively select and upgrade outdated packages
+        local selected
+        selected=$(brew outdated --verbose \
+            | awk '{printf "\033[36m%s\033[0m", $1; sub($1, ""); print}' \
+            | fzf --multi --ansi --prompt="Select packages to upgrade: ")
+        if [[ -n "$selected" ]]; then
+            echo "$selected" | awk '{print $1}' | xargs brew upgrade
+        fi
+        ;;
+    help|h|*)
+        cat << EOF
+${BOLD}Homebrew convenience tool${NC}
+
+${CYAN}Usage:${NC} hb <command> [args]
+
+${CYAN}Commands:${NC}
+  ${GREEN}upgrade, up, u${NC}   Interactively select and upgrade outdated packages
+  ${GREEN}help, h${NC}          Show this help message
+
+${CYAN}Examples:${NC}
+  hb               ${GRAY}# Select and upgrade outdated packages (default)${NC}
+  hb up            ${GRAY}# Same as above${NC}
+
+${CYAN}Requirements:${NC} brew, fzf
+EOF
+        ;;
+esac
