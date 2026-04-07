@@ -70,6 +70,8 @@ if [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
 fi
 
 # Docker
+export PATH="/Applications/Docker.app/Contents/Resources/bin:$PATH"
+
 fpath=(~/.zsh/completion $fpath)
 zstyle ':completion:*:*:docker:*' option-stacking yes
 zstyle ':completion:*:*:docker-*:*' option-stacking yes
@@ -93,3 +95,5 @@ if [[ -n $ZENO_LOADED ]]; then
     bindkey '^x^m' accept-line
 fi
 
+# MySQL
+export PATH="/opt/homebrew/opt/mysql-client@8.0/bin:$PATH"
