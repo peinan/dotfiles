@@ -3,24 +3,187 @@
 # Homebrew convenience tool
 # - Require: brew, fzf
 #
+# Usage:
+#   hb              # Browse installed packages (default)
+#   hb ls           # Same as above
+#   hb up           # Select and upgrade outdated packages
+#   hb help         # Show help
+#
+
+# -----------------------------------------------------------------------------
+# Helper functions
+# -----------------------------------------------------------------------------
+
+# List installed packages with type and pin status
+# Output: <name>\t<colored_display>
+_hb_package_list() {
+    local -A pinned_map
+    local _pkg
+    while IFS= read -r _pkg; do
+        [[ -n "$_pkg" ]] && pinned_map[$_pkg]=1
+    done < <(brew list --pinned 2>/dev/null)
+
+    while IFS= read -r _pkg; do
+        local pin_mark=""
+        [[ -n "${pinned_map[$_pkg]}" ]] && pin_mark=" 📌"
+        printf "%s\t\033[36m%-30s\033[0m \033[38;5;242m[formula]\033[0m%s\n" "$_pkg" "$_pkg" "$pin_mark"
+    done < <(brew list --formula -1 2>/dev/null)
+
+    while IFS= read -r _pkg; do
+        printf "%s\t\033[35m%-30s\033[0m \033[38;5;242m[cask]\033[0m\n" "$_pkg" "$_pkg"
+    done < <(brew list --cask -1 2>/dev/null)
+}
+
+# Select packages with action shortcuts (gbr --expect pattern)
+# Returns: "pkg1\npkg2\n...|key" format
+_hb_select_with_action() {
+    local header='<CR>: info | ^Q: uninstall | ^O: upgrade | ^Y: pin | ^V: unpin'
+
+    _hb_package_list | \
+        fzf --ansi \
+            --with-nth=2.. \
+            --delimiter='\t' \
+            --prompt="Packages: " \
+            --header="$header" \
+            --preview 'script -q /dev/null brew info {1} | tr -d "\r" | sed "1s/^.//"' \
+            --preview-window=right:60%:wrap \
+            --bind 'ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down' \
+            --expect=ctrl-q,ctrl-o,ctrl-y,ctrl-v | \
+        {
+            local key
+            read -r key
+            local pkgs=()
+            while IFS= read -r line; do
+                [[ -n "$line" ]] && pkgs+=("$(echo "$line" | cut -f1)")
+            done
+            local IFS=$'\n'
+            echo "${pkgs[*]}|${key}"
+        }
+}
+
+# -----------------------------------------------------------------------------
+# Action functions
+# -----------------------------------------------------------------------------
+
+_hb_action_uninstall() {
+    local input="$1"
+    [[ -z "$input" ]] && return 0
+
+    local packages=("${(@f)input}")
+    packages=("${(@)packages:#}")
+    [[ ${#packages[@]} -eq 0 ]] && return 0
+
+    # Identify casks for correct uninstall flag
+    local casks
+    casks=$(brew list --cask -1 2>/dev/null)
+
+    # Confirmation
+    if [[ ${#packages[@]} -eq 1 ]]; then
+        echo -n "Uninstall '${packages[1]}'? [y/N]: "
+    else
+        echo "Uninstall ${#packages[@]} package(s):"
+        for pkg in "${packages[@]}"; do
+            echo "  - $pkg"
+        done
+        echo -n "Confirm? [y/N]: "
+    fi
+
+    local confirm
+    read -r confirm
+    if [[ "$confirm" != "y" && "$confirm" != "Y" ]]; then
+        echo "Cancelled."
+        return 0
+    fi
+
+    for pkg in "${packages[@]}"; do
+        if echo "$casks" | command grep -qx "$pkg"; then
+            brew uninstall --cask "$pkg"
+        else
+            brew uninstall "$pkg"
+        fi
+    done
+}
+
+_hb_action_upgrade() {
+    local input="$1"
+    [[ -z "$input" ]] && return 0
+
+    local packages=("${(@f)input}")
+    packages=("${(@)packages:#}")
+    [[ ${#packages[@]} -eq 0 ]] && return 0
+
+    brew upgrade "${packages[@]}"
+}
+
+_hb_action_pin() {
+    local input="$1"
+    [[ -z "$input" ]] && return 0
+
+    local packages=("${(@f)input}")
+    packages=("${(@)packages:#}")
+    [[ ${#packages[@]} -eq 0 ]] && return 0
+
+    local casks
+    casks=$(brew list --cask -1 2>/dev/null)
+
+    for pkg in "${packages[@]}"; do
+        if echo "$casks" | command grep -qx "$pkg"; then
+            echo "Skip: Cannot pin cask '$pkg' (formula only)" >&2
+        else
+            brew pin "$pkg" && echo "Pinned '$pkg'"
+        fi
+    done
+}
+
+_hb_action_unpin() {
+    local input="$1"
+    [[ -z "$input" ]] && return 0
+
+    local packages=("${(@f)input}")
+    packages=("${(@)packages:#}")
+    [[ ${#packages[@]} -eq 0 ]] && return 0
+
+    for pkg in "${packages[@]}"; do
+        brew unpin "$pkg" && echo "Unpinned '$pkg'"
+    done
+}
+
+# -----------------------------------------------------------------------------
+# Main
+# -----------------------------------------------------------------------------
 
 local BOLD=$'\033[1m'
 local GREEN=$'\033[0;32m'
-local YELLOW=$'\033[0;33m'
 local CYAN=$'\033[0;36m'
 local GRAY=$'\033[38;5;242m'
 local NC=$'\033[0m'
 
-local action="${1:-upgrade}"
+local action="${1:-list}"
 shift 2>/dev/null
 
 case "$action" in
+    list|ls|l)
+        local result packages action_key
+        result=$(_hb_select_with_action)
+        packages="${result%|*}"
+        action_key="${result#*|}"
+
+        [[ -z "$packages" ]] && return 0
+
+        case "$action_key" in
+            ctrl-q) _hb_action_uninstall "$packages" ;;
+            ctrl-o) _hb_action_upgrade "$packages" ;;
+            ctrl-y) _hb_action_pin "$packages" ;;
+            ctrl-v) _hb_action_unpin "$packages" ;;
+            *)      brew info $packages ;;
+        esac
+        ;;
     upgrade|up|u)
         # Interactively select and upgrade outdated packages
         local selected
         selected=$(brew outdated --verbose \
             | awk '{printf "\033[36m%s\033[0m", $1; sub($1, ""); print}' \
-            | fzf --multi --ansi --prompt="Select packages to upgrade: " \
+            | fzf --ansi --prompt="Select packages to upgrade: " \
                   --preview 'script -q /dev/null brew info {1} | tr -d "\r" | sed "1s/^.//"' --preview-window=right:60%:wrap \
                   --bind 'ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down')
         if [[ -n "$selected" ]]; then
@@ -34,14 +197,25 @@ ${BOLD}Homebrew convenience tool${NC}
 ${CYAN}Usage:${NC} hb <command> [args]
 
 ${CYAN}Commands:${NC}
+  ${GREEN}list, ls, l${NC}      Browse installed packages ${GRAY}(default)${NC}
   ${GREEN}upgrade, up, u${NC}   Interactively select and upgrade outdated packages
   ${GREEN}help, h${NC}          Show this help message
 
-${CYAN}Examples:${NC}
-  hb               ${GRAY}# Select and upgrade outdated packages (default)${NC}
-  hb up            ${GRAY}# Same as above${NC}
+${CYAN}Keybindings (list view):${NC}
+  ${GREEN}<CR>${NC}             Show package info (brew info)
+  ${GREEN}^Q${NC}               Uninstall selected packages
+  ${GREEN}^O${NC}               Upgrade selected packages
+  ${GREEN}^Y${NC}               Pin selected packages
+  ${GREEN}^V${NC}               Unpin selected packages
+  ${GREEN}^U / ^D${NC}          Scroll preview up / down
+  ${GREEN}TAB${NC}              Toggle multi-select
 
-${CYAN}Requirements:${NC} brew, fzf
+${CYAN}Examples:${NC}
+  hb               ${GRAY}# Browse installed packages${NC}
+  hb ls            ${GRAY}# Same as above${NC}
+  hb up            ${GRAY}# Select and upgrade outdated packages${NC}
+
+${CYAN}Requirements:${NC} homebrew, fzf
 EOF
         ;;
 esac
