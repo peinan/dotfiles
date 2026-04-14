@@ -147,12 +147,16 @@
     "lua-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "swift-lsp@claude-plugins-official": true,
+    "chrome-devtools-mcp@chrome-devtools-plugins": true,
+    "codex@openai-codex": true,
     "skill-codex@skill-codex": true,
-    "chrome-devtools-mcp@chrome-devtools-plugins": true
   },
-  "effortLevel": "high",
+  "effortLevel": "max",
   "plansDirectory": "./.claude/plans/",
   "skipDangerousModePermissionPrompt": true,
   "skipAutoPermissionPrompt": true,
-  "fastMode": true
+  "env": {
+    "CLAUDE_CODE_DISABLE_1M_CONTEXT": "1",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet"
+  }
 }
