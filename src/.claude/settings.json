@@ -1,6 +1,7 @@
 {
   "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "opus"
   },
   "permissions": {
     "allow": [
@@ -151,12 +152,8 @@
     "codex@openai-codex": true,
     "skill-codex@skill-codex": true,
   },
-  "effortLevel": "max",
+  "effortLevel": "high",
   "plansDirectory": "./.claude/plans/",
   "skipDangerousModePermissionPrompt": true,
-  "skipAutoPermissionPrompt": true,
-  "env": {
-    "CLAUDE_CODE_DISABLE_1M_CONTEXT": "1",
-    "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet"
-  }
+  "skipAutoPermissionPrompt": true
 }
