@@ -71,6 +71,18 @@ snippets:
     context:
       lbuffer: '^gh\s+(issue|pr)\s+'
 
+  - name: gh repo
+    keyword: r
+    snippet: repo
+    context:
+      lbuffer: '^gh\s+'
+
+  - name: gh repo create
+    keyword: n
+    snippet: create '{{repo_name}}' --private --source=. --remote=upstream
+    context:
+      lbuffer: '^gh\s+(repo)\s+'
+
   - name: ..
     keyword: ..
     snippet: cd ..
