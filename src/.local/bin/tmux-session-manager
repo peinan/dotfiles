@@ -63,6 +63,7 @@ if [ "$TMUX_SESSION_MANAGER_POPUP" = "1" ]; then
   result=$(echo "$sessions" | \
     fzf --prompt="Session: " \
         --ansi \
+        --height=100% \
         --preview='s=$(echo {} | sed "s/^..//" | awk "{print \$1}"); tmux list-windows -t "$s" -F "#{window_index}: #{window_name}"' \
         --preview-window=right:20% \
         --expect=ctrl-q,ctrl-t,ctrl-r \
