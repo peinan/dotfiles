@@ -1,8 +1,119 @@
 {
+  "enabledPlugins": {
+    "codex@openai-codex": true,
+    "cycloud-plugin@ailab": true,
+    "document-skills@anthropic-agent-skills": true,
+    "example-skills@anthropic-agent-skills": true,
+    "last30days@last30days-skill": true,
+    "lua-lsp@claude-plugins-official": true,
+    "plan-task-with-coding-guideline@ailab": true,
+    "review-plugin@ailab": true,
+    "skill-codex@skill-codex": true,
+    "swift-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "upgrading-expo@expo-plugins": true
+  },
   "env": {
+    "CLAUDE_CODE_EFFORT_LEVEL": "max",
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "CLAUDE_CODE_SUBAGENT_MODEL": "opus"
   },
+  "extraKnownMarketplaces": {
+    "ailab": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/CyberAgentAILab/claude-plugins.git"
+      }
+    },
+    "last30days-skill": {
+      "source": {
+        "repo": "mvanhorn/last30days-skill",
+        "source": "github"
+      }
+    },
+    "openai-codex": {
+      "source": {
+        "repo": "openai/codex-plugin-cc",
+        "source": "github"
+      }
+    }
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "command": "zsh ~/.claude/scripts/notify.sh",
+            "type": "command"
+          }
+        ],
+        "matcher": "permission_prompt"
+      },
+      {
+        "hooks": [
+          {
+            "command": "zsh ~/.claude/scripts/notify.sh",
+            "type": "command"
+          }
+        ],
+        "matcher": "elicitation_dialog"
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "async": false,
+            "command": "'/opt/homebrew/bin/moshi-hook' claude-hook",
+            "timeout": 300,
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "async": true,
+            "command": "'/opt/homebrew/bin/moshi-hook' claude-hook",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "command": "zsh ~/.claude/scripts/notify.sh",
+            "type": "command"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "async": true,
+            "command": "'/opt/homebrew/bin/moshi-hook' claude-hook",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "async": true,
+            "command": "'/opt/homebrew/bin/moshi-hook' claude-hook",
+            "type": "command"
+          }
+        ]
+      }
+    ]
+  },
+  "model": "opus[1m]",
   "permissions": {
     "allow": [
       "mcp__serena",
@@ -65,6 +176,18 @@
       "WebFetch(domain:qiita.com)",
       "WebFetch(domain:zenn.dev)"
     ],
+    "ask": [
+      "Read(**/*key.*)",
+      "Read(**/*_key*)",
+      "Bash(rm *)",
+      "Bash(chmod *)",
+      "Bash(wget *)",
+      "Bash(curl *)",
+      "Bash(git merge *)",
+      "Bash(git push *)",
+      "Bash(sed -i *)"
+    ],
+    "defaultMode": "auto",
     "deny": [
       "Read(.env)",
       "Read(.env.local)",
@@ -90,70 +213,13 @@
       "Bash(git reset *)",
       "Bash(git rebase *)",
       "Bash(rm -rf *)"
-    ],
-    "ask": [
-      "Read(**/*key.*)",
-      "Read(**/*_key*)",
-      "Bash(rm *)",
-      "Bash(chmod *)",
-      "Bash(wget *)",
-      "Bash(curl *)",
-      "Bash(git merge *)",
-      "Bash(git push *)",
-      "Bash(sed -i *)"
-    ],
-    "defaultMode": "auto"
-  },
-  "model": "opus[1m]",
-  "hooks": {
-    "Notification": [
-      {
-        "matcher": "permission_prompt",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "zsh ~/.claude/scripts/notify.sh"
-          }
-        ]
-      },
-      {
-        "matcher": "elicitation_dialog",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "zsh ~/.claude/scripts/notify.sh"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "zsh ~/.claude/scripts/notify.sh"
-          }
-        ]
-      }
     ]
   },
-  "statusLine": {
-    "type": "command",
-    "command": "bash ~/.claude/scripts/statusline.sh"
-  },
-  "enabledPlugins": {
-    "example-skills@anthropic-agent-skills": true,
-    "document-skills@anthropic-agent-skills": true,
-    "upgrading-expo@expo-plugins": true,
-    "lua-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true,
-    "swift-lsp@claude-plugins-official": true,
-    "chrome-devtools-mcp@chrome-devtools-plugins": true,
-    "codex@openai-codex": true,
-    "skill-codex@skill-codex": true,
-  },
-  "effortLevel": "high",
   "plansDirectory": "./.claude/plans/",
+  "skipAutoPermissionPrompt": true,
   "skipDangerousModePermissionPrompt": true,
-  "skipAutoPermissionPrompt": true
+  "statusLine": {
+    "command": "bash ~/.claude/scripts/statusline.sh",
+    "type": "command"
+  }
 }
