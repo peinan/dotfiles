@@ -79,7 +79,7 @@ snippets:
 
   - name: gh repo create
     keyword: n
-    snippet: create '{{repo_name}}' --private --source=. --remote=upstream
+    snippet: create $(basename `pwd`){{repo_name}} --private --source=. --remote=origin
     context:
       lbuffer: '^gh\s+(repo)\s+'
 
