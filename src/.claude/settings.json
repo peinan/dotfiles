@@ -97,10 +97,6 @@
       "Read(**/*_key*)",
       "Bash(rm *)",
       "Bash(chmod *)",
-      "Bash(wget *)",
-      "Bash(curl *)",
-      "Bash(git merge *)",
-      "Bash(git push *)",
       "Bash(sed -i *)"
     ],
     "defaultMode": "auto"
