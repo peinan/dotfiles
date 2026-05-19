@@ -192,8 +192,7 @@
     "review-plugin@ailab": true,
     "skill-codex@skill-codex": true,
     "swift-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true,
-    "upgrading-expo@expo-plugins": true
+    "typescript-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "ailab": {
@@ -215,8 +214,9 @@
       }
     }
   },
-  "plansDirectory": "./.claude/plans/",
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark-ansi",
-  "skipAutoPermissionPrompt": true
+  "remoteControlAtStartup": true,
+  "skipAutoPermissionPrompt": true,
+  "agentPushNotifEnabled": true
 }
