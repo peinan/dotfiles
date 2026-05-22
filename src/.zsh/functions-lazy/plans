@@ -1,0 +1,114 @@
+#!/bin/zsh
+#
+# Reference the project's Claude Code plan directory.
+# - Reads <repo>/.claude/settings.json (.plansDirectory) when present
+# - Falls back to ~/.claude/plans/<repo-basename>
+#
+
+local BOLD=$'\033[1m'
+local GREEN=$'\033[0;32m'
+local CYAN=$'\033[0;36m'
+local YELLOW=$'\033[0;33m'
+local GRAY=$'\033[38;5;242m'
+local NC=$'\033[0m'
+
+local action="${1:-ls}"
+case "$action" in
+    cd|ls|path|p|open|o|new|n|create)
+        (( $# )) && shift
+        ;;
+    help|h|-h|--help)
+        action="help"
+        ;;
+    -*)
+        action="help"
+        ;;
+    *)
+        action="ls"
+        ;;
+esac
+
+if [[ "$action" == "help" ]]; then
+    cat <<EOF
+${BOLD}Reference the project's Claude Code plan directory${NC}
+
+${CYAN}Usage:${NC} plans [command] [args]
+
+${CYAN}Commands:${NC}
+  ${GREEN}ls${NC}                     List files in the plan directory ${GRAY}(default)${NC}
+  ${GREEN}cd${NC}                     cd into the plan directory
+  ${GREEN}path, p${NC}                Print the resolved absolute path
+  ${GREEN}open, o${NC} ${YELLOW}[editor]${NC}       Open the plan directory in an editor ${GRAY}(default: \$EDITOR)${NC}
+  ${GREEN}new, n, create${NC} ${YELLOW}<slug>${NC}  Create an empty <slug>.md and print its path
+  ${GREEN}help, h${NC}                Show this help
+
+${CYAN}Source of truth:${NC}
+  Reads ${YELLOW}<repo>/.claude/settings.json${NC} ${GRAY}(.plansDirectory)${NC} when present.
+  Falls back to ${YELLOW}~/.claude/plans/<repo-basename>${NC}.
+
+${CYAN}Examples:${NC}
+  plans                          ${GRAY}# list plan files${NC}
+  plans cd                       ${GRAY}# cd to plans dir${NC}
+  plans path                     ${GRAY}# print path${NC}
+  nvim "\$(plans path)/foo.md"    ${GRAY}# open a specific plan${NC}
+  plans new design-doc           ${GRAY}# create design-doc.md${NC}
+EOF
+    return 0
+fi
+
+local _root
+_root="$(git rev-parse --show-toplevel 2>/dev/null)" || {
+    echo "plans: not inside a git repository" >&2
+    return 1
+}
+
+local dir=""
+local settings="$_root/.claude/settings.json"
+if [[ -f "$settings" ]] && (( $+commands[jq] )); then
+    dir="$(jq -r '.plansDirectory // empty' "$settings" 2>/dev/null)"
+fi
+[[ -z "$dir" ]] && dir="~/.claude/plans/${_root##*/}"
+
+case "$dir" in
+    "~")   dir="$HOME" ;;
+    "~/"*) dir="$HOME/${dir#\~/}" ;;
+esac
+
+case "$action" in
+    "path"|"p")
+        printf '%s\n' "$dir"
+        ;;
+    "cd")
+        mkdir -p "$dir"
+        cd "$dir" || return 1
+        ;;
+    "ls")
+        mkdir -p "$dir"
+        if (( $+commands[eza] )); then
+            eza -la --git --color=always "$dir"
+        else
+            ls -la "$dir"
+        fi
+        ;;
+    "open"|"o")
+        mkdir -p "$dir"
+        local editor="${1:-${EDITOR:-nvim}}"
+        "$editor" "$dir"
+        ;;
+    "new"|"n"|"create")
+        if [[ -z "$1" ]]; then
+            echo "Usage: plans new <slug>" >&2
+            return 1
+        fi
+        local slug="${1%.md}"
+        slug="${slug// /-}"
+        mkdir -p "$dir"
+        local file="$dir/${slug}.md"
+        if [[ -e "$file" ]]; then
+            echo "plans: $file already exists" >&2
+            return 1
+        fi
+        : > "$file"
+        printf '%s\n' "$file"
+        ;;
+esac
