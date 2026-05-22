@@ -1,7 +1,10 @@
 #!/bin/zsh
 #
 # Reference the project's Claude Code plan directory.
-# - Reads <repo>/.claude/settings.json (.plansDirectory) when present
+# - Reads .plansDirectory from the first file found, in order:
+#     1. <repo>/.claude/settings.local.json
+#     2. <repo>/.claude/settings.json
+#     3. ~/.claude/settings.json
 # - Falls back to ~/.claude/plans/<repo-basename>
 #
 
@@ -43,7 +46,10 @@ ${CYAN}Commands:${NC}
   ${GREEN}help, h${NC}                Show this help
 
 ${CYAN}Source of truth:${NC}
-  Reads ${YELLOW}<repo>/.claude/settings.json${NC} ${GRAY}(.plansDirectory)${NC} when present.
+  Reads ${YELLOW}.plansDirectory${NC} from the first file found, in order:
+    1. ${YELLOW}<repo>/.claude/settings.local.json${NC}
+    2. ${YELLOW}<repo>/.claude/settings.json${NC}
+    3. ${YELLOW}~/.claude/settings.json${NC}
   Falls back to ${YELLOW}~/.claude/plans/<repo-basename>${NC}.
 
 ${CYAN}Examples:${NC}
@@ -63,9 +69,17 @@ _root="$(git rev-parse --show-toplevel 2>/dev/null)" || {
 }
 
 local dir=""
-local settings="$_root/.claude/settings.json"
-if [[ -f "$settings" ]] && (( $+commands[jq] )); then
-    dir="$(jq -r '.plansDirectory // empty' "$settings" 2>/dev/null)"
+if (( $+commands[jq] )); then
+    local settings
+    for settings in \
+        "$_root/.claude/settings.local.json" \
+        "$_root/.claude/settings.json" \
+        "$HOME/.claude/settings.json"
+    do
+        [[ -f "$settings" ]] || continue
+        dir="$(jq -r '.plansDirectory // empty' "$settings" 2>/dev/null)"
+        [[ -n "$dir" ]] && break
+    done
 fi
 [[ -z "$dir" ]] && dir="~/.claude/plans/${_root##*/}"
 
@@ -83,6 +97,7 @@ case "$action" in
         cd "$dir" || return 1
         ;;
     "ls")
+        echo $dir
         mkdir -p "$dir"
         if (( $+commands[eza] )); then
             eza -la --git --color=always "$dir"
