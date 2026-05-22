@@ -1,13 +1,13 @@
 ---
 name: implement-plan-with-sub-agents-as-pm
 description: "引数で指定したプランファイルを Claude Code の Sub Agent を用いて実装していきます"
-argument-hint: [filename]
+argument-hint: [plan_filepath] [push_ok:true|false]
 ---
 
 ## あなたの役割
 
 あなたはプロダクトマネージャーです。
-プランファイル .claude/plans/$ARGUMENTS.md を元に進めてください。
+プランファイル $1 を元に進めてください。
 具体的な実装は一切行わず、全て sub-agent に委任してください。
 
 ## 実行ルール
@@ -16,7 +16,7 @@ argument-hint: [filename]
 - **タスク整理**: 分割されたタスクは依存関係や並列実行性を考慮して整理し、GitHub Issues (sub-issues) に登録する
 - **並行実行**: 依存関係のないタスクは可能な限り sub-agents を使って並行で実行する
 - **Git コミット**: 各タスク完了後にあなたがコミットする。なおコミットメッセージの末尾に `(fix #13)` のように `(fix #<issue番号>)` を付け加えること
-    - 注意: **Push は実行しないで** (内容を確認して手動で実行するため)
+- **Git Push**: `$2` が `true` の場合のみコミット後に push する。未指定または `false` の場合は push しない（デフォルト: false）
 
 ## タスク管理
 
