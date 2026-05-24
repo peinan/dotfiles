@@ -1,0 +1,81 @@
+#!/bin/zsh
+#
+# Manage CLAUDE_CONFIG_DIR override in the project's .mise.toml.
+# - `mise-cc personal` writes the override (refuses if .mise.toml already exists).
+# - `mise-cc unset`    removes the CLAUDE_CONFIG_DIR entry from .mise.toml.
+# - `mise-cc`          shows the current value (default).
+#
+
+local BOLD=$'\033[1m'
+local GREEN=$'\033[0;32m'
+local CYAN=$'\033[0;36m'
+local YELLOW=$'\033[0;33m'
+local GRAY=$'\033[38;5;242m'
+local NC=$'\033[0m'
+
+local action="${1:-show}"
+case "$action" in
+    personal|unset|show)
+        (( $# )) && shift
+        ;;
+    help|h|-h|--help)
+        action="help"
+        ;;
+    *)
+        action="help"
+        ;;
+esac
+
+if [[ "$action" == "help" ]]; then
+    cat <<EOF
+${BOLD}Manage CLAUDE_CONFIG_DIR override in .mise.toml${NC}
+
+${CYAN}Usage:${NC} mise-cc [command]
+
+${CYAN}Commands:${NC}
+  ${GREEN}personal${NC}   Write CLAUDE_CONFIG_DIR = "{{ env.HOME }}/.claude-personal" to ./.mise.toml
+  ${GREEN}unset${NC}      Remove CLAUDE_CONFIG_DIR from ./.mise.toml
+  ${GREEN}show${NC}       Show the current value ${GRAY}(default)${NC}
+  ${GREEN}help, h${NC}    Show this help
+
+${CYAN}Notes:${NC}
+  ${YELLOW}personal${NC} refuses if ./.mise.toml exists. ${YELLOW}unset${NC} only removes the key (preserves other content).
+EOF
+    return 0
+fi
+
+local file=".mise.toml"
+
+case "$action" in
+    personal)
+        if [[ -e "$file" ]]; then
+            print -- "${YELLOW}$file already exists.${NC} Remove or edit it manually."
+            return 1
+        fi
+        cat > "$file" <<'TOML'
+[env]
+CLAUDE_CONFIG_DIR = "{{ env.HOME }}/.claude-personal"
+TOML
+        mise trust "$file" >/dev/null 2>&1
+        print -- "${GREEN}wrote${NC} $file"
+        ;;
+    unset)
+        if [[ ! -f "$file" ]]; then
+            print -- "${GRAY}$file does not exist${NC}"
+            return 0
+        fi
+        mise trust "$file" >/dev/null 2>&1
+        if ! mise unset --file "$file" CLAUDE_CONFIG_DIR 2>/dev/null; then
+            print -- "${YELLOW}failed to unset${NC} CLAUDE_CONFIG_DIR in $file"
+            return 1
+        fi
+        print -- "${GREEN}unset${NC} CLAUDE_CONFIG_DIR in $file"
+        ;;
+    show)
+        if [[ -f "$file" ]] && rg -q "^CLAUDE_CONFIG_DIR\s*=" "$file" 2>/dev/null; then
+            rg --color=always -N "^CLAUDE_CONFIG_DIR\s*=" "$file"
+        else
+            print -- "${GRAY}CLAUDE_CONFIG_DIR not set (using \$HOME/.claude)${NC}"
+        fi
+        ;;
+esac
