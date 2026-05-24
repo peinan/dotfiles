@@ -1,9 +1,9 @@
 #!/bin/zsh
 #
 # Manage CLAUDE_CONFIG_DIR override in the project's .mise.toml.
-# - `mise-cc personal` writes the override (refuses if .mise.toml already exists).
-# - `mise-cc unset`    removes the CLAUDE_CONFIG_DIR entry from .mise.toml.
-# - `mise-cc`          shows the current value (default).
+# - `micc personal` writes the override (refuses if .mise.toml already exists).
+# - `micc unset`    removes the CLAUDE_CONFIG_DIR entry from .mise.toml.
+# - `micc`          shows the current value (default).
 #
 
 local BOLD=$'\033[1m'
@@ -30,7 +30,7 @@ if [[ "$action" == "help" ]]; then
     cat <<EOF
 ${BOLD}Manage CLAUDE_CONFIG_DIR override in .mise.toml${NC}
 
-${CYAN}Usage:${NC} mise-cc [command]
+${CYAN}Usage:${NC} micc [command]
 
 ${CYAN}Commands:${NC}
   ${GREEN}personal${NC}   Write CLAUDE_CONFIG_DIR = "{{ env.HOME }}/.claude-personal" to ./.mise.toml
