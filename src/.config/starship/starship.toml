@@ -14,6 +14,8 @@ right_format = """
 $python\
 $rust\
 $cmd_duration\
+${custom.gituser}\
+${custom.gituser_mismatch}\
 $directory
 """
 
@@ -41,6 +43,28 @@ format = "[$ssh_symbol$hostname]($style): "
 
 [username]
 format = '\([$user]($style)\) '
+
+[custom.gituser]
+command = "git config user.name 2>/dev/null"
+when = '''
+git rev-parse --is-inside-work-tree >/dev/null 2>&1 || exit 1
+g=$(git config user.name 2>/dev/null); [ -n "$g" ] || exit 1
+gh=$(awk '/^[[:space:]]+user:[[:space:]]/{print $2; exit}' "$HOME/.config/gh/hosts.yml" 2>/dev/null)
+[ -z "$gh" ] || [ "$g" = "$gh" ]
+'''
+format = "[$output]($style) [@]($style)"
+style = "dimmed #60728a"
+
+[custom.gituser_mismatch]
+command = "git config user.name 2>/dev/null"
+when = '''
+git rev-parse --is-inside-work-tree >/dev/null 2>&1 || exit 1
+g=$(git config user.name 2>/dev/null); [ -n "$g" ] || exit 1
+gh=$(awk '/^[[:space:]]+user:[[:space:]]/{print $2; exit}' "$HOME/.config/gh/hosts.yml" 2>/dev/null)
+[ -n "$gh" ] && [ "$g" != "$gh" ]
+'''
+format = "[$output]($style) [@](dimmed #60728a)"
+style = "red"
 
 [directory]
 truncation_length = 3
