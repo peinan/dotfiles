@@ -52,7 +52,7 @@ g=$(git config user.name 2>/dev/null); [ -n "$g" ] || exit 1
 gh=$(awk '/^[[:space:]]+user:[[:space:]]/{print $2; exit}' "$HOME/.config/gh/hosts.yml" 2>/dev/null)
 [ -z "$gh" ] || [ "$g" = "$gh" ]
 '''
-format = "[$output]($style) [@]($style)"
+format = " [$output]($style) [@]($style)"
 style = "dimmed #60728a"
 
 [custom.gituser_mismatch]
@@ -63,7 +63,7 @@ g=$(git config user.name 2>/dev/null); [ -n "$g" ] || exit 1
 gh=$(awk '/^[[:space:]]+user:[[:space:]]/{print $2; exit}' "$HOME/.config/gh/hosts.yml" 2>/dev/null)
 [ -n "$gh" ] && [ "$g" != "$gh" ]
 '''
-format = "[$output]($style) [@](dimmed #60728a)"
+format = " [$output]($style) [@](dimmed #60728a)"
 style = "red"
 
 [directory]
