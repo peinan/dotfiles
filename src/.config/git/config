@@ -3,7 +3,7 @@
 
 [user]
     email = peinan7@gmail.com
-    name  = Peinan Zhang
+    name  = peinan
 
 [alias]
     st = status -u
