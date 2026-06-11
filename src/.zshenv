@@ -18,3 +18,8 @@ for _deny in "${_path_deny[@]}"; do
   path=("${path[@]:#${~_deny}}")
 done
 unset _deny _path_deny
+
+# Silence zoxide's doctor in non-interactive shells (e.g. Claude Code).
+# Such shells restore the `z` function / `cd` alias from a snapshot but not the
+# chpwd_functions hook registration, so the doctor false-positives on every cd.
+[[ -o interactive ]] || export _ZO_DOCTOR=0
