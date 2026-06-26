@@ -97,3 +97,26 @@ fi
 
 # MySQL
 export PATH="/opt/homebrew/opt/mysql-client@8.0/bin:$PATH"
+
+# -------------------------------------
+# herdr pane title
+# -------------------------------------
+
+# Set the herdr pane border title to "<dir>: <command>".
+# idle (at prompt) -> shell name; while a command runs -> that command.
+if [[ -n "$HERDR_PANE_ID" ]] && (( $+commands[herdr] )); then
+    autoload -Uz add-zsh-hook
+
+    _herdr_pane_title() {
+        local cmd="$1"
+        local dir; [[ "$PWD" == "$HOME" ]] && dir="~" || dir="${PWD:t}"
+        herdr pane rename "$HERDR_PANE_ID" "${dir}: ${cmd}" &>/dev/null
+    }
+
+    _herdr_pane_title_idle() { _herdr_pane_title "${SHELL:t}" }   # prompt -> "zsh"
+    _herdr_pane_title_exec() { _herdr_pane_title "${1%% *}" }     # before run -> command
+
+    add-zsh-hook precmd  _herdr_pane_title_idle
+    add-zsh-hook preexec _herdr_pane_title_exec
+    _herdr_pane_title_idle
+fi
