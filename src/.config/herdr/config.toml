@@ -68,19 +68,20 @@ goto = "prefix+ctrl+s"
 new_workspace = "prefix+shift+n"
 rename_workspace = "prefix+,"
 close_workspace = "prefix+shift+x"
-previous_workspace = { key = "prefix+ctrl+k", repeat = true }  # optional, unset by default
-next_workspace     = { key = "prefix+ctrl+j", repeat = true }  # optional, unset by default
-previous_agent = { key = "prefix+shift+k", repeat = true }  # optional, unset by default
-next_agent     = { key = "prefix+shift+j", repeat = true }  # optional, unset by default
-# focus_agent = ""        # optional indexed binding, e.g. "prefix+alt+1..9"
+# `repeat` parameter only works in peinan/herdr
+previous_workspace = { key = "prefix+ctrl+k", repeat = true }
+next_workspace     = { key = "prefix+ctrl+j", repeat = true }
+previous_agent = { key = "prefix+shift+k", repeat = true }
+next_agent     = { key = "prefix+shift+j", repeat = true }
+previous_tab = { key = "prefix+ctrl+h", repeat = true }
+next_tab     = { key = "prefix+ctrl+l", repeat = true }
 new_tab = "prefix+c"
 rename_tab = "prefix+."
-previous_tab = { key = "prefix+shift+h", repeat = true }
-next_tab     = { key = "prefix+shift+l", repeat = true }
 # switch_tab = "prefix+1..9"
 # switch_workspace = ""   # optional indexed binding, e.g. "prefix+shift+1..9"
 close_tab = "prefix+x"
 rename_pane = "prefix+shift+p"
+# focus_agent = ""        # optional indexed binding, e.g. "prefix+alt+1..9"
 # edit_scrollback = "prefix+e"
 focus_pane_left  = "alt+h"
 focus_pane_down  = "alt+j"
@@ -182,6 +183,13 @@ show_agent_labels_on_pane_borders = true
 # Background notification popup delivery
 agent_panel_scope = "all"
 agent_panel_sort = "priority"
+
+# Only works in peinan/herdr
+sidebar_divider = false
+zoom_indicator = ""
+prefix_indicator = "highlight"
+single_pane_border = true
+
 [ui.toast]
 # off = disable pop-up notifications
 # herdr = show top-right in-app toasts

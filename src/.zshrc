@@ -110,7 +110,7 @@ if [[ -n "$HERDR_PANE_ID" ]] && (( $+commands[herdr] )); then
     _herdr_pane_title() {
         local cmd="$1"
         local dir; [[ "$PWD" == "$HOME" ]] && dir="~" || dir="${PWD:t}"
-        herdr pane rename "$HERDR_PANE_ID" "${dir}: ${cmd}" &>/dev/null
+        herdr pane rename "$HERDR_PANE_ID" "${dir} ${cmd}" &>/dev/null
     }
 
     _herdr_pane_title_idle() { _herdr_pane_title "${SHELL:t}" }   # prompt -> "zsh"
