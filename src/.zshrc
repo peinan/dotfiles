@@ -102,15 +102,29 @@ export PATH="/opt/homebrew/opt/mysql-client@8.0/bin:$PATH"
 # herdr pane title
 # -------------------------------------
 
-# Set the herdr pane border title to "<dir>: <command>".
+# Set the herdr pane border title to "<dir> <command> <branch><status>".
 # idle (at prompt) -> shell name; while a command runs -> that command.
+# Inside a git work tree, append the branch (with a branch glyph) and
+# starship-style status marks. The marks reuse the tmux pane-border script so
+# they stay consistent between tmux and herdr.
 if [[ -n "$HERDR_PANE_ID" ]] && (( $+commands[herdr] )); then
     autoload -Uz add-zsh-hook
+
+    # " <branch><marks>" when inside a git work tree, else empty.
+    _herdr_pane_git_suffix() {
+        git rev-parse --is-inside-work-tree &>/dev/null || return
+        local branch; branch=$(git branch --show-current 2>/dev/null)
+        [[ -z "$branch" ]] && branch=$(git rev-parse --short HEAD 2>/dev/null)  # detached HEAD
+        [[ -z "$branch" ]] && return
+        local marks; marks=$(~/.config/tmux/scripts/git-status-mark.sh "$PWD" 2>/dev/null)
+        local glyph=$''   # git branch glyph (U+E725 U+EC03, matches tmux pane border)
+        print -rn -- " ⋅ ${glyph}${branch}${marks}"
+    }
 
     _herdr_pane_title() {
         local cmd="$1"
         local dir; [[ "$PWD" == "$HOME" ]] && dir="~" || dir="${PWD:t}"
-        herdr pane rename "$HERDR_PANE_ID" "${dir} ${cmd}" &>/dev/null
+        herdr pane rename "$HERDR_PANE_ID" "${dir} ${cmd}$(_herdr_pane_git_suffix)" &>/dev/null
     }
 
     _herdr_pane_title_idle() { _herdr_pane_title "${SHELL:t}" }   # prompt -> "zsh"
