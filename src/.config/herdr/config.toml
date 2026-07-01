@@ -182,13 +182,14 @@ show_agent_labels_on_pane_borders = true
 
 # Background notification popup delivery
 agent_panel_scope = "all"
-agent_panel_sort = "priority"
+agent_panel_sort = "spaces"
 
 # Only works in peinan/herdr
 sidebar_divider = false
 zoom_indicator = ""
 prefix_indicator = "highlight"
 single_pane_border = true
+pane_title_format = "$dir $process( ⋅ $branch$ahead_behind$git_status)( $zoom)"
 
 [ui.toast]
 # off = disable pop-up notifications
