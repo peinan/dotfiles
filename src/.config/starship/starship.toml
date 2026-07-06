@@ -11,9 +11,9 @@ $character
 """
 
 right_format = """
+$cmd_duration\
 $python\
 $rust\
-$cmd_duration\
 ${custom.gituser}\
 $directory
 """
