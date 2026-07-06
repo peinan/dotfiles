@@ -54,9 +54,9 @@ command = '''
 name=$(git config user.name 2>/dev/null); [ -n "$name" ] || exit 0
 gh=$(awk '/^[[:space:]]+user:[[:space:]]/{print $2; exit}' "$HOME/.config/gh/hosts.yml" 2>/dev/null)
 if [ -n "$gh" ] && [ "$name" != "$gh" ]; then
-  printf '\033[31m%s\033[0m \033[2;38;2;96;114;138m@\033[0m' "$name"
+  printf '\033[31m%s\033[0m\033[2;38;2;96;114;138m \033[0m' " $name"
 else
-  printf '\033[2;38;2;96;114;138m%s\033[0m \033[2;38;2;96;114;138m@\033[0m' "$name"
+  printf '\033[2;38;2;96;114;138m%s\033[0m\033[2;38;2;96;114;138m \033[0m' " $name"
 fi
 '''
 format = " $output"
@@ -64,7 +64,7 @@ format = " $output"
 [directory]
 truncation_length = 3
 repo_root_style = 'bold #60728a'
-repo_root_format = " [$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style)"
+repo_root_format = "[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style)"
 format = " [$path]($style)[$read_only]($read_only_style)"
 style = "dimmed #60728a"
 
