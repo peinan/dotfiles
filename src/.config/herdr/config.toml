@@ -190,6 +190,7 @@ zoom_indicator = ""
 prefix_indicator = "highlight"
 single_pane_border = true
 pane_title_format = "$dir $process( ⋅ $branch$ahead_behind$git_status)( $zoom)"
+dim_inactive_panes = true
 
 [ui.toast]
 # off = disable pop-up notifications
