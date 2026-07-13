@@ -25,7 +25,15 @@ fi
 # Homebrew
 # -------------------------------------
 
-eval $(/opt/homebrew/bin/brew shellenv)
+# Pre-expanded `brew shellenv` output; re-expand if Homebrew changes it (saves ~50ms/startup)
+export HOMEBREW_PREFIX="/opt/homebrew"
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
+export HOMEBREW_REPOSITORY="/opt/homebrew"
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}"
+fpath[1,0]="/opt/homebrew/share/zsh/site-functions"
+export FPATH
+[ -z "${MANPATH-}" ] || export MANPATH=":${MANPATH#:}"
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
 
 # -------------------------------------
 # Sheldon
@@ -61,7 +69,7 @@ source "${HOME}/.alias"
 
 # Homebrew
 if type brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+    FPATH=$HOMEBREW_PREFIX/share/zsh-completions:$FPATH
 fi
 
 # iTerm
