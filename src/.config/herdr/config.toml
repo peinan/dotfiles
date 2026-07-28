@@ -44,6 +44,7 @@ panel_bg = "transparent"
 # Update channel used by background checks and `herdr update`.
 # Use "stable" for normal releases or "preview" for opt-in preview builds.
 # channel = "stable"
+version_check = false
 
 [keys]
 # Prefix key to enter prefix mode (default: "ctrl+b")
@@ -173,15 +174,11 @@ sidebar_width = 20
 # Show detected/reported agent labels in split pane borders when no manual pane name is set.
 show_agent_labels_on_pane_borders = true
 
-# Agent panel scope: "current" or "all". Toggling it in the sidebar saves this setting.
-# agent_panel_scope = "all"
-
 # Accent color for highlights, borders, and navigation UI.
 # Accepts: hex (#89b4fa), named colors (cyan, blue, magenta), or rgb(r,g,b)
 # accent = "cyan"
 
 # Background notification popup delivery
-agent_panel_scope = "all"
 agent_panel_sort = "spaces"
 
 # Only works in peinan/herdr
@@ -192,6 +189,9 @@ single_pane_border = true
 pane_title_format = "$dir $process( ⋅ $branch$ahead_behind$git_status)( $zoom)"
 dim_inactive_panes = true
 pane_padding = { left = 1 }
+show_pane_focus_marker = false
+tab_bar_style = "minimal"
+zoom_indicator_position = "pane"
 
 [ui.toast]
 # off = disable pop-up notifications
@@ -200,7 +200,11 @@ pane_padding = { left = 1 }
 # system = ask the OS notification service directly
 # delivery = "system"
 
-panel_bg = "transparent"
+[ui.sidebar.spaces]
+row_gap = 1
+
+[ui.sidebar.agents]
+row_gap = 1
 
 # Play sounds when agents change state in background workspaces
 [ui.sound]
