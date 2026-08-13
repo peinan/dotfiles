@@ -12,9 +12,9 @@ macos-option-as-alt = true
 macos-icon = xray
 
 quick-terminal-position = center
+quick-terminal-size = 100%
 quick-terminal-screen = mouse
 quick-terminal-animation-duration = 0.05
-quick-terminal-size = 50%,500px
 
 
 ###
@@ -35,7 +35,7 @@ macos-titlebar-proxy-icon = hidden
 
 # font
 font-size = 20
-font-family = SF Mono Square
+font-family = Kusunoki Mono
 alpha-blending = linear
 
 # background
@@ -84,5 +84,6 @@ custom-shader = shaders/cursor_tail.glsl
 # Keybinding
 ###
 
+keybind = global:ctrl+enter=toggle_visibility
 keybind = global:super+shift+`=toggle_quick_terminal
 
