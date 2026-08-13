@@ -1,9 +1,8 @@
 git:
-  pagers:
+  diffRenderers:
     - colorArg: never
-      pager: delta --paging=never --dark --no-gitconfig --line-numbers --syntax-theme=Coldark-Dark
+      command: delta --paging=never --dark --no-gitconfig --line-numbers --syntax-theme=Coldark-Dark
       useConfig: false
-
 customCommands:
   - key: "c"
     context: "files"
@@ -18,7 +17,6 @@ customCommands:
         labelFormat: '{{ .subject }}'
     output: "terminal"
     command: bash -c 'MSG="{{ .Form.Commit }}" && SUBJ="${MSG%%<SEP>*}" && BODY="${MSG#*<SEP>}" && git commit -e -m "$SUBJ" ${BODY:+-m "$BODY"}'
-
   - key: "C"
     context: "files"
     description: "Generate commit message (long) with aicommit2"
