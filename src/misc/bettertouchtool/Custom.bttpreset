@@ -1,0 +1,996 @@
+{
+  "BTTPresetCreatorNotes" : "",
+  "BTTPresetInfoURL" : "",
+  "BTTPresetName" : "Custom",
+  "BTTPresetColor" : "43.635600, 121.547280, 189.720000, 255.000000",
+  "BTTGeneralSettings" : {
+    "BTTPathSampleSize" : 100,
+    "BTTCMOnTop" : true,
+    "BTTForceForceClickPressure2F" : 700,
+    "BSTLeftHalfBlock" : true,
+    "BTTMinDrawingMovement" : 2,
+    "BTTTouchBarMouseModeClickBlock" : true,
+    "BSTRightHalfBlock" : true,
+    "disableScrollingIf2" : true,
+    "batteryWarning" : false,
+    "BSTDontShowSnapAreasWhileModMoving" : 0,
+    "BTTSavedMousePosition" : "{1210.875, 18.09375}",
+    "BSTWindowGrabPosY" : 10,
+    "singleFingerTapRight" : 0.05000000074505806,
+    "BTTDrawingStrokeWidth" : "10",
+    "showTrackpadTab" : true,
+    "BTRScrollSpeed" : 1,
+    "cornerSnap" : true,
+    "BTTTouchBarHapticFeedbackRelease" : 0,
+    "showDrawingsTab" : true,
+    "SIRIMouseSpeed" : 1,
+    "BSTIncreaseSnappingArea" : true,
+    "BTTUseNewUI" : true,
+    "BSTEnableEnhancementCheck" : true,
+    "BTTNotchBarNotchWidgetModeHideLeftFixed" : false,
+    "useAppleRemotePlugin" : false,
+    "BTTTouchBarFontSize" : 15,
+    "BSTSnapAreaDefaultPictoDistanceFromBottom" : 0.10000000149011612,
+    "BTRMouseSpeed" : 1,
+    "BSTPreventTopMissionControl" : true,
+    "BSTSnapAreaDefaultDashedBorder" : false,
+    "BTTEnablePalmRecognition" : true,
+    "BSTBrokenAPICheckEnabled" : false,
+    "BTTStageManagerLeftGap" : 190,
+    "BTTAllowThumbIfAllFingersArePlacedSimultaneously" : true,
+    "BTTNotchBarStandardMenubarModeHideRightFixed" : false,
+    "BTTNotchBarNotchWidgetModeShowMiniMenubar" : true,
+    "BTTStageManagerSnappingIncreaseAbsolute" : false,
+    "BTTShowControlStripItem" : true,
+    "BSTSnapAreaDefaultCornerRadius" : 20,
+    "BTTNotchBarNotchMenubarModeHideLeftFixed" : true,
+    "BTTMovePastedToTop" : true,
+    "BTTMaxAllowedDrawingRotation" : 30,
+    "BTTDidRegisterForUpdateStats" : "6.640",
+    "BTTNotchBarNotchWidgetModeHideRightFixed" : false,
+    "BTTStageManagerLeaveGap" : true,
+    "BTTStageManagerLeftSnappingAreaIncreasePercentage" : 0.125,
+    "BTTTpFourFingerSwipeSensitivity" : 0.40000000000000002,
+    "BSTMoveTreshold" : 2,
+    "BTTHideFomControlStripWhenOpen" : false,
+    "BTTNumberOfStarts" : 12976,
+    "BTTForceNormalClickPressure3F" : 150,
+    "showSiriRemoteTab" : true,
+    "SIRIScrollSpeed" : 1,
+    "BTTShowControlStrip" : true,
+    "tpThreeFingerDoubleTapDelay" : 0.5,
+    "showNormalMiceTab" : true,
+    "BTTNotchBarStandardMenubarModeHideLeftScrollable" : true,
+    "BSTSnapAreaDefaultBorderWidth" : 3,
+    "BTTTouchBarHapticFeedback" : 0,
+    "BTTForceNormalClickPressure" : 150,
+    "BTTDrawingRightMouse" : true,
+    "BTTConvertedDevices" : true,
+    "snapBottomRight" : true,
+    "BTTThreeFingerTipTapMinSpread" : 0.029999999999999999,
+    "BTTTouchBarVisible" : false,
+    "BTTIMGURDefault" : true,
+    "BTTNotchBarShowOnStandardScreens" : true,
+    "BSTSnapAreaDefaultBackgroundColor" : "129.991390, 201.122858, 227.012328, 104.550000",
+    "BSTSnapAreaDefaultPictoSize" : 0.69999998807907104,
+    "BSTSnapAreaDefaultBorderColor" : "0.000000, 0.000000, 0.000000, 255.000000",
+    "BTTNotchBarNotchMenubarModeHideLeftScrollable" : true,
+    "BTTNotchBarNotchMenubarModeShowOriginalStatusIcons" : true,
+    "BSTTopMissionControlTreshold" : 34,
+    "BTTNotchBarNotchWidgetModeHideRightScrollable" : false,
+    "BSTSnapAreaDefaultHighlightColor" : "92.625563, 122.647995, 161.664347, 56.100000",
+    "BTTStageManagerLeftGapPercentage" : 0.10000000000000001,
+    "BTTForceForceClickPressure5F" : 600,
+    "BTTForceForceClickPressure" : 700,
+    "BSTMemorySaver" : true,
+    "BTTLastClamshellState" : false,
+    "BTTStageManagerLeaveGapEvenIfHiding" : false,
+    "BTTTouchBarAnimateGroups" : true,
+    "BTTShowBTTWhenControlStripHidden" : true,
+    "BTTFreeSpaceAfterESC" : 10,
+    "mmZoomRepeatDelay" : 0.10000000000000001,
+    "snapTopLeft" : true,
+    "BTTDrawingAreaWidth" : 915,
+    "BTTTiltWheelDelay" : 0.44999998807907104,
+    "twoFingerDoubleTapDelay" : 0.5,
+    "BTTForceNormalClickPressure5F" : 200,
+    "BTTShowESCWhenControlStripHidden" : false,
+    "showBTTRemoteTab" : true,
+    "BTTFilterMagicMouseLeftRightEdge" : true,
+    "BTTNotchBarStandardWidgetModeShowOriginalStatusIcons" : false,
+    "BTTDrawingsHighlightStartPoint" : true,
+    "BTTEnableUsageLogging" : true,
+    "snapBottomLeft" : true,
+    "BTTScreenshotOpenImgurInBrowser" : true,
+    "BTTDontRestartAfterSleep" : true,
+    "BTTForceNormalClickPressure2F" : 140,
+    "BSTSnapAreaDefaultInvisible" : false,
+    "BTTDrawingAreaHeight" : 626,
+    "BTTForceForceClickPressure4F" : 650,
+    "BTTTouchBarUseMonoSpacedFont" : true,
+    "BSTCornerRoundness" : 40,
+    "BTTStageManagerLeftSnappingAreaIncrease" : 222,
+    "BTTForceForceHapticResponse" : 13,
+    "BTTNotchBarStandardMenubarModeHideLeftFixed" : true,
+    "showMagicMouseTab" : true,
+    "BTTNotchBarNotchWidgetModeShowOriginalStatusIcons" : false,
+    "BTTAlwaysShowPresetIndicators" : true,
+    "BTTStageManagerIncreaseEvenIfHiding" : true,
+    "BTTForcedHidden" : false,
+    "showTouchBarTab" : true,
+    "BTTFreeSpaceAfterBTT" : 20,
+    "BTTNotchBarStandardWidgetModeHideRightFixed" : false,
+    "BTTTwoFingerTipTapMinSpread" : 0.029999999999999999,
+    "BTTDismissIfNothingToShow" : true,
+    "BTTDrawingsRestoreMousePosition" : true,
+    "BSTDisableSnapAreas" : false,
+    "BTTDefaultTBIconWidth" : 22,
+    "BTTStageManagerLeftGapAbsolute" : false,
+    "snapTopRight" : true,
+    "BSTSnapAreaDefaultShowPictogram" : false,
+    "BTTSelectedKeyboardTabIndex" : 0,
+    "BTTTouchBarKeepIconRatio" : true,
+    "BSTBrokenAPICheckDelay" : 0.20000000000000001,
+    "BTTStageManagerIncrease" : true,
+    "showKeyboardTab" : true,
+    "BTTForceForceClickPressure3F" : 700,
+    "disableScrollingIf3" : true,
+    "BSTWindowGrabPosX" : 67,
+    "BTTHandleThumbsRestingOnTopEdgeAndCorners" : true,
+    "BTTAutoSwitchToOldKeyboardImplementation" : true,
+    "BTTTpThreeFingerSwipeSensitivity" : 0.29999999999999999,
+    "BTTCopyImgurURLToClipboard" : true,
+    "BTTForceNormalHapticResponse" : 12,
+    "BTTTouchBarSupportEnabled" : true,
+    "BTTDaysToKeepHistory" : 14,
+    "BTTNotchBarNotchMenubarModeHideRightFixed" : true,
+    "BTTDefaultTBIconHeight" : 22,
+    "BTTNotchBarStandardMenubarModeShowOriginalStatusIcons" : true,
+    "BTTNotchBarStandardWidgetModeHideLeftFixed" : false,
+    "singleFingerTapLeft" : 0.44999998807907104,
+    "BTTNotchBarStandardWidgetModeHideLeftScrollable" : false,
+    "BTTForceNormalClickPressure4F" : 175,
+    "BTTNotchBarNotchWidgetModeHideLeftScrollable" : false,
+    "BSTSnapAreaDefaultAnimationDuration" : 0.30000001192092896,
+    "BTTNotchBarStandardWidgetModeHideRightScrollable" : false,
+    "BTTNotchBarStandardMenubarModeHideRightScrollable" : false,
+    "BTTNoShortcutDelay" : true,
+    "pluginDictionary" : {
+      "1" : {
+        "Apple Remote Plugin" : {
+          "10" : "Play/Pause, Holding (only on aluminum remote)",
+          "2" : "Up, Holding",
+          "3" : "Down",
+          "11" : "Menu",
+          "4" : "Down, Holding",
+          "5" : "Left",
+          "12" : "Menu, Holding",
+          "6" : "Left, Holding",
+          "13" : "Center",
+          "7" : "Right",
+          "8" : "Right, Holding",
+          "14" : "Center, Holding",
+          "1" : "Up",
+          "9" : "Play/Pause (only on aluminum remote)"
+        }
+      }
+    },
+    "showOtherTriggersTab" : true,
+    "BSTSnapAreaDefaultPictoDistanceFromLeft" : 0.10000000149011612,
+    "BTTNotchBarNotchMenubarModeHideRightScrollable" : true
+  },
+  "BTTPresetUUID" : "F64D7E34-FFF8-43B3-8AD7-C4EDE3835A5B",
+  "BTTPresetContent" : [
+    {
+      "BTTAppBundleIdentifier" : "BT.L",
+      "BTTAppName" : "Recently Used",
+      "BTTAppAutoInvertIcon" : 1,
+      "BTTTriggers" : [
+
+      ]
+    },
+    {
+      "BTTAppBundleIdentifier" : "com.todesktop.230313mzl4w4u92",
+      "BTTAppName" : "Cursor",
+      "BTTAppAutoInvertIcon" : 1,
+      "BTTAppProcessMatchMode" : 2,
+      "BTTAppProcessName" : "Cursor",
+      "BTTTriggers" : [
+        {
+          "BTTLastUpdatedAt" : 1711476006.712955,
+          "BTTTriggerType" : 114,
+          "BTTTriggerTypeDescriptionReadOnly" : "TipTap Right (1 Finger Fix)",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "039C1A4A-7210-46E7-8667-A80A2C7E0EFE",
+          "BTTOrder" : 1,
+          "BTTActionsToExecute" : [
+            {
+              "BTTLastUpdatedAt" : 1711476006.7129622,
+              "BTTTriggerParentUUID" : "039C1A4A-7210-46E7-8667-A80A2C7E0EFE",
+              "BTTIsPureAction" : true,
+              "BTTUUID" : "16FB20E4-6CB8-46CC-8CA2-995757DBA7D3",
+              "BTTPredefinedActionType" : 264,
+              "BTTPredefinedActionName" : "",
+              "BTTLayoutIndependentActionChar" : "RIGHT",
+              "BTTShortcutToSend" : "58,55,124",
+              "BTTOrder" : 10
+            }
+          ]
+        },
+        {
+          "BTTLastUpdatedAt" : 1699717083.9697719,
+          "BTTTriggerType" : 113,
+          "BTTTriggerTypeDescriptionReadOnly" : "TipTap Left (1 Finger Fix)",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "66FA59B3-C4FC-4020-8A5F-7754F5BF9647",
+          "BTTOrder" : 0,
+          "BTTActionsToExecute" : [
+            {
+              "BTTLastUpdatedAt" : 1699717078.675859,
+              "BTTTriggerParentUUID" : "66FA59B3-C4FC-4020-8A5F-7754F5BF9647",
+              "BTTIsPureAction" : true,
+              "BTTUUID" : "C1B0867E-E97B-4489-878A-BA60B615A4E4",
+              "BTTPredefinedActionType" : 264,
+              "BTTPredefinedActionName" : "",
+              "BTTLayoutIndependentActionChar" : "LEFT",
+              "BTTShortcutToSend" : "58,55,123",
+              "BTTOrder" : 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "BTTAppBundleIdentifier" : "ru.keepcoder.Telegram",
+      "BTTAppName" : "Telegram",
+      "BTTAppAutoInvertIcon" : 1,
+      "BTTAppProcessMatchMode" : 2,
+      "BTTAppProcessName" : "Telegram",
+      "BTTTriggers" : [
+        {
+          "BTTLastUpdatedAt" : 1690388215.871057,
+          "BTTTriggerType" : 0,
+          "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+          "BTTUUID" : "78483B48-8510-4044-BB7D-8A812D30DDA6",
+          "BTTLayoutIndependentActionChar" : "DOWN",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "125",
+          "BTTAdditionalConfiguration" : "0",
+          "BTTShortcutKeyboardType" : 4311,
+          "BTTTriggerOnDown" : 1,
+          "BTTLayoutIndependentChar" : "TAB",
+          "BTTShortcutKeyCode" : 48,
+          "BTTShortcutAdvancedModifierKeys" : "0",
+          "BTTShortcutModifierKeys" : 0,
+          "BTTOrder" : 0,
+          "BTTAutoAdaptToKeyboardLayout" : 0
+        },
+        {
+          "BTTLastUpdatedAt" : 1690388215.8709059,
+          "BTTTriggerType" : 0,
+          "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+          "BTTUUID" : "54C7C673-742A-42DD-81A9-BD4174A34D89",
+          "BTTLayoutIndependentActionChar" : "UP",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "126",
+          "BTTAdditionalConfiguration" : "131074",
+          "BTTShortcutKeyboardType" : 4311,
+          "BTTTriggerOnDown" : 1,
+          "BTTLayoutIndependentChar" : "TAB",
+          "BTTShortcutKeyCode" : 48,
+          "BTTShortcutAdvancedModifierKeys" : "131074",
+          "BTTShortcutModifierKeys" : 131072,
+          "BTTOrder" : 1,
+          "BTTAutoAdaptToKeyboardLayout" : 0
+        }
+      ]
+    },
+    {
+      "BTTAppBundleIdentifier" : "org.mozilla.firefox",
+      "BTTAppName" : "Firefox",
+      "BTTAppAutoInvertIcon" : 1,
+      "BTTAppProcessMatchMode" : 2,
+      "BTTAppProcessName" : "Firefox",
+      "BTTTriggers" : [
+        {
+          "BTTLastUpdatedAt" : 1690388215.870223,
+          "BTTTriggerType" : 113,
+          "BTTTriggerTypeDescriptionReadOnly" : "TipTap Left (1 Finger Fix)",
+          "BTTTriggerTypeDescription" : "TipTap左（1本指修正）",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "C020F063-A90D-49A9-BCB8-BDBCE1D7C621",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "58,55,123",
+          "BTTOrder" : 0,
+          "BTTGestureNotes" : "TipTap左（1本指修正）"
+        },
+        {
+          "BTTLastUpdatedAt" : 1690388215.869534,
+          "BTTTriggerType" : 620,
+          "BTTTriggerTypeDescriptionReadOnly" : "Please Select a Trigger ",
+          "BTTTriggerTypeDescription" : "トリガーを選択してください ",
+          "BTTTriggerClass" : "BTTTriggerTypeDrawings",
+          "BTTUUID" : "4F3412B4-FFFA-44F4-8602-BE67DA62C08D",
+          "BTTLayoutIndependentActionChar" : "",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "55,13",
+          "BTTOrder" : 1,
+          "BTTTriggerConfig" : {
+            "BTTRequiredDrawingCertainty" : "0.700000",
+            "BTTDrawingDirectionShouldMatter" : "0",
+            "BTTDrawingName" : "タブを閉じる",
+            "BTTDrawingBezierPath" : "YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGoCwwVGSAjJilVJG51bGzSDQ4PFFpOUy5vYmplY3RzViRjbGFzc6QQERITgAKABIAFgAaAB9IWDhcYWk5TU2VnbWVudHNPEQJAAEOOuJBDgJI1AUOOuJBDgJI1AUOOuJBDfT9IAUOOHmBDd9NWAUON0UBDcmdiAUONfdBDae3MAUOM1OBDYLDMAUOMhBBDWb4GAUOMMKBDUURwAUOMMKBDSY5CAUOL44BDRCJOAUOL44BDPrZcAUOLlFBDOIcAAUOLlFBDMlekAUOLlFBDLnKCAUOLlFBDKcn4AUOLlFBDI5qcAUOLlFBDHvISAUOLlFBDGwzyAUOL25BDFyfQAUOMJhBDEn9IAUOMJhBDEB5EAUOMJhBDDb1EAUOMS2BDDN2EAUOMS2BDC_3EAUOMS2BDC4i8AUOMS2BDCqj8AUOMS2BDCm54AUOMaKBDCflwAUOMaKBDCb7sAUOMaKBDCYRoAUOMheBDCUnkAUOMoyBDCQ9gAUOMwGBDCQ9gAUOMwGBDCNTcAUOM3bBDCJpYAUONGDBDCF_UAUONUrBDCF_UAUOOgzBDB+YIAUOPs7BDB2w4AUOSabBDBtIEAUOV4xBDBjBQAUOagZBDBYdgAUOgRTBDBNnIAUOmaoBDBCr4AUOyZNBDA1eAAUO5r0BDAqXAAUPAmABDAqXAAUPK0BBDAeP4AUPQ9WBDAeP4AUPXGsBDATUoAUPfKJBDAIHcAUPjZWBC_7XwAUPpirBC_lhQAUPuKTBC_QZ4AUPwG8BC_QZ4AUPyDlBC_QZ4AUPy3oBC_QZ4AUPy+8BC_QZ4AUPzGQBC_QZ4AUPzGQBC_XuAAUPzNkBC_XuAAUPzNkBC_fCIAUPzU4BC_fCIgAPSGhscHVokY2xhc3NuYW1lWCRjbGFzc2VzXE5TQmV6aWVyUGF0aKIeH1xOU0JlemllclBhdGhYTlNPYmplY3TSFg4hGE8RAbkAQ4QjQEN4LDABQ4QjQEN4LDABQ4N+wENwdgABQ4LV0ENnOQABQ4HfEENfgtQBQ4CGkENUvwABQ32pIENJN8YBQ3u0gENAvjABQ3kDgEM1+lwBQ3euIEMr+fQBQ3cJoEMkQ8YBQ3cJoEMaQ1wBQ3cJoEMRycgBQ3ZrQEMLmmgBQ3ZrQEMHtUgBQ3ZrQEMDDMABQ3ZrQEL_1hABQ3ZrQEL5kqABQ3ZrQEL00JgBQ3ZrQELxj9gBQ3ZrQELv0FgBQ3ZrQELu5kgBQ3a14ELtJsgBQ3a14ELsscABQ3bwYELsPLgBQ3cq4ELsPLgBQ3egAELsPLgBQ3h_oELsPLgBQ3ogAELsPLgBQ3+MAELtcSgBQ4IaQELum0gBQ4TQQELum0gBQ4r1kELum0gBQ4_1wELtRegBQ5W5YELqj4ABQ6DSoELnY7gBQ6h+wELkmYABQ7Y7UELhDgABQ72FwELfqoABQ8wjgELd1sgBQ9c8sELaqwABQ+CToELZOygBQ+ihgELX1JgBQ+7G0ELWdvgBQ_NlUELVJSABQ_gD0ELT00ABQ_n2YELStmABQ_pmQELStmABQ_qDgELSQViAA9IWDiQYTxEBsABDZXAAQ3OOvAFDZXAAQ3OOvAFDZJ_AQ3HuXAFDZAWgQ2yCaAFDYiqgQ2ZTDAFDX48AQ13ZdgFDXN4gQ1MVpAFDWL6gQ0YHmAFDVr6gQzwHLgFDU0XgQy1yUAFDUH7AQx7dcAFDTmmAQxBIkAFDTFngQwM6hAFDS6xAQu9mkAFDSwGAQttlwAFDSwGAQspykAFDSmyAQsEhgAFDSmyAQrZJmAFDSmyAQrAGKAFDSmyAQqtEIAFDSmyAQqmEqAFDSqcAQqiakAFDSuGAQqglkAFDSxwAQqglkAFDS_vAQqglkAFDTNuAQqi6uAFDUMCgQqr0gAFDU+JgQq0K+AFDW5iAQrDmEAFDYcfgQrNfaAFDbtYAQrd+yAFDfi5AQrjj6AFDhyUAQrpKeAFDj_ZAQruzoAFDmMeAQruzoAFDoHOgQruzoAFDp74QQruzoAFDsC2gQrpLuAFDtrSgQrpLuAFDvHhAQrjwgAFDwXhwQrjwgAFDxC5wQrjwgAFDx0YgQrjwgAFDyTiwQrjwgAFDygjgQrnAsAFDyiYgQro1uAFDykNgQrsf0AFDyn3gQrwJ4IAD0hYOJxhPEQGwAEOIeBBDddRwAUOIeBBDddRwAUOIeBBDcrK4AUOIeBBDavyMAUOIeBBDZM0wAUOIJcBDXRcAAUOH0HBDUxaYAUOHJcBDSRYwAUOGz6BDPlJcAUOGfWBDNpwwAUOFzpBDKlGMAUOFzpBDH424AUOFfbBDGJr0AUOFfbBDEy8AAUOFfbBDDoZ4AUOFfbBDCFccAUOFfbBDBfYYAUOFfbBDBFW4AUOFowBDA3X4AUOFowBDAwDwAUOFowBDAsZsAUOFwEBDAovoAUOFwEBDAlFkAUOF3YBDAlFkAUOF3YBDAhbgAUOF+sBDAdxcAUOGGABDAaHYAUOGNVBDAWdUAUOGb9BDASzQAUOG37BDAOI8AUOIEDBDAOI8AUOJoRBDAOI8AUONfCBDAOI8AUOSfFBDAOI8AUOXGtBDAOI8AUOc3nBDAY_UAUOk7FBDAY_UAUOuQ0BDAkfAAUO2URBDAkfAAUPFz_BDAzgoAUPOoTBDAzgoAUPXcnBDAzgoAUPc1GBDA+RoAUPlQ_BDA+RoAUPqRCBDA+RoAUPsmGBDA+RoAUPtyOBDA+RoAUPt5iBDA+RogAPSGhsqK1dOU0FycmF5oiofAAgAEQAaACQAKQAyADcASQBMAFEAUwBcAGIAZwByAHkAfgCAAIIAhACGAIgAjQCYAtwC3gLjAu4C9wMEAwcDFAMdAyIE3wThBOYGmgacBqEIVQhXCFwIZAAAAAAAAAIBAAAAAAAAACwAAAAAAAAAAAAAAAAAAAhn"
+          }
+        },
+        {
+          "BTTLastUpdatedAt" : 1690388215.8692331,
+          "BTTTriggerType" : 620,
+          "BTTTriggerTypeDescriptionReadOnly" : "Please Select a Trigger ",
+          "BTTTriggerTypeDescription" : "トリガーを選択してください ",
+          "BTTTriggerClass" : "BTTTriggerTypeDrawings",
+          "BTTUUID" : "5E16B6AA-76B6-431D-BCA7-D2F71019229A",
+          "BTTLayoutIndependentActionChar" : "END",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "119",
+          "BTTOrder" : 5,
+          "BTTTriggerConfig" : {
+            "BTTRequiredDrawingCertainty" : "0.700000",
+            "BTTDrawingDirectionShouldMatter" : "0",
+            "BTTDrawingName" : "ページ最下部へスクロール",
+            "BTTDrawingBezierPath" : "YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGoCwwVGSAjJilVJG51bGzSDQ4PFFpOUy5vYmplY3RzViRjbGFzc6QQERITgAKABIAFgAaAB9IWDhcYWk5TU2VnbWVudHNPEQG5AEOgNZBDWN4IAUOgNZBDWN4IAUOgNZBDWGj+AUOgNZBDV_P0AUOgNZBDVNI8AUOgNZBDUzHcAUOgNZBDTQKAAUOgNZBDRUxSAUOgNZBDQWcwAUOf33BDNqNgAUOf33BDKli8AUOf33BDJClgAUOf33BDFxtQAUOf33BDC5QYAUOf33BDANBEAUOf33BC8K1gAUOf33BC6mnwAUOf33BC3IRgAUOf33BC0CWoAUOf33BCxU3AAUOf33BCwg0AAUOf33BCukLAAUOf33BCsniAAUOf33BCrbZ4AUOf33BCqPR4AUOf33BCpzT4AUOf33BCpXV4AUOf33BCpItoAUOf33BCo6FYAUOf33BCoyxQAUOgBLBCpOvQAUOgS_BCrLYQAUOgmyBCuRTIAUOhPNBCxvpQAUOhlMBC4RZoAUOh7hBC_8b4AUOh7hBDDbT0AUOh7hBDIGLYAUOiSFBDMgVaAUOi9yBDPk_+AUOjpxBDS14MAUOk_HBDVV50AUOllqBDWspoAUOl48BDYDZaAUOmIKBDYpdcAUOmIKBDZDe8AUOmIKBDZKzGAUOmPeBDZOdKAUOmPeBDZSHOgAPSGhscHVokY2xhc3NuYW1lWCRjbGFzc2VzXE5TQmV6aWVyUGF0aKIeH1xOU0JlemllclBhdGhYTlNPYmplY3TSFg4hGE8RAV8AQ5RCAENbH+wBQ5RCAENbH+wBQ5RCAENWd2ABQ5RCAENRC24BQ5RCAENHzm4BQ5RCAEM+kW4BQ5RCAEMxg2ABQ5RCAEMiKxgBQ5RCAEMV4HQBQ5RCAEMFAVwBQ5RCAELrUigBQ5RCAELXUVABQ5SZYEK+vBABQ5TuwEKquzgBQ5U98EKeXIABQ5XcQEKR_cgBQ5YpYEKHJeABQ5ZmQEKCY+ABQ5aLkEKApGABQ5ao0EKApGABQ5blsEKFZmgBQ5cwQEKOt3gBQ5fUwEKeI9gBQ5h_cEKyJKgBQ5jW4ELKufABQ5mGwELk1ggBQ5mGwEL3UAgBQ5paQEMTnLABQ5paQEMgqsABQ5qyMEMtuMwBQ5sMcEM_W04BQ5u6EENK4ogBQ5xkwENU4vIBQ529QENfpsQBQ56qwENl1iABQ5+SEENrQhQBQ6EToENwE84BQ6F7sENxtDABQ6IX0ENy7HiAA9IWDiQYTxEBTQBDmtfQQ1HSnAFDmtfQQ1HSnAFDmtfQQ0ocbgFDmzFwQzoAvAFDmzFwQy55ggFDmzFwQyIu3gFDmzFwQxCMXAFDmzFwQv9agAFDmzFwQutZsAFDmzFwQtE9mAFDmzFwQru18AFDmzFwQqk78AFDmzFwQptWaAFDmzFwQpIFWAFDmzFwQoo7EAFDmzFwQoh7mAFDmzFwQoa8GAFDmzFwQon82AFDmzFwQpBASAFDm3wAQpmRYAFDm3wAQrCf0AFDm3wAQsSgqAFDm3wAQtooSAFDmyAAQv+EEAFDmsigQwwMsAFDmmywQx66lAFDmmywQypBzgFDmmywQzsg6AFDmmywQ0m1yAFDmsQQQ1YAbAFDmxrgQ2GHpgFDm29QQ2rEpgFDnA2wQ3D0AgFDnA2wQ3TZJAFDnEqQQ3c6JAFDnEqQQ3gZ5AFDnEqQQ3hUaIAD0hYOJxhPEQFEAEO6jSBDM0xwAUO6jSBDM0xwAUO6jSBDKg9wAUO6jSBDGrcoAUO64_BDDy_sAUO7P+BC+QQQAUO7P+BC2lOAAUO7mFBCvrCQAUO7mFBCr0Q4AUO7mFBCmbyQAUO7mFBChbvAAUO7mFBCaZEgAUO7mFBCTcYQAUO7TdBCOyPgAUO7TdBCMZ_gAUO7TdBCLiDgAUO7TdBCLTbQAUO7TdBCLwsAAUO7TdBCMN8gAUO7TdBCQ4FAAUO6qVBCYloAAUO5q+BCg6cAAUO4TkBCnDxIAUO2OQBCuWYAAUOzZrBC20HgAUOw_xBC8_4wAUOtsTBDESBMAUOrOSBDIsLMAUOpfvBDMJREAUOoGdBDP+yMAUOnEIBDTb4AAUOmZ6BDVvsAAUOlugBDYoI8AUOlERBDa788AUOkweBDce6YAUOkI5BDeB30gAPSGhsqK1dOU0FycmF5oiofAAgAEQAaACQAKQAyADcASQBMAFEAUwBcAGIAZwByAHkAfgCAAIIAhACGAIgAjQCYAlUCVwJcAmcCcAJ9AoACjQKWApsD_gQABAUFVgVYBV0GpQanBqwGtAAAAAAAAAIBAAAAAAAAACwAAAAAAAAAAAAAAAAAAAa3"
+          }
+        },
+        {
+          "BTTLastUpdatedAt" : 1690388215.8693972,
+          "BTTTriggerType" : 112,
+          "BTTTriggerTypeDescriptionReadOnly" : "3 Finger Click",
+          "BTTTriggerTypeDescription" : "3本指でクリック",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "6CB59353-EFD6-43F9-9582-64097F6793D4",
+          "BTTPredefinedActionType" : 2,
+          "BTTPredefinedActionName" : "CMD(⌘)+Click",
+          "BTTOrder" : 2,
+          "BTTGestureNotes" : "3本指でクリック"
+        },
+        {
+          "BTTLastUpdatedAt" : 1690388215.870362,
+          "BTTTriggerType" : 169,
+          "BTTTriggerTypeDescriptionReadOnly" : "4 Finger Double Tap",
+          "BTTTriggerTypeDescription" : "4本指でダブルタップ",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "FA885644-E517-44CA-A047-9CCE12F5E3BC",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "56,55,17",
+          "BTTOrder" : 4,
+          "BTTGestureNotes" : "4本指でダブルタップ"
+        },
+        {
+          "BTTLastUpdatedAt" : 1690388215.870049,
+          "BTTTriggerType" : 620,
+          "BTTTriggerTypeDescriptionReadOnly" : "Please Select a Trigger ",
+          "BTTTriggerTypeDescription" : "トリガーを選択してください ",
+          "BTTTriggerClass" : "BTTTriggerTypeDrawings",
+          "BTTUUID" : "B6F7E0EF-C378-4382-9887-41F46A8BB8BF",
+          "BTTLayoutIndependentActionChar" : "",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "55,17",
+          "BTTOrder" : 0,
+          "BTTTriggerConfig" : {
+            "BTTRequiredDrawingCertainty" : "0.700000",
+            "BTTDrawingDirectionShouldMatter" : "0",
+            "BTTDrawingName" : "新しいタブ",
+            "BTTDrawingBezierPath" : "YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGoCwwVGSAjJilVJG51bGzSDQ4PFFpOUy5vYmplY3RzViRjbGFzc6QQERITgAKABIAFgAaAB9IWDhcYWk5TU2VnbWVudHNPEQEFAEOmQ1BDcc04AUOmQ1BDcc04AUOmQ1BDatp0AUOmipBDZvVSAUOmipBDYkzIAUOm4LBDV4j2AUOnNSBDTkv2AUOni0BDQ4gkAUOn9QBDK5N4AUOoTXBDHcIAAUOoTXBDBc1UAUOoTXBC7_fAAUOoTXBCypvwAUOoTXBCrXIwAUOoTXBClNzwAUOoTXBCgNwYAUOoTXBCX9HgAUOoTXBCQPkgAUOoTXBCK0lQAUOoTXBCGKcwAUOoTXBCEiWgAUOoTXBCCKGgAUOoTXBCAiAgAUOoTXBCAEwAAUOoTXBB_sPAAUOoTXBCAEwAAUOoTXBCATYAAUOoTXBCAwowAUOoTXBCBokggAPSGhscHVokY2xhc3NuYW1lWCRjbGFzc2VzXE5TQmV6aWVyUGF0aKIeH1xOU0JlemllclBhdGhYTlNPYmplY3TSFg4hGE8RATIAQ5++sENzVMwBQ5++sENzVMwBQ5++sENxtGwBQ5++sENwFAoBQ5++sENsLugBQ5++sENnhmABQ59vkENhVwQBQ58dQENZoNQBQ55ykENPoGwBQ53GYENE3JoBQ50YwEM5VWABQ5xrIEMtziQBQ5wTwEMhg4ABQ5u8UEMVONwBQ5u8UEMORhgBQ5tlgEMCvtwBQ5tlgELub0ABQ5sOwELXYNABQ5q4oELB2SgBQ5pjQEKt2FgBQ5oN8EKZ14ABQ5m5cEKHXYABQ5kSkEJs1LABQ5jAUEJN+_ABQ5hvcEIyMOABQ5hvcEIinGABQ5giYEIM7JABQ5giYEH6sCABQ5ffkEHhomABQ5ffkEHUn0ABQ5ffkEHSy0ABQ5ffkEHQ9wABQ5ffkEHPIwABQ5ffkEHQ9wCAA9IWDiQYTxDzAEOpBFBDaqlIAUOpBFBDaqlIAUOpRyBDZ4eQAUOpRyBDZGXYAUOpRyBDYIC2AUOpRyBDWxTEAUOpRyBDU16UAUOpRyBDSiGUAUOpRyBDPROIAUOpRyBDL0ISAUOpRyBDH+nKAUOpRyBDBjLcAUOpRyBC6SCwAUOpRyBCyOlQAUOo8dBCtOiAAUOo8dBCmUWQAUOo8dBCg73wAUOo8dBCX3pAAUOo8dBCPZPgAUOo8dBCJNZwAUOo8dBCDyagAUOo8dBCAp_AAUOo8dBB+DyAAUOo8dBB6zmAAUOo8dBB5DuAAUOo8dBB4mdgAUOo8dBB4JNAgAPSFg4nGE8RAQ4AQ7HCsEN3F0gBQ7HCsEN3F0gBQ7HCsENzMigBQ7H2sENxkcYBQ7H2sENucA4BQ7JI8ENmueABQ7KcYENeQEgBQ7LzMENSuQ4BQ7NLoENE55gBQ7OkgEM2UrgBQ7OkgEMnvdoBQ7OkgEMZKPwBQ7OkgEMOZSgBQ7OkgEMAk7QBQ7OkgELnC1ABQ7OkgELOdgABQ7OkgEK3Z5ABQ7P38EKmdGABQ7P38EKT+mABQ7P38EKEjgABQ7P38EJqQ1ABQ7P38EJRheABQ7P38EI71hABQ7P38EIsQZABQ7P38EIlwBABQ7P38EIfPoABQ7P38EIbv5ABQ7P38EIZ62ABQ7P38EIbv5ABQ7P38EIcqaCAA9IaGyorV05TQXJyYXmiKh8ACAARABoAJAApADIANwBJAEwAUQBTAFwAYgBnAHIAeQB+AIAAggCEAIYAiACNAJgBoQGjAagBswG8AckBzAHZAeIB5wMdAx8DJAQaBBwEIQUzBTUFOgVCAAAAAAAAAgEAAAAAAAAALAAAAAAAAAAAAAAAAAAABUU="
+          }
+        },
+        {
+          "BTTLastUpdatedAt" : 1690388215.8705049,
+          "BTTTriggerType" : 620,
+          "BTTTriggerTypeDescriptionReadOnly" : "Please Select a Trigger ",
+          "BTTTriggerTypeDescription" : "トリガーを選択してください ",
+          "BTTTriggerClass" : "BTTTriggerTypeDrawings",
+          "BTTUUID" : "9B9B119D-E693-40F4-A5A0-BFBBF12D9933",
+          "BTTLayoutIndependentActionChar" : "",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "56,55,17",
+          "BTTOrder" : 2,
+          "BTTTriggerConfig" : {
+            "BTTRequiredDrawingCertainty" : "0.700000",
+            "BTTDrawingDirectionShouldMatter" : "0",
+            "BTTDrawingName" : "閉じたタブを開きなおす",
+            "BTTDrawingBezierPath" : "YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGoCwwVGSAjJilVJG51bGzSDQ4PFFpOUy5vYmplY3RzViRjbGFzc6QQERITgAKABIAFgAaAB9IWDhcYWk5TU2VnbWVudHNPEQIlAENo+sBDJRLOAUNo+sBDJRLOAUNpNWBDJU1SAUNpb+BDJU1SAUNqT6BDJeJ8AUNqiiBDJh0AAUNtq+BDJqKeAUNui4BDJu00AUNzNCBDJ4JEAUN1lSBDJ4JEAUN+DsBDJttgAUOEB5BDJNtMAUOGW9BDI7EoAUOMgSBDIEcYAUOTy5BDHM5QAUOXRPBDG4roAUOftIBDF1MgAUOpC3BDE7uIAUO0JLBDD8TUAUO4wzBDDcoIAUPD3GBDCp5EAUPOFHBDCRq0AUPWIlBDB7QgAUPdbMBDB7QgAUPjMGBDB7QgAUPnzuBDB7QgAUPtknBDB7QgAUPuAlBDB7QgAUPuH6BDB+6kAUPuPOBDCCkoAUPuPOBDCGOsAUPuPOBDCNi0AUPuPOBDCU28AUPuPOBDCcLIAUPuPOBDCqKEAUPuPOBDCxeQAUPuPOBDC_dMAUPuPOBDDGxYAUPuPOBDDUwUAUPuPOBDDux4AUPuPOBDEIzYAUPuPOBDEi04AUPt8lBDFtXAAUPtUKBDHciIAUPstmBDIzR6AUPrYQBDLTTkAUPqwrBDM2RAAUPpZ4BDPut6AUPou0BDSa9MAUPobBBDT96oAUPnwyBDWRuoAUPnwyBDXoecAUPncOBDZj3IAUPnJmBDauZUAUPm1zBDcRWwAUPm1zBDdb44AUPmoyBDd16aAUPmoyBDeb+cAUPmoyBDep9cAUPmoyBDexRkAUPmoyBDe07ogAPSGhscHVokY2xhc3NuYW1lWCRjbGFzc2VzXE5TQmV6aWVyUGF0aKIeH1xOU0JlemllclBhdGhYTlNPYmplY3TSFg4hGE8RAeYAQxzgIEMbKzwBQxzgIEMbKzwBQyDFQEMbua4BQySqYEMbua4BQyudIEMbua4BQzWdgEMbDvwBQ0NvAEMYS4ABQ1OKoEMUywwBQ2UtIEMQj5ABQ3fbIEMM9_gBQ4jJAEMG9_QBQ5GaQEMDcRABQ551wEL+T9ABQ6tRMEL1vYABQ7NfEELy8FgBQ7y2AELxgIABQ8UlkELwGJgBQ8qHcELwGJgBQ9BLEELxc8gBQ9NiwELysHgBQ9W3AEL1BLgBQ9bngEL26_ABQ9dXYEL4FkABQ9d0oEL4i0gBQ9d0oEL5AFABQ9d0oEL56mABQ9d0oEL61HgBQ9eosEL+FTgBQ9eosEL+_0gBQ9frgEMCoVwBQ9gywEMGhoABQ9hvoEMI54ABQ9i6IEMNkAgBQ9kBYEMRdSwBQ9mjEEMYZ_ABQ9n1UEMgHh4BQ9n1UEMlihABQ9mg4EMuxxABQ9kCkEM09mwBQ9hZoEM+M2wBQ9cEQENIM9YBQ9Zl4ENOYzIBQ9VjkENZJwQBQ9TFMENfVmABQ9QagENpVsgBQ9PNYENuwrwBQ9N4EEN4wyQBQ9N4EEOAnl4BQ9Mw0EOCkO4BQ9Mw0EOE5TQBQ9L8wEOFtWQBQ9L8wEOGJUQBQ9L8wEOGQoYBQ9L8wEOGX8iAA9IWDiQYTxEBegBC4mhAQwGdeAFC4mhAQwGdeAFC5ypAQwGdeAFC8gIAQwGdeAFC_+eAQwGdeAFDA9kAQwGdeAFDEm3AQwA5+AFDIcYgQv8O0AFDNjZAQv2LQAFDSOQgQvwbcAFDYpsgQvpkkAFDfhRAQvpkkAFDi+WgQvpkkAFDlTyQQvpkkAFDoFXAQvpkkAFDqaywQvpkkAFDsbqQQv0xuAFDt9_gQv6PWAFDvaOAQwCi4AFDwX6QQwHr6AFDw3EgQwMIzAFDxGTAQwR2NAFDxIIAQwSwuAFDxJ9AQwUlwAFDxJ9AQwWayAFDxJ9AQwc7LAFDxGJgQwmcLAFDw9zAQwy95AFDwz5gQxLtQAFDwqlQQxeVzAFDwVeAQyDSzAFDv_8AQyuWnAFDvkdAQzikqgFDvC1gQ0jAXAFDuycwQ1ULAAFDunmQQ2CSOgFDuiEgQ25jsAFDuiEgQ3hkGAFDuiEgQ4ANJAFDunSQQ4RJ7wFDurGAQ4V6cAFDuu5gQ4aq8YAD0hYOJxhPEQFfAENS7UBC0rgAAUNS7UBC0rgAAUNTYkBC0kL4AUNYCsBC0kL4AUNcs0BC0kL4AUNkaYBC0kL4AUNvLUBC0OqAAUN7eABCzi9AAUOFaCBCzMogAUOMspBCygMgAUOUXrBCxzjoAUOiG1BCw61gAUOuFaBCwF+AAUO4TbBCvtvwAUPAW5BCvXVgAUPJsoBCvXVgAUPSg8BCvt6IAUPYqRBCwvdoAUPfMCBCydZgAUPk_gBC0gggAUPoJpBC2FkwAUPraQBC5BVAAUPs3bBC7DwwAUPuePBC+l+AAUPvc1BDBalYAUPvc1BDD6nAAUPvc1BDGm2UAUPuxbBDJfTOAUPuFuBDMj9yAUPtEKBDPooWAUPsDlBDSU3oAUPruuBDUceAAUPrZYBDW8foAUPrZYBDZchQAUPrZYBDb8i6AUPrZYBDd37oAUPrZYBDfa5EAUPrZYBDgStnAUPrsBBDg3+sgAPSGhsqK1dOU0FycmF5oiofAAgAEQAaACQAKQAyADcASQBMAFEAUwBcAGIAZwByAHkAfgCAAIIAhACGAIgAjQCYAsECwwLIAtMC3ALpAuwC+QMCAwcE8QTzBPgGdgZ4Bn0H4AfiB+cH7wAAAAAAAAIBAAAAAAAAACwAAAAAAAAAAAAAAAAAAAfy"
+          }
+        },
+        {
+          "BTTLastUpdatedAt" : 1690388215.8689909,
+          "BTTTriggerType" : 100,
+          "BTTTriggerTypeDescriptionReadOnly" : "3 Finger Swipe Left",
+          "BTTTriggerTypeDescription" : "3本指で左にスワイプ",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "09642136-55D1-4FC8-AC8B-7F8042B6C20F",
+          "BTTLayoutIndependentActionChar" : "RIGHT",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "55,124",
+          "BTTOrder" : 6,
+          "BTTGestureNotes" : "3本指で左にスワイプ"
+        },
+        {
+          "BTTLastUpdatedAt" : 1690388215.8691111,
+          "BTTTriggerType" : 101,
+          "BTTTriggerTypeDescriptionReadOnly" : "3 Finger Swipe Right",
+          "BTTTriggerTypeDescription" : "3本指で右にスワイプ",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "18A5F71E-DB28-412C-BA58-A4C4E1B10FEB",
+          "BTTLayoutIndependentActionChar" : "LEFT",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "55,123",
+          "BTTOrder" : 5,
+          "BTTGestureNotes" : "3本指で右にスワイプ"
+        },
+        {
+          "BTTLastUpdatedAt" : 1690388215.8698921,
+          "BTTTriggerType" : 114,
+          "BTTTriggerTypeDescriptionReadOnly" : "TipTap Right (1 Finger Fix)",
+          "BTTTriggerTypeDescription" : "TipTap右（1本指修正）",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "F1702DC8-F951-4F48-A986-37736D889DC4",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "58,55,124",
+          "BTTOrder" : 1,
+          "BTTGestureNotes" : "TipTap右（1本指修正）"
+        },
+        {
+          "BTTLastUpdatedAt" : 1690388215.870681,
+          "BTTTriggerType" : 121,
+          "BTTTriggerTypeDescriptionReadOnly" : "4 Finger Click",
+          "BTTTriggerTypeDescription" : "4本指でクリック",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "B45D35EA-8ADE-4846-AAAB-042A4A2B227B",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "55,13",
+          "BTTOrder" : 3,
+          "BTTGestureNotes" : "4本指でクリック"
+        },
+        {
+          "BTTLastUpdatedAt" : 1690388215.86883,
+          "BTTTriggerType" : 620,
+          "BTTTriggerTypeDescriptionReadOnly" : "Please Select a Trigger ",
+          "BTTTriggerTypeDescription" : "トリガーを選択してください ",
+          "BTTTriggerClass" : "BTTTriggerTypeDrawings",
+          "BTTUUID" : "562B9D23-40A2-49D2-8312-D92549978614",
+          "BTTLayoutIndependentActionChar" : "",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "55,15",
+          "BTTOrder" : 3,
+          "BTTTriggerConfig" : {
+            "BTTRequiredDrawingCertainty" : "0.700000",
+            "BTTDrawingDirectionShouldMatter" : "0",
+            "BTTDrawingName" : "ページを再読み込み",
+            "BTTDrawingBezierPath" : "YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGpCwwWGiEkJyotVSRudWxs0g0ODxVaTlMub2JqZWN0c1YkY2xhc3OlEBESExSAAoAEgAWABoAHgAjSFw4YGVpOU1NlZ21lbnRzTxECJQBD1u3AQzp+KAFD1u3AQzp+KAFD1rNAQzp+KAFD1kNgQzp+KAFD1dOAQzp+KAFD039AQznpFgFD0AXgQznpFgFDy2dgQznpFgFDxaPAQznpFgFDv+AgQznpFgFDuDQAQznpFgFDsCYgQznpFgFDqHoAQznpFgFDoGwgQznpFgFDmeUgQznpFgFDkjkAQznpFgFDiu6QQznpFgFDg6QgQzqa2AFDejogQzqa2AFDbe+AQztJqAFDZXXgQztJqAFDXDjgQzvylAFDU79gQzyZeAFDTMygQzyZeAFDSCQAQz0uiAFDRD7gQz0uiAFDQFnAQz28_AFDPfjAQz28_AFDPFhgQz28_AFDO3igQz28_AFDOwOgQz28_AFDOiPgQz28_AFDOa7gQz28_AFDOTnAQz2CeAFDOFoAQz2CeAFDN3pAQz2CeAFDNz_AQz2CeAFDNmAAQz034gFDNiWAQz034gFDNmAAQz034gFDNtUgQzz9XgFDN7TgQzyyyAFDPF1gQzuIqAFDRNcAQzrhxAFDUqhgQzrhxAFDYsQgQzrhxAFDchxgQzrhxAFDhQiAQzrhxAFDkeQAQzu9MAFDoWLgQz2eBAFDsOGwQz6OcAFDwGCQQz9+2AFDypigQz9+2AFD13QgQz9+2AFD4awwQz9+2AFD6boAQ0AyJAFD799gQ0AyJAFD87pwQ0AyJAFD9a0AQ0AyJAFD9n0wQ0AyJAFD9ppwQ0AyJIAD0hscHR5aJGNsYXNzbmFtZVgkY2xhc3Nlc1xOU0JlemllclBhdGiiHyBcTlNCZXppZXJQYXRoWE5TT2JqZWN00hcOIhlPEQG5AEPAXsBDPawcAUPAXsBDPawcAUO_7uBDPWGIAUO9mqBDPDdmAUO6IUBDO5WyAUO4LrBDOwdAAUOzLnBDOlyQAUOsRcBDOEnwAUOlXQBDOEnwAUOedEBDN5kSAUOYTvBDN5kSAUORZjBDNug0AUOJuhBDNug0AUOCDfBDNjWkAUN3DcBDNjWkAUNoeQBDNYPkAUNZ5CBDNYPkAUNOXOBDNNZKAUNCEkBDNNZKAUM3TmBDNCoMAUMuEWBDM4EgAUMopWBDMuboAUMidiBDMuboAUMdzYBDMlHYAUMbbIBDMlHYAUMa94BDMhdUAUMbMgBDMhdUAUMcEcBDMhdUAUMgukBDMhdUAUMocIBDMXLQAUMz98BDMBecAUNEE2BDLrEIAUNR5OBDLgAqAUNw4oBDLQ_AAUOJsmBDLBNYAUOb1KBDLBNYAUOt9uBDKxFwAUO58UBDKxFwAUPJcBBDKxFwAUPWS5BDKxFwAUPfooBDKlmGAUPm7PBDKlmGAUPrKcBDKbKiAUPvBNBDKbKiAUPwlbBDKS0EAUPxBZBDKS0EAUPxItBDKS0EAUPxQBBDKS0EAUPxXVBDKS0EgAPSFw4lGU8RAYwAQ8Cx4EMv1lgBQ8Cx4EMv1lgBQ75dkEMv1lgBQ7j7sEMv1lgBQ7OZwEMv1lgBQ6yxAEMv1lgBQ6UE4EMucTwBQ54cIEMtD3wBQ5YOUEMqQlQBQ409EEMncAABQ4Rr0EMlUkQBQ3pCwEMjPQABQ2ljoEMhIRwBQ1rOwEMfvZwBQ06EIEMeX_wBQ0PAQEMdB4ABQztGwEMcYJwBQzUXYEMbwkgBQzK2YEMbwkgBQzJ74EMbh8QBQzK2YEMbh8QBQzOWIEMb0lgBQzU2gEMcOnABQznfAEMdZJIBQz9LAEMd_sgBQ0uVoEMerZgBQ1oqgEMfX1oBQ2vNAEMfX1oBQ4Hg0EMgMtIBQ4s3wEMhoqgBQ5x44EMinxABQ6TocEMkBvwBQ68ggEMliowBQ7eQEEMm8ngBQ788MEMnpQgBQ8T_0EMoUqABQ8h5MEMoUqABQ8uQ4EMoUqABQ80hwEMoUqABQ82RoEMoUqABQ82RoEMoGBwBQ82u4EMoGBwBQ82u4EMn3ZgBQ83MIEMnoxSAA9IXDigZTxEBuQBDxnlgQy22HAFDxnlgQy22HAFDxOiAQy47ugFDxBhQQy47ugFDwQCgQy94ZgFDvMPgQzAfSgFDt2HwQzIkAAFDsTygQzIkAAFDqlPgQzFzIgFDpzwwQzDUzAFDoFOAQy7CLgFDmKdQQyyqggFDkPswQyktuAFDihKAQyZqOgFDeKvAQyLeuAFDatpAQyDMGgFDXo+gQx9uegFDU8vgQx7CPAFDRTcAQx1evAFDPwegQx1evAFDOl8AQxzJqgFDNz1gQxxEDAFDNNxgQxvKQAFDNKHAQxvKQAFDNRbgQxvKQAFDNYvgQxvKQAFDOK2gQxvKQAFDPhmAQxvKQAFDRc_AQxvKQAFDUJOAQxvKQAFDYjYAQxvKQAFDe+0AQxvKQAFDitHwQxvKQAFDmzHwQxvKQAFDq5HwQxvKQAFDt4xAQxvKQAFDxUjgQxvKQAFDzbhwQxvKQAFD1cZAQxx9iAFD2+uQQxx9iAFD4IoQQxx9iAFD4t5gQxx9iAFD5G8wQxx9iAFD5KnAQxx9iAFD5McAQxxDBAFD5McAQxwIgAFD5ORAQxvN_AFD5QGAQxuTeAFD5QGAQxtY9IAD0hcOKxlPEQGnAEPBccBDPR8kAUPBccBDPR8kAUPBAeBDPR8kAUO+S+BDPR8kAUO6DxBDPcYIAUO0S3BDPnOkAUOtYsBDPnOkAUOmegBDPnOkAUOgVLBDPnOkAUOZa_BDPnOkAUOSIYBDPRAgAUOK1xBDO6ygAUOEUBBDOkzUAUN5R+BDOOe4AUNqswBDN4Q0AUNcHiBDNtJ0AUNP04BDNtJ0AUNFD6BDNiY4AUM+4EBDNiY4AUM3KiBDNYG0AUMxviBDNYG0AUMunGBDNPwWAUMtvKBDNPwWAUMtR6BDNPwWAUMtgiBDNPwWAUMt90BDNPwWAUMx3GBDNhj8AUM4zyBDN_4YAUM_weBDOJ_MAUNNk2BDOgGMAUNecmBDPB1wAUN0pOBDPOhgAUOEioBDPaooAUOZUCBDP8uMAUOlSnBDQJ8EAUO1qnBDQJ8EAUPESDBDQYjgAUPRI6BDQmROAUPaepBDQmROAUPf3IBDQxCMAUPloCBDQxCMAUPp3PBDQxCMAUPrbcBDQxCMAUPs_qBDQxCMAUPtOSBDQxCMAUPtVmBDQxCMAUPtc7BDQxCMgAPSGxwuL1dOU0FycmF5oi4gAAgAEQAaACQAKQAyADcASQBMAFEAUwBdAGMAaABzAHoAgACCAIQAhgCIAIoAjACRAJwCxQLHAswC1wLgAu0C8AL9AwYDCwTIBMoEzwZfBmEGZggjCCUIKgnVCdcJ3AnkAAAAAAAAAgEAAAAAAAAAMAAAAAAAAAAAAAAAAAAACec="
+          }
+        },
+        {
+          "BTTLastUpdatedAt" : 1690388215.869715,
+          "BTTTriggerType" : 620,
+          "BTTTriggerTypeDescriptionReadOnly" : "Please Select a Trigger ",
+          "BTTTriggerTypeDescription" : "トリガーを選択してください ",
+          "BTTTriggerClass" : "BTTTriggerTypeDrawings",
+          "BTTUUID" : "EEDBEE88-F86E-4D0D-A638-6BEE30A79979",
+          "BTTLayoutIndependentActionChar" : "HOME",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "115",
+          "BTTOrder" : 4,
+          "BTTTriggerConfig" : {
+            "BTTRequiredDrawingCertainty" : "0.700000",
+            "BTTDrawingDirectionShouldMatter" : "0",
+            "BTTDrawingName" : "ページ最上部へスクロール",
+            "BTTDrawingBezierPath" : "YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGqCwwXGyIlKCsuMVUkbnVsbNINDg8WWk5TLm9iamVjdHNWJGNsYXNzphAREhMUFYACgASABYAGgAeACIAJ0hgOGRpaTlNTZWdtZW50c08RAcIAQ6Eg4ELBncABQ6Eg4ELBncABQ6Eg4ELDXUABQ6Eg4ELLJ4ABQ6Eg4ELZDQwBQ6Eg4ELm8pgBQ6DKwEL8ejgBQ6AdMEMJxFgBQ59w8EMUiCoBQ58ZgEMg0s4BQ55poEMt4NwBQ55poEM6K4ABQ54S0ENFsroBQ54S0ENNaOgBQ54S0ENWpegBQ54S0ENeXBYBQ54S0ENki3IBQ54S0ENm7HQBQ55PwENpTXYBQ55PwENq7dgBQ55PwENrKFwBQ55PwENrYuABQ55tAENrKFwBQ55tAENq7dgBQ55tAENqeM4BQ560MENmk6wBQ59SkENgZFABQ5+dEENbu8gBQ6BGAENSfsgBQ6CW4ENLjAIBQ6DuQEM_QV4BQ6FFsEMy9roBQ6FFsEMl6KwBQ6GcgEMaYXIBQ6GcgEMLzJQBQ6GcgEMCj5QBQ6GcgELypSgBQ6FIAELgKygBQ6D44ELTzHABQ6D44ELKe1gBQ6CuUELBKkgBQ6CuUEK96YQBQ6CuUEK8_3ABQ6CuUEK8FWABQ6CuUEK8imgBQ6CuUEK9dHgBQ6CuUEK+XowBQ6CuUEK+05QBQ6CuUEK_SJwBQ6DLkEK_vaSAA9IcHR4fWiRjbGFzc25hbWVYJGNsYXNzZXNcTlNCZXppZXJQYXRooiAhXE5TQmV6aWVyUGF0aFhOU09iamVjdNIYDiMaTxEBsABDoZrAQphFaAFDoZrAQphFaAFDodegQp0HaAFDohSAQqHJcAFDorLgQq4oKAFDov1gQrd5OAFDo68gQtSi+AFDpFgQQucc+AFDpK4wQvyknAFDpQagQwwjxAFDpbnwQxw_dAFDpm0wQyxbJgFDpxwAQzilygFDqC_gQ0tTsAFDqT3gQ1wyyAFDqeoQQ2b2nAFDqpEAQ29wMgFDquZQQ3lwnAFDq4rQQ4CTZAFDrCkwQ4OrEgFDrHBgQ4WdowFDrHBgQ4XYKAFDrI2gQ4X1agFDrI2gQ4XYKAFDrI2gQ4WdowFDrI2gQ4RtIgFDrNTgQ4J6kgFDrRewQ4DptgFDroDQQ3Aw6AFDrynAQ2bz6AFDsDewQ1YU0AFDsT+QQ0kGwgFDslNwQzZY3AFDssEgQxyh7gFDssEgQw4NEAFDssEgQwD_AgFDssEgQux2YAFDssEgQtn8YAFDssEgQswW2AFDssEgQsRMlAFDsw5AQrl0sAFDsw5AQrYz7AFDsw5AQrLzKAFDsw5AQrIJGAFDsw5AQrGUEAFDsw5AQrCqAAFDsw5AQrEfCAFDsw5AQrGUEIAD0hgOJhpPEQGwAEPBUHBClARYAUPBUHBClARYAUPBUHBCl0UgAUPBUHBCnw9gAUPBUHBCq24YAUPA_jBCutpwAUPAV0BCy82gAUO_V0BC385wAUO9+aBC+GO4AUO8lIBDC4okAUO61EBDG6XWAUO5CIBDLlO8AUO3DSBDRIYkAUO2X4BDUA1gAUO1qvBDYa_iAUO1VZBDa7BMAUO0_LBDekUqAUO0_LBDgP2sAUO0qnBDhNjDAUO0X_BDhy0IAUO0X_BDiF2JAUO0OqBDiM1oAUO0OqBDiOqqAUO0OqBDiM1oAUO0OqBDh_04AUOz7YBDhUc+AUOz7YBDgQpzAUOz7YBDdcpCAUOzlZBDaLw0AUOy4lBDWKCEAUOyfNBDQm4aAUOxTGBDLDuwAUOw8yBDHONoAUOwPpBDC0DmAUOvkPBC_3NYAUOu8qBC8xSgAUOuniBC4JqgAUOt+aBC0S5AAUOtqnBCxM+IAUOtFWBCu354AUOszjBCs7Q0AUOsmiBCsHNwAUOsV1BCqjAAAUOsV1BCpu9AAUOsOhBCpgUwAUOsOhBCpRsgAUOsHNBCpKYQAUOsHNBCpRsggAPSGA4pGk8RAZUAQ74VYEKLqcgBQ74VYEKLqcgBQ74VYEKTdAgBQ73B8EKkZzgBQ70VsEK57twBQ7zAUELN77ABQ7wPcELpkpgBQ7teoEMCmsQBQ7qyYEMNXpQBQ7megEMgDHoBQ7jswEMuoVgBQ7iTcEM9+aABQ7iTcENNUegBQ7jswENcqjABQ7mdoENqe6gBQ7qj0EN2xkwBQ7uWYEN9uRABQ7yYwEOEPnEBQ70nMEOGMQIBQ72s0EOHwd4BQ73psEOI8l4BQ73psEOJD6ABQ73psEOI8l4BQ74sgEOHYYIBQ74sgEODJLcBQ76DUEN6wjQBQ77aIENvOvgBQ77aIENZCI4BQ77aIENEmGYBQ77aIEMpHzQBQ77aIEMKIYABQ75_0ELw_fgBQ74mkELSTWgBQ71zQEKyFggBQ70dIEKcjmABQ7x7cEKOqNgBQ7wqkEKAw1ABQ7uI4EJlu5ABQ7tBoEJWJwABQ7sEwEJMowABQ7sEwEJJJAABQ7rngEJIOfABQ7rngEJHT+ABQ7rngEJGZdABQ7rngEJHT+CAA9IYDiwaTxEBpwBDtK3QQmx+oAFDtK3QQmx+oAFDtPhQQn8g0AFDtPhQQo118AFDtUkwQptbeAFDtZygQqxOqAFDtfUQQsfxlAFDtq0AQu1NYAFDtwbwQweFyAFDtwbwQxkoTAFDt2xwQy9atAFDt2xwQ0WNIAFDuDdgQ1u_iAFDuOtQQ2yepAFDuk0QQ3pwGAFDu09wQ4KZ9gFDvJiAQ4Z1DAFDvS2QQ4jJUgFDvbMgQ4paLgFDvecwQ4sqXgFDvecwQ4sNHAFDvecwQ4qdPAFDvecwQ4bCJgFDvecwQ4KFWgFDvY_QQ3jAEAFDvY_QQ2lnyAFDvTbwQ1rS6AFDvM0wQ0LePAFDvBlAQzH_IgFDunJAQxoKdAFDuNxgQwPYDAFDt9HAQuqGWAFDtdZgQr4hhAFDtHswQqcTEAFDs3bQQpAEmAFDsnlgQnsVMAFDsdewQl9KIAFDsVIQQlLDQAFDsQrgQkMuwAFDsNbQQjytMAFDsLmQQjvDIAFDsLmQQjrZEAFDsLmQQjvDIAFDsLmQQjytMAFDsLmQQj2XQAFDsLmQQj6BUAFDsLmQQkBVgIAD0hgOLxpPEQHUAEO23OBCIJNwAUO23OBCIJNwAUO23OBCLRpQAUO23OBCSOVgAUO3KgBCXpUwAUO32NBCh9_gAUO4MDBCoHUoAUO4MDBCupFEAUO4MDBCzQtEAUO4MDBC7sl4AUO31fBDCQc+AUO31fBDFI54AUO3e6BDJjD8AUO3e6BDMDFkAUO3e6BDOjHMAUO3e6BDRnxwAUO3zIBDTW82AUO4GZBDUtsoAUO4GZBDWEccAUO4XGBDW2jUAUO4XGBDXQk0AUO4XGBDXX4+AUO4XGBDXbjCAUO4XGBDXX4+AUO4pvBDWNW0AUO4+2BDT5i0AUO4+2BDRlu0AUO5VbBDNLkyAUO5VbBDF32+AUO5tpBDAw2WAUO5tpBCyB_AAUO6KABCkS1gAUO6gbBCYewAAUO65yBCCSJQAUO7PxBBqdRAAUO7PxBBP9iAAUO7kVBAiOsAAUO74IC_9AIAAUO8J8DAuaSAAUO8W8DA7bCAAUO8W8DA_FIAAUO8W8DA9QEAAUO8W8DA7bEAAUO8W8DA3w+AAUO8W8DA0G6AAUO8W8DAwc2AAUO8W8DAun0AAUO8W8DAq9wAAUO8W8DApIsAAUO8W8DAnTsAAUO8W8DAleoAAUO8eQDAleoAgAPSHB0yM1dOU0FycmF5ojIhAAgAEQAaACQAKQAyADcASQBMAFEAUwBeAGQAaQB0AHsAggCEAIYAiACKAIwAjgCQAJUAoAJmAmgCbQJ4AoECjgKRAp4CpwKsBGAEYgRnBhsGHQYiB7sHvQfCCW0Jbwl0C0wLTgtTC1sAAAAAAAACAQAAAAAAAAA0AAAAAAAAAAAAAAAAAAALXg=="
+          }
+        }
+      ]
+    },
+    {
+      "BTTAppBundleIdentifier" : "BT.G",
+      "BTTAppName" : "Global",
+      "BTTAppAutoInvertIcon" : 1,
+      "BTTAppSpecificSettings" : {
+        "BTTDisableGlobalTriggers" : false
+      },
+      "BTTTriggers" : [
+        {
+          "BTTLastUpdatedAt" : 1743744625.082077,
+          "BTTTriggerType" : 0,
+          "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+          "BTTUUID" : "B8D35194-99A2-47E1-98A8-077E3EC6D0E5",
+          "BTTPredefinedActionType" : 337,
+          "BTTPredefinedActionName" : "Toggle Pin or Unpin Window Float On Top",
+          "BTTAdditionalConfiguration" : "1966123",
+          "BTTShortcutScope" : 0,
+          "BTTShortcutKeyboardType" : 0,
+          "BTTTriggerOnDown" : 1,
+          "BTTLayoutIndependentChar" : "p",
+          "BTTShortcutKeyCode" : 35,
+          "BTTShortcutAdvancedModifierKeys" : "1966123",
+          "BTTShortcutModifierKeys" : 1966080,
+          "BTTOrder" : 2,
+          "BTTAutoAdaptToKeyboardLayout" : 0,
+          "BTTTriggerConfig" : {
+            "BTTHUDText" : "Pin/Unpin Focused Window",
+            "BTTShowHUD" : 1
+          }
+        }
+      ]
+    },
+    {
+      "BTTAppBundleIdentifier" : "com.apple.finder",
+      "BTTAppName" : "Finder",
+      "BTTAppAutoInvertIcon" : 1,
+      "BTTAppSpecificSettings" : {
+        "BTTDisableGlobalTriggers" : false
+      },
+      "BTTTriggers" : [
+
+      ]
+    },
+    {
+      "BTTAppBundleIdentifier" : "com.google.Chrome",
+      "BTTAppName" : "Google Chrome",
+      "BTTAppAutoInvertIcon" : 1,
+      "BTTAppProcessMatchMode" : 2,
+      "BTTAppProcessName" : "Google Chrome",
+      "BTTTriggers" : [
+        {
+          "BTTLastUpdatedAt" : 1690388215.8677821,
+          "BTTTriggerType" : 620,
+          "BTTTriggerTypeDescriptionReadOnly" : "Please Select a Trigger ",
+          "BTTTriggerTypeDescription" : "トリガーを選択してください ",
+          "BTTTriggerClass" : "BTTTriggerTypeDrawings",
+          "BTTUUID" : "915D07CF-200A-4E33-BEB1-3B1B44C4F156",
+          "BTTLayoutIndependentActionChar" : "HOME",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "115",
+          "BTTOrder" : 4,
+          "BTTTriggerConfig" : {
+            "BTTRequiredDrawingCertainty" : "0.700000",
+            "BTTDrawingDirectionShouldMatter" : "0",
+            "BTTDrawingName" : "ページ最上部へスクロール",
+            "BTTDrawingBezierPath" : "YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGqCwwXGyIlKCsuMVUkbnVsbNINDg8WWk5TLm9iamVjdHNWJGNsYXNzphAREhMUFYACgASABYAGgAeACIAJ0hgOGRpaTlNTZWdtZW50c08RAcIAQ6Eg4ELBncABQ6Eg4ELBncABQ6Eg4ELDXUABQ6Eg4ELLJ4ABQ6Eg4ELZDQwBQ6Eg4ELm8pgBQ6DKwEL8ejgBQ6AdMEMJxFgBQ59w8EMUiCoBQ58ZgEMg0s4BQ55poEMt4NwBQ55poEM6K4ABQ54S0ENFsroBQ54S0ENNaOgBQ54S0ENWpegBQ54S0ENeXBYBQ54S0ENki3IBQ54S0ENm7HQBQ55PwENpTXYBQ55PwENq7dgBQ55PwENrKFwBQ55PwENrYuABQ55tAENrKFwBQ55tAENq7dgBQ55tAENqeM4BQ560MENmk6wBQ59SkENgZFABQ5+dEENbu8gBQ6BGAENSfsgBQ6CW4ENLjAIBQ6DuQEM_QV4BQ6FFsEMy9roBQ6FFsEMl6KwBQ6GcgEMaYXIBQ6GcgEMLzJQBQ6GcgEMCj5QBQ6GcgELypSgBQ6FIAELgKygBQ6D44ELTzHABQ6D44ELKe1gBQ6CuUELBKkgBQ6CuUEK96YQBQ6CuUEK8_3ABQ6CuUEK8FWABQ6CuUEK8imgBQ6CuUEK9dHgBQ6CuUEK+XowBQ6CuUEK+05QBQ6CuUEK_SJwBQ6DLkEK_vaSAA9IcHR4fWiRjbGFzc25hbWVYJGNsYXNzZXNcTlNCZXppZXJQYXRooiAhXE5TQmV6aWVyUGF0aFhOU09iamVjdNIYDiMaTxEBsABDoZrAQphFaAFDoZrAQphFaAFDodegQp0HaAFDohSAQqHJcAFDorLgQq4oKAFDov1gQrd5OAFDo68gQtSi+AFDpFgQQucc+AFDpK4wQvyknAFDpQagQwwjxAFDpbnwQxw_dAFDpm0wQyxbJgFDpxwAQzilygFDqC_gQ0tTsAFDqT3gQ1wyyAFDqeoQQ2b2nAFDqpEAQ29wMgFDquZQQ3lwnAFDq4rQQ4CTZAFDrCkwQ4OrEgFDrHBgQ4WdowFDrHBgQ4XYKAFDrI2gQ4X1agFDrI2gQ4XYKAFDrI2gQ4WdowFDrI2gQ4RtIgFDrNTgQ4J6kgFDrRewQ4DptgFDroDQQ3Aw6AFDrynAQ2bz6AFDsDewQ1YU0AFDsT+QQ0kGwgFDslNwQzZY3AFDssEgQxyh7gFDssEgQw4NEAFDssEgQwD_AgFDssEgQux2YAFDssEgQtn8YAFDssEgQswW2AFDssEgQsRMlAFDsw5AQrl0sAFDsw5AQrYz7AFDsw5AQrLzKAFDsw5AQrIJGAFDsw5AQrGUEAFDsw5AQrCqAAFDsw5AQrEfCAFDsw5AQrGUEIAD0hgOJhpPEQGwAEPBUHBClARYAUPBUHBClARYAUPBUHBCl0UgAUPBUHBCnw9gAUPBUHBCq24YAUPA_jBCutpwAUPAV0BCy82gAUO_V0BC385wAUO9+aBC+GO4AUO8lIBDC4okAUO61EBDG6XWAUO5CIBDLlO8AUO3DSBDRIYkAUO2X4BDUA1gAUO1qvBDYa_iAUO1VZBDa7BMAUO0_LBDekUqAUO0_LBDgP2sAUO0qnBDhNjDAUO0X_BDhy0IAUO0X_BDiF2JAUO0OqBDiM1oAUO0OqBDiOqqAUO0OqBDiM1oAUO0OqBDh_04AUOz7YBDhUc+AUOz7YBDgQpzAUOz7YBDdcpCAUOzlZBDaLw0AUOy4lBDWKCEAUOyfNBDQm4aAUOxTGBDLDuwAUOw8yBDHONoAUOwPpBDC0DmAUOvkPBC_3NYAUOu8qBC8xSgAUOuniBC4JqgAUOt+aBC0S5AAUOtqnBCxM+IAUOtFWBCu354AUOszjBCs7Q0AUOsmiBCsHNwAUOsV1BCqjAAAUOsV1BCpu9AAUOsOhBCpgUwAUOsOhBCpRsgAUOsHNBCpKYQAUOsHNBCpRsggAPSGA4pGk8RAZUAQ74VYEKLqcgBQ74VYEKLqcgBQ74VYEKTdAgBQ73B8EKkZzgBQ70VsEK57twBQ7zAUELN77ABQ7wPcELpkpgBQ7teoEMCmsQBQ7qyYEMNXpQBQ7megEMgDHoBQ7jswEMuoVgBQ7iTcEM9+aABQ7iTcENNUegBQ7jswENcqjABQ7mdoENqe6gBQ7qj0EN2xkwBQ7uWYEN9uRABQ7yYwEOEPnEBQ70nMEOGMQIBQ72s0EOHwd4BQ73psEOI8l4BQ73psEOJD6ABQ73psEOI8l4BQ74sgEOHYYIBQ74sgEODJLcBQ76DUEN6wjQBQ77aIENvOvgBQ77aIENZCI4BQ77aIENEmGYBQ77aIEMpHzQBQ77aIEMKIYABQ75_0ELw_fgBQ74mkELSTWgBQ71zQEKyFggBQ70dIEKcjmABQ7x7cEKOqNgBQ7wqkEKAw1ABQ7uI4EJlu5ABQ7tBoEJWJwABQ7sEwEJMowABQ7sEwEJJJAABQ7rngEJIOfABQ7rngEJHT+ABQ7rngEJGZdABQ7rngEJHT+CAA9IYDiwaTxEBpwBDtK3QQmx+oAFDtK3QQmx+oAFDtPhQQn8g0AFDtPhQQo118AFDtUkwQptbeAFDtZygQqxOqAFDtfUQQsfxlAFDtq0AQu1NYAFDtwbwQweFyAFDtwbwQxkoTAFDt2xwQy9atAFDt2xwQ0WNIAFDuDdgQ1u_iAFDuOtQQ2yepAFDuk0QQ3pwGAFDu09wQ4KZ9gFDvJiAQ4Z1DAFDvS2QQ4jJUgFDvbMgQ4paLgFDvecwQ4sqXgFDvecwQ4sNHAFDvecwQ4qdPAFDvecwQ4bCJgFDvecwQ4KFWgFDvY_QQ3jAEAFDvY_QQ2lnyAFDvTbwQ1rS6AFDvM0wQ0LePAFDvBlAQzH_IgFDunJAQxoKdAFDuNxgQwPYDAFDt9HAQuqGWAFDtdZgQr4hhAFDtHswQqcTEAFDs3bQQpAEmAFDsnlgQnsVMAFDsdewQl9KIAFDsVIQQlLDQAFDsQrgQkMuwAFDsNbQQjytMAFDsLmQQjvDIAFDsLmQQjrZEAFDsLmQQjvDIAFDsLmQQjytMAFDsLmQQj2XQAFDsLmQQj6BUAFDsLmQQkBVgIAD0hgOLxpPEQHUAEO23OBCIJNwAUO23OBCIJNwAUO23OBCLRpQAUO23OBCSOVgAUO3KgBCXpUwAUO32NBCh9_gAUO4MDBCoHUoAUO4MDBCupFEAUO4MDBCzQtEAUO4MDBC7sl4AUO31fBDCQc+AUO31fBDFI54AUO3e6BDJjD8AUO3e6BDMDFkAUO3e6BDOjHMAUO3e6BDRnxwAUO3zIBDTW82AUO4GZBDUtsoAUO4GZBDWEccAUO4XGBDW2jUAUO4XGBDXQk0AUO4XGBDXX4+AUO4XGBDXbjCAUO4XGBDXX4+AUO4pvBDWNW0AUO4+2BDT5i0AUO4+2BDRlu0AUO5VbBDNLkyAUO5VbBDF32+AUO5tpBDAw2WAUO5tpBCyB_AAUO6KABCkS1gAUO6gbBCYewAAUO65yBCCSJQAUO7PxBBqdRAAUO7PxBBP9iAAUO7kVBAiOsAAUO74IC_9AIAAUO8J8DAuaSAAUO8W8DA7bCAAUO8W8DA_FIAAUO8W8DA9QEAAUO8W8DA7bEAAUO8W8DA3w+AAUO8W8DA0G6AAUO8W8DAwc2AAUO8W8DAun0AAUO8W8DAq9wAAUO8W8DApIsAAUO8W8DAnTsAAUO8W8DAleoAAUO8eQDAleoAgAPSHB0yM1dOU0FycmF5ojIhAAgAEQAaACQAKQAyADcASQBMAFEAUwBeAGQAaQB0AHsAggCEAIYAiACKAIwAjgCQAJUAoAJmAmgCbQJ4AoECjgKRAp4CpwKsBGAEYgRnBhsGHQYiB7sHvQfCCW0Jbwl0C0wLTgtTC1sAAAAAAAACAQAAAAAAAAA0AAAAAAAAAAAAAAAAAAALXg=="
+          }
+        },
+        {
+          "BTTLastUpdatedAt" : 1713629329.1270781,
+          "BTTTriggerType" : 100,
+          "BTTTriggerTypeDescriptionReadOnly" : "3 Finger Swipe Left",
+          "BTTTriggerTypeDescription" : "3本指で左にスワイプ",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "891C0688-3C16-4F5D-9BC8-5A9002795A74",
+          "BTTLayoutIndependentActionChar" : "RIGHT",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "55,124",
+          "BTTOrder" : 6,
+          "BTTGestureNotes" : "3本指で左にスワイプ"
+        },
+        {
+          "BTTLastUpdatedAt" : 1690388215.867331,
+          "BTTTriggerType" : 620,
+          "BTTTriggerTypeDescriptionReadOnly" : "Please Select a Trigger ",
+          "BTTTriggerTypeDescription" : "トリガーを選択してください ",
+          "BTTTriggerClass" : "BTTTriggerTypeDrawings",
+          "BTTUUID" : "A7E96718-A4F0-478B-9E7D-72E2D5E8C77D",
+          "BTTLayoutIndependentActionChar" : "",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "55,13",
+          "BTTOrder" : 0,
+          "BTTTriggerConfig" : {
+            "BTTRequiredDrawingCertainty" : "0.700000",
+            "BTTDrawingDirectionShouldMatter" : "0",
+            "BTTDrawingName" : "タブを閉じる",
+            "BTTDrawingBezierPath" : "YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGoCwwVGSAjJilVJG51bGzSDQ4PFFpOUy5vYmplY3RzViRjbGFzc6QQERITgAKABIAFgAaAB9IWDhcYWk5TU2VnbWVudHNPEQJAAEOOuJBDgJI1AUOOuJBDgJI1AUOOuJBDfT9IAUOOHmBDd9NWAUON0UBDcmdiAUONfdBDae3MAUOM1OBDYLDMAUOMhBBDWb4GAUOMMKBDUURwAUOMMKBDSY5CAUOL44BDRCJOAUOL44BDPrZcAUOLlFBDOIcAAUOLlFBDMlekAUOLlFBDLnKCAUOLlFBDKcn4AUOLlFBDI5qcAUOLlFBDHvISAUOLlFBDGwzyAUOL25BDFyfQAUOMJhBDEn9IAUOMJhBDEB5EAUOMJhBDDb1EAUOMS2BDDN2EAUOMS2BDC_3EAUOMS2BDC4i8AUOMS2BDCqj8AUOMS2BDCm54AUOMaKBDCflwAUOMaKBDCb7sAUOMaKBDCYRoAUOMheBDCUnkAUOMoyBDCQ9gAUOMwGBDCQ9gAUOMwGBDCNTcAUOM3bBDCJpYAUONGDBDCF_UAUONUrBDCF_UAUOOgzBDB+YIAUOPs7BDB2w4AUOSabBDBtIEAUOV4xBDBjBQAUOagZBDBYdgAUOgRTBDBNnIAUOmaoBDBCr4AUOyZNBDA1eAAUO5r0BDAqXAAUPAmABDAqXAAUPK0BBDAeP4AUPQ9WBDAeP4AUPXGsBDATUoAUPfKJBDAIHcAUPjZWBC_7XwAUPpirBC_lhQAUPuKTBC_QZ4AUPwG8BC_QZ4AUPyDlBC_QZ4AUPy3oBC_QZ4AUPy+8BC_QZ4AUPzGQBC_QZ4AUPzGQBC_XuAAUPzNkBC_XuAAUPzNkBC_fCIAUPzU4BC_fCIgAPSGhscHVokY2xhc3NuYW1lWCRjbGFzc2VzXE5TQmV6aWVyUGF0aKIeH1xOU0JlemllclBhdGhYTlNPYmplY3TSFg4hGE8RAbkAQ4QjQEN4LDABQ4QjQEN4LDABQ4N+wENwdgABQ4LV0ENnOQABQ4HfEENfgtQBQ4CGkENUvwABQ32pIENJN8YBQ3u0gENAvjABQ3kDgEM1+lwBQ3euIEMr+fQBQ3cJoEMkQ8YBQ3cJoEMaQ1wBQ3cJoEMRycgBQ3ZrQEMLmmgBQ3ZrQEMHtUgBQ3ZrQEMDDMABQ3ZrQEL_1hABQ3ZrQEL5kqABQ3ZrQEL00JgBQ3ZrQELxj9gBQ3ZrQELv0FgBQ3ZrQELu5kgBQ3a14ELtJsgBQ3a14ELsscABQ3bwYELsPLgBQ3cq4ELsPLgBQ3egAELsPLgBQ3h_oELsPLgBQ3ogAELsPLgBQ3+MAELtcSgBQ4IaQELum0gBQ4TQQELum0gBQ4r1kELum0gBQ4_1wELtRegBQ5W5YELqj4ABQ6DSoELnY7gBQ6h+wELkmYABQ7Y7UELhDgABQ72FwELfqoABQ8wjgELd1sgBQ9c8sELaqwABQ+CToELZOygBQ+ihgELX1JgBQ+7G0ELWdvgBQ_NlUELVJSABQ_gD0ELT00ABQ_n2YELStmABQ_pmQELStmABQ_qDgELSQViAA9IWDiQYTxEBsABDZXAAQ3OOvAFDZXAAQ3OOvAFDZJ_AQ3HuXAFDZAWgQ2yCaAFDYiqgQ2ZTDAFDX48AQ13ZdgFDXN4gQ1MVpAFDWL6gQ0YHmAFDVr6gQzwHLgFDU0XgQy1yUAFDUH7AQx7dcAFDTmmAQxBIkAFDTFngQwM6hAFDS6xAQu9mkAFDSwGAQttlwAFDSwGAQspykAFDSmyAQsEhgAFDSmyAQrZJmAFDSmyAQrAGKAFDSmyAQqtEIAFDSmyAQqmEqAFDSqcAQqiakAFDSuGAQqglkAFDSxwAQqglkAFDS_vAQqglkAFDTNuAQqi6uAFDUMCgQqr0gAFDU+JgQq0K+AFDW5iAQrDmEAFDYcfgQrNfaAFDbtYAQrd+yAFDfi5AQrjj6AFDhyUAQrpKeAFDj_ZAQruzoAFDmMeAQruzoAFDoHOgQruzoAFDp74QQruzoAFDsC2gQrpLuAFDtrSgQrpLuAFDvHhAQrjwgAFDwXhwQrjwgAFDxC5wQrjwgAFDx0YgQrjwgAFDyTiwQrjwgAFDygjgQrnAsAFDyiYgQro1uAFDykNgQrsf0AFDyn3gQrwJ4IAD0hYOJxhPEQGwAEOIeBBDddRwAUOIeBBDddRwAUOIeBBDcrK4AUOIeBBDavyMAUOIeBBDZM0wAUOIJcBDXRcAAUOH0HBDUxaYAUOHJcBDSRYwAUOGz6BDPlJcAUOGfWBDNpwwAUOFzpBDKlGMAUOFzpBDH424AUOFfbBDGJr0AUOFfbBDEy8AAUOFfbBDDoZ4AUOFfbBDCFccAUOFfbBDBfYYAUOFfbBDBFW4AUOFowBDA3X4AUOFowBDAwDwAUOFowBDAsZsAUOFwEBDAovoAUOFwEBDAlFkAUOF3YBDAlFkAUOF3YBDAhbgAUOF+sBDAdxcAUOGGABDAaHYAUOGNVBDAWdUAUOGb9BDASzQAUOG37BDAOI8AUOIEDBDAOI8AUOJoRBDAOI8AUONfCBDAOI8AUOSfFBDAOI8AUOXGtBDAOI8AUOc3nBDAY_UAUOk7FBDAY_UAUOuQ0BDAkfAAUO2URBDAkfAAUPFz_BDAzgoAUPOoTBDAzgoAUPXcnBDAzgoAUPc1GBDA+RoAUPlQ_BDA+RoAUPqRCBDA+RoAUPsmGBDA+RoAUPtyOBDA+RoAUPt5iBDA+RogAPSGhsqK1dOU0FycmF5oiofAAgAEQAaACQAKQAyADcASQBMAFEAUwBcAGIAZwByAHkAfgCAAIIAhACGAIgAjQCYAtwC3gLjAu4C9wMEAwcDFAMdAyIE3wThBOYGmgacBqEIVQhXCFwIZAAAAAAAAAIBAAAAAAAAACwAAAAAAAAAAAAAAAAAAAhn"
+          }
+        },
+        {
+          "BTTLastUpdatedAt" : 1690388215.867157,
+          "BTTTriggerType" : 620,
+          "BTTTriggerTypeDescriptionReadOnly" : "Please Select a Trigger ",
+          "BTTTriggerTypeDescription" : "トリガーを選択してください ",
+          "BTTTriggerClass" : "BTTTriggerTypeDrawings",
+          "BTTUUID" : "A0BE343A-A5B8-428F-B9A9-CFD20D0A1C01",
+          "BTTLayoutIndependentActionChar" : "END",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "119",
+          "BTTOrder" : 5,
+          "BTTTriggerConfig" : {
+            "BTTRequiredDrawingCertainty" : "0.700000",
+            "BTTDrawingDirectionShouldMatter" : "0",
+            "BTTDrawingName" : "ページ最下部へスクロール",
+            "BTTDrawingBezierPath" : "YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGoCwwVGSAjJilVJG51bGzSDQ4PFFpOUy5vYmplY3RzViRjbGFzc6QQERITgAKABIAFgAaAB9IWDhcYWk5TU2VnbWVudHNPEQG5AEOgNZBDWN4IAUOgNZBDWN4IAUOgNZBDWGj+AUOgNZBDV_P0AUOgNZBDVNI8AUOgNZBDUzHcAUOgNZBDTQKAAUOgNZBDRUxSAUOgNZBDQWcwAUOf33BDNqNgAUOf33BDKli8AUOf33BDJClgAUOf33BDFxtQAUOf33BDC5QYAUOf33BDANBEAUOf33BC8K1gAUOf33BC6mnwAUOf33BC3IRgAUOf33BC0CWoAUOf33BCxU3AAUOf33BCwg0AAUOf33BCukLAAUOf33BCsniAAUOf33BCrbZ4AUOf33BCqPR4AUOf33BCpzT4AUOf33BCpXV4AUOf33BCpItoAUOf33BCo6FYAUOf33BCoyxQAUOgBLBCpOvQAUOgS_BCrLYQAUOgmyBCuRTIAUOhPNBCxvpQAUOhlMBC4RZoAUOh7hBC_8b4AUOh7hBDDbT0AUOh7hBDIGLYAUOiSFBDMgVaAUOi9yBDPk_+AUOjpxBDS14MAUOk_HBDVV50AUOllqBDWspoAUOl48BDYDZaAUOmIKBDYpdcAUOmIKBDZDe8AUOmIKBDZKzGAUOmPeBDZOdKAUOmPeBDZSHOgAPSGhscHVokY2xhc3NuYW1lWCRjbGFzc2VzXE5TQmV6aWVyUGF0aKIeH1xOU0JlemllclBhdGhYTlNPYmplY3TSFg4hGE8RAV8AQ5RCAENbH+wBQ5RCAENbH+wBQ5RCAENWd2ABQ5RCAENRC24BQ5RCAENHzm4BQ5RCAEM+kW4BQ5RCAEMxg2ABQ5RCAEMiKxgBQ5RCAEMV4HQBQ5RCAEMFAVwBQ5RCAELrUigBQ5RCAELXUVABQ5SZYEK+vBABQ5TuwEKquzgBQ5U98EKeXIABQ5XcQEKR_cgBQ5YpYEKHJeABQ5ZmQEKCY+ABQ5aLkEKApGABQ5ao0EKApGABQ5blsEKFZmgBQ5cwQEKOt3gBQ5fUwEKeI9gBQ5h_cEKyJKgBQ5jW4ELKufABQ5mGwELk1ggBQ5mGwEL3UAgBQ5paQEMTnLABQ5paQEMgqsABQ5qyMEMtuMwBQ5sMcEM_W04BQ5u6EENK4ogBQ5xkwENU4vIBQ529QENfpsQBQ56qwENl1iABQ5+SEENrQhQBQ6EToENwE84BQ6F7sENxtDABQ6IX0ENy7HiAA9IWDiQYTxEBTQBDmtfQQ1HSnAFDmtfQQ1HSnAFDmtfQQ0ocbgFDmzFwQzoAvAFDmzFwQy55ggFDmzFwQyIu3gFDmzFwQxCMXAFDmzFwQv9agAFDmzFwQutZsAFDmzFwQtE9mAFDmzFwQru18AFDmzFwQqk78AFDmzFwQptWaAFDmzFwQpIFWAFDmzFwQoo7EAFDmzFwQoh7mAFDmzFwQoa8GAFDmzFwQon82AFDmzFwQpBASAFDm3wAQpmRYAFDm3wAQrCf0AFDm3wAQsSgqAFDm3wAQtooSAFDmyAAQv+EEAFDmsigQwwMsAFDmmywQx66lAFDmmywQypBzgFDmmywQzsg6AFDmmywQ0m1yAFDmsQQQ1YAbAFDmxrgQ2GHpgFDm29QQ2rEpgFDnA2wQ3D0AgFDnA2wQ3TZJAFDnEqQQ3c6JAFDnEqQQ3gZ5AFDnEqQQ3hUaIAD0hYOJxhPEQFEAEO6jSBDM0xwAUO6jSBDM0xwAUO6jSBDKg9wAUO6jSBDGrcoAUO64_BDDy_sAUO7P+BC+QQQAUO7P+BC2lOAAUO7mFBCvrCQAUO7mFBCr0Q4AUO7mFBCmbyQAUO7mFBChbvAAUO7mFBCaZEgAUO7mFBCTcYQAUO7TdBCOyPgAUO7TdBCMZ_gAUO7TdBCLiDgAUO7TdBCLTbQAUO7TdBCLwsAAUO7TdBCMN8gAUO7TdBCQ4FAAUO6qVBCYloAAUO5q+BCg6cAAUO4TkBCnDxIAUO2OQBCuWYAAUOzZrBC20HgAUOw_xBC8_4wAUOtsTBDESBMAUOrOSBDIsLMAUOpfvBDMJREAUOoGdBDP+yMAUOnEIBDTb4AAUOmZ6BDVvsAAUOlugBDYoI8AUOlERBDa788AUOkweBDce6YAUOkI5BDeB30gAPSGhsqK1dOU0FycmF5oiofAAgAEQAaACQAKQAyADcASQBMAFEAUwBcAGIAZwByAHkAfgCAAIIAhACGAIgAjQCYAlUCVwJcAmcCcAJ9AoACjQKWApsD_gQABAUFVgVYBV0GpQanBqwGtAAAAAAAAAIBAAAAAAAAACwAAAAAAAAAAAAAAAAAAAa3"
+          }
+        },
+        {
+          "BTTLastUpdatedAt" : 1713629329.1270761,
+          "BTTTriggerType" : 101,
+          "BTTTriggerTypeDescriptionReadOnly" : "3 Finger Swipe Right",
+          "BTTTriggerTypeDescription" : "3本指で右にスワイプ",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "9E2AA2CE-B9DA-4779-8A98-1D8C37A323DB",
+          "BTTLayoutIndependentActionChar" : "LEFT",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "55,123",
+          "BTTOrder" : 5,
+          "BTTGestureNotes" : "3本指で右にスワイプ"
+        },
+        {
+          "BTTLastUpdatedAt" : 1690388215.867506,
+          "BTTTriggerType" : 620,
+          "BTTTriggerTypeDescriptionReadOnly" : "Please Select a Trigger ",
+          "BTTTriggerTypeDescription" : "トリガーを選択してください ",
+          "BTTTriggerClass" : "BTTTriggerTypeDrawings",
+          "BTTUUID" : "8838C15E-DBAA-419E-AE5C-899AE8D17BE4",
+          "BTTLayoutIndependentActionChar" : "",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "56,55,17",
+          "BTTOrder" : 2,
+          "BTTTriggerConfig" : {
+            "BTTRequiredDrawingCertainty" : "0.700000",
+            "BTTDrawingDirectionShouldMatter" : "0",
+            "BTTDrawingName" : "閉じたタブを開きなおす",
+            "BTTDrawingBezierPath" : "YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGoCwwVGSAjJilVJG51bGzSDQ4PFFpOUy5vYmplY3RzViRjbGFzc6QQERITgAKABIAFgAaAB9IWDhcYWk5TU2VnbWVudHNPEQIlAENo+sBDJRLOAUNo+sBDJRLOAUNpNWBDJU1SAUNpb+BDJU1SAUNqT6BDJeJ8AUNqiiBDJh0AAUNtq+BDJqKeAUNui4BDJu00AUNzNCBDJ4JEAUN1lSBDJ4JEAUN+DsBDJttgAUOEB5BDJNtMAUOGW9BDI7EoAUOMgSBDIEcYAUOTy5BDHM5QAUOXRPBDG4roAUOftIBDF1MgAUOpC3BDE7uIAUO0JLBDD8TUAUO4wzBDDcoIAUPD3GBDCp5EAUPOFHBDCRq0AUPWIlBDB7QgAUPdbMBDB7QgAUPjMGBDB7QgAUPnzuBDB7QgAUPtknBDB7QgAUPuAlBDB7QgAUPuH6BDB+6kAUPuPOBDCCkoAUPuPOBDCGOsAUPuPOBDCNi0AUPuPOBDCU28AUPuPOBDCcLIAUPuPOBDCqKEAUPuPOBDCxeQAUPuPOBDC_dMAUPuPOBDDGxYAUPuPOBDDUwUAUPuPOBDDux4AUPuPOBDEIzYAUPuPOBDEi04AUPt8lBDFtXAAUPtUKBDHciIAUPstmBDIzR6AUPrYQBDLTTkAUPqwrBDM2RAAUPpZ4BDPut6AUPou0BDSa9MAUPobBBDT96oAUPnwyBDWRuoAUPnwyBDXoecAUPncOBDZj3IAUPnJmBDauZUAUPm1zBDcRWwAUPm1zBDdb44AUPmoyBDd16aAUPmoyBDeb+cAUPmoyBDep9cAUPmoyBDexRkAUPmoyBDe07ogAPSGhscHVokY2xhc3NuYW1lWCRjbGFzc2VzXE5TQmV6aWVyUGF0aKIeH1xOU0JlemllclBhdGhYTlNPYmplY3TSFg4hGE8RAeYAQxzgIEMbKzwBQxzgIEMbKzwBQyDFQEMbua4BQySqYEMbua4BQyudIEMbua4BQzWdgEMbDvwBQ0NvAEMYS4ABQ1OKoEMUywwBQ2UtIEMQj5ABQ3fbIEMM9_gBQ4jJAEMG9_QBQ5GaQEMDcRABQ551wEL+T9ABQ6tRMEL1vYABQ7NfEELy8FgBQ7y2AELxgIABQ8UlkELwGJgBQ8qHcELwGJgBQ9BLEELxc8gBQ9NiwELysHgBQ9W3AEL1BLgBQ9bngEL26_ABQ9dXYEL4FkABQ9d0oEL4i0gBQ9d0oEL5AFABQ9d0oEL56mABQ9d0oEL61HgBQ9eosEL+FTgBQ9eosEL+_0gBQ9frgEMCoVwBQ9gywEMGhoABQ9hvoEMI54ABQ9i6IEMNkAgBQ9kBYEMRdSwBQ9mjEEMYZ_ABQ9n1UEMgHh4BQ9n1UEMlihABQ9mg4EMuxxABQ9kCkEM09mwBQ9hZoEM+M2wBQ9cEQENIM9YBQ9Zl4ENOYzIBQ9VjkENZJwQBQ9TFMENfVmABQ9QagENpVsgBQ9PNYENuwrwBQ9N4EEN4wyQBQ9N4EEOAnl4BQ9Mw0EOCkO4BQ9Mw0EOE5TQBQ9L8wEOFtWQBQ9L8wEOGJUQBQ9L8wEOGQoYBQ9L8wEOGX8iAA9IWDiQYTxEBegBC4mhAQwGdeAFC4mhAQwGdeAFC5ypAQwGdeAFC8gIAQwGdeAFC_+eAQwGdeAFDA9kAQwGdeAFDEm3AQwA5+AFDIcYgQv8O0AFDNjZAQv2LQAFDSOQgQvwbcAFDYpsgQvpkkAFDfhRAQvpkkAFDi+WgQvpkkAFDlTyQQvpkkAFDoFXAQvpkkAFDqaywQvpkkAFDsbqQQv0xuAFDt9_gQv6PWAFDvaOAQwCi4AFDwX6QQwHr6AFDw3EgQwMIzAFDxGTAQwR2NAFDxIIAQwSwuAFDxJ9AQwUlwAFDxJ9AQwWayAFDxJ9AQwc7LAFDxGJgQwmcLAFDw9zAQwy95AFDwz5gQxLtQAFDwqlQQxeVzAFDwVeAQyDSzAFDv_8AQyuWnAFDvkdAQzikqgFDvC1gQ0jAXAFDuycwQ1ULAAFDunmQQ2CSOgFDuiEgQ25jsAFDuiEgQ3hkGAFDuiEgQ4ANJAFDunSQQ4RJ7wFDurGAQ4V6cAFDuu5gQ4aq8YAD0hYOJxhPEQFfAENS7UBC0rgAAUNS7UBC0rgAAUNTYkBC0kL4AUNYCsBC0kL4AUNcs0BC0kL4AUNkaYBC0kL4AUNvLUBC0OqAAUN7eABCzi9AAUOFaCBCzMogAUOMspBCygMgAUOUXrBCxzjoAUOiG1BCw61gAUOuFaBCwF+AAUO4TbBCvtvwAUPAW5BCvXVgAUPJsoBCvXVgAUPSg8BCvt6IAUPYqRBCwvdoAUPfMCBCydZgAUPk_gBC0gggAUPoJpBC2FkwAUPraQBC5BVAAUPs3bBC7DwwAUPuePBC+l+AAUPvc1BDBalYAUPvc1BDD6nAAUPvc1BDGm2UAUPuxbBDJfTOAUPuFuBDMj9yAUPtEKBDPooWAUPsDlBDSU3oAUPruuBDUceAAUPrZYBDW8foAUPrZYBDZchQAUPrZYBDb8i6AUPrZYBDd37oAUPrZYBDfa5EAUPrZYBDgStnAUPrsBBDg3+sgAPSGhsqK1dOU0FycmF5oiofAAgAEQAaACQAKQAyADcASQBMAFEAUwBcAGIAZwByAHkAfgCAAIIAhACGAIgAjQCYAsECwwLIAtMC3ALpAuwC+QMCAwcE8QTzBPgGdgZ4Bn0H4AfiB+cH7wAAAAAAAAIBAAAAAAAAACwAAAAAAAAAAAAAAAAAAAfy"
+          }
+        },
+        {
+          "BTTLastUpdatedAt" : 1690388215.8683481,
+          "BTTTriggerType" : 620,
+          "BTTTriggerTypeDescriptionReadOnly" : "Please Select a Trigger ",
+          "BTTTriggerTypeDescription" : "トリガーを選択してください ",
+          "BTTTriggerClass" : "BTTTriggerTypeDrawings",
+          "BTTUUID" : "4278D3DC-C944-4E86-8236-13214A559D4E",
+          "BTTLayoutIndependentActionChar" : "",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "55,15",
+          "BTTOrder" : 3,
+          "BTTTriggerConfig" : {
+            "BTTRequiredDrawingCertainty" : "0.700000",
+            "BTTDrawingDirectionShouldMatter" : "0",
+            "BTTDrawingName" : "ページを再読み込み",
+            "BTTDrawingBezierPath" : "YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGpCwwWGiEkJyotVSRudWxs0g0ODxVaTlMub2JqZWN0c1YkY2xhc3OlEBESExSAAoAEgAWABoAHgAjSFw4YGVpOU1NlZ21lbnRzTxECJQBD1u3AQzp+KAFD1u3AQzp+KAFD1rNAQzp+KAFD1kNgQzp+KAFD1dOAQzp+KAFD039AQznpFgFD0AXgQznpFgFDy2dgQznpFgFDxaPAQznpFgFDv+AgQznpFgFDuDQAQznpFgFDsCYgQznpFgFDqHoAQznpFgFDoGwgQznpFgFDmeUgQznpFgFDkjkAQznpFgFDiu6QQznpFgFDg6QgQzqa2AFDejogQzqa2AFDbe+AQztJqAFDZXXgQztJqAFDXDjgQzvylAFDU79gQzyZeAFDTMygQzyZeAFDSCQAQz0uiAFDRD7gQz0uiAFDQFnAQz28_AFDPfjAQz28_AFDPFhgQz28_AFDO3igQz28_AFDOwOgQz28_AFDOiPgQz28_AFDOa7gQz28_AFDOTnAQz2CeAFDOFoAQz2CeAFDN3pAQz2CeAFDNz_AQz2CeAFDNmAAQz034gFDNiWAQz034gFDNmAAQz034gFDNtUgQzz9XgFDN7TgQzyyyAFDPF1gQzuIqAFDRNcAQzrhxAFDUqhgQzrhxAFDYsQgQzrhxAFDchxgQzrhxAFDhQiAQzrhxAFDkeQAQzu9MAFDoWLgQz2eBAFDsOGwQz6OcAFDwGCQQz9+2AFDypigQz9+2AFD13QgQz9+2AFD4awwQz9+2AFD6boAQ0AyJAFD799gQ0AyJAFD87pwQ0AyJAFD9a0AQ0AyJAFD9n0wQ0AyJAFD9ppwQ0AyJIAD0hscHR5aJGNsYXNzbmFtZVgkY2xhc3Nlc1xOU0JlemllclBhdGiiHyBcTlNCZXppZXJQYXRoWE5TT2JqZWN00hcOIhlPEQG5AEPAXsBDPawcAUPAXsBDPawcAUO_7uBDPWGIAUO9mqBDPDdmAUO6IUBDO5WyAUO4LrBDOwdAAUOzLnBDOlyQAUOsRcBDOEnwAUOlXQBDOEnwAUOedEBDN5kSAUOYTvBDN5kSAUORZjBDNug0AUOJuhBDNug0AUOCDfBDNjWkAUN3DcBDNjWkAUNoeQBDNYPkAUNZ5CBDNYPkAUNOXOBDNNZKAUNCEkBDNNZKAUM3TmBDNCoMAUMuEWBDM4EgAUMopWBDMuboAUMidiBDMuboAUMdzYBDMlHYAUMbbIBDMlHYAUMa94BDMhdUAUMbMgBDMhdUAUMcEcBDMhdUAUMgukBDMhdUAUMocIBDMXLQAUMz98BDMBecAUNEE2BDLrEIAUNR5OBDLgAqAUNw4oBDLQ_AAUOJsmBDLBNYAUOb1KBDLBNYAUOt9uBDKxFwAUO58UBDKxFwAUPJcBBDKxFwAUPWS5BDKxFwAUPfooBDKlmGAUPm7PBDKlmGAUPrKcBDKbKiAUPvBNBDKbKiAUPwlbBDKS0EAUPxBZBDKS0EAUPxItBDKS0EAUPxQBBDKS0EAUPxXVBDKS0EgAPSFw4lGU8RAYwAQ8Cx4EMv1lgBQ8Cx4EMv1lgBQ75dkEMv1lgBQ7j7sEMv1lgBQ7OZwEMv1lgBQ6yxAEMv1lgBQ6UE4EMucTwBQ54cIEMtD3wBQ5YOUEMqQlQBQ409EEMncAABQ4Rr0EMlUkQBQ3pCwEMjPQABQ2ljoEMhIRwBQ1rOwEMfvZwBQ06EIEMeX_wBQ0PAQEMdB4ABQztGwEMcYJwBQzUXYEMbwkgBQzK2YEMbwkgBQzJ74EMbh8QBQzK2YEMbh8QBQzOWIEMb0lgBQzU2gEMcOnABQznfAEMdZJIBQz9LAEMd_sgBQ0uVoEMerZgBQ1oqgEMfX1oBQ2vNAEMfX1oBQ4Hg0EMgMtIBQ4s3wEMhoqgBQ5x44EMinxABQ6TocEMkBvwBQ68ggEMliowBQ7eQEEMm8ngBQ788MEMnpQgBQ8T_0EMoUqABQ8h5MEMoUqABQ8uQ4EMoUqABQ80hwEMoUqABQ82RoEMoUqABQ82RoEMoGBwBQ82u4EMoGBwBQ82u4EMn3ZgBQ83MIEMnoxSAA9IXDigZTxEBuQBDxnlgQy22HAFDxnlgQy22HAFDxOiAQy47ugFDxBhQQy47ugFDwQCgQy94ZgFDvMPgQzAfSgFDt2HwQzIkAAFDsTygQzIkAAFDqlPgQzFzIgFDpzwwQzDUzAFDoFOAQy7CLgFDmKdQQyyqggFDkPswQyktuAFDihKAQyZqOgFDeKvAQyLeuAFDatpAQyDMGgFDXo+gQx9uegFDU8vgQx7CPAFDRTcAQx1evAFDPwegQx1evAFDOl8AQxzJqgFDNz1gQxxEDAFDNNxgQxvKQAFDNKHAQxvKQAFDNRbgQxvKQAFDNYvgQxvKQAFDOK2gQxvKQAFDPhmAQxvKQAFDRc_AQxvKQAFDUJOAQxvKQAFDYjYAQxvKQAFDe+0AQxvKQAFDitHwQxvKQAFDmzHwQxvKQAFDq5HwQxvKQAFDt4xAQxvKQAFDxUjgQxvKQAFDzbhwQxvKQAFD1cZAQxx9iAFD2+uQQxx9iAFD4IoQQxx9iAFD4t5gQxx9iAFD5G8wQxx9iAFD5KnAQxx9iAFD5McAQxxDBAFD5McAQxwIgAFD5ORAQxvN_AFD5QGAQxuTeAFD5QGAQxtY9IAD0hcOKxlPEQGnAEPBccBDPR8kAUPBccBDPR8kAUPBAeBDPR8kAUO+S+BDPR8kAUO6DxBDPcYIAUO0S3BDPnOkAUOtYsBDPnOkAUOmegBDPnOkAUOgVLBDPnOkAUOZa_BDPnOkAUOSIYBDPRAgAUOK1xBDO6ygAUOEUBBDOkzUAUN5R+BDOOe4AUNqswBDN4Q0AUNcHiBDNtJ0AUNP04BDNtJ0AUNFD6BDNiY4AUM+4EBDNiY4AUM3KiBDNYG0AUMxviBDNYG0AUMunGBDNPwWAUMtvKBDNPwWAUMtR6BDNPwWAUMtgiBDNPwWAUMt90BDNPwWAUMx3GBDNhj8AUM4zyBDN_4YAUM_weBDOJ_MAUNNk2BDOgGMAUNecmBDPB1wAUN0pOBDPOhgAUOEioBDPaooAUOZUCBDP8uMAUOlSnBDQJ8EAUO1qnBDQJ8EAUPESDBDQYjgAUPRI6BDQmROAUPaepBDQmROAUPf3IBDQxCMAUPloCBDQxCMAUPp3PBDQxCMAUPrbcBDQxCMAUPs_qBDQxCMAUPtOSBDQxCMAUPtVmBDQxCMAUPtc7BDQxCMgAPSGxwuL1dOU0FycmF5oi4gAAgAEQAaACQAKQAyADcASQBMAFEAUwBdAGMAaABzAHoAgACCAIQAhgCIAIoAjACRAJwCxQLHAswC1wLgAu0C8AL9AwYDCwTIBMoEzwZfBmEGZggjCCUIKgnVCdcJ3AnkAAAAAAAAAgEAAAAAAAAAMAAAAAAAAAAAAAAAAAAACec="
+          }
+        },
+        {
+          "BTTLastUpdatedAt" : 1708013941.2226892,
+          "BTTTriggerType" : 0,
+          "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+          "BTTUUID" : "82A02965-093A-44E0-BED8-00772585076E",
+          "BTTAdditionalConfiguration" : "1179658",
+          "BTTShortcutKeyboardType" : 14638,
+          "BTTTriggerOnDown" : 1,
+          "BTTLayoutIndependentChar" : "c",
+          "BTTShortcutKeyCode" : 8,
+          "BTTShortcutAdvancedModifierKeys" : "1179658",
+          "BTTShortcutModifierKeys" : 1179648,
+          "BTTOrder" : 0,
+          "BTTAutoAdaptToKeyboardLayout" : 0,
+          "BTTActionsToExecute" : [
+            {
+              "BTTLastUpdatedAt" : 1708013922.595803,
+              "BTTTriggerParentUUID" : "82A02965-093A-44E0-BED8-00772585076E",
+              "BTTIsPureAction" : true,
+              "BTTUUID" : "11ECC7FB-3A46-4968-BDB1-F0A6BB22250A",
+              "BTTPredefinedActionType" : 264,
+              "BTTPredefinedActionName" : "",
+              "BTTLayoutIndependentActionChar" : "l",
+              "BTTShortcutToSend" : "55,37",
+              "BTTOrder" : 0
+            },
+            {
+              "BTTLastUpdatedAt" : 1708013922.595793,
+              "BTTTriggerParentUUID" : "82A02965-093A-44E0-BED8-00772585076E",
+              "BTTIsPureAction" : true,
+              "BTTUUID" : "2A762B13-23DE-4B8D-8BBA-D759743AFD20",
+              "BTTPredefinedActionType" : 256,
+              "BTTPredefinedActionName" : "Save selected text to variable",
+              "BTTOrder" : 2
+            },
+            {
+              "BTTLastUpdatedAt" : 1708013955.8584399,
+              "BTTTriggerParentUUID" : "82A02965-093A-44E0-BED8-00772585076E",
+              "BTTIsPureAction" : true,
+              "BTTUUID" : "24F06E57-071A-4977-BE4F-665F8802239D",
+              "BTTPredefinedActionType" : 295,
+              "BTTPredefinedActionName" : "Run Shortcut from Shortcuts App",
+              "BTTAdditionalActionData" : "TU0AKgAAKkgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACECwsBTKCgghOzc0KW_HxCmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KW_HxCE7NzQUygoICECwsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIQKysGPqSkCV3z8wpi__8KYf__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wph__8KYv__CV3z8wY+pKQCECsrAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQhWVkJWejoCmT__wph__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wph__8KZP__CVno6AQhWVkAAAAAAAAAAAAAAAAAAAAAAAAAAAMiWVkKX_j4CmL__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpi__8KX_j4AyJZWQAAAAAAAAAAAAAAAAIQKysJWOnpCmL__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmL__wlY6ekCECsrAAAAAAABAwMHPqWlCmT__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KZP__Bz6lpQABAwMCECwsCV309Aph__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmH__wld9PQCECwsBTGEhApi__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYv__BTGEhAhOzs4KYf__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wde__8DXP__A1z__wde__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmH__whOzs4KW_HxCmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CF___wRc__8gbf__VJD__1KO__8ca___BFv__whf__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KW_HxCmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8JYP__A1z__xVn__9xov__2uf_____________1uX__2qe__8TZf__A1z__wlg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8GXf__CF7__0uJ___F2v__________________________________vtX__0SF__8HXf__Bl7__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wde__8EXP__Lnb__52____3+v_____________z9___qMb__67K___3+v_____________0+P__lLn__yhy__8EXP__B17__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CF___wNb__8ebP__g67__+bv______________z9__+yzf__QoT__wlf__8LYP__Son__7zT___________________g7P__eqj__xlp__8DW___CF___wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8JYP__A1z__xFl__9gl___0+L__________________8zd__9elv__DWH__wRc__8JX___CV___wRc__8QY___aJz__9Pj___________________L3v__V5L__w5i__8EXP__CWD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8GXf__Bl3__0CD__+60v___v______________5e7__3up__8YaP__Alv__whf__8KYP__CmD__wpg__8KYP__CF___wJb__8dbP__ha___+vy______________v9__+xzf__OX7__wRc__8GXv__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__whf__8EXP__JHH__461___u9P_____________z9___nsD__zF4__8FXP__B17__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__B17__wZd__84ff__qMb___b5_____________+ry__+Er___IG7__wRc__8IX___CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wde__8TZf__cKL__93q______________3+__+30P__QIP__whe__8FXf__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__BV3__wpg__9IiP__v9b__________________9fl__9mm___DmL__wde__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wde__8ebP__scz__________________9Hh__9elv__EWT__wRc__8JYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8JX___BFz__xVm__9nnP__1+X______________f7__6bF__8YaP__CF___wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8BWv__eqj_____________9fn__36r__8bav__A1v__whf__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8IX___BFz__yBt__+Ks___+Pr_____________aZ7__wJb__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__AVr__3mo______________f6__+Crf__HWv__wNb__8IX___CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__B17__wNc__8hbv__jbX___r8_____________2me__8CW___CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__whf__8da___qsf___7+_____________9Pi__9pnf__FWb__wNc__8IX___CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8IX___A1v__xlp__9ypP__2ef_____________+vz__52___8XaP__CF___wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__Bl7__xJk__9qnv__0+L______________f7__73U__9OjP__DmL__wVc__8JYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wlg__8EXP__EWT__1WQ___E2f__________________zd7__2GX__8PY___B17__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8IX___BFz__yFt__+Isf__7PL_____________9vn__6bF__83fP__Bl3__wde__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wZe__8HXf__P4L__6_L___5+______________m7___fqv__xxq__8EXP__CF___wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8HXv__Bl3__0aG___A1v___P7_____________4+3__3Ok__8aav__BVz__whf__8KYP__CmD__wpg__8KYP__CF___wVd__8ebf__fqv__+ny______________r8__+40f__PoH__wZc__8HXv__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wlg__8FXf__Fmb__2ec___W5P___v______________x9v__1mT__8OYv__BV3__wlg__8JYP__BV3__xFk__9jmf__zuD______________v7__8_g__9elv__EmX__wZd__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__whf__8CW___J3P__7DM___5+______________1+f__osL__zh9__8IXv__CV___0CC__+ryf__+Pv_____________+Pv__6XF__8hbv__Alv__whf__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wlf__8EXP__IW7__4Gt___e6f__8vf___L3___+_v_____________o8P__l7v__5y+___s9P_____________8_f__8ff___P4___Z5v__eaj__x1s__8EXP__CV___wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wVc__8NYf__X5b__8ze___________________J3f__dKT__8rd___________________________________D2P__dKX__9Lj___________________F2f__VpH__wtg__8FXf__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__Bl7__wVd__80e___osP___f6_____________+zy__+Ptv__KHP__wRb__8lcf__j7b__+jx_____________+Xu__+Isv__IG3__wRc__8udv__mLz___D2______________X5__+ZvP__Lnb__wVc__8HXv__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8JYP__BVz__yBu__98qv__5e7_____________9_r__6vI__8+gf__B13__wZd__8KYP__Bl7__whe__83fP__dKX__3Gj__8yef__Bl3__wZe__8KYP__BV3__whf__9Ghv__s83___n7_____________97q__9zo___HGv__wVc__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8JYP__CV___1WQ___R4f__________________w9j__1OP__8MYP__BFz__wlg__8KYP__CmD__wpg__8JYP__BV3__wRc__8EXP__Bl3__wpg__8KYP__CmD__wpg__8JX___BFz__w5i__9clP__y93__________________8nc__9Kif__B17__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__BFz__0yK___x9v________7+___X5v__cqT__xdn__8EXP__CV___wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8JX___BFz__xtr__97qf__3en___7_________6_P__z+C__8FXf__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wBZ__+KtP_____________w9v__TYv__wBY__8FXf__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8EXf__AFn__1uU___2+f____________96qf__AVr__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8EXP__TIr___L2_________v7__9vo__9xov__Fmf__wNc__8JX___CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__whf__8DXP__Gmr__3qp___h7P_____________r8v__P4L__wVd__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__whe__9Liv__ytz__________________8nc__9alP__DWH__wVd__8JYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CWD__wRc__8QY___ZJr__9Dg___________________B1v__QoP__wZe__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8JYP__A1z__xlp__95qP__5u______________+vz__6zJ__87gP__Bl3__wZd__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__BV3__wde__9Dhf__tc____3+_____________9_r__9vof__FGf__wRc__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8HXv__BFz__zB4__+ewP__9_r_____________6_P__5K4__8ncv__A1v__wde__8KYP__CmD__wpg__8KYP__CmD__wpg__8HXv__BFz__y52__+bvv__7_X_____________9Pj__5O5__8qdf__BFv__wdf__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8FXP__CF___0yL__++1f___v______________3+v__2+h__8XaP__A1v__wlf__8KYP__CmD__whf__8DW___G2v__3mn___k7v_____________8_f__uNH__0SF__8GXf__BV3__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wlf__8DXP__EWT__2ab___Z5v__________________zN7__1WQ__8MYP__BFz__wRc__8OYv__Xpb__9Pj___________________S4v__XZb__w5i__8EXP__CWD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__whf__8EXP__Im___4qz___s8______________6_P__rsv__0CC__9Ghv__uNH___3+_____________+fw__+BrP__HWz__wRc__8JX___CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wde__8GXf__N33__6_K___+_______________1+P__9_n_____________+_3__6fG__8xef__BV3__wde__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8JW_HxCmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CWD__wVc__8MYP__Xpf__9Xk________________________z+D__1eR__8KX___BV3__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8JW_HxCE7Ozgph__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CF___wNb__8dbf__b6H__73U__+60f__aJ3__xpq__8DW___CV___wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYf__CE7OzgUxhIQKYv__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__B17__wRc__8KX___Cl___wNc__8HXv__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmL__wUxg4MCECwsCV309Aph__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CV___wlf__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmH__wld9PQCECwsAAEDAwc+paUKZP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpk__8HPqWlAAEDAwAAAAACECsrCVjp6Qpi__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpi__8JWOnpAhArKwAAAAAAAAAAAAAAAAMiWVkKX_j4CmL__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpi__8KX_j4AyJZWQAAAAAAAAAAAAAAAAAAAAAAAAAABCFZWQlZ6OgKZP__CmH__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmH__wpk__8JWejoBCFZWQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACECsrBj6kpAld8_MKYv__CmH__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYf__CmL__wld8_MGPqSkAhArKwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACECwsBTKDgwhOzs4KW_HxCmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KYP__CmD__wpg__8KW_HxCE7OzgUyg4MCECwsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABIBAAADAAAAAQA0AAABAQADAAAAAQA0AAABAgADAAAABAAAKzYBAwADAAAAAQABAAABBgADAAAAAQACAAABCgADAAAAAQABAAABEQAEAAAAAQAAAAgBEgADAAAAAQABAAABFQADAAAAAQAEAAABFgADAAAAAQA0AAABFwAEAAAAAQAAKkABGgAFAAAAAQAAKyYBGwAFAAAAAQAAKy4BHAADAAAAAQABAAABKAADAAAAAQACAAABUgADAAAAAQABAAABUwADAAAABAAAKz6HcwAHAAAHyAAAK0YAAAAAAAAAkAAAAAEAAACQAAAAAQAIAAgACAAIAAEAAQABAAEAAAfIYXBwbAIgAABtbnRyUkdCIFhZWiAH2QACABkACwAaAAthY3NwQVBQTAAAAABhcHBsAAAAAAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWFwcGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAtkZXNjAAABCAAAAG9kc2NtAAABeAAABYpjcHJ0AAAHBAAAADh3dHB0AAAHPAAAABRyWFlaAAAHUAAAABRnWFlaAAAHZAAAABRiWFlaAAAHeAAAABRyVFJDAAAHjAAAAA5jaGFkAAAHnAAAACxiVFJDAAAHjAAAAA5nVFJDAAAHjAAAAA5kZXNjAAAAAAAAABRHZW5lcmljIFJHQiBQcm9maWxlAAAAAAAAAAAAAAAUR2VuZXJpYyBSR0IgUHJvZmlsZQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbWx1YwAAAAAAAAAfAAAADHNrU0sAAAAoAAABhGRhREsAAAAkAAABrGNhRVMAAAAkAAAB0HZpVk4AAAAkAAAB9HB0QlIAAAAmAAACGHVrVUEAAAAqAAACPmZyRlUAAAAoAAACaGh1SFUAAAAoAAACkHpoVFcAAAASAAACuGtvS1IAAAAWAAACym5iTk8AAAAmAAAC4GNzQ1oAAAAiAAADBmhlSUwAAAAeAAADKHJvUk8AAAAkAAADRmRlREUAAAAsAAADaml0SVQAAAAoAAADlnN2U0UAAAAmAAAC4HpoQ04AAAASAAADvmphSlAAAAAaAAAD0GVsR1IAAAAiAAAD6nB0UE8AAAAmAAAEDG5sTkwAAAAoAAAEMmVzRVMAAAAmAAAEDHRoVEgAAAAkAAAEWnRyVFIAAAAiAAAEfmZpRkkAAAAoAAAEoGhySFIAAAAoAAAEyHBsUEwAAAAsAAAE8HJ1UlUAAAAiAAAFHGVuVVMAAAAmAAAFPmFyRUcAAAAmAAAFZABWAWEAZQBvAGIAZQBjAG4A_QAgAFIARwBCACAAcAByAG8AZgBpAGwARwBlAG4AZQByAGUAbAAgAFIARwBCAC0AcAByAG8AZgBpAGwAUABlAHIAZgBpAGwAIABSAEcAQgAgAGcAZQBuAOgAcgBpAGMAQx6lAHUAIABoAOwAbgBoACAAUgBHAEIAIABDAGgAdQBuAGcAUABlAHIAZgBpAGwAIABSAEcAQgAgAEcAZQBuAOkAcgBpAGMAbwQXBDAEMwQwBDsETAQ9BDgEOQAgBD8EQAQ+BEQEMAQ5BDsAIABSAEcAQgBQAHIAbwBmAGkAbAAgAGcA6QBuAOkAcgBpAHEAdQBlACAAUgBWAEIAwQBsAHQAYQBsAOEAbgBvAHMAIABSAEcAQgAgAHAAcgBvAGYAaQBskBp1KABSAEcAQoJyX2ljz4_wx3y8GAAgAFIARwBCACDVBLhc0wzHfABHAGUAbgBlAHIAaQBzAGsAIABSAEcAQgAtAHAAcgBvAGYAaQBsAE8AYgBlAGMAbgD9ACAAUgBHAEIAIABwAHIAbwBmAGkAbAXkBegF1QXkBdkF3AAgAFIARwBCACAF2wXcBdwF2QBQAHIAbwBmAGkAbAAgAFIARwBCACAAZwBlAG4AZQByAGkAYwBBAGwAbABnAGUAbQBlAGkAbgBlAHMAIABSAEcAQgAtAFAAcgBvAGYAaQBsAFAAcgBvAGYAaQBsAG8AIABSAEcAQgAgAGcAZQBuAGUAcgBpAGMAb2ZukBoAUgBHAEJjz4_wZYdO9k4AgiwAIABSAEcAQgAgMNcw7TDVMKEwpDDrA5MDtQO9A7kDugPMACADwAPBA78DxgOvA7sAIABSAEcAQgBQAGUAcgBmAGkAbAAgAFIARwBCACAAZwBlAG4A6QByAGkAYwBvAEEAbABnAGUAbQBlAGUAbgAgAFIARwBCAC0AcAByAG8AZgBpAGUAbA5CDhsOIw5EDh8OJQ5MACAAUgBHAEIAIA4XDjEOSA4nDkQOGwBHAGUAbgBlAGwAIABSAEcAQgAgAFAAcgBvAGYAaQBsAGkAWQBsAGUAaQBuAGUAbgAgAFIARwBCAC0AcAByAG8AZgBpAGkAbABpAEcAZQBuAGUAcgBpAQ0AawBpACAAUgBHAEIAIABwAHIAbwBmAGkAbABVAG4AaQB3AGUAcgBzAGEAbABuAHkAIABwAHIAbwBmAGkAbAAgAFIARwBCBB4EMQRJBDgEOQAgBD8EQAQ+BEQEOAQ7BEwAIABSAEcAQgBHAGUAbgBlAHIAaQBjACAAUgBHAEIAIABQAHIAbwBmAGkAbABlBkUGRAZBACAGKgY5BjEGSgZBACAAUgBHAEIAIAYnBkQGOQYnBkUAAHRleHQAAAAAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC4AWFlaIAAAAAAAAPNSAAEAAAABFs9YWVogAAAAAAAAdE0AAD3uAAAD0FhZWiAAAAAAAABadQAArHMAABc0WFlaIAAAAAAAACgaAAAVnwAAuDZjdXJ2AAAAAAAAAAEBzQAAc2YzMgAAAAAAAQxCAAAF3v__8yYAAAeSAAD9kf__+6L___2jAAAD3AAAwGw=",
+              "BTTGenericActionConfig2" : "{selected_text}",
+              "BTTGenericActionConfig" : "ORCAに送信",
+              "BTTOrder" : 3
+            }
+          ]
+        },
+        {
+          "BTTLastUpdatedAt" : 1713325152.6196132,
+          "BTTTriggerType" : 620,
+          "BTTTriggerTypeDescriptionReadOnly" : "Please Select a Trigger ",
+          "BTTTriggerTypeDescription" : "トリガーを選択してください ",
+          "BTTTriggerClass" : "BTTTriggerTypeDrawings",
+          "BTTUUID" : "959BCCCD-F9E8-46E2-83D2-3CB0E88CE012",
+          "BTTLayoutIndependentActionChar" : "",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "55,17",
+          "BTTOrder" : 1,
+          "BTTTriggerConfig" : {
+            "BTTRequiredDrawingCertainty" : "0.700000",
+            "BTTDrawingDirectionShouldMatter" : "0",
+            "BTTDrawingName" : "新しいタブ",
+            "BTTDrawingBezierPath" : "YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGoCwwVGSAjJilVJG51bGzSDQ4PFFpOUy5vYmplY3RzViRjbGFzc6QQERITgAKABIAFgAaAB9IWDhcYWk5TU2VnbWVudHNPEQEFAEOmQ1BDcc04AUOmQ1BDcc04AUOmQ1BDatp0AUOmipBDZvVSAUOmipBDYkzIAUOm4LBDV4j2AUOnNSBDTkv2AUOni0BDQ4gkAUOn9QBDK5N4AUOoTXBDHcIAAUOoTXBDBc1UAUOoTXBC7_fAAUOoTXBCypvwAUOoTXBCrXIwAUOoTXBClNzwAUOoTXBCgNwYAUOoTXBCX9HgAUOoTXBCQPkgAUOoTXBCK0lQAUOoTXBCGKcwAUOoTXBCEiWgAUOoTXBCCKGgAUOoTXBCAiAgAUOoTXBCAEwAAUOoTXBB_sPAAUOoTXBCAEwAAUOoTXBCATYAAUOoTXBCAwowAUOoTXBCBokggAPSGhscHVokY2xhc3NuYW1lWCRjbGFzc2VzXE5TQmV6aWVyUGF0aKIeH1xOU0JlemllclBhdGhYTlNPYmplY3TSFg4hGE8RATIAQ5++sENzVMwBQ5++sENzVMwBQ5++sENxtGwBQ5++sENwFAoBQ5++sENsLugBQ5++sENnhmABQ59vkENhVwQBQ58dQENZoNQBQ55ykENPoGwBQ53GYENE3JoBQ50YwEM5VWABQ5xrIEMtziQBQ5wTwEMhg4ABQ5u8UEMVONwBQ5u8UEMORhgBQ5tlgEMCvtwBQ5tlgELub0ABQ5sOwELXYNABQ5q4oELB2SgBQ5pjQEKt2FgBQ5oN8EKZ14ABQ5m5cEKHXYABQ5kSkEJs1LABQ5jAUEJN+_ABQ5hvcEIyMOABQ5hvcEIinGABQ5giYEIM7JABQ5giYEH6sCABQ5ffkEHhomABQ5ffkEHUn0ABQ5ffkEHSy0ABQ5ffkEHQ9wABQ5ffkEHPIwABQ5ffkEHQ9wCAA9IWDiQYTxDzAEOpBFBDaqlIAUOpBFBDaqlIAUOpRyBDZ4eQAUOpRyBDZGXYAUOpRyBDYIC2AUOpRyBDWxTEAUOpRyBDU16UAUOpRyBDSiGUAUOpRyBDPROIAUOpRyBDL0ISAUOpRyBDH+nKAUOpRyBDBjLcAUOpRyBC6SCwAUOpRyBCyOlQAUOo8dBCtOiAAUOo8dBCmUWQAUOo8dBCg73wAUOo8dBCX3pAAUOo8dBCPZPgAUOo8dBCJNZwAUOo8dBCDyagAUOo8dBCAp_AAUOo8dBB+DyAAUOo8dBB6zmAAUOo8dBB5DuAAUOo8dBB4mdgAUOo8dBB4JNAgAPSFg4nGE8RAQ4AQ7HCsEN3F0gBQ7HCsEN3F0gBQ7HCsENzMigBQ7H2sENxkcYBQ7H2sENucA4BQ7JI8ENmueABQ7KcYENeQEgBQ7LzMENSuQ4BQ7NLoENE55gBQ7OkgEM2UrgBQ7OkgEMnvdoBQ7OkgEMZKPwBQ7OkgEMOZSgBQ7OkgEMAk7QBQ7OkgELnC1ABQ7OkgELOdgABQ7OkgEK3Z5ABQ7P38EKmdGABQ7P38EKT+mABQ7P38EKEjgABQ7P38EJqQ1ABQ7P38EJRheABQ7P38EI71hABQ7P38EIsQZABQ7P38EIlwBABQ7P38EIfPoABQ7P38EIbv5ABQ7P38EIZ62ABQ7P38EIbv5ABQ7P38EIcqaCAA9IaGyorV05TQXJyYXmiKh8ACAARABoAJAApADIANwBJAEwAUQBTAFwAYgBnAHIAeQB+AIAAggCEAIYAiACNAJgBoQGjAagBswG8AckBzAHZAeIB5wMdAx8DJAQaBBwEIQUzBTUFOgVCAAAAAAAAAgEAAAAAAAAALAAAAAAAAAAAAAAAAAAABUU="
+          }
+        }
+      ]
+    },
+    {
+      "BTTAppBundleIdentifier" : "com.vivaldi.Vivaldi",
+      "BTTAppName" : "Vivaldi",
+      "BTTAppAutoInvertIcon" : 1,
+      "BTTAppProcessMatchMode" : 2,
+      "BTTAppProcessName" : "Vivaldi",
+      "BTTTriggers" : [
+        {
+          "BTTLastUpdatedAt" : 1690388215.8717699,
+          "BTTTriggerType" : 100,
+          "BTTTriggerTypeDescriptionReadOnly" : "3 Finger Swipe Left",
+          "BTTTriggerTypeDescription" : "3本指で左にスワイプ",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "240E9866-66BB-4FFD-8203-86E88B7F9EB9",
+          "BTTLayoutIndependentActionChar" : "RIGHT",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "55,124",
+          "BTTOrder" : 6,
+          "BTTGestureNotes" : "3本指で左にスワイプ"
+        },
+        {
+          "BTTLastUpdatedAt" : 1690388215.8719249,
+          "BTTTriggerType" : 101,
+          "BTTTriggerTypeDescriptionReadOnly" : "3 Finger Swipe Right",
+          "BTTTriggerTypeDescription" : "3本指で右にスワイプ",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "87DC6C24-4648-4B3D-9241-FCD7E46DF9A3",
+          "BTTLayoutIndependentActionChar" : "LEFT",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "55,123",
+          "BTTOrder" : 5,
+          "BTTGestureNotes" : "3本指で右にスワイプ"
+        }
+      ]
+    },
+    {
+      "BTTAppBundleIdentifier" : "company.thebrowser.Browser",
+      "BTTAppName" : "Arc",
+      "BTTAppAutoInvertIcon" : 1,
+      "BTTAppProcessMatchMode" : 2,
+      "BTTAppProcessName" : "Arc",
+      "BTTTriggers" : [
+        {
+          "BTTLastUpdatedAt" : 1718177805.631104,
+          "BTTTriggerType" : 101,
+          "BTTTriggerTypeDescriptionReadOnly" : "3 Finger Swipe Right",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "A9E55173-0B3A-45AE-B09D-51A796932EC8",
+          "BTTOrder" : 0,
+          "BTTActionsToExecute" : [
+            {
+              "BTTLastUpdatedAt" : 1718177795.583885,
+              "BTTTriggerParentUUID" : "A9E55173-0B3A-45AE-B09D-51A796932EC8",
+              "BTTIsPureAction" : true,
+              "BTTUUID" : "60622D87-FD74-482C-8F79-506605DC7324",
+              "BTTPredefinedActionType" : 264,
+              "BTTPredefinedActionName" : "",
+              "BTTLayoutIndependentActionChar" : "[",
+              "BTTShortcutToSend" : "55,33",
+              "BTTOrder" : 1
+            }
+          ]
+        },
+        {
+          "BTTLastUpdatedAt" : 1718177894.6687741,
+          "BTTTriggerType" : 114,
+          "BTTTriggerTypeDescriptionReadOnly" : "TipTap Right (1 Finger Fix)",
+          "BTTTriggerTypeDescription" : "TipTap右（1本指修正）",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "25CB36EF-8296-4CA1-AF15-221F883C112A",
+          "BTTOrder" : 1,
+          "BTTActionsToExecute" : [
+            {
+              "BTTLastUpdatedAt" : 1718177897.322597,
+              "BTTTriggerParentUUID" : "25CB36EF-8296-4CA1-AF15-221F883C112A",
+              "BTTIsPureAction" : true,
+              "BTTUUID" : "99CD46B7-3315-441C-BBF0-B37BE775B5C0",
+              "BTTPredefinedActionType" : 264,
+              "BTTPredefinedActionName" : "",
+              "BTTLayoutIndependentActionChar" : "DOWN",
+              "BTTShortcutToSend" : "58,55,125",
+              "BTTOrder" : 12
+            }
+          ],
+          "BTTGestureNotes" : "TipTap右（1本指修正）"
+        },
+        {
+          "BTTLastUpdatedAt" : 1718177877.772419,
+          "BTTTriggerType" : 113,
+          "BTTTriggerTypeDescriptionReadOnly" : "TipTap Left (1 Finger Fix)",
+          "BTTTriggerTypeDescription" : "TipTap左（1本指修正）",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "06221804-E71E-497E-B38D-4A7BAD32F62A",
+          "BTTOrder" : 0,
+          "BTTActionsToExecute" : [
+            {
+              "BTTLastUpdatedAt" : 1718177881.275564,
+              "BTTTriggerParentUUID" : "06221804-E71E-497E-B38D-4A7BAD32F62A",
+              "BTTIsPureAction" : true,
+              "BTTUUID" : "ED08DBB8-FC23-4B85-B0E5-5E3FFA84D127",
+              "BTTPredefinedActionType" : 264,
+              "BTTPredefinedActionName" : "",
+              "BTTLayoutIndependentActionChar" : "UP",
+              "BTTShortcutToSend" : "58,55,126",
+              "BTTOrder" : 11
+            }
+          ],
+          "BTTGestureNotes" : "TipTap左（1本指修正）"
+        },
+        {
+          "BTTLastUpdatedAt" : 1718177821.9966879,
+          "BTTTriggerType" : 100,
+          "BTTTriggerTypeDescriptionReadOnly" : "3 Finger Swipe Left",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "01008B5C-08EF-4F10-A659-9D6CB0F989A5",
+          "BTTOrder" : 1,
+          "BTTActionsToExecute" : [
+            {
+              "BTTLastUpdatedAt" : 1718177824.753829,
+              "BTTTriggerParentUUID" : "01008B5C-08EF-4F10-A659-9D6CB0F989A5",
+              "BTTIsPureAction" : true,
+              "BTTUUID" : "A8875336-F1F0-49C4-953F-9822DC9D36AF",
+              "BTTPredefinedActionType" : 264,
+              "BTTPredefinedActionName" : "",
+              "BTTLayoutIndependentActionChar" : "]",
+              "BTTShortcutToSend" : "55,30",
+              "BTTOrder" : 2
+            }
+          ]
+        },
+        {
+          "BTTLastUpdatedAt" : 1718177850.801913,
+          "BTTTriggerType" : 169,
+          "BTTTriggerTypeDescriptionReadOnly" : "4 Finger Double Tap",
+          "BTTTriggerTypeDescription" : "4本指でダブルタップ",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "C2983623-1111-4448-85E3-521DFDFD1D74",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "56,55,17",
+          "BTTOrder" : 4,
+          "BTTGestureNotes" : "4本指でダブルタップ"
+        },
+        {
+          "BTTLastUpdatedAt" : 1718177850.8013849,
+          "BTTTriggerType" : 112,
+          "BTTTriggerTypeDescriptionReadOnly" : "3 Finger Click",
+          "BTTTriggerTypeDescription" : "3本指でクリック",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "D1F15D71-1546-4183-93C6-F157B84A237E",
+          "BTTPredefinedActionType" : 2,
+          "BTTPredefinedActionName" : "CMD(⌘)+Click",
+          "BTTOrder" : 2,
+          "BTTGestureNotes" : "3本指でクリック"
+        },
+        {
+          "BTTLastUpdatedAt" : 1718177850.8016491,
+          "BTTTriggerType" : 121,
+          "BTTTriggerTypeDescriptionReadOnly" : "4 Finger Click",
+          "BTTTriggerTypeDescription" : "4本指でクリック",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "CFA10E7E-3D00-45F8-9D96-EF9E49C967EE",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "55,13",
+          "BTTOrder" : 3,
+          "BTTGestureNotes" : "4本指でクリック"
+        }
+      ]
+    },
+    {
+      "BTTAppBundleIdentifier" : "com.jetbrains.WebStorm",
+      "BTTAppName" : "WebStorm",
+      "BTTAppAutoInvertIcon" : 1,
+      "BTTAppProcessMatchMode" : 2,
+      "BTTAppProcessName" : "WebStorm",
+      "BTTTriggers" : [
+        {
+          "BTTLastUpdatedAt" : 1690388215.8715301,
+          "BTTTriggerType" : 114,
+          "BTTTriggerTypeDescriptionReadOnly" : "TipTap Right (1 Finger Fix)",
+          "BTTTriggerTypeDescription" : "TipTap右（1本指修正）",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "28F782A3-EC71-40C1-AF34-EDCA1E6491A4",
+          "BTTLayoutIndependentActionChar" : "䴀",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "56,55,30",
+          "BTTOrder" : 1,
+          "BTTGestureNotes" : "TipTap右（1本指修正）"
+        },
+        {
+          "BTTLastUpdatedAt" : 1690388215.871372,
+          "BTTTriggerType" : 113,
+          "BTTTriggerTypeDescriptionReadOnly" : "TipTap Left (1 Finger Fix)",
+          "BTTTriggerTypeDescription" : "TipTap左（1本指修正）",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "F3D2A876-A509-4B5C-B2CB-4D56B3FF3816",
+          "BTTLayoutIndependentActionChar" : "",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "56,55,33",
+          "BTTOrder" : 0,
+          "BTTGestureNotes" : "TipTap左（1本指修正）"
+        }
+      ]
+    },
+    {
+      "BTTAppBundleIdentifier" : "com.jetbrains.pycharm",
+      "BTTAppName" : "PyCharm",
+      "BTTAppAutoInvertIcon" : 1,
+      "BTTTriggers" : [
+        {
+          "BTTLastUpdatedAt" : 1690388215.8669319,
+          "BTTTriggerType" : 113,
+          "BTTTriggerTypeDescriptionReadOnly" : "TipTap Left (1 Finger Fix)",
+          "BTTTriggerTypeDescription" : "TipTap左（1本指修正）",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "CC129590-FA3D-45BA-9DCE-021FB42FEDCE",
+          "BTTLayoutIndependentActionChar" : "",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "56,55,33",
+          "BTTOrder" : 0,
+          "BTTGestureNotes" : "TipTap左（1本指修正）"
+        },
+        {
+          "BTTLastUpdatedAt" : 1690388215.866787,
+          "BTTTriggerType" : 114,
+          "BTTTriggerTypeDescriptionReadOnly" : "TipTap Right (1 Finger Fix)",
+          "BTTTriggerTypeDescription" : "TipTap右（1本指修正）",
+          "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTUUID" : "BB485759-4789-4F10-89A7-8A55BCF4BFA7",
+          "BTTLayoutIndependentActionChar" : "䴀",
+          "BTTAutoAdaptActionToKeyboardLayout" : true,
+          "BTTGenericActionConfig" : "autoAdapt",
+          "BTTShortcutToSend" : "56,55,30",
+          "BTTOrder" : 1,
+          "BTTGestureNotes" : "TipTap右（1本指修正）"
+        }
+      ]
+    }
+  ],
+  "BTTPresetSnapAreas" : [
+
+  ]
+}
