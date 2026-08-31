@@ -1,5 +1,6 @@
 [tools]
 node = "latest"
+deno = "latest"
 "npm:@antfu/ni" = "latest"
 "npm:@google/gemini-cli" = "latest"
 "npm:aicommit2" = "latest"
