@@ -33,7 +33,7 @@ For manual installation, see the [installation page](/installation-guide).
 - **Terminal**: [Ghostty](https://ghostty.org/)
 - **Multiplexing**: [tmux](https://github.com/tmux/tmux) (submodule)
 - **Package Management**: [Homebrew](https://brew.sh/) (`Brewfile`)
-- **Font**: [SF Mono Square](https://github.com/delphinus/homebrew-sfmono-square)
+- **Font**: [Kusunoki Mono](https://github.com/peinan/kusunoki-mono)
 
 ## Repository Structure
 

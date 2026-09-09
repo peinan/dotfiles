@@ -3,9 +3,6 @@
 tap "danielgatis/imgcat"
 brew "danielgatis/imgcat/imgcat"
 
-tap "delphinus/sfmono-square"
-brew "delphinus/sfmono-square/sfmono-square"
-
 tap "dotenvx/brew"
 brew "dotenvx/brew/dotenvx"
 
@@ -14,6 +11,7 @@ cask "ngrok"
 
 tap "peinan/tap"
 brew "peinan/tap/rp"
+cask "peinan/tap/font-kusunoki-mono"
 
 tap "rjyo/moshi"
 brew "rjyo/moshi/moshi-hook"
@@ -81,7 +79,6 @@ cask "aqua-voice"
 cask "arc"
 cask "bettertouchtool"
 cask "claude"
-cask "claude-code"
 cask "cleanshot"
 cask "codex"
 cask "docker"

@@ -6,6 +6,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 BLUE='\033[0;34m'
+GRAY='\033[0;90m'
 NC='\033[0m' # No Color
 
 info() {
@@ -30,10 +31,16 @@ if [[ "$(uname)" != "Darwin" ]]; then
     error "This script is only supported on macOS"
 fi
 
+# Logo generated with `cfonts "dotfiles" -f block`, inlined because cfonts is
+# not available before the Brewfile is installed.
 echo ""
-echo "=================================="
-echo "   Peinan's dotfile installer"
-echo "=================================="
+echo -e "${BLUE} ██████╗   ██████╗  ████████╗ ███████╗ ██╗ ██╗      ███████╗ ███████╗"
+echo -e " ██╔══██╗ ██╔═══██╗ ╚══██╔══╝ ██╔════╝ ██║ ██║      ██╔════╝ ██╔════╝"
+echo -e " ██║  ██║ ██║   ██║    ██║    █████╗   ██║ ██║      █████╗   ███████╗"
+echo -e " ██║  ██║ ██║   ██║    ██║    ██╔══╝   ██║ ██║      ██╔══╝   ╚════██║"
+echo -e " ██████╔╝ ╚██████╔╝    ██║    ██║      ██║ ███████╗ ███████╗ ███████║"
+echo -e " ╚═════╝   ╚═════╝     ╚═╝    ╚═╝      ╚═╝ ╚══════╝ ╚══════╝ ╚══════╝${NC}"
+echo -e "${GRAY}                peinan's macOS development environment${NC}"
 echo ""
 
 # Step 1: Install Homebrew if not exists
@@ -120,6 +127,17 @@ brew link --overwrite node
 brew pin node
 
 success "Node environment setup complete (managed by mise)"
+
+# Step 5c: Install Claude Code with the native installer
+# Not from Homebrew: the native build auto-updates in the background, while a
+# cask stays pinned until `brew upgrade` runs.
+info "Installing Claude Code..."
+if [[ -x "$HOME/.local/bin/claude" ]]; then
+    success "Claude Code is already installed"
+else
+    curl -fsSL https://claude.ai/install.sh | bash
+    success "Claude Code installed"
+fi
 
 # Step 6: Create symbolic links using stow
 info "Creating symbolic links..."
