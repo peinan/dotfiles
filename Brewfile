@@ -74,10 +74,13 @@ brew "mas" if OS.mac?
 cask "1password"
 cask "1password-cli"
 cask "alt-tab"
+cask "aqua-voice"
 cask "arc"
 cask "bettertouchtool"
+cask "claude"
 cask "claude-code"
 cask "cleanshot"
+cask "codex"
 cask "cursor"
 cask "cursor-cli"
 cask "docker"
@@ -87,6 +90,7 @@ cask "google-drive"
 cask "hammerspoon"
 cask "jordanbaird-ice"
 cask "karabiner-elements"
+cask "notion"
 cask "raycast"
 cask "slack"
 
@@ -96,4 +100,5 @@ cask "slack"
 #
 
 mas "1Password for Safari", id: 1569813296
+mas "LINE", id: 539883307
 
