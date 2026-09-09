@@ -96,6 +96,7 @@ cask "karabiner-elements"
 cask "notion"
 cask "raycast"
 cask "slack"
+cask "tailscale-app"
 
 
 #
