@@ -92,7 +92,7 @@ docs/
 ├── index.md               # Home page
 ├── installation-guide.md  # Installation guide
 ├── config.md              # Configuration files
-├── submodules.md          # Submodules documentation
+├── config-repos.md        # Standalone config repositories
 ├── package.json           # Dependencies
 └── README.md              # This file
 ```

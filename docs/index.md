@@ -29,9 +29,9 @@ For manual installation, see the [installation page](/installation-guide).
     - **Prompt**: [Starship](https://starship.rs/)
     - **Plugin Manager**: [Sheldon](https://sheldon.cli.rs/)
 - **Git**: Git configuration (`.gitconfig`) and [delta](https://dandavison.github.io/delta/) for beautiful diffs
-- **Editors**: [Neovim](https://neovim.io/) (submodule)
+- **Editors**: [Neovim](https://neovim.io/) (standalone repository)
 - **Terminal**: [Ghostty](https://ghostty.org/)
-- **Multiplexing**: [tmux](https://github.com/tmux/tmux) (submodule)
+- **Multiplexing**: [tmux](https://github.com/tmux/tmux) (standalone repository)
 - **Package Management**: [Homebrew](https://brew.sh/) (`Brewfile`)
 - **Font**: [Kusunoki Mono](https://github.com/peinan/kusunoki-mono)
 
@@ -45,8 +45,8 @@ dotfiles/
 │   ├── .zshrc          <-- Links to ~/.zshrc
 │   ├── .gitconfig      <-- Links to ~/.gitconfig
 │   └── .config/        <-- Links to ~/.config/
-│       ├── nvim/       <-- Links to ~/.config/nvim (submodule)
-│       └── tmux/       <-- Links to ~/.config/tmux (submodule)
+│       ├── ghostty/    <-- Links to ~/.config/ghostty
+│       └── starship/   <-- Links to ~/.config/starship
 ├── scripts/            <-- Setup scripts (Not stowed)
 └── Brewfile            <-- Homebrew bundle (Not stowed)
 ```

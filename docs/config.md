@@ -151,9 +151,8 @@ List of packages to install with Homebrew. Categorized as follows:
 Other configuration files and directories:
 
 - `src/.ideavimrc` - Vim configuration for IntelliJ IDEA / PyCharm
-- `src/.config/tmux/` - tmux configuration (submodule)
-- `src/.config/nvim/` - Neovim configuration (submodule)
-- `src/.config/vim/` - Vim configuration (submodule)
 
-For details about submodules, see the [Submodules page](/submodules).
+Neovim and tmux are not in `src/`. They live in their own repositories cloned
+under `ghq root`, and `~/.config/{nvim,tmux}` are symlinks pointing at those
+clones. See the [Config Repos page](/config-repos).
 
