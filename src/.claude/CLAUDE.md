@@ -16,6 +16,7 @@
 - **Calibrate Rigor to Stakes**: The heavier rules below — orchestration, plan mode, clarifying questions — apply to non-trivial or hard-to-reverse work. For trivial changes, use judgment.
 - **Orchestrate by Default**: Act as a manager. Delegate non-trivial implementation or research to subagents. Handle trivial edits, small refactors, or single-file changes directly.
 - **Plan Before Building**: Before any non-trivial implementation, create a plan in plan mode.
+- **Feature Work Follows `feature-flow`**: In a git repo, default to the `feature-flow` skill (`dev-flow` plugin) for the implementation → PR → merge/cleanup cycle. A project's own `CLAUDE.md` / `AGENTS.md` overrides it.
 - **Ask on Uncertainty**: When uncertainty is consequential — it changes the approach or is hard to reverse — use `AskUserQuestion`. For low-stakes choices with a sensible default, proceed and state the assumption.
 - **Voice Input Aware**: The user may use voice input. Account for speech-recognition errors (homophones, misrecognized words) and fillers (e.g. "えーと", "あの", "um"). Infer intent from context rather than treating such artifacts as literal instructions.
 
