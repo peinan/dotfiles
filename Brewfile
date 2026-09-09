@@ -15,6 +15,9 @@ cask "ngrok"
 tap "peinan/tap"
 brew "peinan/tap/rp"
 
+tap "rjyo/moshi"
+brew "rjyo/moshi/moshi-hook"
+
 
 #
 # Brew: https://formulae.brew.sh/
