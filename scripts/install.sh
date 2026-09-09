@@ -92,11 +92,48 @@ else
 fi
 success "dotfiles repository ready"
 
-# Step 4: Initialize submodules
-info "Initializing submodules..."
-cd "$DOTFILES_DIR"
-git submodule update --init --recursive
-success "Submodules initialized"
+# Step 4: Set up the nvim and tmux configs from their own repositories
+# They are standalone repositories, not submodules: the ghq clone is the only
+# working copy and ~/.config/<name> is just a symlink pointing at it.
+GHQ_ROOT="$(ghq root)"
+
+# ~/.config has to be a real directory before the symlinks below are created.
+# On a fresh machine it does not exist yet, and stow (Step 6) would then fold
+# the whole tree into `~/.config -> src/.config`, which would put these
+# symlinks inside the dotfiles repository instead of $HOME.
+mkdir -p "$HOME/.config"
+
+setup_config_repo() {
+    local repo="$1"           # e.g. peinan/nvim
+    local name="${repo##*/}"
+    local repo_dir="$GHQ_ROOT/github.com/$repo"
+    local link="$HOME/.config/$name"
+
+    info "Setting up $name config..."
+    if [[ -d "$repo_dir" ]]; then
+        warn "$name already exists at $repo_dir"
+    else
+        ghq get "$repo"
+    fi
+
+    # peinan/tmux still carries its plugins as nested submodules. `ghq get`
+    # recurses by default, but doing it explicitly documents the requirement
+    # and repairs a partially initialized clone on re-runs.
+    if [[ -f "$repo_dir/.gitmodules" ]]; then
+        git -C "$repo_dir" submodule update --init --recursive
+    fi
+
+    if [[ -e "$link" && ! -L "$link" ]]; then
+        warn "$link is a real directory, not a symlink; it may hold uncommitted work"
+    fi
+    backup_if_exists "$link"
+    ln -sfn "$repo_dir" "$link"
+
+    success "$name config ready: $link -> $repo_dir"
+}
+
+setup_config_repo peinan/nvim
+setup_config_repo peinan/tmux
 
 # Step 5a: Install all packages from Brewfile
 info "Installing packages from Brewfile..."
