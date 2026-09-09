@@ -26,6 +26,21 @@ error() {
     exit 1
 }
 
+# Backup an existing file or directory (symlinks are left alone)
+backup_if_exists() {
+    local path="$1"
+    if [[ -e "$path" && ! -L "$path" ]]; then
+        local backup="${path}.backup"
+        # `mv dir existing.backup` nests the directory inside the old backup
+        # instead of replacing it, so pick a fresh name when it is taken.
+        if [[ -e "$backup" ]]; then
+            backup="${path}.backup.$(date +%Y%m%d%H%M%S)"
+        fi
+        warn "Backing up existing $path to $backup"
+        mv "$path" "$backup"
+    fi
+}
+
 # Check if running on macOS
 if [[ "$(uname)" != "Darwin" ]]; then
     error "This script is only supported on macOS"
@@ -141,15 +156,6 @@ fi
 
 # Step 6: Create symbolic links using stow
 info "Creating symbolic links..."
-
-# Backup existing files if they exist (not symlinks)
-backup_if_exists() {
-    local file="$1"
-    if [[ -f "$file" && ! -L "$file" ]]; then
-        warn "Backing up existing $file to ${file}.backup"
-        mv "$file" "${file}.backup"
-    fi
-}
 
 # Check for common files that might conflict
 backup_if_exists "$HOME/.zshrc"
