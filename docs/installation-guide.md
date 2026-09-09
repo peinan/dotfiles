@@ -24,7 +24,7 @@ The script will:
 1. Install Homebrew (if not installed)
 2. Install essential tools (git, ghq, stow)
 3. Clone the repository using ghq
-4. Initialize submodules
+4. Clone the nvim/tmux config repositories and link them into `~/.config`
 5. Install all packages from Brewfile
 6. Create symbolic links using stow
 
@@ -45,8 +45,7 @@ brew install stow
 ### Step 2: Clone Repository
 
 ```bash
-# Clone with submodules
-git clone --recursive https://github.com/peinan/dotfiles.git
+git clone https://github.com/peinan/dotfiles.git
 cd dotfiles
 ```
 
@@ -117,13 +116,23 @@ mv ~/.gitconfig ~/.gitconfig.backup
 stow -v -t ~ src
 ```
 
-### Submodules are empty
+### `~/.config/nvim` is a real directory
 
-Initialize submodules:
+`~/.config/nvim` and `~/.config/tmux` must be symlinks into the ghq clones.
+A machine migration that copied `~/.config` verbatim leaves them as real
+directories, and the config you edit in the repository then has no effect.
+
+Check what is actually loaded, then relink:
 
 ```bash
-git submodule update --init --recursive
+git -C ~/.config/nvim rev-parse --show-toplevel   # should print the ghq path
+
+mv ~/.config/nvim ~/.config/nvim.backup
+ln -s "$(ghq root)/github.com/peinan/nvim" ~/.config/nvim
 ```
+
+Push anything you have only in the old directory before deleting the backup.
+See the [Config Repos page](/config-repos).
 
 ### Package installation fails
 

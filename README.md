@@ -13,9 +13,9 @@
     - **Prompt**: [Starship](https://starship.rs/)
     - **Plugin Manager**: [Sheldon](https://sheldon.cli.rs/)
 - **Git**: Git configuration (`.gitconfig`) and [delta](https://dandavison.github.io/delta/) for beautiful diffs
-- **Editors**: [Neovim](https://neovim.io/) (submodule)
+- **Editors**: [Neovim](https://neovim.io/) (standalone repository)
 - **Terminal**: [Ghostty](https://ghostty.org/)
-- **Multiplexing**: [tmux](https://github.com/tmux/tmux) (submodule)
+- **Multiplexing**: [tmux](https://github.com/tmux/tmux) (standalone repository)
 - **Package Management**: [Homebrew](https://brew.sh/) (`Brewfile`)
 - **Font**: [Kusunoki Mono](https://github.com/peinan/kusunoki-mono)
 
@@ -35,7 +35,7 @@ curl -fsSL https://raw.githubusercontent.com/peinan/dotfiles/HEAD/scripts/instal
 
 # or you can install stow and setup step-by-step by yourself
 brew install stow
-git clone --recursive https://github.com/peinan/dotfiles && cd dotfiles
+git clone https://github.com/peinan/dotfiles && cd dotfiles
 brew bundle install
 stow -v -t ~ src
 ```
@@ -56,7 +56,7 @@ dotfiles/
 │   ├── .zshrc          <-- Links to ~/.zshrc
 │   ├── .gitconfig      <-- Links to ~/.gitconfig
 │   └── .config/        <-- Links to ~/.config/
-│       ├── nvim/       <-- Links to ~/.config/nvim (Directory link)
+│       ├── ghostty/    <-- Links to ~/.config/ghostty
 │       └── gh/         <-- Links to ~/.config/gh
 ├── scripts/            <-- Setup scripts (Not stowed)
 └── Brewfile            <-- Homebrew bundle (Not stowed)
@@ -84,15 +84,21 @@ vim ~/.zshrc
 # Changes are automatically applied to src/.zshrc
 ```
 
-#### Advanced Usage: Handling Submodules (e.g., Neovim)
+#### Advanced Usage: Editor and Terminal Configs
 
-Directories that are Git submodules (like `src/.config/nvim`) are linked as a **single directory symlink**.
-For this to work cleanly, ensure the target directory (e.g., `~/.config/nvim`) does not exist before running stow.
+Neovim and tmux are **not** part of `src/`. They live in their own repositories
+([peinan/nvim](https://github.com/peinan/nvim), [peinan/tmux](https://github.com/peinan/tmux))
+cloned under `ghq root`, and `~/.config/{nvim,tmux}` are symlinks pointing at those clones.
+Stow never touches them. See the [Config Repos page](https://dotfiles.peinan.cc/config-repos) for details.
 
 #### Advanced Usage: Ignoring Files
 
-Files listed in `src/.stow-local-ignore` are excluded from symlinking.
-(e.g., `Brewfile`, `README.md`, `.DS_Store`)
+There is no `.stow-local-ignore` here, so stow applies its built-in ignore list:
+`.git`, `.gitignore`, `.gitmodules`, `*~`, `#*#`, and — only at the top of the
+package — `README.*`, `LICENSE.*` and `COPYING`.
+
+Adding a `.stow-local-ignore` would **replace** that built-in list rather than
+extend it, so prefer keeping files out of `src/` over ignoring them.
 
 #### Advanced Usage: Check Link Status
 

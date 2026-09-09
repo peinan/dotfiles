@@ -12,7 +12,7 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Install', link: '/installation-guide' },
       { text: 'Config', link: '/config' },
-      { text: 'Submodules', link: '/submodules' }
+      { text: 'Config Repos', link: '/config-repos' }
     ],
     socialLinks: [
       { icon: 'github', link: 'https://github.com/peinan/dotfiles' }
