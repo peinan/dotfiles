@@ -48,6 +48,11 @@ apply = ["fpath"]
 [plugins.zsh-autoload-lazy]
 inline = 'autoload -Uz $fpath[1]/*(N:t)'
 
+# rp: repository management. Installed by Brewfile via peinan/tap.
+# Guarded so a shell started before `brew bundle` does not error.
+[plugins.rp]
+inline = '[[ -r "$HOMEBREW_PREFIX/share/rp/rp.plugin.zsh" ]] && source "$HOMEBREW_PREFIX/share/rp/rp.plugin.zsh"'
+
 # Load external configs
 [plugins.zsh-configs]
 local = "~/.zsh/configs"

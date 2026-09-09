@@ -12,6 +12,9 @@ brew "dotenvx/brew/dotenvx"
 tap "ngrok/ngrok"
 cask "ngrok"
 
+tap "peinan/tap"
+brew "peinan/tap/rp"
+
 
 #
 # Brew: https://formulae.brew.sh/
