@@ -99,6 +99,6 @@ All three should point at the ghq clone. If `readlink` prints nothing,
 - Vim was dropped from this repository. `~/.config/vim` did not exist and
   [peinan/vim](https://github.com/peinan/vim) needs a `~/.vimrc` symlink on top
   of it to load at all; the repository still exists on GitHub.
-- The Ghostty cursor shaders in `src/.config/ghostty/shaders/` are a vendored
-  copy of a third-party repository, not a submodule. See
-  `src/.config/ghostty/shaders/UPSTREAM.md`.
+- The Ghostty cursor shader in `src/.config/ghostty/shaders/` is a vendored copy
+  of a third-party file, not a submodule. Credit and the upstream commit are in
+  `src/.config/ghostty/README.md`.
