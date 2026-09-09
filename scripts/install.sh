@@ -6,6 +6,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 BLUE='\033[0;34m'
+GRAY='\033[0;90m'
 NC='\033[0m' # No Color
 
 info() {
@@ -30,10 +31,16 @@ if [[ "$(uname)" != "Darwin" ]]; then
     error "This script is only supported on macOS"
 fi
 
+# Logo generated with `cfonts "dotfiles" -f block`, inlined because cfonts is
+# not available before the Brewfile is installed.
 echo ""
-echo "=================================="
-echo "   Peinan's dotfile installer"
-echo "=================================="
+echo -e "${BLUE} ██████╗   ██████╗  ████████╗ ███████╗ ██╗ ██╗      ███████╗ ███████╗"
+echo -e " ██╔══██╗ ██╔═══██╗ ╚══██╔══╝ ██╔════╝ ██║ ██║      ██╔════╝ ██╔════╝"
+echo -e " ██║  ██║ ██║   ██║    ██║    █████╗   ██║ ██║      █████╗   ███████╗"
+echo -e " ██║  ██║ ██║   ██║    ██║    ██╔══╝   ██║ ██║      ██╔══╝   ╚════██║"
+echo -e " ██████╔╝ ╚██████╔╝    ██║    ██║      ██║ ███████╗ ███████╗ ███████║"
+echo -e " ╚═════╝   ╚═════╝     ╚═╝    ╚═╝      ╚═╝ ╚══════╝ ╚══════╝ ╚══════╝${NC}"
+echo -e "${GRAY}                peinan's macOS development environment${NC}"
 echo ""
 
 # Step 1: Install Homebrew if not exists
