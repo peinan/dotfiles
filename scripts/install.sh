@@ -121,6 +121,17 @@ brew pin node
 
 success "Node environment setup complete (managed by mise)"
 
+# Step 5c: Install Claude Code with the native installer
+# Not from Homebrew: the native build auto-updates in the background, while a
+# cask stays pinned until `brew upgrade` runs.
+info "Installing Claude Code..."
+if [[ -x "$HOME/.local/bin/claude" ]]; then
+    success "Claude Code is already installed"
+else
+    curl -fsSL https://claude.ai/install.sh | bash
+    success "Claude Code installed"
+fi
+
 # Step 6: Create symbolic links using stow
 info "Creating symbolic links..."
 
