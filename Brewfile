@@ -15,6 +15,9 @@ cask "ngrok"
 tap "peinan/tap"
 brew "peinan/tap/rp"
 
+tap "rjyo/moshi"
+brew "rjyo/moshi/moshi-hook"
+
 
 #
 # Brew: https://formulae.brew.sh/
@@ -74,12 +77,13 @@ brew "mas" if OS.mac?
 cask "1password"
 cask "1password-cli"
 cask "alt-tab"
+cask "aqua-voice"
 cask "arc"
 cask "bettertouchtool"
+cask "claude"
 cask "claude-code"
 cask "cleanshot"
-cask "cursor"
-cask "cursor-cli"
+cask "codex"
 cask "docker"
 cask "ghostty"
 cask "google-chrome"
@@ -87,8 +91,10 @@ cask "google-drive"
 cask "hammerspoon"
 cask "jordanbaird-ice"
 cask "karabiner-elements"
+cask "notion"
 cask "raycast"
 cask "slack"
+cask "tailscale-app"
 
 
 #
@@ -96,4 +102,5 @@ cask "slack"
 #
 
 mas "1Password for Safari", id: 1569813296
+mas "LINE", id: 539883307
 
