@@ -1,0 +1,28 @@
+# Project-level mise template. Copy this to a repository root as `mise.toml`.
+#
+# These sections used to sit in the global config (`src/.config/mise/config.toml`),
+# but `[env]` and `[tasks.*]` resolve against `config_root` and only make sense
+# per project: in the global config the tasks show up in every directory.
+
+[hooks]
+# Enabling corepack will install the `pnpm` package manager specified in your package.json
+# alternatively, you can also install `pnpm` with mise
+postinstall = 'npx corepack enable'
+
+[settings]
+# This must be enabled to make the hooks work
+experimental = true
+
+[env]
+_.path = ['{{config_root}}/node_modules/.bin']
+
+[tasks.pnpm-install]
+description = 'Installs dependencies with pnpm'
+run = 'pnpm install'
+sources = ['package.json', 'pnpm-lock.yaml', 'mise.toml']
+outputs = ['node_modules/.pnpm/lock.yaml']
+
+[tasks.dev]
+description = 'Calls your dev script in `package.json`'
+run = 'node --run dev'
+depends = ['pnpm-install']
