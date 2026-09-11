@@ -1,8 +1,14 @@
 repos:
   - repo: local
     hooks:
-      - id: sanitize-email-addresses
-        name: Sanitize email addresses
+      - id: secret-guard
+        name: Refuse account-specific values and secrets
         entry: scripts/sanitize-email.sh
         language: script
-        files: ^src/\.alias$
+        # Every file, not just src/.alias. The two leaks this repository has
+        # actually had were in src/.claude/settings.json and
+        # src/.zsh/configs-lazy/ca.zsh, neither of which the old pattern
+        # covered. package-lock.json is excluded because it is generated and
+        # its registry URLs produce nothing but false positives.
+        exclude: ^docs/package-lock\.json$
+        exclude_types: [binary]
