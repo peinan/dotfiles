@@ -28,7 +28,7 @@ For manual installation, see the [installation page](/installation-guide).
 - **Shell**: [Zsh](https://www.zsh.org/) (`.zshrc`, `.zshenv`, `.alias`)
     - **Prompt**: [Starship](https://starship.rs/)
     - **Plugin Manager**: [Sheldon](https://sheldon.cli.rs/)
-- **Git**: Git configuration (`.gitconfig`) and [delta](https://dandavison.github.io/delta/) for beautiful diffs
+- **Git**: Git configuration (`.config/git/config`) and [delta](https://dandavison.github.io/delta/) for beautiful diffs
 - **Editors**: [Neovim](https://neovim.io/) (standalone repository)
 - **Terminal**: [Ghostty](https://ghostty.org/)
 - **Multiplexing**: [tmux](https://github.com/tmux/tmux) (standalone repository)
@@ -43,10 +43,15 @@ This repository uses [GNU Stow](https://www.gnu.org/software/stow/) to manage sy
 dotfiles/
 ├── src/                <-- Maps to $HOME
 │   ├── .zshrc          <-- Links to ~/.zshrc
-│   ├── .gitconfig      <-- Links to ~/.gitconfig
 │   └── .config/        <-- Links to ~/.config/
+│       ├── git/        <-- Links to ~/.config/git
 │       ├── ghostty/    <-- Links to ~/.config/ghostty
 │       └── starship/   <-- Links to ~/.config/starship
+├── misc/               <-- GUI app exports & templates (Not stowed)
 ├── scripts/            <-- Setup scripts (Not stowed)
 └── Brewfile            <-- Homebrew bundle (Not stowed)
 ```
+
+Everything under `src/` is linked; anything that should not be belongs outside
+it. Values that cannot go in a public repository live in a separate private
+one — see [Config Repositories](/config-repos).

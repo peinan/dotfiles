@@ -1,30 +1,22 @@
+# Global mise config. `mise use -g` writes to this file, so expect it to be
+# reformatted by mise itself. Project-level `[env]` / `[tasks]` / `[hooks]`
+# live in misc/mise/mise.toml instead.
+
 [tools]
-node = "latest"
+node = "25.3.0"
 deno = "latest"
+pnpm = "latest"
+
 "npm:@antfu/ni" = "latest"
 "npm:@google/gemini-cli" = "latest"
+"npm:agent-browser" = "latest"
 "npm:aicommit2" = "latest"
 
-[hooks]
-# Enabling corepack will install the `pnpm` package manager specified in your package.json
-# alternatively, you can also install `pnpm` with mise
-postinstall = 'npx corepack enable'
+# Language Servers
+"npm:vscode-langservers-extracted" = "latest"
+"npm:yaml-language-server" = "latest"
 
-[settings]
-# This must be enabled to make the hooks work
-experimental = true
-
-[env]
-_.path = ['{{config_root}}/node_modules/.bin']
-
-[tasks.pnpm-install]
-description = 'Installs dependencies with pnpm'
-run = 'pnpm install'
-sources = ['package.json', 'pnpm-lock.yaml', 'mise.toml']
-outputs = ['node_modules/.pnpm/lock.yaml']
-
-[tasks.dev]
-description = 'Calls your dev script in `package.json`'
-run = 'node --run dev'
-depends = ['pnpm-install']
-
+rust = "1.96.1"
+just = "latest"
+bun = "1.3.14"
+"cargo:cargo-nextest" = "latest"
