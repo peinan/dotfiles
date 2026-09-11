@@ -120,8 +120,26 @@ swap_pane_right = ""
 # type = "pane" opens a temporary pane and closes it when the command exits.
 [[keys.command]]
 key = "prefix+g"
-type = "pane"
+type = "popup"
 command = "lazygit"
+width = "90%"
+height = "90%"
+
+# Scratch login shell in a popup. Inherits the focused pane's cwd; exit to close.
+[[keys.command]]
+key = "prefix+ctrl+p"
+type = "popup"
+command = 'exec "${SHELL:-sh}" -l'
+description = "scratch shell"
+width = "80%"
+height = "80%"
+
+# rp herdr plugin (peinan/rp): hub mode. Pick a ghq repository, then choose an action.
+[[keys.command]]
+key = "prefix+ctrl+r"
+type = "plugin_action"
+command = "rp.hub"
+description = "jump to a ghq repository"
 
 # Legacy indexed shortcut config is still parsed for compatibility.
 # Prefer switch_tab, switch_workspace, and focus_agent for new configs.
@@ -178,6 +196,8 @@ show_agent_labels_on_pane_borders = true
 # Accepts: hex (#89b4fa), named colors (cyan, blue, magenta), or rgb(r,g,b)
 # accent = "cyan"
 
+pane_borders = "always"
+
 # Background notification popup delivery
 agent_panel_sort = "spaces"
 
@@ -185,12 +205,12 @@ agent_panel_sort = "spaces"
 sidebar_divider = false
 zoom_indicator = ""
 prefix_indicator = "highlight"
-single_pane_border = true
 pane_title_format = "$dir $process( ⋅ $branch$ahead_behind$git_status)( $zoom)"
 dim_inactive_panes = true
 pane_padding = { left = 1 }
 show_pane_focus_marker = false
 tab_bar_style = "minimal"
+tab_bar_position = "bottom"
 zoom_indicator_position = "pane"
 
 [ui.toast]
