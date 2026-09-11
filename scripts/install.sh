@@ -58,6 +58,47 @@ echo -e " ╚═════╝   ╚═════╝     ╚═╝    ╚═�
 echo -e "${GRAY}                peinan's macOS development environment${NC}"
 echo ""
 
+# Step 0: Take the sudo timestamp once, up front.
+#
+# Four things here need root: Homebrew's own installer (creating and chowning
+# /opt/homebrew, installing the Command Line Tools), the google-drive and
+# karabiner-elements casks, whose .pkg installers run as root, and
+# docker-desktop, whose `binary` artifacts symlink into the root-owned
+# /usr/local/bin and /usr/local/cli-plugins.
+#
+# Left alone that is several password prompts rather than one, for two reasons
+# that reordering the Brewfile cannot fix: Homebrew's installer invalidates the
+# sudo timestamp on exit, and the Brewfile download phase runs far longer than
+# sudo's five-minute default. `brew bundle install` also batches every cask
+# into a single `brew install`, which downloads everything before installing
+# anything, so the three are already consecutive.
+#
+# Acquiring the timestamp before Step 1 also stops Homebrew from invalidating
+# it: its installer only arms `trap 'sudo -k' EXIT` when `sudo -n -v` fails,
+# i.e. when the timestamp was not already valid on entry.
+info "Administrator access is required for this install:"
+echo "    - Homebrew itself (/opt/homebrew and the Command Line Tools)"
+echo "    - the google-drive and karabiner-elements casks (.pkg installers)"
+echo "    - docker-desktop (symlinks into the root-owned /usr/local/bin)"
+sudo -v || error "This install needs sudo access; $USER must be an administrator"
+
+# Keep the timestamp warm for the rest of the run. `|| true` because this
+# subshell inherits `set -e` and a refresh that loses the race must not kill
+# the loop; `kill -0 "$$"` so the loop cannot outlive the script if it is
+# killed without the trap running.
+while true; do
+    sudo -n true 2>/dev/null || true
+    sleep 50
+    kill -0 "$$" 2>/dev/null || exit
+done &
+SUDO_KEEPALIVE_PID=$!
+trap 'kill "$SUDO_KEEPALIVE_PID" 2>/dev/null; sudo -k' EXIT
+
+warn "Karabiner-Elements, Docker Desktop and Google Drive will ask for your"
+warn "password again in a GUI dialog when they first launch. Those prompts come"
+warn "from macOS itself and cannot be pre-authorised from here."
+echo ""
+
 # Step 1: Install Homebrew if not exists
 info "Checking Homebrew..."
 if ! command -v brew &> /dev/null; then

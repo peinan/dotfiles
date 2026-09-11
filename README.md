@@ -25,6 +25,17 @@
 > [!Caution]
 > This dotfiles is designed for macOS.
 
+> [!Note]
+> The installer asks for your password once, at the start — Homebrew, two `.pkg`
+> casks and Docker Desktop's symlinks into `/usr/local/bin` all need root, and
+> taking the sudo timestamp up front collapses them into a single prompt.
+>
+> Karabiner-Elements, Docker Desktop and Google Drive will each ask again in a
+> GUI dialog the first time they launch, for a system extension, a privileged
+> helper and a file provider extension respectively. Those come from macOS and
+> cannot be pre-authorised by a script, so expect them after the install rather
+> than during it.
+
 ```bash
 # The easiest way
 curl -fsSL https://dotfiles.peinan.cc/install | bash
