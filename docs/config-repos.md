@@ -1,13 +1,17 @@
 ---
 title: Config Repositories
-description: Editor and terminal configurations that live in their own repositories
+description: Configuration that lives in its own repository rather than in src/
 ---
 
 # Config Repositories
 
-Neovim and tmux are configured from their own GitHub repositories rather than
-from `src/`. The clone under `ghq root` is the only working copy, and
-`~/.config/<name>` is a symlink pointing at it.
+Some configuration lives in its own GitHub repository rather than in `src/`.
+The clone under `ghq root` is the only working copy, and the path it replaces
+under `$HOME` is a symlink pointing at it.
+
+Two unrelated reasons put configuration here. Neovim and tmux moved out because
+they were submodules and that went badly. `peinan/dotfiles-local` exists
+because this repository is public and some values cannot be.
 
 ## Why they are not submodules
 
@@ -22,12 +26,40 @@ reproducibility either.
 
 Every other GitHub repository here is managed with `ghq`. These are now too.
 
+## What must not live in this repository
+
+This repository is public. Two kinds of value therefore cannot be committed
+here, however convenient it would be:
+
+- **Values that embed an account.** A path containing a mail address, a user
+  id, or a host name publishes it. The Google Drive named directories are the
+  example: their paths carry three addresses.
+- **Names from a non-public environment.** Internal repositories, hosts and
+  platform tooling should not be published even when the contents stay behind
+  an access check. A link that 404s still confirms what exists.
+
+`peinan/dotfiles-local` holds these, and this repository keeps only the hooks
+that load it. There are two:
+
+- **`~/.alias.local`**, sourced at the end of `src/.alias` behind a `-f` test.
+- **`~/.zsh/local/*.zsh`**, globbed by the `zsh-configs-local` sheldon plugin.
+
+Both hooks do nothing when their target is missing, so a machine that cannot
+reach the private repository still gets a working shell — it just misses these
+values. Name files there after the concern they configure, matching
+`src/.zsh/configs-lazy/`.
+
+`scripts/sanitize-email.sh` runs on `src/.alias` at pre-commit and rewrites any
+Google Drive path that still carries an address. It is a safety net for the
+first rule, not the mechanism: nothing should reach it.
+
 ## Layout
 
 | Config | Repository | Working copy | Symlink |
 |---|---|---|---|
 | Neovim | [peinan/nvim](https://github.com/peinan/nvim) | `~/ghq/github.com/peinan/nvim` | `~/.config/nvim` |
 | tmux | [peinan/tmux](https://github.com/peinan/tmux) | `~/ghq/github.com/peinan/tmux` | `~/.config/tmux` |
+| Machine-local | `peinan/dotfiles-local` (private) | `~/ghq/github.com/peinan/dotfiles-local` | `~/.zsh/local`, `~/.alias.local` |
 
 ## How the installer sets this up
 
@@ -43,6 +75,16 @@ Two details matter:
 - **`ghq get` runs without `-u`.** A config repository can hold unpushed
   commits, and `-u` is `--ff-only`, so it would abort the installer under
   `set -e`. Updating is a manual decision.
+
+Step 4b does the same for `peinan/dotfiles-local`, with three differences:
+
+- **It creates `~/.zsh` first**, for the reason Step 4 creates `~/.config`:
+  without it stow folds the tree into `~/.zsh -> src/.zsh` and the link lands
+  inside this repository.
+- **Its `ghq get` sits inside an `if`.** The repository is optional, so under
+  `set -e` a bare failure would abort the whole installer. A machine without
+  access gets a warning and continues.
+- **It links two paths rather than one**, `~/.zsh/local` and `~/.alias.local`.
 
 ## Updating
 
@@ -102,3 +144,10 @@ All three should point at the ghq clone. If `readlink` prints nothing,
 - The Ghostty cursor shader in `src/.config/ghostty/shaders/` is a vendored copy
   of a third-party file, not a submodule. Credit and the upstream commit are in
   `src/.config/ghostty/README.md`.
+- `~/.claude/settings.json` is the one file under `src/` that is a real copy
+  rather than a symlink, and it cannot be fixed. Claude Code rewrites it with an
+  atomic rename, which replaces a symlink with a regular file. The marketplace
+  entries naming internal repositories cannot move to `~/.claude/settings.local.json`
+  either: `extraKnownMarketplaces` is documented as readable from any settings
+  file but is ignored there. The durable fix is an organization-deployed managed
+  settings file, not this repository.

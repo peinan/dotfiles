@@ -50,6 +50,10 @@ All configuration files are located in the `src/` directory, which mirrors the s
 
 We use an "All-in-One" package strategy. The `src/` directory is treated as a single package that maps directly to `$HOME`.
 
+That mapping holds without exception: everything under `src/` is linked into
+`$HOME`. Anything that should not be linked belongs outside `src/` rather than
+ignored inside it — see [Ignoring Files](#advanced-usage-ignoring-files) for why.
+
 ```text
 dotfiles/
 ├── src/                <-- Maps to $HOME
@@ -58,6 +62,7 @@ dotfiles/
 │   └── .config/        <-- Links to ~/.config/
 │       ├── ghostty/    <-- Links to ~/.config/ghostty
 │       └── gh/         <-- Links to ~/.config/gh
+├── misc/               <-- GUI app exports & templates (Not stowed)
 ├── scripts/            <-- Setup scripts (Not stowed)
 └── Brewfile            <-- Homebrew bundle (Not stowed)
 ```
@@ -70,10 +75,13 @@ dotfiles/
 2.  Run `stow` again to create the link.
 
 ```bash
-# Example: Adding .tmux.conf
-mv ~/.tmux.conf src/
+# Example: Adding .editorconfig
+mv ~/.editorconfig src/
 stow -v -t ~ src
 ```
+
+Check first that the value belongs in a public repository — see
+[Machine-Local Values](#advanced-usage-machine-local-values).
 
 #### How to edit configurations
 
@@ -98,7 +106,22 @@ There is no `.stow-local-ignore` here, so stow applies its built-in ignore list:
 package — `README.*`, `LICENSE.*` and `COPYING`.
 
 Adding a `.stow-local-ignore` would **replace** that built-in list rather than
-extend it, so prefer keeping files out of `src/` over ignoring them.
+extend it, so prefer keeping files out of `src/` over ignoring them. `misc/`
+sits at the repository root for exactly this reason: it holds exported GUI app
+settings that no application reads from `$HOME`, and moving it out of `src/`
+was cheaper than teaching stow to skip it.
+
+#### Advanced Usage: Machine-Local Values
+
+This repository is public, so values that embed an account (a mail address, a
+user id, a host name) and names from a non-public environment cannot be
+committed here. They live in a separate private repository, and this one keeps
+only two hooks that load it: `~/.alias.local`, sourced at the end of
+`src/.alias`, and `~/.zsh/local/*.zsh`, globbed by sheldon. Both are no-ops
+when absent, so a machine without access to that repository still works.
+
+See the [Config Repos page](https://dotfiles.peinan.cc/config-repos) before
+adding anything account-specific.
 
 #### Advanced Usage: Check Link Status
 

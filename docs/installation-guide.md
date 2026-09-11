@@ -25,8 +25,12 @@ The script will:
 2. Install essential tools (git, ghq, stow)
 3. Clone the repository using ghq
 4. Clone the nvim/tmux config repositories and link them into `~/.config`
-5. Install all packages from Brewfile
-6. Create symbolic links using stow
+5. Clone the private machine-local repository and link `~/.zsh/local` and
+   `~/.alias.local`, warning and continuing if it is unavailable
+6. Install all packages from Brewfile
+7. Set up the Node environment with mise and remove Homebrew's Node
+8. Install Claude Code with its native installer
+9. Create symbolic links using stow
 
 ## Manual Installation
 
@@ -64,7 +68,27 @@ brew bundle install
 This installs many packages and may take some time. Edit the Brewfile to install only specific packages.
 :::
 
-### Step 4: Create Symbolic Links
+### Step 4: Link Machine-Local Overrides
+
+Values that cannot live in this public repository come from a separate private
+one. Skip this step if you do not have access to it — everything else works
+without it.
+
+```bash
+ghq get peinan/dotfiles-local
+
+# Must exist as a real directory before Step 5, or stow folds the whole tree
+# into ~/.zsh -> src/.zsh and these links land inside the repository.
+mkdir -p ~/.zsh
+
+L="$(ghq root)/github.com/peinan/dotfiles-local"
+ln -sfn "$L/zsh-local"   ~/.zsh/local
+ln -sfn "$L/alias.local" ~/.alias.local
+```
+
+See [Config Repositories](/config-repos) for what belongs there.
+
+### Step 5: Create Symbolic Links
 
 ```bash
 # Create all symlinks using stow
@@ -80,7 +104,7 @@ mv ~/.zshrc ~/.zshrc.backup
 ```
 :::
 
-### Step 5: Restart Shell
+### Step 6: Restart Shell
 
 ```bash
 # Reload shell configuration

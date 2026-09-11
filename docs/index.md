@@ -47,6 +47,11 @@ dotfiles/
 │   └── .config/        <-- Links to ~/.config/
 │       ├── ghostty/    <-- Links to ~/.config/ghostty
 │       └── starship/   <-- Links to ~/.config/starship
+├── misc/               <-- GUI app exports & templates (Not stowed)
 ├── scripts/            <-- Setup scripts (Not stowed)
 └── Brewfile            <-- Homebrew bundle (Not stowed)
 ```
+
+Everything under `src/` is linked; anything that should not be belongs outside
+it. Values that cannot go in a public repository live in a separate private
+one — see [Config Repositories](/config-repos).
