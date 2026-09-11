@@ -136,9 +136,13 @@ Stow won't overwrite existing files. Backup and remove them:
 
 ```bash
 mv ~/.zshrc ~/.zshrc.backup
-mv ~/.gitconfig ~/.gitconfig.backup
+mv ~/.alias ~/.alias.backup
 stow -v -t ~ src
 ```
+
+Stow names the file it stopped on, so move that one rather than working from a
+list. `~/.gitconfig` is not a candidate: Git configuration is at
+`src/.config/git/config`, so stow never places anything at that path.
 
 ### `~/.config/nvim` is a real directory
 

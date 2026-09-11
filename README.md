@@ -12,7 +12,7 @@
 - **Shell**: [Zsh](https://www.zsh.org/) (`.zshrc`, `.zshenv`, `.alias`)
     - **Prompt**: [Starship](https://starship.rs/)
     - **Plugin Manager**: [Sheldon](https://sheldon.cli.rs/)
-- **Git**: Git configuration (`.gitconfig`) and [delta](https://dandavison.github.io/delta/) for beautiful diffs
+- **Git**: Git configuration (`.config/git/config`) and [delta](https://dandavison.github.io/delta/) for beautiful diffs
 - **Editors**: [Neovim](https://neovim.io/) (standalone repository)
 - **Terminal**: [Ghostty](https://ghostty.org/)
 - **Multiplexing**: [tmux](https://github.com/tmux/tmux) (standalone repository)
@@ -58,8 +58,8 @@ ignored inside it — see [Ignoring Files](#advanced-usage-ignoring-files) for w
 dotfiles/
 ├── src/                <-- Maps to $HOME
 │   ├── .zshrc          <-- Links to ~/.zshrc
-│   ├── .gitconfig      <-- Links to ~/.gitconfig
 │   └── .config/        <-- Links to ~/.config/
+│       ├── git/        <-- Links to ~/.config/git
 │       ├── ghostty/    <-- Links to ~/.config/ghostty
 │       └── gh/         <-- Links to ~/.config/gh
 ├── misc/               <-- GUI app exports & templates (Not stowed)

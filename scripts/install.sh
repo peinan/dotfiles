@@ -221,12 +221,12 @@ fi
 # Step 6: Create symbolic links using stow
 info "Creating symbolic links..."
 
-# Check for common files that might conflict
+# Check for common files that might conflict. Only files that actually exist in
+# src/ belong here: backing up anything else moves a file stow will never
+# replace, which quietly disables whatever was using it.
 backup_if_exists "$HOME/.zshrc"
 backup_if_exists "$HOME/.zshenv"
-backup_if_exists "$HOME/.zprofile"
 backup_if_exists "$HOME/.alias"
-backup_if_exists "$HOME/.gitconfig"
 
 # Run stow
 cd "$DOTFILES_DIR"

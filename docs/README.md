@@ -93,6 +93,14 @@ docs/
 ├── installation-guide.md  # Installation guide
 ├── config.md              # Configuration files
 ├── config-repos.md        # Standalone config repositories
+├── public/
+│   ├── CNAME              # Custom domain for GitHub Pages
+│   └── install -> ../../scripts/install.sh   # Serves the one-liner installer
 ├── package.json           # Dependencies
+├── package-lock.json      # Dependency lockfile
 └── README.md              # This file
 ```
+
+`public/install` is a symlink, so the installer served at
+`dotfiles.peinan.cc/install` is always the committed `scripts/install.sh` —
+there is no copy to keep in sync.

@@ -14,11 +14,14 @@ Description of the main configuration files included in this repository.
 The main Zsh configuration file. It includes the following features:
 
 - Environment variable settings (PAGER, HISTFILE, HISTSIZE, etc.)
-- Starship prompt initialization
+- Pre-expanded `brew shellenv` output, to save about 50ms per startup
 - Sheldon plugin manager initialization
 - Alias loading
-- Initialization of various tools (zoxide, fzf, walk, etc.)
 - Completion settings
+
+Everything else is a sheldon plugin rather than a line here — the prompt,
+zoxide, atuin and this repository's own Zsh files included. See
+[Sheldon](#sheldon).
 
 **Location:** `src/.zshrc`
 
@@ -46,68 +49,109 @@ instead of here; see [Config Repositories](/config-repos).
 
 ## Git {#git}
 
-### .gitconfig
+### config
 
 Git configuration file. It includes the following features:
 
 - **User Information:** Name and email address
-- **Aliases:** Shortcuts for commonly used Git commands (st, br, co)
+- **Aliases:** Shortcuts for commonly used Git commands (st, br, co, cm, df, wt)
 - **Delta:** Settings for beautiful diff display
   - Side-by-side display
   - Line numbers
-  - Decorations
+  - Decorations, plus a separate feature set for interactive diffs
+- **Credentials:** `gh auth git-credential` as the helper for GitHub
+- **ghq:** `~/ghq` as the clone root
 - **Git LFS:** Large file management
 
-**Location:** `src/.gitconfig`
+**Location:** `src/.config/git/config`
+
+This is the XDG path, not `~/.gitconfig`. Git reads both, but only this one is
+managed here — if a `~/.gitconfig` also exists it wins for any key it sets.
 
 **Note:** Please change the username and email address before use.
 
 ```ini
+[init]
+    defaultBranch = main
+
 [user]
-  email = peinan7@gmail.com
-  name = Peinan Zhang
+    email = peinan7@gmail.com
+    name  = peinan
 
 [alias]
-  st = status -u
-  br = branch
-  co = checkout
+    st = status -u
+    br = branch
+    co = checkout
 
 [core]
-  pager = delta
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
 
 [delta]
-  features = decorations
-  line-numbers = true
-  side-by-side = true
+    features = decorations
+    line-numbers = true
+    side-by-side = true
+
+[fetch]
+    prune = true
+    pruneTags = true
+
+[ghq]
+    root = ~/ghq
 ```
+
+An excerpt; the full file also carries the `delta` colour settings, the Git LFS
+filter and the GitHub credential helpers.
+
+### ignore
+
+The global gitignore, listing `.DS_Store`.
+
+**Location:** `src/.config/git/ignore`
 
 ## Starship {#starship}
 
 ### starship.toml
 
-Starship is a fast and customizable prompt. This configuration enables the following features:
+Starship is a fast and customizable prompt. The left prompt is deliberately
+short — hostname, username, and the prompt character — with everything
+informational moved to `right_format` so the cursor stays near the left margin:
 
-- OS symbol display
-- Hostname display (special display when SSH connected)
-- Directory path display
-- Git branch and status display
-- Python environment display
-- Time display
+- **Left:** hostname (shown when connected over SSH), username, prompt character
+- **Right:** command duration, Python and Rust versions, the Git user from a
+  custom module, and the directory path
 
 **Location:** `src/.config/starship/starship.toml`
 
 ```toml
-format = '''$os $hostname [󰉋 ](cyan) $directory $git_branch $git_status $python
-$time$character'''
+add_newline = true
+
+format = """
+$hostname\
+$username\
+$character
+"""
+
+right_format = """
+$cmd_duration\
+$python\
+$rust\
+${custom.gituser}\
+$directory
+"""
 
 [character]
-error_symbol = '[▶](bold red)'
-success_symbol = '[▶](bold green)'
-
-[git_branch]
-symbol = "  "
-format = '[$symbol$branch(:$remote_branch)]($style) '
+error_symbol = '[](red) '
+success_symbol = '[](green) '
 ```
+
+::: info
+The prompt character uses nerd font glyphs, so a patched font is required.
+[Kusunoki Mono](https://github.com/peinan/kusunoki-mono) is the one the Brewfile
+installs.
+:::
 
 ## Sheldon {#sheldon}
 
