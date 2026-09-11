@@ -21,10 +21,25 @@ myWatcher = hs.pathwatcher.new(HOME .. "/.hammerspoon/", reloadConfig):start()
 hs.alert.show("Hammerspoon config loaded")
 
 
---------------------------------------------
--- Toggle Ghostty background blur with cmd+o
---------------------------------------------
+------------------------------------------------------------------
+-- Ghostty control, disabled in favour of Ghostty's own config
+------------------------------------------------------------------
+--
+-- ctrl+enter was bound in both places: `keybind =
+-- global:ctrl+enter=toggle_visibility` in src/.config/ghostty/config does the
+-- same thing. Two handlers racing for one key is the likely reason the toggle
+-- became unreliable while other apps held focus, so Ghostty keeps it — it can
+-- act on its own windows without asking the accessibility API to guess.
+--
+-- cmd+o still works from Raycast: ghostty-toggle-blur.sh carries @raycast
+-- headers, so the file-swap toggle has an entry point without this hotkey.
+-- (Ghostty cannot change blur at runtime, which is why that script swaps
+-- background-control between bg-blur and bg-trans and reloads instead.)
+--
+-- appWatcher existed only to enable and disable the cmd+o hotkey, so it goes
+-- with them. Re-enable by removing this block comment.
 
+--[==[
 local ghosttyBlurHotkey = hs.hotkey.new({"cmd"}, "o", function()
     local script_dir = HOME .. "/ghq/github.com/peinan/dotfiles/src/.config/ghostty/"
     local script_name = "ghostty-toggle-blur.sh"
@@ -89,6 +104,7 @@ local appWatcher = hs.application.watcher.new(function(appName, eventType, app)
     end
 end)
 appWatcher:start()
+]==]
 
 
 ------------------
@@ -99,7 +115,7 @@ appWatcher:start()
 hs.loadSpoon("GridTile")
 spoon.GridTile:setLayout("vim2")
 spoon.GridTile:setGap(1)
-spoon.GridTile:setFont("SF Mono Square", 64)
+spoon.GridTile:setFont("Kusunoki Mono", 64)
 
 local lastTrapped = 0
 local doubleTapThreshold = 0.4
