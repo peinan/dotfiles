@@ -135,6 +135,33 @@ setup_config_repo() {
 setup_config_repo peinan/nvim
 setup_config_repo peinan/tmux
 
+# Step 4b: Set up the machine-local overrides from their private repository.
+# peinan/dotfiles-local holds the values that cannot live in this public repo:
+# account-specific paths and non-public tooling. Both consumers tolerate its
+# absence (sheldon skips a missing plugin directory, and src/.alias guards the
+# source with a -f test), so a machine without access still gets a working
+# shell and simply misses these overrides.
+LOCAL_REPO="peinan/dotfiles-local"
+LOCAL_REPO_DIR="$GHQ_ROOT/github.com/$LOCAL_REPO"
+
+# Same reason as ~/.config above: ~/.zsh must already be a real directory, or
+# stow (Step 6) folds the whole tree into `~/.zsh -> src/.zsh` and the link
+# below would then be created inside the public dotfiles repository.
+mkdir -p "$HOME/.zsh"
+
+info "Setting up machine-local overrides..."
+# Guarded by `if` on purpose: under `set -e` a bare failing `ghq get` would
+# abort the whole install for an optional repository.
+if [[ -d "$LOCAL_REPO_DIR" ]] || ghq get "$LOCAL_REPO"; then
+    backup_if_exists "$HOME/.zsh/local"
+    backup_if_exists "$HOME/.alias.local"
+    ln -sfn "$LOCAL_REPO_DIR/zsh-local" "$HOME/.zsh/local"
+    ln -sfn "$LOCAL_REPO_DIR/alias.local" "$HOME/.alias.local"
+    success "Machine-local overrides ready: $LOCAL_REPO_DIR"
+else
+    warn "$LOCAL_REPO is unavailable; skipping machine-local overrides"
+fi
+
 # Step 5a: Install all packages from Brewfile
 info "Installing packages from Brewfile..."
 brew bundle install --file "$DOTFILES_DIR/Brewfile"

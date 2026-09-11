@@ -71,7 +71,7 @@ if type tmux > /dev/null 2>&1; then
   alias tmc='tmux save-buffer - | pbcopy'
   alias tmres='tmux respawn-pane -k'
 fi
-alias tmconf='vi ~/.tmux.conf'
+alias tmconf='vi ~/.config/tmux/tmux.conf'
 
 ## tree
 if type tree > /dev/null 2>&1; then
@@ -149,6 +149,7 @@ fi
 ## claude
 if type claude > /dev/null 2>&1; then
     alias cl="claude"
+    alias clp="CLAUDE_CONFIG_DIR=~/.claude-personal command claude"
 fi
 
 ## zoxide
@@ -167,6 +168,16 @@ if type open_with_browser > /dev/null 2>&1; then
     alias chr="chrome"
     alias safari="open_with_browser -s"
     alias saf="safari"
+fi
+
+## lazygit
+if type lazygit > /dev/null 2>&1; then
+    alias lg="lazygit"
+fi
+
+## terminal-notifier
+if type terminal-notifier > /dev/null 2>&1; then
+    alias tn="terminal-notifier"
 fi
 
 
@@ -220,3 +231,11 @@ alias -g H='| head'
 alias -g T='| tail'
 alias -g L='| less -R'
 alias -g DN='/dev/null'
+
+
+# ------------
+# Machine Local
+# ------------
+# Aliases whose values are account- or machine-specific and therefore cannot
+# live in this public repository (e.g. Google Drive paths embed the address).
+[ -f "${HOME}/.alias.local" ] && source "${HOME}/.alias.local"

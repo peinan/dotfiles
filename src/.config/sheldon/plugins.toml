@@ -64,6 +64,14 @@ local = "~/.zsh/configs-lazy"
 use = ["*.zsh"]
 apply = ["defer"]
 
+# Lazy load machine-local configs. This directory is deliberately not part of
+# this repository: it holds values that are account-specific or that belong to
+# a non-public environment. Absent on machines that have no such config.
+[plugins.zsh-configs-local]
+local = "~/.zsh/local"
+use = ["*.zsh"]
+apply = ["defer"]
+
 # Load external config variables and paths
 [plugins.zsh-other-varpath]
 inline = '''
