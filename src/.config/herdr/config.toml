@@ -208,6 +208,7 @@ prefix_indicator = "highlight"
 pane_title_format = "$dir $process( ⋅ $branch$ahead_behind$git_status)( $zoom)"
 dim_inactive_panes = true
 pane_padding = { left = 1 }
+popup_padding = { left = 1 }
 show_pane_focus_marker = false
 tab_bar_style = "minimal"
 tab_bar_position = "bottom"
@@ -221,10 +222,10 @@ zoom_indicator_position = "pane"
 # delivery = "system"
 
 [ui.sidebar.spaces]
-row_gap = 1
+row_gap = 0
 
 [ui.sidebar.agents]
-row_gap = 1
+row_gap = 0
 
 # Play sounds when agents change state in background workspaces
 [ui.sound]
