@@ -153,7 +153,7 @@ if [ -n "$session_cost" ]; then
   credits_section=$(printf " ${DIVIDER} ${DIM}${ICON_CREDITS}${NC}  \$%.2f" "$session_cost")
   if [ -n "$monthly_used" ]; then
     monthly_color=$(color_for_pct "$monthly_pct")
-    credits_section+=$(printf " ${monthly_color}\$%.2f${NC} ${DIM}(%d%%)${NC}" "$monthly_used" "$monthly_pct")
+    credits_section+=$(printf " ${monthly_color}\$%.2f${NC} ${DIM}(%d%%)${NC}" "$monthly_used" "$monthly_pct")
   fi
 fi
 
