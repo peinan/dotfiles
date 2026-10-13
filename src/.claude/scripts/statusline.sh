@@ -9,6 +9,11 @@ RED="\033[31m"
 PURPLE="\033[38;5;105m"
 GRAY="\033[38;5;241m"
 
+# Nerd Font icons as UTF-8 escapes (private-use glyphs get stripped by some tools);
+# printf expands them like the colors above
+ICON_MODEL="\xf3\xb0\x9a\xa9"    # nf-md-robot
+ICON_CONTEXT="\xf3\xb0\xa7\x91"  # nf-md-brain
+
 DIVIDER="${GRAY}∣${NC}"
 
 input=$(cat)
@@ -99,5 +104,5 @@ if [ -n "$five_h" ] && [ -n "$seven_d" ]; then
     "$five_h" "$five_h_reset_str" "$seven_d" "$seven_d_reset_str")
 fi
 
-printf "${DIM}%s${NC} ${DIVIDER} ${DIM}Context${NC} ${color}%s${GRAY}%s${NC} ${DIM}%s/%s${NC} ${DIM}(%d%%)${NC}%s" \
+printf "${DIM}${ICON_MODEL}  %s${NC} ${DIVIDER} ${DIM}${ICON_CONTEXT}${NC}  ${color}%s${GRAY}%s${NC} ${DIM}%s/%s${NC} ${DIM}(%d%%)${NC}%s" \
   "$model" "$bar_filled" "$bar_empty" "$used_fmt" "$total_fmt" "$pct" "$usage_section"
