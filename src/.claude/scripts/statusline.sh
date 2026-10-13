@@ -9,7 +9,19 @@ RED="\033[31m"
 PURPLE="\033[38;5;105m"
 GRAY="\033[38;5;241m"
 
+# Nerd Font icons as UTF-8 escapes (private-use glyphs get stripped by some tools);
+# printf expands them like the colors above
+ICON_MODEL="\xf3\xb0\x9a\xa9"    # nf-md-robot
+ICON_CONTEXT="\xf3\xb0\xa7\x91"  # nf-md-brain
+ICON_CREDITS="\xef\x8a\x83"      # nf-fa-credit_card_alt
+
 DIVIDER="${GRAY}∣${NC}"
+
+# Monthly usage credits come from the usage API, which is rate-limited and shared by
+# every session, so one cached response serves all status lines
+CREDITS_CACHE="${TMPDIR:-/tmp}/claude-statusline-credits.json"
+CREDITS_TTL=300      # seconds between fetches
+CREDITS_MAX_AGE=900  # hide the monthly figure once the last successful fetch is older
 
 input=$(cat)
 
@@ -62,6 +74,28 @@ format_time_until() {
   fi
 }
 
+# Fetch in the background so the status line never waits on the network. Touching the
+# cache first claims the next TTL window, so a burst of redraws fetches only once.
+refresh_credits_cache() {
+  local version=$1
+  touch "$CREDITS_CACHE"
+  (
+    token=$(security find-generic-password -s "Claude Code-credentials" -w 2>/dev/null \
+      | jq -r '.claudeAiOauth.accessToken // empty')
+    [ -z "$token" ] && exit
+    # The usage API answers other User-Agents with 429, so present as Claude Code.
+    # The token goes in on stdin (-H @-) to keep it out of the process list.
+    response=$(printf 'Authorization: Bearer %s\n' "$token" \
+      | curl -sf --max-time 5 -H @- \
+          -H "anthropic-beta: oauth-2025-04-20" \
+          -H "User-Agent: claude-code/${version}" \
+          https://api.anthropic.com/api/oauth/usage) || exit
+    # Stamp the fetch time: the cache mtime only records the last attempt
+    credits=$(echo "$response" | jq -ce '.extra_usage // empty | . + {fetched_at: now}') || exit
+    echo "$credits" > "$CREDITS_CACHE.$$" && mv -f "$CREDITS_CACHE.$$" "$CREDITS_CACHE"
+  ) >/dev/null 2>&1 &
+}
+
 # --- Context window ---
 pct=${used_pct%.*}
 used_tokens=$(( ctx_size * pct / 100 ))
@@ -99,5 +133,29 @@ if [ -n "$five_h" ] && [ -n "$seven_d" ]; then
     "$five_h" "$five_h_reset_str" "$seven_d" "$seven_d_reset_str")
 fi
 
-printf "${DIM}%s${NC} ${DIVIDER} ${DIM}Context${NC} ${color}%s${GRAY}%s${NC} ${DIM}%s/%s${NC} ${DIM}(%d%%)${NC}%s" \
-  "$model" "$bar_filled" "$bar_empty" "$used_fmt" "$total_fmt" "$pct" "$usage_section"
+# --- Credits (session cost from stdin, monthly usage credits from the cache) ---
+credits_section=""
+session_cost=$(echo "$input" | jq -r '.cost.total_cost_usd // empty')
+version=$(echo "$input" | jq -r '.version // empty')
+
+# BSD stat by absolute path: GNU coreutils' stat may shadow it in PATH
+cache_mtime=$(/usr/bin/stat -f %m "$CREDITS_CACHE" 2>/dev/null || echo 0)
+if [ -n "$version" ] && [ $(( $(date +%s) - cache_mtime )) -ge "$CREDITS_TTL" ]; then
+  refresh_credits_cache "$version"
+fi
+
+read -r monthly_used monthly_pct <<< "$(jq -r --argjson max_age "$CREDITS_MAX_AGE" '
+  select(.currency == "USD" and now - .fetched_at < $max_age)
+  | "\(.used_credits / pow(10; .decimal_places // 2)) \(.utilization | floor)"
+' "$CREDITS_CACHE" 2>/dev/null)"
+
+if [ -n "$session_cost" ]; then
+  credits_section=$(printf " ${DIVIDER} ${DIM}${ICON_CREDITS}${NC}  \$%.2f" "$session_cost")
+  if [ -n "$monthly_used" ]; then
+    monthly_color=$(color_for_pct "$monthly_pct")
+    credits_section+=$(printf " ${monthly_color}\$%.2f${NC} ${DIM}(%d%%)${NC}" "$monthly_used" "$monthly_pct")
+  fi
+fi
+
+printf "${DIM}${ICON_MODEL}  %s${NC} ${DIVIDER} ${DIM}${ICON_CONTEXT}${NC}  ${color}%s${GRAY}%s${NC} ${DIM}%s/%s${NC} ${DIM}(%d%%)${NC}%s%s" \
+  "$model" "$bar_filled" "$bar_empty" "$used_fmt" "$total_fmt" "$pct" "$usage_section" "$credits_section"

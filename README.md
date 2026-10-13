@@ -9,15 +9,13 @@
 
 ## What's Included
 
-- **Shell**: [Zsh](https://www.zsh.org/) (`.zshrc`, `.zshenv`, `.alias`)
-    - **Prompt**: [Starship](https://starship.rs/)
-    - **Plugin Manager**: [Sheldon](https://sheldon.cli.rs/)
-- **Git**: Git configuration (`.config/git/config`) and [delta](https://dandavison.github.io/delta/) for beautiful diffs
-- **Editors**: [Neovim](https://neovim.io/) (standalone repository)
-- **Terminal**: [Ghostty](https://ghostty.org/)
-- **Multiplexing**: [tmux](https://github.com/tmux/tmux) (standalone repository)
-- **Package Management**: [Homebrew](https://brew.sh/) (`Brewfile`)
-- **Font**: [Kusunoki Mono](https://github.com/peinan/kusunoki-mono)
+- **Shell**: [Zsh](https://www.zsh.org/), [Starship](https://starship.rs/), [Sheldon](https://sheldon.cli.rs/)
+- **Git**: [lazygit](https://github.com/jesseduffield/lazygit), [delta](https://dandavison.github.io/delta/), [rp](https://github.com/peinan/rp)
+- **Editors**: [Neovim](https://neovim.io/)
+- **Terminal**: [Ghostty](https://ghostty.org/), [Herdr](https://herdr.dev/)
+- **Package Management**: [Homebrew](https://brew.sh/), [mise](https://mise.jdx.dev/)
+- **macOS**: [Karabiner-Elements](https://karabiner-elements.pqrs.org/), [BetterTouchTool](https://folivora.ai/)
+- **Font**: [Kusunoki Mono](https://peinan.github.io/kusunoki-mono/)
 
 
 ## Quick Start
