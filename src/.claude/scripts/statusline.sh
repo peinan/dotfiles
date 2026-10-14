@@ -15,7 +15,9 @@ ICON_MODEL="\xf3\xb0\x9a\xa9"    # nf-md-robot
 ICON_CONTEXT="\xf3\xb0\xa7\x91"  # nf-md-brain
 ICON_CREDITS="\xef\x8a\x83"      # nf-fa-credit_card_alt
 
-DIVIDER="${GRAY}∣${NC}"
+# Gap between sections, drawn in gray: " ∣ " for a bar, " " for a single space
+SEPARATOR=" ∣ "
+DIVIDER="${GRAY}${SEPARATOR}${NC}"
 
 # Monthly usage credits come from the usage API, which is rate-limited and shared by
 # every session, so one cached response serves all status lines
@@ -129,7 +131,7 @@ if [ -n "$five_h" ] && [ -n "$seven_d" ]; then
   seven_d_reset_str=""
   [ -n "$five_h_time" ] && five_h_reset_str=$(printf " ${DIM}(%s)${NC}" "$five_h_time")
   [ -n "$seven_d_time" ] && seven_d_reset_str=$(printf " ${DIM}(%s)${NC}" "$seven_d_time")
-  usage_section=$(printf " ${DIVIDER} ${DIM}Usage${NC} ${five_h_color}%d%%${NC}%s ${DIM}/${NC} ${seven_d_color}%d%%${NC}%s" \
+  usage_section=$(printf "${DIVIDER}${DIM}Usage${NC} ${five_h_color}%d%%${NC}%s ${DIM}/${NC} ${seven_d_color}%d%%${NC}%s" \
     "$five_h" "$five_h_reset_str" "$seven_d" "$seven_d_reset_str")
 fi
 
@@ -150,12 +152,12 @@ read -r monthly_used monthly_pct <<< "$(jq -r --argjson max_age "$CREDITS_MAX_AG
 ' "$CREDITS_CACHE" 2>/dev/null)"
 
 if [ -n "$session_cost" ]; then
-  credits_section=$(printf " ${DIVIDER} ${DIM}${ICON_CREDITS}${NC}  \$%.2f" "$session_cost")
+  credits_section=$(printf "${DIVIDER}${DIM}${ICON_CREDITS}${NC}  \$%.2f" "$session_cost")
   if [ -n "$monthly_used" ]; then
     monthly_color=$(color_for_pct "$monthly_pct")
     credits_section+=$(printf " ${monthly_color}\$%.2f${NC} ${DIM}(%d%%)${NC}" "$monthly_used" "$monthly_pct")
   fi
 fi
 
-printf "${DIM}${ICON_MODEL}  %s${NC} ${DIVIDER} ${DIM}${ICON_CONTEXT}${NC}  ${color}%s${GRAY}%s${NC} ${DIM}%s/%s${NC} ${DIM}(%d%%)${NC}%s%s" \
+printf "${DIM}${ICON_MODEL}  %s${NC}${DIVIDER}${DIM}${ICON_CONTEXT}${NC}  ${color}%s${GRAY}%s${NC} ${DIM}%s/%s${NC} ${DIM}(%d%%)${NC}%s%s" \
   "$model" "$bar_filled" "$bar_empty" "$used_fmt" "$total_fmt" "$pct" "$usage_section" "$credits_section"
