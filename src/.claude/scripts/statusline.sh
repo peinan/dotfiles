@@ -16,7 +16,7 @@ ICON_CONTEXT="\xf3\xb0\xa7\x91"  # nf-md-brain
 ICON_CREDITS="\xef\x8a\x83"      # nf-fa-credit_card_alt
 
 # Gap between sections, drawn in gray: " ∣ " for a bar, " " for a single space
-SEPARATOR=" "
+SEPARATOR="   "
 DIVIDER="${GRAY}${SEPARATOR}${NC}"
 
 # Monthly usage credits come from the usage API, which is rate-limited and shared by
