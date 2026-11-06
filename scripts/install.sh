@@ -203,6 +203,50 @@ else
     warn "$LOCAL_REPO is unavailable; skipping machine-local overrides"
 fi
 
+# Step 4c: Link personal agent skills from their own repository.
+# peinan/agent-plugins holds the skills shared by every harness. They are
+# exposed through ~/.agents/skills, the store that `npx skills` uses: pi reads
+# that directory directly, and the other harnesses get a symlink next to their
+# own skills. Only directories that already exist are touched, so agents this
+# machine does not use are left alone.
+AGENT_PLUGINS_REPO="peinan/agent-plugins"
+AGENT_PLUGINS_DIR="$GHQ_ROOT/github.com/$AGENT_PLUGINS_REPO"
+
+link_agent_skill() {
+    local target="$1" source="$2"
+    if [[ -e "$target" && ! -L "$target" ]]; then
+        warn "Skipping $target: a real directory already exists"
+        return
+    fi
+    ln -sfn "$source" "$target"
+}
+
+info "Linking personal agent skills..."
+# Guarded by `if` for the same reason as dotfiles-local: under `set -e` a bare
+# failing `ghq get` would abort the install for an optional repository.
+if [[ -d "$AGENT_PLUGINS_DIR/skills" ]] || ghq get "$AGENT_PLUGINS_REPO"; then
+    # ~/.claude/skills is created here rather than waiting for the Claude
+    # installer below, which does not create a skills directory on its own.
+    mkdir -p "$HOME/.agents/skills" "$HOME/.claude/skills"
+    for skill_dir in "$AGENT_PLUGINS_DIR"/skills/*/; do
+        [[ -d "$skill_dir" ]] || continue
+        skill_dir="${skill_dir%/}"
+        name="$(basename "$skill_dir")"
+        link_agent_skill "$HOME/.agents/skills/$name" "$skill_dir"
+        for agent_skills in \
+            "$HOME/.claude/skills" \
+            "$HOME/.codex/skills" \
+            "$HOME/.config/opencode/skills" \
+            "$HOME/.config/agents/skills"; do
+            [[ -d "$agent_skills" ]] || continue
+            link_agent_skill "$agent_skills/$name" "$HOME/.agents/skills/$name"
+        done
+    done
+    success "Personal agent skills ready: $AGENT_PLUGINS_DIR/skills"
+else
+    warn "$AGENT_PLUGINS_REPO is unavailable; skipping personal agent skills"
+fi
+
 # Step 5a: Install all packages from Brewfile
 info "Installing packages from Brewfile..."
 brew bundle install --file "$DOTFILES_DIR/Brewfile"
