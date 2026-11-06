@@ -203,6 +203,70 @@ else
     warn "$LOCAL_REPO is unavailable; skipping machine-local overrides"
 fi
 
+# Step 4c: Link personal agent skills from their own repository.
+# peinan/agent-plugins holds the skills shared by every harness. They are
+# exposed through ~/.agents/skills, the store that `npx skills` uses: pi reads
+# that directory directly, and the other harnesses get a symlink next to their
+# own skills. Only directories that already exist are touched, so agents this
+# machine does not use are left alone.
+AGENT_PLUGINS_REPO="peinan/agent-plugins"
+AGENT_PLUGINS_DIR="$GHQ_ROOT/github.com/$AGENT_PLUGINS_REPO"
+
+link_agent_skill() {
+    local target="$1" source="$2"
+    if [[ -e "$target" && ! -L "$target" ]]; then
+        warn "Skipping $target: a real directory already exists"
+        return
+    fi
+    ln -sfn "$source" "$target"
+}
+
+info "Linking personal agent skills..."
+# Guarded with `|| true` for the same reason as dotfiles-local: under `set -e` a
+# bare failing `ghq get` would abort the install for an optional repository.
+if [[ ! -d "$AGENT_PLUGINS_DIR/skills" ]]; then
+    # `ghq get` does not update an existing checkout, and a clone made before
+    # the skills/ layout existed has nothing to link. Try a fast-forward pull
+    # first; a checkout with unpushed commits falls back to the clone-only path.
+    ghq get -u "$AGENT_PLUGINS_REPO" || ghq get "$AGENT_PLUGINS_REPO" || true
+fi
+
+if [[ -d "$AGENT_PLUGINS_DIR/skills" ]]; then
+    # A previous stow run may have folded ~/.claude/skills into a symlink to
+    # src/.claude/skills, which no longer exists after the skills moved to
+    # agent-plugins. mkdir -p fails on that dangling link, so remove only the
+    # known stow link; real directories and other links are left alone.
+    if [[ -L "$HOME/.claude/skills" && ! -e "$HOME/.claude/skills" ]]; then
+        case "$(readlink "$HOME/.claude/skills")" in
+            */dotfiles/src/.claude/skills) rm -f "$HOME/.claude/skills" ;;
+        esac
+    fi
+
+    # ~/.claude/skills is created here rather than waiting for the Claude
+    # installer below, which does not create a skills directory on its own.
+    if mkdir -p "$HOME/.agents/skills" "$HOME/.claude/skills" 2>/dev/null; then
+        for skill_dir in "$AGENT_PLUGINS_DIR"/skills/*/; do
+            [[ -d "$skill_dir" ]] || continue
+            skill_dir="${skill_dir%/}"
+            name="$(basename "$skill_dir")"
+            link_agent_skill "$HOME/.agents/skills/$name" "$skill_dir"
+            for agent_skills in \
+                "$HOME/.claude/skills" \
+                "$HOME/.codex/skills" \
+                "$HOME/.config/opencode/skills" \
+                "$HOME/.config/agents/skills"; do
+                [[ -d "$agent_skills" ]] || continue
+                link_agent_skill "$agent_skills/$name" "$HOME/.agents/skills/$name"
+            done
+        done
+        success "Personal agent skills ready: $AGENT_PLUGINS_DIR/skills"
+    else
+        warn "Could not create the skill directories; skipping personal agent skills"
+    fi
+else
+    warn "$AGENT_PLUGINS_DIR/skills not found; pull the repository or skip this step"
+fi
+
 # Step 5a: Install all packages from Brewfile
 info "Installing packages from Brewfile..."
 brew bundle install --file "$DOTFILES_DIR/Brewfile"

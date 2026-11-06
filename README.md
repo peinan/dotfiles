@@ -13,6 +13,7 @@
 - **Git**: [lazygit](https://github.com/jesseduffield/lazygit), [delta](https://dandavison.github.io/delta/), [rp](https://github.com/peinan/rp)
 - **Editors**: [Neovim](https://neovim.io/)
 - **Terminal**: [Ghostty](https://ghostty.org/), [Herdr](https://herdr.dev/)
+- **Agent Skills**: shared skills from [peinan/agent-plugins](https://github.com/peinan/agent-plugins)
 - **Package Management**: [Homebrew](https://brew.sh/), [mise](https://mise.jdx.dev/)
 - **macOS**: [Karabiner-Elements](https://karabiner-elements.pqrs.org/), [BetterTouchTool](https://folivora.ai/)
 - **Font**: [Kusunoki Mono](https://peinan.github.io/kusunoki-mono/)

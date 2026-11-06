@@ -243,6 +243,21 @@ Other configuration files and directories:
   this directory is never linked; it is a place to keep the exports under
   version control.
 
+### Agent skills {#agent-skills}
+
+Personal skills live in [peinan/agent-plugins](https://github.com/peinan/agent-plugins)
+under `skills/<name>/SKILL.md` and are shared by every harness through
+`~/.agents/skills`, the store that `npx skills` uses.
+
+Step 4c of `scripts/install.sh` clones the repository with `ghq` and links each
+skill into `~/.agents/skills`, plus the skill directory of every agent that
+already exists on the machine (`~/.claude/skills`, `~/.codex/skills`,
+`~/.config/opencode/skills`, `~/.config/agents/skills`). Pi reads
+`~/.agents/skills` directly and needs no link.
+
+Third-party skills are managed by `npx skills` and recorded in
+`~/.agents/.skill-lock.json`. That file is machine state and is not stowed.
+
 Neovim and tmux are not in `src/`. They live in their own repositories cloned
 under `ghq root`, and `~/.config/{nvim,tmux}` are symlinks pointing at those
 clones. See the [Config Repos page](/config-repos).
