@@ -222,9 +222,13 @@ link_agent_skill() {
 }
 
 info "Linking personal agent skills..."
-# Guarded by `if` for the same reason as dotfiles-local: under `set -e` a bare
-# failing `ghq get` would abort the install for an optional repository.
-if [[ -d "$AGENT_PLUGINS_DIR/skills" ]] || ghq get "$AGENT_PLUGINS_REPO"; then
+# Guarded with `|| true` for the same reason as dotfiles-local: under `set -e` a
+# bare failing `ghq get` would abort the install for an optional repository.
+if [[ ! -d "$AGENT_PLUGINS_DIR/skills" ]]; then
+    ghq get "$AGENT_PLUGINS_REPO" || true
+fi
+
+if [[ -d "$AGENT_PLUGINS_DIR/skills" ]]; then
     # ~/.claude/skills is created here rather than waiting for the Claude
     # installer below, which does not create a skills directory on its own.
     mkdir -p "$HOME/.agents/skills" "$HOME/.claude/skills"
@@ -244,7 +248,7 @@ if [[ -d "$AGENT_PLUGINS_DIR/skills" ]] || ghq get "$AGENT_PLUGINS_REPO"; then
     done
     success "Personal agent skills ready: $AGENT_PLUGINS_DIR/skills"
 else
-    warn "$AGENT_PLUGINS_REPO is unavailable; skipping personal agent skills"
+    warn "$AGENT_PLUGINS_DIR/skills not found; pull the repository or skip this step"
 fi
 
 # Step 5a: Install all packages from Brewfile
