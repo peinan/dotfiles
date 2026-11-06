@@ -225,28 +225,44 @@ info "Linking personal agent skills..."
 # Guarded with `|| true` for the same reason as dotfiles-local: under `set -e` a
 # bare failing `ghq get` would abort the install for an optional repository.
 if [[ ! -d "$AGENT_PLUGINS_DIR/skills" ]]; then
-    ghq get "$AGENT_PLUGINS_REPO" || true
+    # `ghq get` does not update an existing checkout, and a clone made before
+    # the skills/ layout existed has nothing to link. Try a fast-forward pull
+    # first; a checkout with unpushed commits falls back to the clone-only path.
+    ghq get -u "$AGENT_PLUGINS_REPO" || ghq get "$AGENT_PLUGINS_REPO" || true
 fi
 
 if [[ -d "$AGENT_PLUGINS_DIR/skills" ]]; then
+    # A previous stow run may have folded ~/.claude/skills into a symlink to
+    # src/.claude/skills, which no longer exists after the skills moved to
+    # agent-plugins. mkdir -p fails on that dangling link, so remove only the
+    # known stow link; real directories and other links are left alone.
+    if [[ -L "$HOME/.claude/skills" && ! -e "$HOME/.claude/skills" ]]; then
+        case "$(readlink "$HOME/.claude/skills")" in
+            */dotfiles/src/.claude/skills) rm -f "$HOME/.claude/skills" ;;
+        esac
+    fi
+
     # ~/.claude/skills is created here rather than waiting for the Claude
     # installer below, which does not create a skills directory on its own.
-    mkdir -p "$HOME/.agents/skills" "$HOME/.claude/skills"
-    for skill_dir in "$AGENT_PLUGINS_DIR"/skills/*/; do
-        [[ -d "$skill_dir" ]] || continue
-        skill_dir="${skill_dir%/}"
-        name="$(basename "$skill_dir")"
-        link_agent_skill "$HOME/.agents/skills/$name" "$skill_dir"
-        for agent_skills in \
-            "$HOME/.claude/skills" \
-            "$HOME/.codex/skills" \
-            "$HOME/.config/opencode/skills" \
-            "$HOME/.config/agents/skills"; do
-            [[ -d "$agent_skills" ]] || continue
-            link_agent_skill "$agent_skills/$name" "$HOME/.agents/skills/$name"
+    if mkdir -p "$HOME/.agents/skills" "$HOME/.claude/skills" 2>/dev/null; then
+        for skill_dir in "$AGENT_PLUGINS_DIR"/skills/*/; do
+            [[ -d "$skill_dir" ]] || continue
+            skill_dir="${skill_dir%/}"
+            name="$(basename "$skill_dir")"
+            link_agent_skill "$HOME/.agents/skills/$name" "$skill_dir"
+            for agent_skills in \
+                "$HOME/.claude/skills" \
+                "$HOME/.codex/skills" \
+                "$HOME/.config/opencode/skills" \
+                "$HOME/.config/agents/skills"; do
+                [[ -d "$agent_skills" ]] || continue
+                link_agent_skill "$agent_skills/$name" "$HOME/.agents/skills/$name"
+            done
         done
-    done
-    success "Personal agent skills ready: $AGENT_PLUGINS_DIR/skills"
+        success "Personal agent skills ready: $AGENT_PLUGINS_DIR/skills"
+    else
+        warn "Could not create the skill directories; skipping personal agent skills"
+    fi
 else
     warn "$AGENT_PLUGINS_DIR/skills not found; pull the repository or skip this step"
 fi
